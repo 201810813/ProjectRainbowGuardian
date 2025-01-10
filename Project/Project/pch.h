@@ -7,6 +7,9 @@
 #include <stack>
 #include <string>
 
+#include <windows.h>
 #include <random>
+
+#include "define.h"
 
 using namespace std;

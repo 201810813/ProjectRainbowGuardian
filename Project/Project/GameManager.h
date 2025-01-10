@@ -2,6 +2,8 @@
 class GameManager {
 public:
 	GameManager();
-	~GameManager();
+	~GameManager()
+	{
 
+	}
 };
