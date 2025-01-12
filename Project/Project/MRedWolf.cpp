@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "MRedWolf.h"
 
-MRedWolf::MRedWolf() : coin(15), exp(10)
+MRedWolf::MRedWolf() : coin(15), exp(13)
 {
 	WolfStat = { "RedWolf", 100, 100, 10, 3, 1.2, 20, 20 };
 }
@@ -20,19 +20,21 @@ double MRedWolf::UseSkill()
 }
 
 
-void MRedWolf::Hitted(double damage)
+void MRedWolf::Hitted(double& damage)
 {
 	WolfStat.currentHp -= damage;
 }
 
-string MRedWolf::getName()
+const string MRedWolf::getName()
 {
 	return WolfStat.name;
 }
 
-void MRedWolf::Die() 
-{
-}
 double& MRedWolf::getHP() {
 	return WolfStat.currentHp;
+}
+
+void MRedWolf::Heal(double heal)
+{
+	WolfStat.currentHp += heal;
 }

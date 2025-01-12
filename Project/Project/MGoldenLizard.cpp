@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "MGoldenLizard.h"
 
-MGoldenLizard::MGoldenLizard()
+MGoldenLizard::MGoldenLizard() :coin(24), exp(20)
 {	
 	lizardStat.name = "GoldenLizard";
 	lizardStat.maxHp = 110.0;
@@ -11,7 +11,7 @@ MGoldenLizard::MGoldenLizard()
 	lizardStat.dropRate = 25;
 	lizardStat.evasionRate = 12;
 	lizardStat.skillDamage = 1.6;
-	coin = 20;
+	
 }
 
 MGoldenLizard::~MGoldenLizard()
@@ -28,12 +28,12 @@ double MGoldenLizard::UseSkill()
 	return lizardStat.damage * lizardStat.skillDamage;
 }
 
-void MGoldenLizard::Hitted(double damage)
+void MGoldenLizard::Hitted(double& damage)
 {
 	lizardStat.currentHp -= damage;
 }
 
-string MGoldenLizard::getName()
+const string MGoldenLizard::getName()
 {
     return string();
 }
@@ -43,4 +43,8 @@ double& MGoldenLizard::getHP()
 	return lizardStat.currentHp;
 }
 
-void MGoldenLizard::Die() {}
+void MGoldenLizard::Heal(double heal)
+{
+	lizardStat.currentHp += heal;
+}
+

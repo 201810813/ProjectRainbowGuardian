@@ -1,6 +1,7 @@
 #pragma once
 #include "Monster.h"
-class MRedWolf:Monster {
+
+class MRedWolf :public Monster {
 private:
 	MonsterStat WolfStat;
 	int coin;
@@ -10,8 +11,8 @@ public:
 	~MRedWolf() override;
 	double Attack() override;
 	double UseSkill() override;
-	void Hitted(double damage) override;
-	string getName() override;
-	void Die() override;
+	void Hitted(double& damage) override;
+	const string getName() override;
 	double& getHP() override;
+	void Heal(double heal) override;
 };

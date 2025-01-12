@@ -23,9 +23,8 @@ public:
 	virtual ~Monster();
 	virtual double Attack() = 0;
 	virtual double UseSkill() = 0;
-	virtual void Hitted(double damage) = 0;
-	virtual string getName() = 0;
-	virtual void Die() = 0;
+	virtual void Hitted(double& damage) = 0;
+	virtual const string getName() = 0;
 	virtual double& getHP() = 0;
+	virtual void Heal(double heal);
 };
-

@@ -1,17 +1,17 @@
-#pragma once
 #include "Monster.h"
-class MGoldenLizard :Monster {
+
+class MGoldenLizard :public Monster {
 private:
 	MonsterStat lizardStat;
 	int coin;
 	int exp;
 public:
 	MGoldenLizard();
-	~MGoldenLizard();
+	~MGoldenLizard() override;
 	double Attack() override;
 	double UseSkill() override;
-	void Hitted(double damage) override;
-	string getName() override;
-	void Die() override;
+	void Hitted(double& damage) override;
+	const string getName() override;
 	double& getHP() override;
+	void Heal(double heal) override;
 };

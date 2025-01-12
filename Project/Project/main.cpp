@@ -2,18 +2,19 @@
 #include <iostream>
 #include "MRedWolf.h"
 #include "MGoldenLizard.h"
-
+#include "Item.h"
 
 int main()
 {
-	int damage;
+	HealthPostion postion;
+	double damage = 5;
 	string chat = "";
 	MGoldenLizard MGL;
-	do {
-		cin >> damage;
+	while (MGL.getHP() > 0) {
 		MGL.Hitted(damage);
-		cout << MGL.getHP() - damage;
-	} while (chat != "end");
-
+		cout << MGL.getHP() << endl;
+	}
+	postion.UseItem(MGL);
+	cout << MGL.getHP() << endl;
 	return 0;
 }

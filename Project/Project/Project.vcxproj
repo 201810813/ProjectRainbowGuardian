@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="MGoldenLizard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
@@ -139,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="MGoldenLizard.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="pch.h" />
