@@ -3,38 +3,39 @@
 class ScriptManager
 {
 private:
-	static ScriptManager*	instance;
-	WORD					ConsoleColor;
+	static shared_ptr<ScriptManager>	Instance;
+	HANDLE								ConsoleHandle;
+	WORD								ConsoleColor;
 
-	ScriptManager()
-		: ConsoleColor(0)
-	{
-		cout << "call";
-	}
+	ScriptManager() = default;
+	ScriptManager(const ScriptManager& other) = delete;
 
 	~ScriptManager()
 	{
 
 	}
 
-public:
-	static ScriptManager* GetInstance()
-	{
-		if (nullptr == instance)
-		{
-			instance = new ScriptManager();
-		}
+	ScriptManager& operator = (const ScriptManager& other) = delete;
 
-		return instance;
+	static void Destroy(ScriptManager* InstancePtr)
+	{
+		delete InstancePtr;
 	}
 
-	static void Destroy()
+public:
+	static shared_ptr<ScriptManager> GetInstance()
 	{
-		if (nullptr != instance)
+		if (nullptr == Instance)
 		{
-			delete instance;
-			instance = nullptr;
+			Instance = shared_ptr<ScriptManager>(new ScriptManager(), Destroy);
 		}
+
+		return Instance;
+	}
+
+	void Initialize()
+	{
+		ConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 	}
 
 private:
@@ -42,4 +43,7 @@ private:
 
 public:
 	void PrintScript(string Script, TEXT_COLOR_TYPE TextColor = TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE BackGroundColor = BACKGROUND_COLOR_TYPE::BLACK);
+	void ClearScreen() { system("cls"); }
+	void PintLine(TEXT_COLOR_TYPE TextColor = TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE BackGroundColor = BACKGROUND_COLOR_TYPE::BLACK);
+	void PrintRoomTitle(string Title, TEXT_COLOR_TYPE TextColor = TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE BackGroundColor = BACKGROUND_COLOR_TYPE::BLACK);
 };
