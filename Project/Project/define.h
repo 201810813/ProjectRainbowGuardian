@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "pch.h"
 
 enum class TEXT_COLOR_TYPE
