@@ -10,27 +10,28 @@ MRedWolf::~MRedWolf()
 {
 }
 
-double MRedWolf::Attack()
-{
-	return WolfStat.damage;
-}
 double MRedWolf::UseSkill() 
 {
 	return WolfStat.damage * WolfStat.skillDamage;
 }
 
+void MRedWolf::Attack(Player& player) {
+	double damage = WolfStat.damage - player.GetDefense();
 
-void MRedWolf::Hitted(double& damage)
+	player.GetAttack(damage);
+}
+
+void MRedWolf::GetAttack(double& damage)
 {
 	WolfStat.currentHp -= damage;
 }
 
-const string MRedWolf::getName()
+const string MRedWolf::GetName()
 {
 	return WolfStat.name;
 }
 
-double& MRedWolf::getHP() {
+double& MRedWolf::GetCurrentHP() {
 	return WolfStat.currentHp;
 }
 
@@ -38,3 +39,5 @@ void MRedWolf::Heal(double heal)
 {
 	WolfStat.currentHp += heal;
 }
+
+

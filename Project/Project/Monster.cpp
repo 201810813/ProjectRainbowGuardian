@@ -2,6 +2,7 @@
 #include "Monster.h"
 
 Monster::Monster() : coin(0) {
+	monsterStat = {};
 }
 
 Monster::~Monster()

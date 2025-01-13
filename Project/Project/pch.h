@@ -7,5 +7,6 @@
 #include <stack>
 #include <string>
 #include <random>
+#include <memory>
 
 using namespace std;

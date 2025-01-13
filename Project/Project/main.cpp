@@ -1,20 +1,15 @@
-#include "pch.h"
 #include <iostream>
+#include "pch.h"
 #include "MRedWolf.h"
 #include "MGoldenLizard.h"
 #include "Item.h"
-
+#include "Player.h"
 int main()
 {
-	HealthPostion postion;
-	double damage = 5;
-	string chat = "";
-	MGoldenLizard MGL;
-	while (MGL.getHP() > 0) {
-		MGL.Hitted(damage);
-		cout << MGL.getHP() << endl;
-	}
-	postion.UseItem(MGL);
-	cout << MGL.getHP() << endl;
-	return 0;
+	string name = "";
+	shared_ptr<Player> player = Player::getInstance();
+	MGoldenLizard mgl;
+	cout << player->GetCurrentHP() << endl;
+	mgl.Attack(*player);
+	cout << player->GetCurrentHP() << endl;
 }

@@ -8,10 +8,13 @@ private:
 public:
 	MGoldenLizard();
 	~MGoldenLizard() override;
-	double Attack() override;
+	void Attack(Player& player) override;
 	double UseSkill() override;
-	void Hitted(double& damage) override;
-	const string getName() override;
-	double& getHP() override;
+	void GetAttack(double& damage) override;
 	void Heal(double heal) override;
+
+public:
+	double& GetCurrentHP() override;
+	const string GetName() override;
+	int	GetDefense() override; // 
 };

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "MGoldenLizard.h"
+#include "Player.h"
 
 MGoldenLizard::MGoldenLizard() :coin(24), exp(20)
 {	
@@ -18,9 +19,11 @@ MGoldenLizard::~MGoldenLizard()
 {
 }
 
-double MGoldenLizard::Attack()
+void MGoldenLizard::Attack(Player& player)
 {
-	return lizardStat.damage;
+	double damage = lizardStat.damage - player.GetDefense();
+
+	player.GetAttack(damage);
 }
 
 double MGoldenLizard::UseSkill()
@@ -28,17 +31,22 @@ double MGoldenLizard::UseSkill()
 	return lizardStat.damage * lizardStat.skillDamage;
 }
 
-void MGoldenLizard::Hitted(double& damage)
+void MGoldenLizard::GetAttack(double& damage)
 {
 	lizardStat.currentHp -= damage;
 }
 
-const string MGoldenLizard::getName()
+const string MGoldenLizard::GetName()
 {
     return string();
 }
 
-double& MGoldenLizard::getHP()
+int MGoldenLizard::GetDefense()
+{
+	return lizardStat.defense;
+}
+
+double& MGoldenLizard::GetCurrentHP()
 {
 	return lizardStat.currentHp;
 }

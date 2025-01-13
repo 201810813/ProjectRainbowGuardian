@@ -9,10 +9,14 @@ private:
 public:
 	MRedWolf();
 	~MRedWolf() override;
-	double Attack() override;
+	void Attack(Player& player) override;
+	void GetAttack(double& damage) override;
 	double UseSkill() override;
-	void Hitted(double& damage) override;
-	const string getName() override;
-	double& getHP() override;
 	void Heal(double heal) override;
+
+public:
+	const string GetName() override;
+	double& GetCurrentHP();
+	int	GetDefense() = 0;
+	
 };
