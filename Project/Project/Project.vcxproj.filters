@@ -22,6 +22,9 @@
     <Filter Include="소스 파일\Manager\ConsoleLayout">
       <UniqueIdentifier>{29a688e1-9174-46d3-8799-092a941a795e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Monster">
+      <UniqueIdentifier>{b3e0de2d-184a-4b2b-9561-df8348a4f74b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -32,6 +35,9 @@
     </ClCompile>
     <ClCompile Include="ConsoleLayout.cpp">
       <Filter>소스 파일\Manager\ConsoleLayout</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>소스 파일\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="ConsoleLayout.h">
       <Filter>소스 파일\Manager\ConsoleLayout</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>소스 파일\Monster</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
