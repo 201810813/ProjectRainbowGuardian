@@ -6,15 +6,6 @@ int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-
-	SetConsoleOutputCP(CP_UTF8);
-	SetConsoleCP(CP_UTF8);
-	string test = "string";
-	wcout << u8"😀" << endl;
-	wcout << u8"으아아아" << endl;
-	wcout << L"느앙?" << endl;
-	cout << test << endl;
-
 	GameManager::GetInstance()->Initialize();
 
 	bool is_enter = false;
@@ -25,7 +16,7 @@ int main()
 		 WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::TITLE, "붉은 방", 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::RED));
 		 FMessageParam MessageParam;
 		 MessageParam.TargetLayout = LAYOUT_TYPE::STAT;
-		 MessageParam.Message = "최강노루";
+		 MessageParam.Message = "😀최강노루😀";
 		 MessageParam.LineIndex = 0;
 		 MessageParam.TextColor = TEXT_COLOR_TYPE::WHITE;
 		 MessageParam.BackGroundColor = BACKGROUND_COLOR_TYPE::BLACK;
@@ -66,6 +57,8 @@ int main()
 		 GameManager::GetInstance()->tick();
 		 
 		 GameManager::GetInstance()->render();
+
+		 //GameManager::GetInstance()->EndGame();
 	}
 
 	return 0;

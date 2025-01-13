@@ -54,8 +54,9 @@ private:
 	
 	string OverwriteTitle(const string& Title);
 	void MakeLayoutBox(LAYOUT_TYPE LayoutType, FConsoleLayout& ConsoleLayout);
-	void PrintMessage(string message);
 	void PrintMessage(wstring message);
+	void WriteUTF8ToConsole(const string& utf8Str);
+
 
 public:
 	~FConsoleLayoutContainer();

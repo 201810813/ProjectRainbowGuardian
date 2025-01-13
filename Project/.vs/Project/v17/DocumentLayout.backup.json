@@ -7,24 +7,28 @@
       "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\ConsoleLayout.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\ConsoleLayout.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\ConsoleLayout.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\GameManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\GameManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\KeyManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\KeyManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\define.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\define.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\KeyManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\KeyManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\KeyManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -37,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\Monster.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\Monster.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\GameManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\GameManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\GameManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -58,7 +58,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Monster.cpp",
               "DocumentMoniker": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\Monster.cpp",
               "RelativeDocumentMoniker": "Project\\Monster.cpp",
@@ -66,25 +66,24 @@
               "RelativeToolTip": "Project\\Monster.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-13T10:52:56.74Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-13T10:52:56.74Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\main.cpp",
               "RelativeDocumentMoniker": "Project\\main.cpp",
               "ToolTip": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\main.cpp",
               "RelativeToolTip": "Project\\main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-10T03:51:19.593Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 3,
               "Title": "GameManager.h",
               "DocumentMoniker": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\GameManager.h",
               "RelativeDocumentMoniker": "Project\\GameManager.h",
@@ -97,7 +96,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "KeyManager.cpp",
               "DocumentMoniker": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\KeyManager.cpp",
               "RelativeDocumentMoniker": "Project\\KeyManager.cpp",
@@ -105,12 +104,11 @@
               "RelativeToolTip": "Project\\KeyManager.cpp",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAACAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-13T10:23:23.228Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-13T10:23:23.228Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "pch.h",
               "DocumentMoniker": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\pch.h",
               "RelativeDocumentMoniker": "Project\\pch.h",
@@ -118,12 +116,11 @@
               "RelativeToolTip": "Project\\pch.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-10T03:51:44.367Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-10T03:51:44.367Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Monster.h",
               "DocumentMoniker": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\Monster.h",
               "RelativeDocumentMoniker": "Project\\Monster.h",
@@ -131,8 +128,7 @@
               "RelativeToolTip": "Project\\Monster.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-13T10:53:23.952Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-13T10:53:23.952Z"
             },
             {
               "$type": "Document",
@@ -144,18 +140,17 @@
               "RelativeToolTip": "Project\\GameManager.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-12T11:27:16.107Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-12T11:27:16.107Z"
             }
           ]
         },
         {
           "DockedWidth": 269,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "KeyManager.h",
               "DocumentMoniker": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\KeyManager.h",
               "RelativeDocumentMoniker": "Project\\KeyManager.h",
@@ -168,13 +163,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "define.h",
+              "DocumentMoniker": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\define.h",
+              "RelativeDocumentMoniker": "Project\\define.h",
+              "ToolTip": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\define.h",
+              "RelativeToolTip": "Project\\define.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIIAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-10T06:54:54.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ConsoleLayout.h",
               "DocumentMoniker": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\ConsoleLayout.h",
               "RelativeDocumentMoniker": "Project\\ConsoleLayout.h",
               "ToolTip": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\ConsoleLayout.h",
               "RelativeToolTip": "Project\\ConsoleLayout.h",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAkwDgAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-01-12T10:00:47.625Z",
               "EditorCaption": ""
@@ -185,24 +193,11 @@
               "Title": "ConsoleLayout.cpp",
               "DocumentMoniker": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\ConsoleLayout.cpp",
               "RelativeDocumentMoniker": "Project\\ConsoleLayout.cpp",
-              "ToolTip": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\ConsoleLayout.cpp*",
-              "RelativeToolTip": "Project\\ConsoleLayout.cpp*",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAswKMAAAAUAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\ConsoleLayout.cpp",
+              "RelativeToolTip": "Project\\ConsoleLayout.cpp",
+              "ViewState": "AgIAACoAAAAAAAAAAAAkwDAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-12T10:03:19.392Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "define.h",
-              "DocumentMoniker": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\define.h",
-              "RelativeDocumentMoniker": "Project\\define.h",
-              "ToolTip": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\define.h",
-              "RelativeToolTip": "Project\\define.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIIAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-10T06:54:54.696Z",
               "EditorCaption": ""
             }
           ]

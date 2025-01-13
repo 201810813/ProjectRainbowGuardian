@@ -74,6 +74,11 @@ void WriteManager::render()
 void WriteManager::Initialize()
 {
     // ConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+     
+    // 얘 없어도 되는데, 혹시 몰라서 남겨둠. ㅎㅎ
+    //SetConsoleOutputCP(CP_UTF8);
+    //SetConsoleCP(CP_UTF8);
+
     ConsoleLayoutContainer.Initialize();
     MakeAllLayout();
 }
@@ -198,19 +203,6 @@ void FConsoleLayoutContainer::MakeLayoutBox(LAYOUT_TYPE LayoutType, FConsoleLayo
     }
 }
 
-void FConsoleLayoutContainer::PrintMessage(string message)
-{
-    DWORD written;
-
-    WriteConsole(
-        Console.HBuffer[Console.CurBufferIndex], // 현재 활성화된 버퍼 핸들
-        message.c_str(),                        // 출력할 데이터
-        static_cast<DWORD>(message.size()),     // 데이터 크기
-        &written,                               // 실제로 출력된 크기
-        NULL                                    // 비동기 처리 옵션 (동기식 처리)
-    );
-}
-
 void FConsoleLayoutContainer::PrintMessage(wstring message)
 {
     DWORD written;
@@ -221,6 +213,29 @@ void FConsoleLayoutContainer::PrintMessage(wstring message)
         &written,                               // 실제로 출력된 크기
         NULL                                    // 비동기 처리 옵션 (동기식 처리)
     );
+}
+
+void FConsoleLayoutContainer::WriteUTF8ToConsole(const string& utf8Str)
+{
+    // UTF-8 -> UTF-16 변환
+    int wstrSize = MultiByteToWideChar(CP_UTF8, 0, utf8Str.c_str(), -1, NULL, 0);
+    if (wstrSize <= 0) {
+        std::cerr << "Error: Failed to convert UTF-8 to UTF-16.\n";
+        return;
+    }
+
+    // UTF-16 버퍼 할당
+    wchar_t* wstr = new wchar_t[wstrSize];
+    MultiByteToWideChar(CP_UTF8, 0, utf8Str.c_str(), -1, wstr, wstrSize);
+
+    // UTF-16 출력
+    DWORD written;
+    if (!WriteConsoleW(Console.HBuffer[Console.CurBufferIndex], wstr, wstrSize - 1, &written, NULL)) {
+        std::cerr << "Error: Failed to write to console.\n";
+    }
+
+    // 메모리 해제
+    delete[] wstr;
 }
 
 FConsoleLayoutContainer::~FConsoleLayoutContainer()
@@ -322,17 +337,7 @@ void FConsoleLayoutContainer::render()
             // 색 설정
             SetConsoleColor((WORD)iter->second.Message[i].TextColor | (WORD)iter->second.Message[i].BackGroundColor);
 
-            // 현재 활성화된 버퍼에 출력
-            DWORD written;
-            string message = iter->second.Message[i].Message;
-
-            WriteConsole(
-                Console.HBuffer[Console.CurBufferIndex], // 현재 활성화된 버퍼 핸들
-                message.c_str(),                        // 출력할 데이터
-                static_cast<DWORD>(message.size()),     // 데이터 크기
-                &written,                               // 실제로 출력된 크기
-                NULL                                    // 비동기 처리 옵션 (동기식 처리)
-            );
+            WriteUTF8ToConsole(iter->second.Message[i].Message);
         }
     }
 
