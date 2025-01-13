@@ -1,7 +1,4 @@
 #pragma once
-#include "ScriptManager.h"
-
-class ScriptManager;
 
 class GameManager
 {
@@ -35,10 +32,7 @@ public:
 		return Instance;
 	}
 
-	void Initialize()
-	{
-		ScriptManager::GetInstance()->Initialize();
-	}
+	void Initialize();
 
 	void EndGame()
 	{

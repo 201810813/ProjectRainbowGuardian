@@ -44,3 +44,36 @@ enum class BACKGROUND_COLOR_TYPE
 
 	END
 };
+
+enum class LAYOUT_TYPE
+{
+	TITLE,
+	STAT,
+	MAP,
+	STORY,
+	SELECT,
+
+	END
+};
+
+struct FMessageParam
+{
+	LAYOUT_TYPE				TargetLayout = LAYOUT_TYPE::TITLE;
+	std::string				Message = "";
+	int						LineIndex = 0;
+	bool					bDeleteLine = true;
+	TEXT_COLOR_TYPE			TextColor = TEXT_COLOR_TYPE::WHITE;
+	BACKGROUND_COLOR_TYPE	BackGroundColor = BACKGROUND_COLOR_TYPE::BLACK;
+
+	FMessageParam() = default;
+	FMessageParam(LAYOUT_TYPE LayoutType, std::string Msg, int idx = 0, TEXT_COLOR_TYPE TColorType = TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE BColorType = BACKGROUND_COLOR_TYPE::BLACK, bool DLine = true)
+		: TargetLayout(LayoutType)
+		, Message(Msg)
+		, LineIndex(idx)
+		, bDeleteLine(DLine)
+		, TextColor(TColorType)
+		, BackGroundColor(BColorType)
+	{
+
+	}
+};
