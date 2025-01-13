@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="ConsoleLayout.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
   </ItemGroup>
@@ -140,6 +141,7 @@
     <ClInclude Include="ConsoleLayout.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="KeyManager.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>

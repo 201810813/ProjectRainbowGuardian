@@ -78,3 +78,56 @@ struct FMessageParam
 
 	}
 };
+
+// ==================
+// ==    KeyMgr    ==
+// ==================
+
+enum class KEY_TYPE
+{
+	W,
+	A,
+	S,
+	D,
+
+	O,
+	T,
+
+	UP,
+	LEFT,
+	DOWN,
+	RIGHT,
+
+	NUM_0,
+	NUM_1,
+	NUM_2,
+	NUM_3,
+
+	LBTN,
+
+	SPACE,
+	ESC,
+	ENTER,
+
+	END,
+};
+
+enum class KEY_STATE
+{
+	TAP,
+	PRESS,
+	RELEASE,
+	NONE,
+};
+
+#define IS_TAP(key_type) CKeyMgr::CreateMgr()->GetKeyState(KEY_TYPE::key_type) == KEY_STATE::TAP
+#define IS_PRESS(key_type) CKeyMgr::CreateMgr()->GetKeyState(KEY_TYPE::key_type) == KEY_STATE::PRESS
+#define IS_RELEASE(key_type) CKeyMgr::CreateMgr()->GetKeyState(KEY_TYPE::key_type) == KEY_STATE::RELEASE
+#define IS_NONE(key_type) CKeyMgr::CreateMgr()->GetKeyState(KEY_TYPE::key_type) == KEY_STATE::NONE
+
+struct Key_Info
+{
+	KEY_TYPE		_KType;
+	KEY_STATE		_KState;
+	bool			PrevPress;
+};
