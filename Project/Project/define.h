@@ -52,6 +52,7 @@ enum class LAYOUT_TYPE
 	MAP,
 	STORY,
 	SELECT,
+	INPUT,
 
 	END
 };

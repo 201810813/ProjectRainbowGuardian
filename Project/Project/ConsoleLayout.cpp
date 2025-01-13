@@ -42,10 +42,13 @@ void WriteManager::MakeAllLayout()
     MakeLayout(LAYOUT_TYPE::MAP, 110, 2, 6, 7);
 
     // Story Layout
-    MakeLayout(LAYOUT_TYPE::STORY, 0, 10, 10, 60);
+    MakeLayout(LAYOUT_TYPE::STORY, 0, 10, 9, 60);
 
     // Select Layout
-    MakeLayout(LAYOUT_TYPE::SELECT, 0, 22, 5, 60);
+    MakeLayout(LAYOUT_TYPE::SELECT, 0, 21, 5, 60);
+
+    // Input
+    MakeLayout(LAYOUT_TYPE::INPUT, 0, 28, 1, 60);
 }
 
 void WriteManager::ClearLayout(LAYOUT_TYPE TargetLayout)
@@ -56,6 +59,11 @@ void WriteManager::ClearLayout(LAYOUT_TYPE TargetLayout)
 void WriteManager::AddLine(FMessageParam MessageParam)
 {
     ConsoleLayoutContainer.AddLine(MessageParam);
+}
+
+void WriteManager::tick()
+{
+    ConsoleLayoutContainer.tick();
 }
 
 void WriteManager::render()
@@ -332,6 +340,39 @@ void FConsoleLayoutContainer::render()
     SwapBuffer();
 }
 
+void FConsoleLayoutContainer::tick()
+{
+    // 입력 받기 임시
+    //
+    //
+    /*static string str_Input;
+
+    HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);
+    if (hInput == INVALID_HANDLE_VALUE) {
+        std::cerr << "Error: Unable to get input handle.\n";
+        return;
+    }
+
+    INPUT_RECORD inputRecord;
+    DWORD eventsRead;
+
+    if (ReadConsoleInput(hInput, &inputRecord, 1, &eventsRead)) {
+        if (inputRecord.EventType == KEY_EVENT && inputRecord.Event.KeyEvent.bKeyDown) {
+            if (inputRecord.Event.KeyEvent.wVirtualKeyCode == VK_RETURN)
+                str_Input.clear();
+            else if (inputRecord.Event.KeyEvent.wVirtualKeyCode == VK_BACK)
+            {
+                if (!str_Input.empty())
+                    str_Input.pop_back();
+            }
+            else
+                str_Input += inputRecord.Event.KeyEvent.uChar.AsciiChar;
+        }
+    }
+
+    LayoutMap.find(LAYOUT_TYPE::INPUT)->second.Message[0].Message += str_Input;*/
+}
+
 void FConsoleLayoutContainer::Initialize()
 {
     ConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -344,7 +385,6 @@ void FConsoleLayoutContainer::Initialize()
     Console.Rect.first = ConsoleScreenBufferInfo.dwSize.X;
     Console.Rect.second = ConsoleScreenBufferInfo.dwSize.Y;
 
-    //GENERIC_READ
     Console.HBuffer[0] = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
     SetConsoleScreenBufferSize(Console.HBuffer[0], ConsoleScreenBufferInfo.dwSize);
     SetConsoleWindowInfo(Console.HBuffer[0], TRUE, &ConsoleScreenBufferInfo.srWindow);
@@ -361,10 +401,6 @@ void FConsoleLayoutContainer::ClearScreen()
     COORD pos{ 0, 0};
     DWORD dwWritten = 0;
     unsigned size = Console.Rect.second * Console.Rect.first;
-
-    // 콘솔 화면 전체를 띄어쓰기를 넣어 빈 화면처럼 만듭니다.
-    //FillConsoleOutputCharacter(Console.HConsole, '*', size, pos, &dwWritten);
-    //SetConsoleCursorPosition(Console.HConsole, pos);
 
     FillConsoleOutputCharacter(Console.HBuffer[Console.CurBufferIndex], ' ', size, pos, &dwWritten);
     SetConsoleCursorPosition(Console.HBuffer[Console.CurBufferIndex], pos);
