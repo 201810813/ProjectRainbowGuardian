@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "GameManager.h"
 #include "ConsoleLayout.h"
 
@@ -12,6 +12,7 @@ void GameManager::Initialize()
 void GameManager::tick()
 {
 	// add call SceneManager's tick()
+	WriteManager::GetInstance()->tick();
 }
 
 void GameManager::render()
