@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "ConsoleLayout.h"
 
 // ===========================================================
@@ -9,15 +9,15 @@ shared_ptr<WriteManager> WriteManager::Instance = nullptr;
 
 void WriteManager::MoveCursor(short x, short y)
 {
-    // ÄÜ¼Ö Ãâ·Â ÇÚµéÀ» °¡Á®¿É´Ï´Ù.
+    // ì½˜ì†” ì¶œë ¥ í•¸ë“¤ì„ ê°€ì ¸ì˜µë‹ˆë‹¤.
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     if (hConsole == INVALID_HANDLE_VALUE) {
         std::cerr << "Error: Unable to get console handle.\n";
         return;
     }
 
-    // Ä¿¼­ À§Ä¡ ¼³Á¤
-    COORD coord = { x, y };  // x: °¡·Î, y: ¼¼·Î À§Ä¡
+    // ì»¤ì„œ ìœ„ì¹˜ ì„¤ì •
+    COORD coord = { x, y };  // x: ê°€ë¡œ, y: ì„¸ë¡œ ìœ„ì¹˜
     if (!SetConsoleCursorPosition(hConsole, coord)) {
         std::cerr << "Error: Unable to set cursor position.\n";
     }
@@ -98,15 +98,15 @@ void WriteManager::SwapBuffer()
 
 void FConsoleLayoutContainer::MoveCursor(short x, short y)
 {
-    // ÄÜ¼Ö Ãâ·Â ÇÚµéÀ» °¡Á®¿É´Ï´Ù.
+    // ì½˜ì†” ì¶œë ¥ í•¸ë“¤ì„ ê°€ì ¸ì˜µë‹ˆë‹¤.
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     if (hConsole == INVALID_HANDLE_VALUE) {
         std::cerr << "Error: Unable to get console handle.\n";
         return;
     }
 
-    // Ä¿¼­ À§Ä¡ ¼³Á¤
-    COORD coord = { x, y };  // x: °¡·Î, y: ¼¼·Î À§Ä¡
+    // ì»¤ì„œ ìœ„ì¹˜ ì„¤ì •
+    COORD coord = { x, y };  // x: ê°€ë¡œ, y: ì„¸ë¡œ ìœ„ì¹˜
     /*if (!SetConsoleCursorPosition(hConsole, coord)) {
         std::cerr << "Error: Unable to set cursor position.\n";
     }*/
@@ -125,9 +125,9 @@ string FConsoleLayoutContainer::OverwriteTitle(const string& Title)
 {
     CONSOLE_SCREEN_BUFFER_INFO ConsoleInfo;
     int LineCount = 0;
-    // ÄÜ¼Ö Á¤º¸ °¡Á®¿À±â
+    // ì½˜ì†” ì •ë³´ ê°€ì ¸ì˜¤ê¸°
     if (GetConsoleScreenBufferInfo(ConsoleHandle, &ConsoleInfo)) {
-        // ÄÜ¼Ö Ã¢ÀÇ °¡·Î Å©±â °è»ê
+        // ì½˜ì†” ì°½ì˜ ê°€ë¡œ í¬ê¸° ê³„ì‚°
         LineCount = ConsoleInfo.srWindow.Right - ConsoleInfo.srWindow.Left + 1;
     }
 
@@ -154,31 +154,31 @@ void FConsoleLayoutContainer::MakeLayoutBox(LAYOUT_TYPE LayoutType, FConsoleLayo
 {
     SetConsoleColor((WORD) TEXT_COLOR_TYPE::GRAY | (WORD)BACKGROUND_COLOR_TYPE::BLACK);
 
-    // ¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¤
-    // ¦¢            ¦¢
-    // ¦¢            ¦¢
-    // ¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¥
+    // â”Œâ”€â”€â”€â”€â”€â”€â”
+    // â”‚            â”‚
+    // â”‚            â”‚
+    // â””â”€â”€â”€â”€â”€â”€â”˜
     
     // LeftTop
     MoveCursor(ConsoleLayout.Left, ConsoleLayout.Top - 1);
-    PrintMessage(L"¦£");
+    PrintMessage(L"â”Œ");
 
     // RightTop
     MoveCursor(ConsoleLayout.Left + ConsoleLayout.Width, ConsoleLayout.Top - 1);
-    PrintMessage(L"¦¤");
+    PrintMessage(L"â”");
 
     // LeftBot
     MoveCursor(ConsoleLayout.Left, ConsoleLayout.Top + ConsoleLayout.Height);
-    PrintMessage(L"¦¦");
+    PrintMessage(L"â””");
 
     // RightBot
     MoveCursor(ConsoleLayout.Left + ConsoleLayout.Width, ConsoleLayout.Top + ConsoleLayout.Height);
-    PrintMessage(L"¦¥");
+    PrintMessage(L"â”˜");
 
     // Up Line
     MoveCursor(ConsoleLayout.Left + 1, ConsoleLayout.Top - 1);
     
-    wstring message(ConsoleLayout.Width - 1,L'¦¡');
+    wstring message(ConsoleLayout.Width - 1,L'â”€');
     PrintMessage(message);
     
     // Down Line
@@ -190,7 +190,7 @@ void FConsoleLayoutContainer::MakeLayoutBox(LAYOUT_TYPE LayoutType, FConsoleLayo
     {
         // Left Line
         MoveCursor(ConsoleLayout.Left, ConsoleLayout.Top + i);
-        std::wstring message = L"¦¢";
+        std::wstring message = L"â”‚";
         PrintMessage(message);
     
         MoveCursor(ConsoleLayout.Left + ConsoleLayout.Width, ConsoleLayout.Top + i);
@@ -203,24 +203,23 @@ void FConsoleLayoutContainer::PrintMessage(string message)
     DWORD written;
 
     WriteConsole(
-        Console.HBuffer[Console.CurBufferIndex], // ÇöÀç È°¼ºÈ­µÈ ¹öÆÛ ÇÚµé
-        message.c_str(),                        // Ãâ·ÂÇÒ µ¥ÀÌÅÍ
-        static_cast<DWORD>(message.size()),     // µ¥ÀÌÅÍ Å©±â
-        &written,                               // ½ÇÁ¦·Î Ãâ·ÂµÈ Å©±â
-        NULL                                    // ºñµ¿±â Ã³¸® ¿É¼Ç (µ¿±â½Ä Ã³¸®)
+        Console.HBuffer[Console.CurBufferIndex], // í˜„ì¬ í™œì„±í™”ëœ ë²„í¼ í•¸ë“¤
+        message.c_str(),                        // ì¶œë ¥í•  ë°ì´í„°
+        static_cast<DWORD>(message.size()),     // ë°ì´í„° í¬ê¸°
+        &written,                               // ì‹¤ì œë¡œ ì¶œë ¥ëœ í¬ê¸°
+        NULL                                    // ë¹„ë™ê¸° ì²˜ë¦¬ ì˜µì…˜ (ë™ê¸°ì‹ ì²˜ë¦¬)
     );
 }
 
 void FConsoleLayoutContainer::PrintMessage(wstring message)
 {
     DWORD written;
-
     WriteConsoleW(
-        Console.HBuffer[Console.CurBufferIndex], // ÇöÀç È°¼ºÈ­µÈ ¹öÆÛ ÇÚµé
-        message.c_str(),                        // Ãâ·ÂÇÒ µ¥ÀÌÅÍ
-        static_cast<DWORD>(message.size()),     // µ¥ÀÌÅÍ Å©±â
-        &written,                               // ½ÇÁ¦·Î Ãâ·ÂµÈ Å©±â
-        NULL                                    // ºñµ¿±â Ã³¸® ¿É¼Ç (µ¿±â½Ä Ã³¸®)
+        Console.HBuffer[Console.CurBufferIndex], // í˜„ì¬ í™œì„±í™”ëœ ë²„í¼ í•¸ë“¤
+        message.c_str(),                        // ì¶œë ¥í•  ë°ì´í„°
+        static_cast<DWORD>(message.size()),     // ë°ì´í„° í¬ê¸°
+        &written,                               // ì‹¤ì œë¡œ ì¶œë ¥ëœ í¬ê¸°
+        NULL                                    // ë¹„ë™ê¸° ì²˜ë¦¬ ì˜µì…˜ (ë™ê¸°ì‹ ì²˜ë¦¬)
     );
 }
 
@@ -255,31 +254,31 @@ void FConsoleLayoutContainer::clear(LAYOUT_TYPE TargetType)
         return;
     }
 
-    // ÄÜ¼Ö Á¤º¸ °¡Á®¿À±â
+    // ì½˜ì†” ì •ë³´ ê°€ì ¸ì˜¤ê¸°
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     if (!GetConsoleScreenBufferInfo(hConsole, &csbi)) {
         std::cerr << "Error: Unable to get console buffer info.\n";
         return;
     }
 
-    // ½ÃÀÛ À§Ä¡ °è»ê
+    // ì‹œì‘ ìœ„ì¹˜ ê³„ì‚°
     COORD startCoord = { static_cast<SHORT>(ConsoleLayout.Left), static_cast<SHORT>(ConsoleLayout.Top) };
-    DWORD cellsToClear = ConsoleLayout.Width * ConsoleLayout.Height; // Áö¿ï ¼¿ °³¼ö
+    DWORD cellsToClear = ConsoleLayout.Width * ConsoleLayout.Height; // ì§€ìš¸ ì…€ ê°œìˆ˜
     DWORD cellsCleared;
 
-    // ¹öÆÛÀÇ ¹®ÀÚ Áö¿ì±â (°ø¹éÀ¸·Î Ã¤¿ì±â)
+    // ë²„í¼ì˜ ë¬¸ì ì§€ìš°ê¸° (ê³µë°±ìœ¼ë¡œ ì±„ìš°ê¸°)
     if (!FillConsoleOutputCharacter(hConsole, ' ', cellsToClear, startCoord, &cellsCleared)) {
         std::cerr << "Error: Unable to clear console buffer.\n";
         return;
     }
 
-    // ¹öÆÛÀÇ ¼Ó¼º ÃÊ±âÈ­ (»ö»ó ÃÊ±âÈ­)
+    // ë²„í¼ì˜ ì†ì„± ì´ˆê¸°í™” (ìƒ‰ìƒ ì´ˆê¸°í™”)
     //if (!FillConsoleOutputAttribute(hConsole, csbi.wAttributes, cellsToClear, startCoord, &cellsCleared)) {
     //    std::cerr << "Error: Unable to reset console attributes.\n";
     //    return;
     //}
 
-    // Ä¿¼­¸¦ ¿ø·¡ À§Ä¡·Î ÀÌµ¿
+    // ì»¤ì„œë¥¼ ì›ë˜ ìœ„ì¹˜ë¡œ ì´ë™
 }
 
 void FConsoleLayoutContainer::AddLine(FMessageParam MessageParam)
@@ -309,7 +308,7 @@ void FConsoleLayoutContainer::render()
     {
         if (iter->first != LAYOUT_TYPE::TITLE)
         {
-            // ·¹ÀÌ¾Æ¿ô ¹Ú½º ±×¸®±â
+            // ë ˆì´ì•„ì›ƒ ë°•ìŠ¤ ê·¸ë¦¬ê¸°
             MakeLayoutBox(iter->first, iter->second);
         }
 
@@ -320,19 +319,19 @@ void FConsoleLayoutContainer::render()
             else
                 MoveCursor(iter->second.Left + 1, iter->second.Top + i);
 
-            // »ö ¼³Á¤
+            // ìƒ‰ ì„¤ì •
             SetConsoleColor((WORD)iter->second.Message[i].TextColor | (WORD)iter->second.Message[i].BackGroundColor);
 
-            // ÇöÀç È°¼ºÈ­µÈ ¹öÆÛ¿¡ Ãâ·Â
+            // í˜„ì¬ í™œì„±í™”ëœ ë²„í¼ì— ì¶œë ¥
             DWORD written;
-            std::string message = iter->second.Message[i].Message;
+            string message = iter->second.Message[i].Message;
 
-            WriteFile(
-                Console.HBuffer[Console.CurBufferIndex], // ÇöÀç È°¼ºÈ­µÈ ¹öÆÛ ÇÚµé
-                message.c_str(),                        // Ãâ·ÂÇÒ µ¥ÀÌÅÍ
-                static_cast<DWORD>(message.size()),     // µ¥ÀÌÅÍ Å©±â
-                &written,                               // ½ÇÁ¦·Î Ãâ·ÂµÈ Å©±â
-                NULL                                    // ºñµ¿±â Ã³¸® ¿É¼Ç (µ¿±â½Ä Ã³¸®)
+            WriteConsole(
+                Console.HBuffer[Console.CurBufferIndex], // í˜„ì¬ í™œì„±í™”ëœ ë²„í¼ í•¸ë“¤
+                message.c_str(),                        // ì¶œë ¥í•  ë°ì´í„°
+                static_cast<DWORD>(message.size()),     // ë°ì´í„° í¬ê¸°
+                &written,                               // ì‹¤ì œë¡œ ì¶œë ¥ëœ í¬ê¸°
+                NULL                                    // ë¹„ë™ê¸° ì²˜ë¦¬ ì˜µì…˜ (ë™ê¸°ì‹ ì²˜ë¦¬)
             );
         }
     }
@@ -342,7 +341,7 @@ void FConsoleLayoutContainer::render()
 
 void FConsoleLayoutContainer::tick()
 {
-    // ÀÔ·Â ¹Ş±â ÀÓ½Ã
+    // ì…ë ¥ ë°›ê¸° ì„ì‹œ
     //
     //
     /*static string str_Input;
