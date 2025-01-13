@@ -9,7 +9,6 @@
 
 #include <windows.h>
 #include <random>
-#include <memory>
 
 #include "define.h"
 
