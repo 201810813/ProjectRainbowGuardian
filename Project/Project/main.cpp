@@ -19,6 +19,8 @@ int main()
 	bool is_enter = false;
 	while (!GameManager::GetInstance()->IsGameEnd())
 	{
+		GameManager::GetInstance()->tick();
+
 		//ScriptManager::GetInstance()->ClearScreen();
 		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::TITLE, "ºÓÀº ¹æ", 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::RED));
 		FMessageParam MessageParam;
@@ -60,7 +62,8 @@ int main()
 		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "[4. ´À¾Æ¾Ó.. »ì·ù...]", 3, TEXT_COLOR_TYPE::ORANGE));
 		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "[5. ±×³É ¾ÇÀ¸·Î ¹öÆ¾´Ù.]", 4, TEXT_COLOR_TYPE::ORANGE));
 
-		WriteManager::GetInstance()->render();
+
+		GameManager::GetInstance()->render();
 
 		//string a;
 		//if (!is_enter)

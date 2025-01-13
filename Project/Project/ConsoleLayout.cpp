@@ -294,12 +294,6 @@ void FConsoleLayoutContainer::AddLine(FMessageParam MessageParam)
 void FConsoleLayoutContainer::render()
 {   
     ClearScreen();
-    string a;
-    cout << "ют╥б";
-    fflush(stdin);
-    //cin.ignore();
-    cin.clear();
-    cin >> a;
 
     map<LAYOUT_TYPE, FConsoleLayout>::iterator iter = LayoutMap.begin();
    

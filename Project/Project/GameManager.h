@@ -34,6 +34,9 @@ public:
 
 	void Initialize();
 
+	void tick();
+	void render();
+
 	void EndGame()
 	{
 		GameEnd = true;

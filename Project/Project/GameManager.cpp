@@ -8,3 +8,13 @@ void GameManager::Initialize()
 {
 	WriteManager::GetInstance()->Initialize();
 }
+
+void GameManager::tick()
+{
+	// add call SceneManager's tick()
+}
+
+void GameManager::render()
+{
+	WriteManager::GetInstance()->render();
+}
