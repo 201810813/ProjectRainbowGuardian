@@ -1,3 +1,4 @@
+#include <iostream>
 #include "pch.h"
 #include "ConsoleLayout.h"
 #include "GameManager.h"
@@ -9,7 +10,7 @@ int main()
 	GameManager::GetInstance()->Initialize();
 	/*while (true)
 	{
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::TITLE, "ºÓÀº ¹æ", 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::RED));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::TITLE, "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½", 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::RED));
 		WriteManager::GetInstance()->render();
 		WriteManager::GetInstance()->ClearScreen();
 		WriteManager::GetInstance()->SwapBuffer();
@@ -22,10 +23,10 @@ int main()
 		GameManager::GetInstance()->tick();
 
 		//ScriptManager::GetInstance()->ClearScreen();
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::TITLE, "ºÓÀº ¹æ", 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::RED));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::TITLE, "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½", 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::RED));
 		FMessageParam MessageParam;
 		MessageParam.TargetLayout = LAYOUT_TYPE::STAT;
-		MessageParam.Message = "ÃÖ°­³ë·ç";
+		MessageParam.Message = "ï¿½Ö°ï¿½ï¿½ï¿½ï¿½";
 		MessageParam.LineIndex = 0;
 		MessageParam.TextColor = TEXT_COLOR_TYPE::WHITE;
 		MessageParam.BackGroundColor = BACKGROUND_COLOR_TYPE::BLACK;
@@ -38,29 +39,29 @@ int main()
 		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "SDE/DEF  : 5%   /   8", 4, TEXT_COLOR_TYPE::BLUE_INENSITY));
 		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "LUK      : 10%", 5, TEXT_COLOR_TYPE::ORANGE));
 
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "06 [¥÷]", 0, TEXT_COLOR_TYPE::GRAY));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "05 [¥ä]", 1, TEXT_COLOR_TYPE::GRAY));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "04 [¥è]", 2, TEXT_COLOR_TYPE::GRAY));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "03 [¥î]", 3, TEXT_COLOR_TYPE::GRAY));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "02 [¥ğ]", 4, TEXT_COLOR_TYPE::GRAY));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "01 [¥ö]", 5, TEXT_COLOR_TYPE::RED));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "06 [ï¿½ï¿½]", 0, TEXT_COLOR_TYPE::GRAY));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "05 [ï¿½ï¿½]", 1, TEXT_COLOR_TYPE::GRAY));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "04 [ï¿½ï¿½]", 2, TEXT_COLOR_TYPE::GRAY));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "03 [ï¿½ï¿½]", 3, TEXT_COLOR_TYPE::GRAY));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "02 [ï¿½ï¿½]", 4, TEXT_COLOR_TYPE::GRAY));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "01 [ï¿½ï¿½]", 5, TEXT_COLOR_TYPE::RED));
 
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "¾Æ.. ÄÚµù Àç¹Õ´Ù..", 0, TEXT_COLOR_TYPE::ORANGE));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "±Ùµ¥.. ¸Ó¸® ¾ÆÇÁ´Ù...", 1, TEXT_COLOR_TYPE::ORANGE));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "¶Ç »õº® ´Ê°Ô±îÁö ÄÚµùÇÏ´Ù°¡ Àä´Ù..", 2, TEXT_COLOR_TYPE::ORANGE));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "±Ùµ¥, ±â´É ±¸Çöµµ ¾ÆÁ÷ ´Ù ¾È³ª¿Ô´Ù..", 3, TEXT_COLOR_TYPE::ORANGE));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "±¸Á¶µµ ¾Æ¸§´äÁö ¾Ê´Ù..", 4, TEXT_COLOR_TYPE::ORANGE));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "¾Æ¾Æ¾Æ¾Æ¾Æ¾Æ¤¿¾Æ¾Æ¾Æ¾Æ¾Æ¾Æ¾Æ¾Æ¾Æ¤¿¤·¾Æ¤¿¾Æ", 5, TEXT_COLOR_TYPE::ORANGE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "ï¿½ï¿½.. ï¿½Úµï¿½ ï¿½ï¿½Õ´ï¿½..", 0, TEXT_COLOR_TYPE::ORANGE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "ï¿½Ùµï¿½.. ï¿½Ó¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...", 1, TEXT_COLOR_TYPE::ORANGE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°Ô±ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½Ï´Ù°ï¿½ ï¿½ï¿½ï¿½..", 2, TEXT_COLOR_TYPE::ORANGE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "ï¿½Ùµï¿½, ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½È³ï¿½ï¿½Ô´ï¿½..", 3, TEXT_COLOR_TYPE::ORANGE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½..", 4, TEXT_COLOR_TYPE::ORANGE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "ï¿½Æ¾Æ¾Æ¾Æ¾Æ¾Æ¤ï¿½ï¿½Æ¾Æ¾Æ¾Æ¾Æ¾Æ¾Æ¾Æ¾Æ¤ï¿½ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½", 5, TEXT_COLOR_TYPE::ORANGE));
 		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, " ", 6, TEXT_COLOR_TYPE::ORANGE));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "¾îÂ¼Áö....?", 7, TEXT_COLOR_TYPE::ORANGE));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "¸Ó¸®°¡ ±»¾ú¤¨..¤¿... ¾È½áÁø´Ù¾Æ..", 8, TEXT_COLOR_TYPE::ORANGE));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "cinÀº ¶Ç ¿Ö ¾È¸Ô´Â°Ü...", 9, TEXT_COLOR_TYPE::ORANGE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "ï¿½ï¿½Â¼ï¿½ï¿½....?", 7, TEXT_COLOR_TYPE::ORANGE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "ï¿½Ó¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½..ï¿½ï¿½... ï¿½È½ï¿½ï¿½ï¿½ï¿½Ù¾ï¿½..", 8, TEXT_COLOR_TYPE::ORANGE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "cinï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½È¸Ô´Â°ï¿½...", 9, TEXT_COLOR_TYPE::ORANGE));
 
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "[1. ºü¸£°Ô Å° ¸Å´ÏÀú¸¦ ¸¸µç´Ù.]", 0, TEXT_COLOR_TYPE::ORANGE));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "[2. readconsoleÀ» »ç¿ëÇÑ´Ù.]", 1, TEXT_COLOR_TYPE::ORANGE));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "[3. Æ©ÅÍ´Ô.. ÇïÇÁ¹Ì....]", 2, TEXT_COLOR_TYPE::ORANGE));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "[4. ´À¾Æ¾Ó.. »ì·ù...]", 3, TEXT_COLOR_TYPE::ORANGE));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "[5. ±×³É ¾ÇÀ¸·Î ¹öÆ¾´Ù.]", 4, TEXT_COLOR_TYPE::ORANGE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "[1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å° ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.]", 0, TEXT_COLOR_TYPE::ORANGE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "[2. readconsoleï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.]", 1, TEXT_COLOR_TYPE::ORANGE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "[3. Æ©ï¿½Í´ï¿½.. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½....]", 2, TEXT_COLOR_TYPE::ORANGE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "[4. ï¿½ï¿½ï¿½Æ¾ï¿½.. ï¿½ï¿½ï¿½...]", 3, TEXT_COLOR_TYPE::ORANGE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "[5. ï¿½×³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¾ï¿½ï¿½.]", 4, TEXT_COLOR_TYPE::ORANGE));
 
 
 		GameManager::GetInstance()->render();
@@ -69,10 +70,10 @@ int main()
 		//if (!is_enter)
 		//{
 		//	//ScriptManager::GetInstance()->ClearScreen();
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::TITLE, "ºÓÀº ¹æ", 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::RED));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::TITLE, "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½", 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::RED));
 		//	FMessageParam MessageParam;
 		//	MessageParam.TargetLayout = LAYOUT_TYPE::STAT;
-		//	MessageParam.Message = "ÃÖ°­³ë·ç";
+		//	MessageParam.Message = "ï¿½Ö°ï¿½ï¿½ï¿½ï¿½";
 		//	MessageParam.LineIndex = 0;
 		//	MessageParam.TextColor = TEXT_COLOR_TYPE::WHITE;
 		//	MessageParam.BackGroundColor = BACKGROUND_COLOR_TYPE::BLACK;
@@ -85,29 +86,29 @@ int main()
 		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "SDE/DEF  : 5%   /   8", 4, TEXT_COLOR_TYPE::BLUE_INENSITY));
 		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "LUK      : 10%", 5, TEXT_COLOR_TYPE::ORANGE));
 		//
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "06 [¥÷]", 0, TEXT_COLOR_TYPE::GRAY));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "05 [¥ä]", 1, TEXT_COLOR_TYPE::GRAY));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "04 [¥è]", 2, TEXT_COLOR_TYPE::GRAY));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "03 [¥î]", 3, TEXT_COLOR_TYPE::GRAY));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "02 [¥ğ]", 4, TEXT_COLOR_TYPE::GRAY));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "01 [¥ö]", 5, TEXT_COLOR_TYPE::RED));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "06 [ï¿½ï¿½]", 0, TEXT_COLOR_TYPE::GRAY));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "05 [ï¿½ï¿½]", 1, TEXT_COLOR_TYPE::GRAY));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "04 [ï¿½ï¿½]", 2, TEXT_COLOR_TYPE::GRAY));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "03 [ï¿½ï¿½]", 3, TEXT_COLOR_TYPE::GRAY));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "02 [ï¿½ï¿½]", 4, TEXT_COLOR_TYPE::GRAY));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "01 [ï¿½ï¿½]", 5, TEXT_COLOR_TYPE::RED));
 		//
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================½ºÅä¸®0=========================", 0, TEXT_COLOR_TYPE::ORANGE));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================½ºÅä¸®1=========================", 1, TEXT_COLOR_TYPE::ORANGE));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================½ºÅä¸®2=========================", 2, TEXT_COLOR_TYPE::ORANGE));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================½ºÅä¸®3=========================", 3, TEXT_COLOR_TYPE::ORANGE));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================½ºÅä¸®4=========================", 4, TEXT_COLOR_TYPE::ORANGE));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================½ºÅä¸®5=========================", 5, TEXT_COLOR_TYPE::ORANGE));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================½ºÅä¸®6=========================", 6, TEXT_COLOR_TYPE::ORANGE));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================½ºÅä¸®7=========================", 7, TEXT_COLOR_TYPE::ORANGE));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================½ºÅä¸®8=========================", 8, TEXT_COLOR_TYPE::ORANGE));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================½ºÅä¸®9=========================", 9, TEXT_COLOR_TYPE::ORANGE));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================ï¿½ï¿½ï¿½ä¸®0=========================", 0, TEXT_COLOR_TYPE::ORANGE));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================ï¿½ï¿½ï¿½ä¸®1=========================", 1, TEXT_COLOR_TYPE::ORANGE));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================ï¿½ï¿½ï¿½ä¸®2=========================", 2, TEXT_COLOR_TYPE::ORANGE));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================ï¿½ï¿½ï¿½ä¸®3=========================", 3, TEXT_COLOR_TYPE::ORANGE));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================ï¿½ï¿½ï¿½ä¸®4=========================", 4, TEXT_COLOR_TYPE::ORANGE));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================ï¿½ï¿½ï¿½ä¸®5=========================", 5, TEXT_COLOR_TYPE::ORANGE));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================ï¿½ï¿½ï¿½ä¸®6=========================", 6, TEXT_COLOR_TYPE::ORANGE));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================ï¿½ï¿½ï¿½ä¸®7=========================", 7, TEXT_COLOR_TYPE::ORANGE));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================ï¿½ï¿½ï¿½ä¸®8=========================", 8, TEXT_COLOR_TYPE::ORANGE));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "=========================ï¿½ï¿½ï¿½ä¸®9=========================", 9, TEXT_COLOR_TYPE::ORANGE));
 		//
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "=========================¼±ÅÃÁö0=========================", 0, TEXT_COLOR_TYPE::ORANGE));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "=========================¼±ÅÃÁö1=========================", 1, TEXT_COLOR_TYPE::ORANGE));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "=========================¼±ÅÃÁö2=========================", 2, TEXT_COLOR_TYPE::ORANGE));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "=========================¼±ÅÃÁö3=========================", 3, TEXT_COLOR_TYPE::ORANGE));
-		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "=========================¼±ÅÃÁö4=========================", 4, TEXT_COLOR_TYPE::ORANGE));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "=========================ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0=========================", 0, TEXT_COLOR_TYPE::ORANGE));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "=========================ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1=========================", 1, TEXT_COLOR_TYPE::ORANGE));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "=========================ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2=========================", 2, TEXT_COLOR_TYPE::ORANGE));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "=========================ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3=========================", 3, TEXT_COLOR_TYPE::ORANGE));
+		//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "=========================ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4=========================", 4, TEXT_COLOR_TYPE::ORANGE));
 		//
 		//	WriteManager::GetInstance()->render();
 		//

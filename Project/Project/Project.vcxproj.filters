@@ -27,17 +27,35 @@
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="GameManager.cpp">
       <Filter>소스 파일\Manager\GameManager</Filter>
     </ClCompile>
     <ClCompile Include="ConsoleLayout.cpp">
       <Filter>소스 파일\Manager\ConsoleLayout</Filter>
+=======
+    <ClCompile Include="MGoldenLizard.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MRedWolf.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>소스 파일</Filter>
+>>>>>>> Monster
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="define.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -46,6 +64,25 @@
     </ClInclude>
     <ClInclude Include="ConsoleLayout.h">
       <Filter>소스 파일\Manager\ConsoleLayout</Filter>
+=======
+    <ClInclude Include="MGoldenLizard.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MRedWolf.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>헤더 파일</Filter>
+>>>>>>> Monster
     </ClInclude>
   </ItemGroup>
 </Project>
