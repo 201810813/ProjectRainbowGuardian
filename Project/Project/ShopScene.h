@@ -1,15 +1,15 @@
 #pragma once
 #include "MainScene.h"
-
-class Scene7F :
+class ShopScene :
     public MainScene
 {
 public:
 	virtual void makeLayout() override;
-	virtual void begin() override;
+	virtual void begin() override; // 상점 진입 시 동작
 	virtual void tick() override;
+
 public:
-	Scene7F();
-	virtual ~Scene7F() override;
+	ShopScene();
+	virtual ~ShopScene() override;
 };
 

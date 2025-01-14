@@ -1,7 +1,8 @@
+//altarscene.h
 #pragma once
 #include "MainScene.h"
 
-class Scene7F :
+class AltarScene :
     public MainScene
 {
 public:
@@ -9,7 +10,7 @@ public:
 	virtual void begin() override;
 	virtual void tick() override;
 public:
-	Scene7F();
-	virtual ~Scene7F() override;
+	AltarScene();
+	virtual ~AltarScene() override;
 };
 

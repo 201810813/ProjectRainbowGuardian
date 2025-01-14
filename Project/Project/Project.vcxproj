@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AltarScene.cpp" />
     <ClCompile Include="ConsoleLayout.cpp" />
     <ClCompile Include="FinalScene.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -156,10 +157,12 @@
     <ClCompile Include="Scene6F.cpp" />
     <ClCompile Include="Scene7F.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="ShopScene.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AltarScene.h" />
     <ClInclude Include="ConsoleLayout.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="FinalScene.h" />
@@ -184,6 +187,7 @@
     <ClInclude Include="Scene6F.h" />
     <ClInclude Include="Scene7F.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="ShopScene.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>

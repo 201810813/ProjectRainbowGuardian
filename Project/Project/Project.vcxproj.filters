@@ -1,6 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+<<<<<<< HEAD
+    <ClCompile Include="ConsoleLayout.cpp" />
+    <ClCompile Include="FinalScene.cpp" />
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="IntroScene.cpp" />
+    <ClCompile Include="KeyManager.cpp" />
+    <ClCompile Include="HealthPosion.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainScene.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="MRedWolf.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RandomManager.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Scene1F.cpp" />
+    <ClCompile Include="Scene2F.cpp" />
+    <ClCompile Include="Scene3F.cpp" />
+    <ClCompile Include="Scene4F.cpp" />
+    <ClCompile Include="Scene5F.cpp" />
+    <ClCompile Include="Scene6F.cpp" />
+    <ClCompile Include="Scene7F.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="AltarScene.cpp" />
+    <ClCompile Include="ShopScene.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ConsoleLayout.h" />
+    <ClInclude Include="define.h" />
+    <ClInclude Include="FinalScene.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="IntroScene.h" />
+    <ClInclude Include="KeyManager.h" />
+    <ClInclude Include="HealthPosion.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="MainScene.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="MRedWolf.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="RandomManager.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Scene1F.h" />
+    <ClInclude Include="Scene2F.h" />
+    <ClInclude Include="Scene3F.h" />
+    <ClInclude Include="Scene4F.h" />
+    <ClInclude Include="Scene5F.h" />
+    <ClInclude Include="Scene6F.h" />
+    <ClInclude Include="Scene7F.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="TimeManager.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="AltarScene.h" />
+    <ClInclude Include="ShopScene.h" />
+=======
 <<<<<<< HEAD
 <<<<<<< HEAD
     <ClCompile Include="main.cpp" />
@@ -327,5 +384,6 @@
     <Filter Include="Item\PowerPosion">
       <UniqueIdentifier>{a05a0fbf-169b-46c9-80c2-f6d70cddcadf}</UniqueIdentifier>
     </Filter>
+>>>>>>> origin/main
   </ItemGroup>
 </Project>

@@ -1,7 +1,6 @@
 #pragma once
 
-class Scene
-{
+class Scene{
 private:
 	string SceneName; //æ¿ ¿Ã∏ß
 
