@@ -75,7 +75,7 @@
     <ClCompile Include="Item.cpp">
       <Filter>Item</Filter>
     </ClCompile>
-    <ClCompile Include="HealthPosion.cpp">
+    <ClCompile Include="HealthPotion.cpp">
       <Filter>Item\HealthPosion</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
@@ -129,6 +129,9 @@
     <ClCompile Include="FinalScene.cpp">
       <Filter>Scene\FinalScene</Filter>
     </ClCompile>
+    <ClCompile Include="PowerPotion.cpp">
+      <Filter>Item\PowerPosion</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -159,7 +162,7 @@
     <ClInclude Include="Item.h">
       <Filter>Item</Filter>
     </ClInclude>
-    <ClInclude Include="HealthPosion.h">
+    <ClInclude Include="HealthPotion.h">
       <Filter>Item\HealthPosion</Filter>
     </ClInclude>
     <ClInclude Include="define.h">
@@ -218,6 +221,9 @@
     </ClInclude>
     <ClInclude Include="FinalScene.h">
       <Filter>Scene\FinalScene</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerPotion.h">
+      <Filter>Item\PowerPosion</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -292,6 +298,9 @@
     </Filter>
     <Filter Include="Scene\FinalScene">
       <UniqueIdentifier>{fc7d3e60-762d-4b77-84a1-da615652fe1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\PowerPosion">
+      <UniqueIdentifier>{a05a0fbf-169b-46c9-80c2-f6d70cddcadf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

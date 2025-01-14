@@ -2,14 +2,48 @@
 #include "ConsoleLayout.h"
 #include "GameManager.h"
 #include "KeyManager.h"
-
 #include "Player.h"
 #include "MRedWolf.h"
+#include "HealthPotion.h"
+#include "PowerPotion.h"
+
 int main()
 {
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-
-	system("mode con | title RainbowGuardian");
+	/*_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	MRedWolf* redWolf = new MRedWolf();
+	string chat = "";
+	Player::getInstance()->AddItemToInventory(new HealthPotion());
+	Player::getInstance()->AddItemToInventory(new PowerPotion());
+	while (chat != "-1") {
+		cin >> chat;
+		if (Player::getInstance()->GetCurrentHP() > 0 && redWolf != nullptr) {
+			if (chat == "1") {
+				Player::getInstance()->Attack(*redWolf);
+			}
+			else if (chat == "2") {
+				redWolf->Attack();
+			}
+			else if (chat == "3") {
+				Player::getInstance()->UseItem(HEALTH_POTION);
+			}
+			else if (chat == "4") {
+				Player::getInstance()->UseItem(POWER_POTION);
+			}
+			else if (redWolf->GetCurrentHP() <= 0) {
+				redWolf->Die();
+			}
+		}
+		else {
+			if (chat == "3") {
+				Player::getInstance()->UseItem(HEALTH_POTION);
+			}
+			if (chat == "4") {
+				Player::getInstance()->UseItem(POWER_POTION);
+			}
+		}
+	}*/
+	
+	/*system("mode con | title RainbowGuardian");
 
 	GameManager::GetInstance()->Initialize();
 
@@ -94,4 +128,11 @@ int main()
 			bonce = true;
 		}
 
-		GameManager::GetInstance()->render();*/
+		if (IS_TAP(ENTER))
+		{
+		GameManager::GetInstance()->EndGame();
+		}
+	}*/
+
+	return 0;
+}
