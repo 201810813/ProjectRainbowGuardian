@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 struct FConsole
 {
@@ -64,7 +64,10 @@ public:
 	void MakeLayout(LAYOUT_TYPE LayoutType, FConsoleLayout Layout);
 	void clear(LAYOUT_TYPE TargetType);
 	void AddLine(FMessageParam MessageParam);
+
 	void render();
+	void tick();
+
 	void Initialize();
 
 
@@ -119,6 +122,7 @@ public:
 
 	void AddLine(FMessageParam MessageParam);
 
+	void tick();
 	void render();
 
 	void Initialize();

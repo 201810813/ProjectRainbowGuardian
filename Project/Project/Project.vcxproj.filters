@@ -25,6 +25,9 @@
     <Filter Include="소스 파일\Monster">
       <UniqueIdentifier>{b3e0de2d-184a-4b2b-9561-df8348a4f74b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Manager\KeyManager">
+      <UniqueIdentifier>{3bc2ec7d-d1cf-4ab4-af2e-2875a7305b54}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -38,6 +41,9 @@
     </ClCompile>
     <ClCompile Include="Monster.cpp">
       <Filter>소스 파일\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyManager.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +61,9 @@
     </ClInclude>
     <ClInclude Include="Monster.h">
       <Filter>소스 파일\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyManager.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
