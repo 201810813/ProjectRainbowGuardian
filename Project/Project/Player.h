@@ -40,6 +40,8 @@ public:
 	string& getName();
 	void GetAttack(double& damage);
 	void Attack(Monster& monster);
+	void gainExp(int exp); //추가
+	void levelUp(); //추가
 	bool IsDie(double hp);
 	void AddItemToInventory(Item* item);
 	void ShowInventory();

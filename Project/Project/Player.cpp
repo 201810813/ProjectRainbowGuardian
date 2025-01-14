@@ -60,6 +60,24 @@ void Player::Attack(Monster& monster)
 	
 }
 
+void Player::gainExp(int exp) { // 경험치 획득
+	stat.currentexp += exp;
+	cout << stat.name << "이(가) " << " 50 " << "의 경험치를 획득했습니다!" << endl;
+
+	while (stat.currentexp >= 100) {
+		stat.currentexp = 0;
+		levelUp();
+	}
+}
+
+void Player::levelUp() { // 레벨업
+	stat.level++;
+	stat.maxHP += 20;
+	stat.damage += 5;
+	cout << stat.name << "이(가) 레벨 업! 현재 레벨: " << stat.level << endl;
+	cout << "최대 체력과 공격력이 증가했습니다!" << endl;
+}
+
 bool Player::IsDie(double hp)
 {
 	if (stat.currentHP < 0) {
