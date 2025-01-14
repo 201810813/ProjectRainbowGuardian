@@ -29,7 +29,25 @@ int main()
 		}
 
 		
-		if (!bonce)
+		GameManager::GetInstance()->render();
+
+		if (IS_TAP(ENTER))
+		{
+		GameManager::GetInstance()->EndGame();
+		}
+	}
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+/*if (!bonce)
 		{
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::TITLE, "붉은 방", false, 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::RED));
 			FMessageParam MessageParam;
@@ -75,14 +93,5 @@ int main()
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::INPUT, "입력 : ", false, 0, TEXT_COLOR_TYPE::SKY));
 			bonce = true;
 		}
-		
-		GameManager::GetInstance()->render();
 
-		if (IS_TAP(ENTER))
-		{
-		GameManager::GetInstance()->EndGame();
-		}
-	}
-
-	return 0;
-}
+		GameManager::GetInstance()->render();*/

@@ -81,7 +81,7 @@ void WriteManager::Initialize()
     //SetConsoleCP(CP_UTF8);
 
     ConsoleLayoutContainer.Initialize();
-    MakeAllLayout();
+    //MakeAllLayout();
 }
 
 void WriteManager::MoveMessageCursor(LAYOUT_TYPE TargetLayout, CURSOR_MOVE_TYPE CursorMoveType)
