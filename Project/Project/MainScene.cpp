@@ -1,4 +1,4 @@
-﻿//MainScene.cpp
+//MainScene.cpp
 #include "pch.h"
 #include "MainScene.h"
 #include "ConsoleLayout.h"

@@ -1,20 +1,20 @@
 //SceneManager.cpp
 #include "pch.h"
 #include "SceneManager.h"
-#include "KeyManager.h" //Å° ÀÔ·Â Ã³¸®¸¦ À§ÇØ Ãß°¡
+#include "KeyManager.h" //Å° ï¿½Ô·ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 #include "ConsoleLayout.h"
 
 shared_ptr<SceneManager> SceneManager::Instance = nullptr;
 
 void SceneManager::Initialize()
 {
-	currentFloor = 0; // ½ÃÀÛÀº 1Ãþ
-	changeScene(currentFloor); // ½ÃÀÛ ¾ÀÀº IntroScene ¶Ç´Â 1Ãþ
+	currentFloor = 0; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½
+	changeScene(currentFloor); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ IntroScene ï¿½Ç´ï¿½ 1ï¿½ï¿½
 }
 
 void SceneManager::tick()
 {
-	// Å°	ÀÔ·Â Ã³¸® (¹æÇâÅ° À§ ´­·¶À» ¶§ ¾À º¯°æ)
+	// Å°	ï¿½Ô·ï¿½ Ã³ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½Å° ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 	if (IS_TAP(UP)) 
 	{
 		if (currentFloor<8) {
@@ -23,10 +23,10 @@ void SceneManager::tick()
 		else {
 			currentFloor = 8;
 		}
-		changeScene(currentFloor); //¾À º¯°æ
+		changeScene(currentFloor); //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	}
 
-	// ÇöÀç ¾ÀÀÇ tickÀ» È£ÃâÇÏ¿© ¾ÀÀ» ¾÷µ¥ÀÌÆ®
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ tickï¿½ï¿½ È£ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 	if (CurrentScene != nullptr)
 	{
 		CurrentScene->tick();
@@ -35,23 +35,23 @@ void SceneManager::tick()
 
 void SceneManager::changeScene(int floor)
 {
-	// ÀÌÀü ¾ÀÀ» »èÁ¦
-	if (CurrentScene != nullptr) //¾ÀÀÌ Á¸ÀçÇÏ¸é
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	if (CurrentScene != nullptr) //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½
 	{
 		delete CurrentScene;
 	}
 
-	// »õ·Î¿î ¾ÀÀ» »ý¼º 
+	// ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	switch (floor)
 	{
 	case 0:
 		CurrentScene = new IntroScene;
 		break;
 	case 1:
-		CurrentScene = new Scene1F; //1ÃþÀº ¹«Á¶°Ç ÀüÅõ
+		CurrentScene = new Scene1F; //1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		break;
 	case 2:
-		CurrentScene = new Scene2F; //2ÃþºÎÅÍ 6Ãþ±îÁö´Â ·£´ý
+		CurrentScene = new Scene2F; //2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 6ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		break;
 	case 3:
 		CurrentScene = new Scene3F;
@@ -66,15 +66,15 @@ void SceneManager::changeScene(int floor)
 		CurrentScene = new Scene6F;
 		break;
 	case 7:
-		CurrentScene = new Scene7F; //7ÃþÀº ¹«Á¶°Ç ÀüÅõ
+		CurrentScene = new Scene7F; //7ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		break;
 	case 8:
-		CurrentScene = new FinalScene; //ÃÖÁ¾ ÃþÀº ¹«Á¶°Ç ÀüÅõ
+		CurrentScene = new FinalScene; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		break;
 	}
-	// »õ·Î¿î ¾ÀÀÇ ·¹ÀÌ¾Æ¿ô »ý¼º
+	// ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½
 	if (CurrentScene != nullptr) {
-		//ÀÓ½Ã·Î Ãß°¡
+		//ï¿½Ó½Ã·ï¿½ ï¿½ß°ï¿½
 		WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::INPUT);
 		WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::SELECT);
 		WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::STORY);

@@ -53,6 +53,7 @@ enum class LAYOUT_TYPE
 	STORY,
 	SELECT,
 	INPUT,
+	DRAW,
 
 	END
 };

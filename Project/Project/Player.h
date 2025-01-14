@@ -1,4 +1,3 @@
-
 #pragma once
 #include "pch.h"
 #include "Monster.h"
@@ -21,8 +20,8 @@ public:
 		string name;
 	};
 private:
-	int invenSize;
-	map<Type, int> inventory;
+	map<Type, int> itemCounts; //enum에 따라 갯수증가
+	map<Type, vector<Item*>> inventory; //Drop()에서 받은 객체 포인터 저장.
 	PlayerStat stat;
 	
 
@@ -35,15 +34,27 @@ public:
 	Player();
 	~Player();
 	static shared_ptr<Player> getInstance();
+
+public:
 	void SetName(const string name);
 	string& getName();
 	void GetAttack(double& damage);
 	void Attack(Monster& monster);
+	void gainExp(int exp); //추가
+	void levelUp(); //추가
 	bool IsDie(double hp);
+	void AddItemToInventory(Item* item);
+	void ShowInventory();
+	void UseItem(Type type);
 
 public:
 	double GetCurrentHP();
 	int	GetDefense();
 	double GetMaxHP();
-	int GetEvasion();	
+	int GetEvasion();
+	int GetLevel();
+
+public:
+	void SetCurrentHP(double heal);
+	void SetDamage(int buff);
 };

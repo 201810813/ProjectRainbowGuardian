@@ -1,13 +1,18 @@
 #pragma once
 #include "pch.h"
+class Player;
+
 enum Type {
-	HEALTH_POSTION		= 0,
-	RED_CRISTAL			= 1,
-	ORANGE_CRISTAL		= 2,
-	YELLO_CRISTAL		= 3
+	HEALTH_POTION,
+	POWER_POTION,
+	RED_CRISTAL,
+	ORANGE_CRISTAL,
+	YELLO_CRISTAL,
 };
 
 class Item {
+public:
+	
 private:
 	Type type;
 	string name;
@@ -18,4 +23,6 @@ public:
 public:
 	virtual int GetEffect() = 0;
 	virtual string GetName() = 0;
+	virtual void Use() = 0;
+	virtual Type GetType() = 0;
 };
