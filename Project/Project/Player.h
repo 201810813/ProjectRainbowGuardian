@@ -9,15 +9,15 @@ class Monster;
 class Player {
 public:
 	struct PlayerStat {
-		double maxHP;
-		double currentHP;
-		int level;
-		int maxExp;
-		int currentexp;
-		double damage;
-		int defense;
-		int evasion;
-		string name;
+		double	maxHP;
+		double	currentHP;
+		int		level;
+		int		maxExp;
+		int		currentexp;
+		double	damage;
+		int		defense;
+		int		evasion;
+		string	name;
 	};
 private:
 	map<Type, int> itemCounts; //enum에 따라 갯수증가
@@ -48,11 +48,12 @@ public:
 	void UseItem(Type type);
 
 public:
-	double GetCurrentHP();
-	int	GetDefense();
-	double GetMaxHP();
-	int GetEvasion();
-	int GetLevel();
+	const double  GetCurrentHP();
+	const int	  GetDefense();
+	const double  GetMaxHP();
+	const int	  GetEvasion();
+	const int	  GetLevel();
+	const double  GetDamage();
 
 public:
 	void SetCurrentHP(double heal);

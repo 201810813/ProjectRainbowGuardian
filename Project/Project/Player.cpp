@@ -48,12 +48,11 @@ void Player::GetAttack(double& damage)
 void Player::Attack(Monster& monster)
 {
 	cout << u8"당신이 공격합니다" << endl;
-	double damage = stat.damage - monster.GetDefense();
 	int probability = monster.GetEvasion();
 	int trigger = rand() % 100;
 	if (probability < trigger) {
 		
-		monster.GetAttack(damage);
+		monster.GetAttack();
 		cout << u8"공격 적중!\n" << u8"적의 쳬력: " << monster.GetCurrentHP() << endl;
 	}
 	else { cout << u8"적이 공격을 회피했습니다."; }
@@ -90,29 +89,34 @@ bool Player::IsDie(double hp)
 //----------------------------//
 //          Get함수           //
 //----------------------------//
-double Player::GetCurrentHP()
+const double Player::GetCurrentHP()
 {
 	return stat.currentHP;
 }
 
-int Player::GetDefense()
+const int Player::GetDefense()
 {
 	return stat.defense;
 }
 
-double Player::GetMaxHP()
+const double Player::GetMaxHP()
 {
 	return stat.maxHP;
 }
 
-int Player::GetEvasion()
+const int Player::GetEvasion()
 {
 	return stat.evasion;
 }
 
-int Player::GetLevel()
+const int Player::GetLevel()
 {
 	return stat.level;
+}
+
+const double Player::GetDamage()
+{
+	return stat.damage;
 }
 
 //----------------------------//

@@ -3,7 +3,6 @@
 
 Monster::Monster()
 {
-	monsterStat = {};
 }
 
 Monster::~Monster()
