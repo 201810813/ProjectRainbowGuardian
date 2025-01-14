@@ -25,8 +25,16 @@
     <Filter Include="소스 파일\Monster">
       <UniqueIdentifier>{b3e0de2d-184a-4b2b-9561-df8348a4f74b}</UniqueIdentifier>
     </Filter>
+<<<<<<< Updated upstream
     <Filter Include="소스 파일\Manager\KeyManager">
       <UniqueIdentifier>{3bc2ec7d-d1cf-4ab4-af2e-2875a7305b54}</UniqueIdentifier>
+=======
+    <Filter Include="소스 파일\Player">
+      <UniqueIdentifier>{d8cc1917-304b-41b9-a6ec-d9ee9c5fe4d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Items">
+      <UniqueIdentifier>{1c59305e-9980-4182-b272-3cc9c7472873}</UniqueIdentifier>
+>>>>>>> Stashed changes
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -42,8 +50,22 @@
     <ClCompile Include="Monster.cpp">
       <Filter>소스 파일\Monster</Filter>
     </ClCompile>
+<<<<<<< Updated upstream
     <ClCompile Include="KeyManager.cpp">
       <Filter>소스 파일</Filter>
+=======
+    <ClCompile Include="Player.cpp">
+      <Filter>소스 파일\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="MRedWolf.cpp">
+      <Filter>소스 파일\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>소스 파일\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthPosion.cpp">
+      <Filter>소스 파일\Items</Filter>
+>>>>>>> Stashed changes
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -62,8 +84,22 @@
     <ClInclude Include="Monster.h">
       <Filter>소스 파일\Monster</Filter>
     </ClInclude>
+<<<<<<< Updated upstream
     <ClInclude Include="KeyManager.h">
       <Filter>헤더 파일</Filter>
+=======
+    <ClInclude Include="Player.h">
+      <Filter>소스 파일\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="MRedWolf.h">
+      <Filter>소스 파일\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>소스 파일\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthPosion.h">
+      <Filter>소스 파일\Items</Filter>
+>>>>>>> Stashed changes
     </ClInclude>
   </ItemGroup>
 </Project>

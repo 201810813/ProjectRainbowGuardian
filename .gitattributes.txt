@@ -1,2 +1,8 @@
 *.cpp text eol=lf
 *.h text eol=lf
+
+1빨강 > 녹색4
+2주황 > 파랑5
+3노랑 > 보라6
+
+7층보스 

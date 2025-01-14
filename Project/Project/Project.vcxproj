@@ -136,16 +136,24 @@
     <ClCompile Include="ConsoleLayout.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="KeyManager.cpp" />
+    <ClCompile Include="HealthPosion.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="MRedWolf.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleLayout.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="KeyManager.h" />
+    <ClInclude Include="HealthPosion.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="MRedWolf.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
