@@ -1,7 +1,7 @@
-#include "pch.h"
+Ôªø#include "pch.h"
 #include "HealthPosion.h"
 
-HealthPosion::HealthPosion() : type(HEALTH_POSTION), name("√º∑¬∆˜º«"), effect(30) {}
+HealthPosion::HealthPosion() : type(HEALTH_POSTION), name("Ï≤¥Î†•Ìè¨ÏÖò"), effect(30) {}
 
 HealthPosion::~HealthPosion()
 {

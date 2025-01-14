@@ -1,16 +1,16 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "Player.h"
 
 shared_ptr<Player> Player::player = nullptr;
 
 Player::Player() : stat{ 100, 100, 1, 200, 0, 17, 3, 20, "" }, invenSize(10)
 {
-	cout << "ÇÃ·¹ÀÌ¾î »ý¼º" << endl;
+	cout << u8"í”Œë ˆì´ì–´ ìƒì„±" << endl;
 }
 
 Player::~Player()
 {
-	cout << "ÇÃ·¹ÀÌ¾î »èÁ¦" << endl;
+	cout << u8"í”Œë ˆì´ì–´ ì‚­ì œ" << endl;
 }
 
 shared_ptr<Player> Player::getInstance() {
@@ -39,16 +39,16 @@ void Player::GetAttack(double& damage)
 
 void Player::Attack(Monster& monster)
 {
-	cout << "´ç½ÅÀÌ °ø°ÝÇÕ´Ï´Ù" << endl;
+	cout << u8"ë‹¹ì‹ ì´ ê³µê²©í•©ë‹ˆë‹¤" << endl;
 	double damage = stat.damage - monster.GetDefense();
 	int probability = monster.GetEvasion();
 	int trigger = rand() % 100;
 	if (probability < trigger) {
 		
 		monster.GetAttack(damage);
-		cout << "°ø°Ý ÀûÁß!\n" << "ÀûÀÇ ÃÇ·Â: " << monster.GetCurrentHP() << endl;
+		cout << u8"ê³µê²© ì ì¤‘!\n" << u8"ì ì˜ ì³¬ë ¥: " << monster.GetCurrentHP() << endl;
 	}
-	else { cout << "ÀûÀÌ °ø°ÝÀ» È¸ÇÇÇß½À´Ï´Ù."; }
+	else { cout << u8"ì ì´ ê³µê²©ì„ íšŒí”¼í–ˆìŠµë‹ˆë‹¤."; }
 	
 }
 
@@ -61,7 +61,7 @@ bool Player::IsDie(double hp)
 }
 
 //----------------------------//
-//          GetÇÔ¼ö           //
+//          Getí•¨ìˆ˜           //
 //----------------------------//
 double Player::GetCurrentHP()
 {
@@ -83,5 +83,5 @@ int Player::GetEvasion()
 	return stat.evasion;
 }
 //-------------------------------//
-//          ¾ÆÀÌÅÛÇÔ¼ö           //
+//          ì•„ì´í…œí•¨ìˆ˜           //
 //-------------------------------//

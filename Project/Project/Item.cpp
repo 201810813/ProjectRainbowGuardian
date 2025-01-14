@@ -1,7 +1,7 @@
-#include "pch.h"
+Ôªø#include "pch.h"
 #include "Item.h"
 
-Item::Item() : type(HEALTH_POSTION), name("æ∆¿Ã≈€"), Effect(0) {}
+Item::Item() : type(HEALTH_POSTION), name("ÏïÑÏù¥ÌÖú"), Effect(0) {}
 
 Item::~Item()
 {

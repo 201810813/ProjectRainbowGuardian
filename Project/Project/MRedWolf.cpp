@@ -23,9 +23,9 @@ void MRedWolf::Attack(Player& player)
 	int trigger = rand() % 100;
 	if (probability < trigger) {
 		player.GetAttack(damage);
-		cout << "공격 적중!\n" << "당신의 쳬력: " << player.GetCurrentHP() << endl;
+		cout << u8"공격 적중!\n" << u8"당신의 쳬력: " << player.GetCurrentHP() << endl;
 	}
-	else { cout << "적의 공격을 회피했습니다."; }
+	else { cout << u8"적의 공격을 회피했습니다."; }
 }
 
 void MRedWolf::Die() 

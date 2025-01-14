@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-﻿#pragma once
-=======
 #pragma once
 #include "pch.h"
 #include "Player.h"
@@ -39,4 +36,3 @@ public:
 	virtual int GetExp() = 0;
 	virtual int GetEvasion() = 0;
 };
->>>>>>> Stashed changes
