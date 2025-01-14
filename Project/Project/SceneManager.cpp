@@ -15,8 +15,8 @@ shared_ptr<SceneManager> SceneManager::Instance = nullptr;
 
 void SceneManager::Initialize()
 {
-	//CurrentScene = new IntroScene;
-	CurrentScene = new MainScene;
+	CurrentScene = new IntroScene;
+	//CurrentScene = new MainScene;
 	//CurrentScene = new Scene1F;
 	//CurrentScene = new Scene2F;
 	//CurrentScene = new Scene3F;

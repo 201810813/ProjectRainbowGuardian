@@ -43,6 +43,9 @@ void MainScene::makeLayout()
 
     // Input
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::INPUT, 0, 28, 1, 60);
+
+    // Draw
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::DRAW, 61, 11, 10, 119);
 }
 
 void MainScene::begin()

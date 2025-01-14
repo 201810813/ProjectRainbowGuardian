@@ -2,9 +2,22 @@
 #include "ConsoleLayout.h"
 #include "GameManager.h"
 #include "KeyManager.h"
+#include "SceneManager.h"
+
+BOOL WINAPI ConsoleHandler(DWORD signal) {
+	if (signal == CTRL_CLOSE_EVENT) {
+		
+		GameManager::GetInstance()->EndGame();
+
+		return TRUE; // 시스템에 신호를 처리했음을 알림
+	}
+	return FALSE;
+}
 
 int main()
 {
+	if (!SetConsoleCtrlHandler(ConsoleHandler, TRUE))
+
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
 	system("mode con | title RainbowGuardian");
@@ -29,10 +42,10 @@ int main()
 		
 		GameManager::GetInstance()->render();
 
-		//if (IS_TAP(ENTER))
-		//{
-		//GameManager::GetInstance()->EndGame();
-		//}
+		if (IS_TAP(ENTER))
+		{
+			GameManager::GetInstance()->EndGame();
+		}
 	}
 
 	return 0;
