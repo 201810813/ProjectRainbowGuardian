@@ -1,99 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="소스 파일\Manager">
-      <UniqueIdentifier>{84670161-f8d9-41db-9817-2e57a3ff35e8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Manager\GameManager">
-      <UniqueIdentifier>{1284ce1e-e691-4063-8df3-8e4b318440f5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Manager\ConsoleLayout">
-      <UniqueIdentifier>{29a688e1-9174-46d3-8799-092a941a795e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Monster">
-      <UniqueIdentifier>{b3e0de2d-184a-4b2b-9561-df8348a4f74b}</UniqueIdentifier>
-    </Filter>
-<<<<<<< Updated upstream
-    <Filter Include="소스 파일\Manager\KeyManager">
-      <UniqueIdentifier>{3bc2ec7d-d1cf-4ab4-af2e-2875a7305b54}</UniqueIdentifier>
-=======
-    <Filter Include="소스 파일\Player">
-      <UniqueIdentifier>{d8cc1917-304b-41b9-a6ec-d9ee9c5fe4d9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Manager\TimeManager">
-      <UniqueIdentifier>{2ce4ab4b-e021-48ea-9258-1ef5559b8523}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Manager\RandomManager">
-      <UniqueIdentifier>{fb1b5885-bd33-464b-ad37-76226ddf24d1}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="GameManager.cpp">
-      <Filter>소스 파일\Manager\GameManager</Filter>
+      <Filter>Manager\GameManager</Filter>
     </ClCompile>
     <ClCompile Include="ConsoleLayout.cpp">
-      <Filter>소스 파일\Manager\ConsoleLayout</Filter>
+      <Filter>Manager\ConsoleLayout</Filter>
     </ClCompile>
-    <ClCompile Include="Monster.cpp">
-      <Filter>소스 파일\Monster</Filter>
-    </ClCompile>
-<<<<<<< Updated upstream
     <ClCompile Include="KeyManager.cpp">
-      <Filter>소스 파일\Manager\KeyManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>소스 파일\Manager\TimeManager</Filter>
-    </ClCompile>
-    <ClCompile Include="TimeManager.cpp">
-      <Filter>소스 파일\Manager\TimeManager</Filter>
+      <Filter>Manager\KeyManager</Filter>
     </ClCompile>
     <ClCompile Include="RandomManager.cpp">
-      <Filter>소스 파일\Manager\RandomManager</Filter>
+      <Filter>Manager\RandomManager</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>Manager\TimeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Manager\TimeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="MRedWolf.cpp">
+      <Filter>Monster\RedWolf</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthPosion.cpp">
+      <Filter>Item\HealthPosion</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="define.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="GameManager.h">
-      <Filter>소스 파일\Manager\GameManager</Filter>
+      <Filter>Manager\GameManager</Filter>
     </ClInclude>
     <ClInclude Include="ConsoleLayout.h">
-      <Filter>소스 파일\Manager\ConsoleLayout</Filter>
+      <Filter>Manager\ConsoleLayout</Filter>
     </ClInclude>
-    <ClInclude Include="Monster.h">
-      <Filter>소스 파일\Monster</Filter>
-    </ClInclude>
-<<<<<<< Updated upstream
     <ClInclude Include="KeyManager.h">
-      <Filter>소스 파일\Manager\KeyManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>소스 파일\Manager\TimeManager</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeManager.h">
-      <Filter>소스 파일\Manager\TimeManager</Filter>
+      <Filter>Manager\KeyManager</Filter>
     </ClInclude>
     <ClInclude Include="RandomManager.h">
-      <Filter>소스 파일\Manager\RandomManager</Filter>
+      <Filter>Manager\RandomManager</Filter>
     </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>Manager\TimeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Manager\TimeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="MRedWolf.h">
+      <Filter>Monster\RedWolf</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthPosion.h">
+      <Filter>Item\HealthPosion</Filter>
+    </ClInclude>
+    <ClInclude Include="define.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{5caa610e-76a5-415d-b3e3-bf72985eac17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\GameManager">
+      <UniqueIdentifier>{04777da8-a2fb-4ffd-bf45-cad0e4f94a06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\ConsoleLayout">
+      <UniqueIdentifier>{c804832d-7173-45ff-8c59-6ad87f5bd2e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\KeyManager">
+      <UniqueIdentifier>{124f6ce7-fda2-4a01-ab3b-b980530ea2f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\RandomManager">
+      <UniqueIdentifier>{1525caa6-c12d-4599-8585-8198aae358fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\TimeManager">
+      <UniqueIdentifier>{e7b7fea6-1373-4406-9300-bf49c922cb6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster">
+      <UniqueIdentifier>{4698aa7f-a73f-4f1a-83de-f1b79a95d07d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster\RedWolf">
+      <UniqueIdentifier>{933628b4-cadd-4575-a27c-be3cff976f28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{29bae90a-59f2-4a16-8ec6-1114f72f1a7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\HealthPosion">
+      <UniqueIdentifier>{e34a59ef-8ce5-400b-ac75-af76f7a9add7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header">
+      <UniqueIdentifier>{b0d06178-c3ed-46bc-bb5a-ee2c715196cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{0e12e3ad-ee48-455f-b661-dca414914474}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
