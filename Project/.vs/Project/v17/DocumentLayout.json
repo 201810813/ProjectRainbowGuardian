@@ -6,12 +6,15 @@
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\ConsoleLayout.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\ConsoleLayout.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\define.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
 =======
+=======
+>>>>>>> origin/Monster
       "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
       "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\seung\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\ConsoleLayout.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -35,6 +38,7 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\seung\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\define.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+<<<<<<< HEAD
 >>>>>>> origin/Monster
       "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\define.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
 =======
@@ -75,6 +79,13 @@
       "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
 =======
+=======
+      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\define.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\ConsoleLayout.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\ConsoleLayout.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+>>>>>>> origin/Monster
       "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\seung\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\KeyManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\KeyManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -166,6 +177,7 @@
     {
       "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\seung\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\GameManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\GameManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+<<<<<<< HEAD
 >>>>>>> origin/Monster
 =======
       "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\seung\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\PowerPotion.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -179,6 +191,8 @@
       "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\seung\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\Monster.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\Monster.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
 >>>>>>> Stashed changes
+=======
+>>>>>>> origin/Monster
     }
   ],
   "DocumentGroupContainers": [
@@ -189,6 +203,7 @@
         {
 <<<<<<< HEAD
           "DockedWidth": 269,
+<<<<<<< HEAD
 <<<<<<< HEAD
           "SelectedChildIndex": 1,
 =======
@@ -320,6 +335,13 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-10T03:51:19.593Z",
 =======
+=======
+          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 12,
+          "Children": [
+            {
+              "$type": "Document",
+>>>>>>> origin/Monster
               "DocumentIndex": 0,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\main.cpp",
@@ -352,13 +374,20 @@
               "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-01-14T01:37:15.181Z",
+<<<<<<< HEAD
+>>>>>>> origin/Monster
+=======
 >>>>>>> origin/Monster
               "EditorCaption": ""
             },
             {
               "$type": "Document",
 <<<<<<< HEAD
+<<<<<<< HEAD
               "DocumentIndex": 0,
+=======
+              "DocumentIndex": 1,
+>>>>>>> origin/Monster
 =======
               "DocumentIndex": 1,
 >>>>>>> origin/Monster
@@ -368,10 +397,13 @@
               "ToolTip": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\ConsoleLayout.cpp",
               "RelativeToolTip": "Project\\ConsoleLayout.cpp",
 <<<<<<< HEAD
+<<<<<<< HEAD
               "ViewState": "AgIAAEEBAAAAAAAAAAAswE0BAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-12T10:03:19.392Z",
 =======
+=======
+>>>>>>> origin/Monster
               "ViewState": "AgIAAEEBAAAAAAAAAAAswEsAAAABAAAAAAAAAA==",
               "DocumentIndex": 9,
               "Title": "MRedWolf.h",
@@ -439,11 +471,15 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-01-14T01:37:09.735Z",
+<<<<<<< HEAD
+>>>>>>> origin/Monster
+=======
 >>>>>>> origin/Monster
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
 <<<<<<< HEAD
               "DocumentIndex": 3,
               "Title": "Player.cpp",
@@ -456,6 +492,8 @@
 <<<<<<< Updated upstream
               "WhenOpened": "2025-01-12T11:27:16.107Z",
 =======
+=======
+>>>>>>> origin/Monster
               "DocumentIndex": 2,
 =======
               "WhenOpened": "2025-01-14T03:00:45.546Z",
@@ -487,12 +525,15 @@
               "ViewState": "AgIAABIAAAAAAAAAAAAAADAAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-14T01:37:05.079Z",
+<<<<<<< HEAD
 >>>>>>> origin/Monster
 =======
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-10T03:51:19.593Z",
 >>>>>>> Stashed changes
+=======
+>>>>>>> origin/Monster
               "EditorCaption": ""
             }
           ]
@@ -502,7 +543,10 @@
           "SelectedChildIndex": 4,
           "Children": [
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/Monster
             },
             {
               "$type": "Document",
@@ -541,13 +585,13 @@
 <<<<<<< Updated upstream
               "DocumentIndex": 4,
               "Title": "define.h",
-              "DocumentMoniker": "C:\\Users\\seung\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\define.h",
+              "DocumentMoniker": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\define.h",
               "RelativeDocumentMoniker": "Project\\define.h",
-              "ToolTip": "C:\\Users\\seung\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\define.h",
+              "ToolTip": "C:\\Users\\tjfwn\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\ProjectRainbowGuardian\\Project\\Project\\define.h",
               "RelativeToolTip": "Project\\define.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-14T01:36:54.568Z",
+              "WhenOpened": "2025-01-10T06:54:54.696Z",
               "EditorCaption": ""
             },
             {
@@ -588,6 +632,7 @@
               "WhenOpened": "2025-01-14T01:37:03.625Z",
               "EditorCaption": ""
             },
+<<<<<<< HEAD
 >>>>>>> origin/Monster
             {
               "$type": "Document",
@@ -603,13 +648,56 @@
               "ViewState": "AgIAAGUAAAAAAAAAAIAxwC8AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-01-10T06:54:54.696Z",
+=======
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Item.cpp",
+              "DocumentMoniker": "C:\\Users\\seung\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\Item.cpp",
+              "RelativeDocumentMoniker": "Project\\Item.cpp",
+              "ToolTip": "C:\\Users\\seung\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\Item.cpp",
+              "RelativeToolTip": "Project\\Item.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-14T01:36:58.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ConsoleLayout.cpp",
+              "DocumentMoniker": "C:\\Users\\seung\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\ConsoleLayout.cpp",
+              "RelativeDocumentMoniker": "Project\\ConsoleLayout.cpp",
+              "ToolTip": "C:\\Users\\seung\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\ConsoleLayout.cpp",
+              "RelativeToolTip": "Project\\ConsoleLayout.cpp",
+              "ViewState": "AgIAAH4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-14T01:36:51.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Player.h",
+              "DocumentMoniker": "C:\\Users\\seung\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\Player.h",
+              "RelativeDocumentMoniker": "Project\\Player.h",
+              "ToolTip": "C:\\Users\\seung\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\Player.h",
+              "RelativeToolTip": "Project\\Player.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-14T01:37:18.888Z",
+>>>>>>> origin/Monster
               "EditorCaption": ""
 <<<<<<< HEAD
             },
             {
               "$type": "Document",
 <<<<<<< HEAD
+<<<<<<< HEAD
               "DocumentIndex": 2,
+=======
+              "DocumentIndex": 4,
+>>>>>>> origin/Monster
 =======
               "DocumentIndex": 4,
 >>>>>>> origin/Monster
@@ -631,6 +719,7 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-01-14T05:16:53.124Z",
               "EditorCaption": ""
+<<<<<<< HEAD
             },
             {
               "$type": "Document",
@@ -698,6 +787,8 @@
               "EditorCaption": ""
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/Monster
             },
             {
               "$type": "Document",
@@ -776,9 +867,12 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-14T01:36:55.192Z",
               "EditorCaption": ""
+<<<<<<< HEAD
 >>>>>>> origin/Monster
 =======
 >>>>>>> ScriptMgr
+=======
+>>>>>>> origin/Monster
             }
           ]
         }
