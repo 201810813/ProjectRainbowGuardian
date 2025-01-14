@@ -1,7 +1,52 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+<<<<<<< HEAD
     <ClCompile Include="main.cpp" />
+=======
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\Manager">
+      <UniqueIdentifier>{84670161-f8d9-41db-9817-2e57a3ff35e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Manager\GameManager">
+      <UniqueIdentifier>{1284ce1e-e691-4063-8df3-8e4b318440f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Manager\ConsoleLayout">
+      <UniqueIdentifier>{29a688e1-9174-46d3-8799-092a941a795e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Monster">
+      <UniqueIdentifier>{b3e0de2d-184a-4b2b-9561-df8348a4f74b}</UniqueIdentifier>
+    </Filter>
+<<<<<<< Updated upstream
+    <Filter Include="소스 파일\Manager\KeyManager">
+      <UniqueIdentifier>{3bc2ec7d-d1cf-4ab4-af2e-2875a7305b54}</UniqueIdentifier>
+=======
+    <Filter Include="소스 파일\Player">
+      <UniqueIdentifier>{d8cc1917-304b-41b9-a6ec-d9ee9c5fe4d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Manager\TimeManager">
+      <UniqueIdentifier>{2ce4ab4b-e021-48ea-9258-1ef5559b8523}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Manager\RandomManager">
+      <UniqueIdentifier>{fb1b5885-bd33-464b-ad37-76226ddf24d1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+>>>>>>> origin/Monster
     <ClCompile Include="GameManager.cpp">
       <Filter>Manager\GameManager</Filter>
     </ClCompile>
@@ -9,6 +54,7 @@
       <Filter>Manager\ConsoleLayout</Filter>
     </ClCompile>
     <ClCompile Include="KeyManager.cpp">
+<<<<<<< HEAD
       <Filter>Manager\KeyManager</Filter>
     </ClCompile>
     <ClCompile Include="RandomManager.cpp">
@@ -34,6 +80,18 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Player</Filter>
+=======
+      <Filter>소스 파일\Manager\KeyManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>소스 파일\Manager\TimeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>소스 파일\Manager\TimeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomManager.cpp">
+      <Filter>소스 파일\Manager\RandomManager</Filter>
+>>>>>>> origin/Monster
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -44,6 +102,7 @@
       <Filter>Manager\ConsoleLayout</Filter>
     </ClInclude>
     <ClInclude Include="KeyManager.h">
+<<<<<<< HEAD
       <Filter>Manager\KeyManager</Filter>
     </ClInclude>
     <ClInclude Include="RandomManager.h">
@@ -75,6 +134,18 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Player</Filter>
+=======
+      <Filter>소스 파일\Manager\KeyManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>소스 파일\Manager\TimeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>소스 파일\Manager\TimeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomManager.h">
+      <Filter>소스 파일\Manager\RandomManager</Filter>
+>>>>>>> origin/Monster
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
