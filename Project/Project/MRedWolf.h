@@ -7,20 +7,31 @@ private:
 	MonsterStat WolfStat;
 	map<Type, double> dropItems;
 	int playerLevel;
+	
 public:
 	MRedWolf();
 	~MRedWolf() override;
-	void Attack() override;
-	void GetAttack(double& damage) override;
-	double UseSkill() override;
 
 public:
-	const string GetName() override;
-	double& GetCurrentHP() override;
-	int	GetDefense() override;
-	int GetExp() override;
-	int GetEvasion() override;
-	void Die() override;
-	void Tick() override;
-	void DropItem() override;
+	void	Attack()					override;
+	void	GetAttack()					override;
+	double	UseSkill()					override;
+	void	Die()						override;
+	void	Tick()						override;
+	void	DropItem()					override;
+
+public:
+	//get
+	const string GetName()			override;
+	const int	 GetDefense()		override;
+	const int	 GetExp()			override;
+	const int	 GetEvasion()		override;
+	const int	 GetCoin()			override;
+	const double GetSkillDamage()	override;
+	const double GetDamage()		override;
+	const double GetCurrentHP()		override;
+	const double GetMaxHP()			override;
+	const double GetDropRate()		override;
+	//set
+	void SetCurrentHP(double hp)	override;
 };

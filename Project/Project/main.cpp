@@ -3,37 +3,36 @@
 #include "GameManager.h"
 #include "KeyManager.h"
 #include "SceneManager.h"
+#include "Player.h"
+#include "MRedWolf.h"
 
-BOOL WINAPI ConsoleHandler(DWORD signal) {
-	if (signal == CTRL_CLOSE_EVENT) {
-		
-		GameManager::GetInstance()->EndGame();
-
-		return TRUE; // 시스템에 신호를 처리했음을 알림
-	}
-	return FALSE;
-}
+//BOOL WINAPI ConsoleHandler(DWORD signal) {
+//	if (signal == CTRL_CLOSE_EVENT) {
+//		
+//		GameManager::GetInstance()->EndGame();
+//
+//		return TRUE; // 시스템에 신호를 처리했음을 알림
+//	}
+//	return FALSE;
+//}
 
 int main()
 {
-	if (!SetConsoleCtrlHandler(ConsoleHandler, TRUE))
 
-	SetConsoleOutputCP(CP_UTF8);
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	//if (!SetConsoleCtrlHandler(ConsoleHandler, TRUE))
 
-	system("mode con | title RainbowGuardian");
+	//SetConsoleOutputCP(CP_UTF8);
+	//_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	GameManager::GetInstance()->Initialize();
+	//system("mode con | title RainbowGuardian");
 
-	bool bonce = false;
-	bool is_enter = false;
+	//GameManager::GetInstance()->Initialize();
 
-	while (!GameManager::GetInstance()->IsGameEnd()){
-		GameManager::GetInstance()->tick();
+	//bool bonce = false;
+	//bool is_enter = false;
 
-		//테스트용 코드
-		//if (IS_TAP(LEFT)){WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::STAT);	}
-		//if (IS_TAP(RIGHT)){WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STAT, 0, 2, 6, 25);}
+	//while (!GameManager::GetInstance()->IsGameEnd()){
+	//	GameManager::GetInstance()->tick();
 
 		//if (IS_TAP(ENTER)) { GameManager::GetInstance()->EndGame(); } //게임 종료
 		GameManager::GetInstance()->render();

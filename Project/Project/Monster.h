@@ -26,21 +26,30 @@ private:
 	MonsterStat monsterStat;
 	map<Type,double> dropItems;
 	int playerLevel;
-
+	bool bDead;
 public:
 	Monster();
 	virtual ~Monster();
+public:
 	virtual void Attack() = 0;
-	virtual void GetAttack(double& damage) = 0;
+	virtual void GetAttack() = 0;
 	virtual double UseSkill() = 0;
-	virtual const string GetName() = 0;
 	virtual void Die() = 0;
 	virtual void Tick() = 0;
 	virtual void DropItem() = 0;
-
 public:
-	virtual double& GetCurrentHP() = 0;
-	virtual int	GetDefense() = 0;
-	virtual int GetExp() = 0;
-	virtual int GetEvasion() = 0;
+	//get fuc
+	virtual const double GetSkillDamage() = 0;
+	virtual const double GetDamage()	  = 0;
+	virtual const double GetCurrentHP()   = 0;
+	virtual const double GetMaxHP()		  = 0;
+	virtual const double GetDropRate()    = 0;
+	virtual const int	 GetDefense()	  = 0;
+	virtual const int	 GetExp()		  = 0;
+	virtual const int	 GetCoin()		  = 0;
+	virtual const int    GetEvasion()	  = 0;
+	virtual const string GetName()		  = 0;
+	//set fuc
+	virtual void SetCurrentHP(double hp)  = 0;
+	
 };
