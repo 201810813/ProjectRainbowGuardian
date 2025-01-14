@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 #include "Item.h"
-
-Item::Item() : type(HEALTH_POSTION), name("아이템"), Effect(0) {}
+#include "Player.h"
+Item::Item() : type(Type::HEALTH_POTION), name("아이템"), Effect(0) {}
 
 Item::~Item()
 {

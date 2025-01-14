@@ -2,8 +2,11 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClCompile Include="main.cpp" />
 =======
+=======
+>>>>>>> origin/Monster
     <Filter Include="소스 파일">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
@@ -46,6 +49,9 @@
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+<<<<<<< HEAD
+>>>>>>> origin/Monster
+=======
 >>>>>>> origin/Monster
     <ClCompile Include="GameManager.cpp">
       <Filter>Manager\GameManager</Filter>
@@ -54,6 +60,7 @@
       <Filter>Manager\ConsoleLayout</Filter>
     </ClCompile>
     <ClCompile Include="KeyManager.cpp">
+<<<<<<< HEAD
 <<<<<<< HEAD
       <Filter>Manager\KeyManager</Filter>
     </ClCompile>
@@ -75,7 +82,7 @@
     <ClCompile Include="Item.cpp">
       <Filter>Item</Filter>
     </ClCompile>
-    <ClCompile Include="HealthPosion.cpp">
+    <ClCompile Include="HealthPotion.cpp">
       <Filter>Item\HealthPosion</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
@@ -85,12 +92,19 @@
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>소스 파일\Manager\TimeManager</Filter>
+=======
+      <Filter>소스 파일\Manager\KeyManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Player</Filter>
+>>>>>>> origin/Monster
     </ClCompile>
     <ClCompile Include="TimeManager.cpp">
       <Filter>소스 파일\Manager\TimeManager</Filter>
     </ClCompile>
     <ClCompile Include="RandomManager.cpp">
       <Filter>소스 파일\Manager\RandomManager</Filter>
+<<<<<<< HEAD
 >>>>>>> origin/Monster
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
@@ -129,6 +143,11 @@
     <ClCompile Include="FinalScene.cpp">
       <Filter>Scene\FinalScene</Filter>
     </ClCompile>
+    <ClCompile Include="PowerPotion.cpp">
+      <Filter>Item\PowerPosion</Filter>
+=======
+>>>>>>> origin/Monster
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -138,6 +157,7 @@
       <Filter>Manager\ConsoleLayout</Filter>
     </ClInclude>
     <ClInclude Include="KeyManager.h">
+<<<<<<< HEAD
 <<<<<<< HEAD
       <Filter>Manager\KeyManager</Filter>
     </ClInclude>
@@ -159,8 +179,11 @@
     <ClInclude Include="Item.h">
       <Filter>Item</Filter>
     </ClInclude>
-    <ClInclude Include="HealthPosion.h">
+    <ClInclude Include="HealthPotion.h">
       <Filter>Item\HealthPosion</Filter>
+=======
+      <Filter>소스 파일\Manager\KeyManager</Filter>
+>>>>>>> origin/Monster
     </ClInclude>
     <ClInclude Include="define.h">
       <Filter>Header</Filter>
@@ -168,6 +191,7 @@
     <ClInclude Include="pch.h">
       <Filter>Header</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Player.h">
       <Filter>Player</Filter>
 =======
@@ -218,6 +242,13 @@
     </ClInclude>
     <ClInclude Include="FinalScene.h">
       <Filter>Scene\FinalScene</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerPotion.h">
+      <Filter>Item\PowerPosion</Filter>
+=======
+    <ClInclude Include="RandomManager.h">
+      <Filter>소스 파일\Manager\RandomManager</Filter>
+>>>>>>> origin/Monster
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -292,6 +323,9 @@
     </Filter>
     <Filter Include="Scene\FinalScene">
       <UniqueIdentifier>{fc7d3e60-762d-4b77-84a1-da615652fe1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\PowerPosion">
+      <UniqueIdentifier>{a05a0fbf-169b-46c9-80c2-f6d70cddcadf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

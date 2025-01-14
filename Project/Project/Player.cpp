@@ -1,16 +1,24 @@
 ﻿#include "pch.h"
 #include "Player.h"
+#include "HealthPotion.h"
+#include "PowerPotion.h"
 
 shared_ptr<Player> Player::player = nullptr;
 
-Player::Player() : stat{ 100, 100, 1, 200, 0, 17, 3, 20, "" }, invenSize(10)
+Player::Player() : stat{ 100, 100, 1, 200, 0, 17, 3, 20, "" }
 {
-	cout << u8"플레이어 생성" << endl;
+	
 }
 
 Player::~Player()
 {
-	cout << u8"플레이어 삭제" << endl;
+	for (auto& pair : inventory) {
+		for (Item* item : pair.second) {
+			delete item;  // 아이템 객체 삭제
+		}
+		pair.second.clear();  // 벡터 초기화
+	}
+	inventory.clear();  // 맵 초기화
 }
 
 shared_ptr<Player> Player::getInstance() {
@@ -60,6 +68,7 @@ bool Player::IsDie(double hp)
 	else return false;
 }
 
+
 //----------------------------//
 //          Get함수           //
 //----------------------------//
@@ -82,6 +91,68 @@ int Player::GetEvasion()
 {
 	return stat.evasion;
 }
-//-------------------------------//
-//          아이템함수           //
-//-------------------------------//
+
+int Player::GetLevel()
+{
+	return stat.level;
+}
+
+//----------------------------//
+//          Set함수           //
+//----------------------------//
+void Player::SetCurrentHP(double heal)
+{
+	if (stat.currentHP + heal > stat.maxHP) {
+		stat.currentHP = stat.maxHP;
+	}
+	stat.currentHP += heal;
+}
+
+void Player::SetDamage(int buff)
+{
+	stat.damage += buff;
+}
+
+
+//-----------------------------------//
+//          아이템관련함수           //
+//-----------------------------------//
+
+void Player::AddItemToInventory(Item* item)
+{
+	inventory[item->GetType()].push_back(item);
+	itemCounts[item->GetType()]++;
+	cout << item->GetName() << "이 추가되었습니다." << endl;
+}
+
+void Player::ShowInventory()
+{
+	if (inventory.empty()) {
+		cout << "인벤토리가 비어있습니다." << endl;
+	}
+	else {
+		for (const auto& item : inventory) {
+			cout << item.first << "아이템이" << item.second.size() << "개 있습니다." << endl;
+		}
+	}
+}
+
+void Player::UseItem(Type type)
+{
+	if (itemCounts[type] > 0) {
+		Item* item = inventory[type].back();
+		inventory[type].pop_back();  // 아이템 사용 후 제거
+		itemCounts[type]--;  // 아이템 개수 감소
+
+		cout << "아이템 사용: " << item->GetName() << endl;
+		item->Use();  // 아이템 사용
+
+		// 아이템 객체 삭제
+		delete item;
+		item = nullptr;
+	}
+	else {
+		cout << "해당 아이템이 인벤토리에 없습니다.\n";
+	}
+}
+
