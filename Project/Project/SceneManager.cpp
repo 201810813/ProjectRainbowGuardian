@@ -16,7 +16,7 @@ shared_ptr<SceneManager> SceneManager::Instance = nullptr;
 void SceneManager::Initialize()
 {
 	//CurrentScene = new IntroScene;
-	//CurrentScene = new MainScene;
+	CurrentScene = new MainScene;
 	//CurrentScene = new Scene1F;
 	//CurrentScene = new Scene2F;
 	//CurrentScene = new Scene3F;
@@ -24,12 +24,12 @@ void SceneManager::Initialize()
 	//CurrentScene = new Scene5F;
 	//CurrentScene = new Scene6F;
 	//CurrentScene = new Scene7F;
-	CurrentScene = new FinalScene;
+	//CurrentScene = new FinalScene;
 
 	CurrentScene->makeLayout(); //레이아웃 생성
 }
 
 void SceneManager::tick()
 {
-	
+	CurrentScene->tick();
 }
