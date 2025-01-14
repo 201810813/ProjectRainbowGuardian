@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "MRedWolf.h"
 #include "HealthPotion.h"
 #include "PowerPotion.h"
@@ -27,19 +27,22 @@ void MRedWolf::Attack()
 	int trigger = rand() % 100;
 	if (probability < trigger) {
 		Player::getInstance()->GetAttack(damage);
-		cout << "°ø°İ ÀûÁß!\n" << "´ç½ÅÀÇ ÃÇ·Â: " << Player::getInstance()->GetCurrentHP() << endl;
+		cout << u8"ê³µê²© ì ì¤‘!\n" << u8"ë‹¹ì‹ ì˜ ì³¬ë ¥: " << Player::getInstance()->GetCurrentHP() << endl;
 	}
-	else { cout << "ÀûÀÇ °ø°İÀ» È¸ÇÇÇß½À´Ï´Ù."; }
+	else { cout << u8"ì ì˜ ê³µê²©ì„ íšŒí”¼í–ˆìŠµë‹ˆë‹¤."; }
 }
 
 void MRedWolf::Tick() {
+	if (WolfStat.currentHp <= 0) {
+		Die();
+	}
 }
 
 void MRedWolf::DropItem() {
-	RandomManager::GetInstance()->setRange(0.f, 1.f);  // 0.0 ~ 1.0 »çÀÌÀÇ ·£´ı °ª
+	RandomManager::GetInstance()->setRange(0.f, 1.f);  // 0.0 ~ 1.0 ì‚¬ì´ì˜ ëœë¤ ê°’
 	double randomChance = RandomManager::GetInstance()->getRandom<double>();
     for (const auto& item : dropItems) {
-        if (randomChance <= item.second) {  // È®·ü¿¡ ¸Â´Â ¾ÆÀÌÅÛ µå·Ó
+        if (randomChance <= item.second) {  // í™•ë¥ ì— ë§ëŠ” ì•„ì´í…œ ë“œë¡­
             Item* droppedItem = nullptr;
 
             switch (item.first) {
@@ -54,23 +57,24 @@ void MRedWolf::DropItem() {
             }
 
             if (droppedItem) {
-                Player::getInstance()->AddItemToInventory(droppedItem);  // ÇÃ·¹ÀÌ¾î ÀÎº¥Åä¸®¿¡ ¾ÆÀÌÅÛ Ãß°¡
-                std::cout << droppedItem->GetName() << "ÀÌ(°¡) µå·ÓµÇ¾ú½À´Ï´Ù.\n";
+                Player::getInstance()->AddItemToInventory(droppedItem);  // í”Œë ˆì´ì–´ ì¸ë²¤í† ë¦¬ì— ì•„ì´í…œ ì¶”ê°€
+                std::cout << droppedItem->GetName() << "ì´(ê°€) ë“œë¡­ë˜ì—ˆìŠµë‹ˆë‹¤.\n";
             }
-            break;  // Ã¹ ¹øÂ° µå·Ó ¾ÆÀÌÅÛÀ» Ã³¸®ÇÑ ÈÄ Á¾·á
+			delete droppedItem;
+            break;  // ì²« ë²ˆì§¸ ë“œë¡­ ì•„ì´í…œì„ ì²˜ë¦¬í•œ í›„ ì¢…ë£Œ
         }
     }
 }
 
 void MRedWolf::Die()
 {
-	cout << "´ç½ÅÀÌ ºÓÀº ´Á´ë¸¦ ¾²·¯Æ®·È½À´Ï´Ù!" << endl;
+	cout << "ë‹¹ì‹ ì´ ë¶‰ì€ ëŠ‘ëŒ€ë¥¼ ì“°ëŸ¬íŠ¸ë ¸ìŠµë‹ˆë‹¤!" << endl;
 	DropItem();
 	delete this;
 }
 
 //---------------------------------
-//           GetÇÔ¼ö
+//           Getí•¨ìˆ˜
 //---------------------------------
 void MRedWolf::GetAttack(double& damage)
 {
