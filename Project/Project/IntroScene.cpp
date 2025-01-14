@@ -4,6 +4,7 @@
 #include "TimeManager.h"
 #include "KeyManager.h"
 #include "GameManager.h"
+#include "SceneManager.h"
 
 void IntroScene::makeLayout()
 {
@@ -110,7 +111,7 @@ void IntroScene::ActionSelect()
 {
 	if (0 == CursorPos)
 	{
-		// MainScene 전환 추가해주어야 한다.
+		SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::SCENE_1F);
 	}
 	else if (1 == CursorPos)
 	{

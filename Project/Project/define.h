@@ -123,3 +123,30 @@ struct Key_Info
 	KEY_STATE		_KState;
 	bool			PrevPress;
 };
+
+
+// ==================
+// ==   SceneMgr   ==
+// ==================
+
+enum class SCENE_TYPE
+{
+	INTRO,
+
+	SCENE_1F,
+	SCENE_2F,
+	SCENE_3F,
+	SCENE_4F,
+	SCENE_5F,
+	SCENE_6F,
+	SCENE_7F,
+
+	FINAL,
+
+	SHOP,
+	ALTAR,
+
+	RANDOM,
+
+	END
+};

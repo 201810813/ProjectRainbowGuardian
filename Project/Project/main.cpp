@@ -35,7 +35,7 @@ int main()
 		//if (IS_TAP(LEFT)){WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::STAT);	}
 		//if (IS_TAP(RIGHT)){WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STAT, 0, 2, 6, 25);}
 
-		if (IS_TAP(ENTER)) { GameManager::GetInstance()->EndGame(); } //게임 종료
+		//if (IS_TAP(ENTER)) { GameManager::GetInstance()->EndGame(); } //게임 종료
 		GameManager::GetInstance()->render();
 	}
 	return 0;

@@ -47,11 +47,21 @@ public:
 	}
 
 private:
-	Scene* CurrentScene; //현재 씬을 가리키는 포인터
-	int currentFloor;
+	Scene*		CurrentScene; //현재 씬을 가리키는 포인터
+	int			currentFloor;
+
+	bool		bChangeScene;
+	SCENE_TYPE	NextSceneType;
+	int			BattleCount;
 
 public:
 	void Initialize();
 	void tick();
-	void changeScene(int floor); //씬 변경 메서드
+
+	void CacheChangeScene(SCENE_TYPE SceneType);
+	
+	// 랜덤 함수 추가
+	void RandomCreateScene();
+
+	void changeScene(); //씬 변경 메서드
 };

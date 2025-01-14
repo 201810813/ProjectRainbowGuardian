@@ -22,6 +22,10 @@ void GameManager::tick()
 	KeyManager::GetInstance()->tick();
 	WriteManager::GetInstance()->tick();
 	SceneManager::GetInstance()->tick();
+
+	// 이번tick에서 할거 다하고 최종적으로 씬 전환
+	// 위치 애매함..
+	SceneManager::GetInstance()->changeScene();
 }
 
 void GameManager::render()

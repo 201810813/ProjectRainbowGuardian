@@ -27,6 +27,7 @@ void Scene2F::makeLayout() {
 }
 
 void Scene2F::setupBattleRoom() {
+
     // Map Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::MAP, 104, 2, 9, 9);
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "02 [⚔️]", false, 7, TEXT_COLOR_TYPE::ORANGE));
