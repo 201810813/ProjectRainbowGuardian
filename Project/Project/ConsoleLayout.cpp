@@ -1,5 +1,6 @@
 ﻿#include "pch.h"
 #include "ConsoleLayout.h"
+#include "KeyManager.h"
 
 // ===========================================================
 //                        WriteManager
@@ -74,8 +75,18 @@ void WriteManager::render()
 void WriteManager::Initialize()
 {
     // ConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+     
+    // 얘 없어도 되는데, 혹시 몰라서 남겨둠. ㅎㅎ
+    //SetConsoleOutputCP(CP_UTF8);
+    //SetConsoleCP(CP_UTF8);
+
     ConsoleLayoutContainer.Initialize();
     MakeAllLayout();
+}
+
+void WriteManager::MoveMessageCursor(LAYOUT_TYPE TargetLayout, CURSOR_MOVE_TYPE CursorMoveType)
+{
+    ConsoleLayoutContainer.MoveMessageCursor(TargetLayout, CursorMoveType);
 }
 
 void WriteManager::ClearScreen()
@@ -198,19 +209,6 @@ void FConsoleLayoutContainer::MakeLayoutBox(LAYOUT_TYPE LayoutType, FConsoleLayo
     }
 }
 
-void FConsoleLayoutContainer::PrintMessage(string message)
-{
-    DWORD written;
-
-    WriteConsole(
-        Console.HBuffer[Console.CurBufferIndex], // 현재 활성화된 버퍼 핸들
-        message.c_str(),                        // 출력할 데이터
-        static_cast<DWORD>(message.size()),     // 데이터 크기
-        &written,                               // 실제로 출력된 크기
-        NULL                                    // 비동기 처리 옵션 (동기식 처리)
-    );
-}
-
 void FConsoleLayoutContainer::PrintMessage(wstring message)
 {
     DWORD written;
@@ -221,6 +219,29 @@ void FConsoleLayoutContainer::PrintMessage(wstring message)
         &written,                               // 실제로 출력된 크기
         NULL                                    // 비동기 처리 옵션 (동기식 처리)
     );
+}
+
+void FConsoleLayoutContainer::WriteUTF8ToConsole(const string& utf8Str)
+{
+    // UTF-8 -> UTF-16 변환
+    int wstrSize = MultiByteToWideChar(CP_UTF8, 0, utf8Str.c_str(), -1, NULL, 0);
+    if (wstrSize <= 0) {
+        std::cerr << "Error: Failed to convert UTF-8 to UTF-16.\n";
+        return;
+    }
+
+    // UTF-16 버퍼 할당
+    wchar_t* wstr = new wchar_t[wstrSize];
+    MultiByteToWideChar(CP_UTF8, 0, utf8Str.c_str(), -1, wstr, wstrSize);
+
+    // UTF-16 출력
+    DWORD written;
+    if (!WriteConsoleW(Console.HBuffer[Console.CurBufferIndex], wstr, wstrSize - 1, &written, NULL)) {
+        std::cerr << "Error: Failed to write to console.\n";
+    }
+
+    // 메모리 해제
+    delete[] wstr;
 }
 
 FConsoleLayoutContainer::~FConsoleLayoutContainer()
@@ -246,6 +267,9 @@ void FConsoleLayoutContainer::MakeLayout(LAYOUT_TYPE LayoutType, FConsoleLayout 
 
 void FConsoleLayoutContainer::clear(LAYOUT_TYPE TargetType)
 {
+    if (LayoutMap.find(TargetType) == LayoutMap.end())
+        return;
+
     const FConsoleLayout& ConsoleLayout = LayoutMap.find(TargetType)->second;
 
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -272,29 +296,72 @@ void FConsoleLayoutContainer::clear(LAYOUT_TYPE TargetType)
         return;
     }
 
-    // 버퍼의 속성 초기화 (색상 초기화)
-    //if (!FillConsoleOutputAttribute(hConsole, csbi.wAttributes, cellsToClear, startCoord, &cellsCleared)) {
-    //    std::cerr << "Error: Unable to reset console attributes.\n";
-    //    return;
-    //}
-
-    // 커서를 원래 위치로 이동
+    // 메세지 날리기
+    LayoutMap.erase(LayoutMap.find(TargetType));
 }
 
 void FConsoleLayoutContainer::AddLine(FMessageParam MessageParam)
 {
     if (LayoutMap.find(MessageParam.TargetLayout) != LayoutMap.end())
     {
-        if (MessageParam.TargetLayout == LAYOUT_TYPE::TITLE)
+         FConsoleLayout& ConsoleLayout = LayoutMap.find(MessageParam.TargetLayout)->second;
+         if (MessageParam.bDeleteLine)
+         {
+             ConsoleLayout.Message.erase(ConsoleLayout.Message.begin());
+             FStylizedString Temp;
+             Temp.Message = MessageParam.Message;
+             Temp.BackGroundColor = MessageParam.BackGroundColor;
+             Temp.TextColor = MessageParam.TextColor;
+
+             ConsoleLayout.Message.push_back(Temp);
+         }
+         else
+         {
+             if (MessageParam.TargetLayout == LAYOUT_TYPE::TITLE)
+             {
+                 ConsoleLayout.Message[MessageParam.LineIndex].Message = OverwriteTitle(MessageParam.Message);
+             }
+             else
+             {
+                 ConsoleLayout.Message[MessageParam.LineIndex].Message = MessageParam.Message;
+             }
+             ConsoleLayout.Message[MessageParam.LineIndex].TextColor = MessageParam.TextColor;
+             ConsoleLayout.Message[MessageParam.LineIndex].BackGroundColor = MessageParam.BackGroundColor;
+         }
+    }
+}
+
+void FConsoleLayoutContainer::MoveMessageCursor(LAYOUT_TYPE TargetLayout, CURSOR_MOVE_TYPE CursorMoveType)
+{
+    // 해당 레이아웃이 없으면 리턴
+    if (LayoutMap.find(TargetLayout) == LayoutMap.end())
+        return;
+
+    FConsoleLayout& ConsoleLayout = LayoutMap.find(TargetLayout)->second;
+    
+    switch (CursorMoveType)
+    {
+    case CURSOR_MOVE_TYPE::UP:
+        if (ConsoleLayout.CurrentCursor + 1 > 0
+            && ConsoleLayout.CurrentCursor + 1 < ConsoleLayout.Height)
         {
-            LayoutMap.find(MessageParam.TargetLayout)->second.Message[MessageParam.LineIndex].Message = OverwriteTitle(MessageParam.Message);
+            ConsoleLayout.CurrentCursor++;
+
         }
-        else
+        break;
+
+    case CURSOR_MOVE_TYPE::DOWN:
+        if (ConsoleLayout.CurrentCursor - 1 > 0
+            && ConsoleLayout.CurrentCursor - 1 < ConsoleLayout.Height)
         {
-            LayoutMap.find(MessageParam.TargetLayout)->second.Message[MessageParam.LineIndex].Message = MessageParam.Message;
+            ConsoleLayout.CurrentCursor--;
+
         }
-        LayoutMap.find(MessageParam.TargetLayout)->second.Message[MessageParam.LineIndex].TextColor = MessageParam.TextColor;
-        LayoutMap.find(MessageParam.TargetLayout)->second.Message[MessageParam.LineIndex].BackGroundColor = MessageParam.BackGroundColor;
+
+        break;
+
+    default:
+        break;
     }
 }
 
@@ -322,17 +389,7 @@ void FConsoleLayoutContainer::render()
             // 색 설정
             SetConsoleColor((WORD)iter->second.Message[i].TextColor | (WORD)iter->second.Message[i].BackGroundColor);
 
-            // 현재 활성화된 버퍼에 출력
-            DWORD written;
-            string message = iter->second.Message[i].Message;
-
-            WriteConsole(
-                Console.HBuffer[Console.CurBufferIndex], // 현재 활성화된 버퍼 핸들
-                message.c_str(),                        // 출력할 데이터
-                static_cast<DWORD>(message.size()),     // 데이터 크기
-                &written,                               // 실제로 출력된 크기
-                NULL                                    // 비동기 처리 옵션 (동기식 처리)
-            );
+            WriteUTF8ToConsole(iter->second.Message[i].Message);
         }
     }
 
@@ -341,6 +398,16 @@ void FConsoleLayoutContainer::render()
 
 void FConsoleLayoutContainer::tick()
 {
+    if (IS_TAP(UP))
+    {
+        WriteManager::GetInstance()->MoveMessageCursor(LAYOUT_TYPE::SELECT, CURSOR_MOVE_TYPE::UP);
+    }
+    else if (IS_TAP(DOWN))
+    {
+        WriteManager::GetInstance()->MoveMessageCursor(LAYOUT_TYPE::SELECT, CURSOR_MOVE_TYPE::DOWN);
+    }
+
+
     // 입력 받기 임시
     //
     //
@@ -409,4 +476,19 @@ void FConsoleLayoutContainer::SwapBuffer()
 {
     SetConsoleActiveScreenBuffer(Console.HBuffer[Console.CurBufferIndex]);
     Console.CurBufferIndex = Console.CurBufferIndex ? 0 : 1;
+}
+
+
+// ConsoleLayout
+
+bool FConsoleLayout::Is_CursorOutOfRange(int NewCurentCursorPos)
+{
+    bool ReturnValue = false;
+
+    if (NewCurentCursorPos >= FrontCursor && NewCurentCursorPos <= BackCursor)
+    {
+        ReturnValue = true;
+    }
+
+    return ReturnValue;
 }

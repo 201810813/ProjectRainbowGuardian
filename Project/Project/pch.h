@@ -9,6 +9,7 @@
 
 #include <windows.h>
 #include <random>
+#include <chrono>
 
 #include "define.h"
 

@@ -57,17 +57,25 @@ enum class LAYOUT_TYPE
 	END
 };
 
+enum class CURSOR_MOVE_TYPE
+{
+	UP,
+	DOWN,
+
+	END
+};
+
 struct FMessageParam
 {
 	LAYOUT_TYPE				TargetLayout = LAYOUT_TYPE::TITLE;
 	std::string				Message = "";
 	int						LineIndex = 0;
-	bool					bDeleteLine = true;
+	bool					bDeleteLine = false;
 	TEXT_COLOR_TYPE			TextColor = TEXT_COLOR_TYPE::WHITE;
 	BACKGROUND_COLOR_TYPE	BackGroundColor = BACKGROUND_COLOR_TYPE::BLACK;
 
 	FMessageParam() = default;
-	FMessageParam(LAYOUT_TYPE LayoutType, std::string Msg, int idx = 0, TEXT_COLOR_TYPE TColorType = TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE BColorType = BACKGROUND_COLOR_TYPE::BLACK, bool DLine = true)
+	FMessageParam(LAYOUT_TYPE LayoutType, std::string Msg, bool DLine = true, int idx = 0, TEXT_COLOR_TYPE TColorType = TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE BColorType = BACKGROUND_COLOR_TYPE::BLACK)
 		: TargetLayout(LayoutType)
 		, Message(Msg)
 		, LineIndex(idx)
@@ -85,31 +93,14 @@ struct FMessageParam
 
 enum class KEY_TYPE
 {
-	W,
-	A,
-	S,
-	D,
-
-	O,
-	T,
-
 	UP,
 	LEFT,
 	DOWN,
 	RIGHT,
 
-	NUM_0,
-	NUM_1,
-	NUM_2,
-	NUM_3,
-
-	LBTN,
-
-	SPACE,
-	ESC,
 	ENTER,
 
-	END,
+	END
 };
 
 enum class KEY_STATE
@@ -120,10 +111,10 @@ enum class KEY_STATE
 	NONE,
 };
 
-#define IS_TAP(key_type) CKeyMgr::CreateMgr()->GetKeyState(KEY_TYPE::key_type) == KEY_STATE::TAP
-#define IS_PRESS(key_type) CKeyMgr::CreateMgr()->GetKeyState(KEY_TYPE::key_type) == KEY_STATE::PRESS
-#define IS_RELEASE(key_type) CKeyMgr::CreateMgr()->GetKeyState(KEY_TYPE::key_type) == KEY_STATE::RELEASE
-#define IS_NONE(key_type) CKeyMgr::CreateMgr()->GetKeyState(KEY_TYPE::key_type) == KEY_STATE::NONE
+#define IS_TAP(key_type) KeyManager::GetInstance()->GetKeyState(KEY_TYPE::key_type) == KEY_STATE::TAP
+#define IS_PRESS(key_type) KeyManager::GetInstance()->GetKeyState(KEY_TYPE::key_type) == KEY_STATE::PRESS
+#define IS_RELEASE(key_type) KeyManager::GetInstance()->GetKeyState(KEY_TYPE::key_type) == KEY_STATE::RELEASE
+#define IS_NONE(key_type) KeyManager::GetInstance()->GetKeyState(KEY_TYPE::key_type) == KEY_STATE::NONE
 
 struct Key_Info
 {
