@@ -15,28 +15,17 @@ int main()
 
 	bool bonce = false;
 	bool is_enter = false;
-	while (!GameManager::GetInstance()->IsGameEnd())
-	{
+
+	while (!GameManager::GetInstance()->IsGameEnd()){
 		GameManager::GetInstance()->tick();
 
-		if (IS_TAP(LEFT))
-		{
-			WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::STAT);
-		}
-		if (IS_TAP(RIGHT))
-		{
-			WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STAT, 0, 2, 6, 25);
-		}
+		//테스트용 코드
+		//if (IS_TAP(LEFT)){WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::STAT);	}
+		//if (IS_TAP(RIGHT)){WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STAT, 0, 2, 6, 25);}
 
-		
+		if (IS_TAP(ENTER)) { GameManager::GetInstance()->EndGame(); } //게임 종료
 		GameManager::GetInstance()->render();
-
-		if (IS_TAP(ENTER))
-		{
-		GameManager::GetInstance()->EndGame();
-		}
 	}
-
 	return 0;
 }
 

@@ -5,7 +5,6 @@
 class MainScene :
     public Scene
 {
-
 public:
     virtual void makeLayout() override;
 
