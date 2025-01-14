@@ -136,8 +136,12 @@
     <ClCompile Include="ConsoleLayout.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="KeyManager.cpp" />
+    <ClCompile Include="HealthPosion.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="MRedWolf.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="RandomManager.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -147,8 +151,12 @@
     <ClInclude Include="define.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="KeyManager.h" />
+    <ClInclude Include="HealthPosion.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="MRedWolf.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="RandomManager.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Timer.h" />
