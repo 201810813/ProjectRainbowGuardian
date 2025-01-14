@@ -1,8 +1,10 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "ConsoleLayout.h"
 #include "GameManager.h"
 #include "KeyManager.h"
 
+#include "Player.h"
+#include "MRedWolf.h"
 int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
