@@ -138,6 +138,9 @@
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="RandomManager.cpp" />
+    <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleLayout.h" />
@@ -146,6 +149,9 @@
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="RandomManager.h" />
+    <ClInclude Include="TimeManager.h" />
+    <ClInclude Include="Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

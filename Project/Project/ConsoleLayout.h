@@ -31,17 +31,26 @@ struct FConsoleLayout
 	int							Height;
 	int							Width;
 
+	int							FrontCursor;
+	int							BackCursor;
+	int							CurrentCursor;
+
 	FConsoleLayout(short _Left, short _Top, int height, int width)
 		: Left(_Left)
 		, Top(_Top)
 		, Height(height)
 		, Width(width)
+		, FrontCursor(0)
+		, BackCursor(0)
+		, CurrentCursor(0)
 	{
 		Message.resize(height);
 	}
+
+	bool Is_CursorOutOfRange(int NewCurentCursorPos);
 };
 
-struct FConsoleLayoutContainer
+class FConsoleLayoutContainer
 {
 private:
 	map<LAYOUT_TYPE, FConsoleLayout>	LayoutMap;
@@ -57,7 +66,6 @@ private:
 	void PrintMessage(wstring message);
 	void WriteUTF8ToConsole(const string& utf8Str);
 
-
 public:
 	~FConsoleLayoutContainer();
 
@@ -65,6 +73,7 @@ public:
 	void MakeLayout(LAYOUT_TYPE LayoutType, FConsoleLayout Layout);
 	void clear(LAYOUT_TYPE TargetType);
 	void AddLine(FMessageParam MessageParam);
+	void MoveMessageCursor(LAYOUT_TYPE TargetLayout, CURSOR_MOVE_TYPE CursorMoveType);
 
 	void render();
 	void tick();
@@ -110,23 +119,18 @@ public:
 
 private:
 	void MoveCursor(short x, short y);
-
-	void MakeLayout(LAYOUT_TYPE LayoutType, int Left, int Top, int Height, int Width);
-
 	void MakeAllLayout();
 
 public:
-
+	void MakeLayout(LAYOUT_TYPE LayoutType, int Left, int Top, int Height, int Width);
 	void ClearLayout(LAYOUT_TYPE TargetLayout);
-
 	void MoveLineUp(LAYOUT_TYPE TargetLayout, int LineCount) {};
-
 	void AddLine(FMessageParam MessageParam);
-
-	void tick();
-	void render();
+	void MoveMessageCursor(LAYOUT_TYPE TargetLayout, CURSOR_MOVE_TYPE CursorMoveType);
 
 	void Initialize();
+	void tick();
+	void render();
 
 
 	void ClearScreen();

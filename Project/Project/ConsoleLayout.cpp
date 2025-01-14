@@ -1,5 +1,6 @@
 ﻿#include "pch.h"
 #include "ConsoleLayout.h"
+#include "KeyManager.h"
 
 // ===========================================================
 //                        WriteManager
@@ -81,6 +82,11 @@ void WriteManager::Initialize()
 
     ConsoleLayoutContainer.Initialize();
     MakeAllLayout();
+}
+
+void WriteManager::MoveMessageCursor(LAYOUT_TYPE TargetLayout, CURSOR_MOVE_TYPE CursorMoveType)
+{
+    ConsoleLayoutContainer.MoveMessageCursor(TargetLayout, CursorMoveType);
 }
 
 void WriteManager::ClearScreen()
@@ -261,6 +267,9 @@ void FConsoleLayoutContainer::MakeLayout(LAYOUT_TYPE LayoutType, FConsoleLayout 
 
 void FConsoleLayoutContainer::clear(LAYOUT_TYPE TargetType)
 {
+    if (LayoutMap.find(TargetType) == LayoutMap.end())
+        return;
+
     const FConsoleLayout& ConsoleLayout = LayoutMap.find(TargetType)->second;
 
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -287,29 +296,72 @@ void FConsoleLayoutContainer::clear(LAYOUT_TYPE TargetType)
         return;
     }
 
-    // 버퍼의 속성 초기화 (색상 초기화)
-    //if (!FillConsoleOutputAttribute(hConsole, csbi.wAttributes, cellsToClear, startCoord, &cellsCleared)) {
-    //    std::cerr << "Error: Unable to reset console attributes.\n";
-    //    return;
-    //}
-
-    // 커서를 원래 위치로 이동
+    // 메세지 날리기
+    LayoutMap.erase(LayoutMap.find(TargetType));
 }
 
 void FConsoleLayoutContainer::AddLine(FMessageParam MessageParam)
 {
     if (LayoutMap.find(MessageParam.TargetLayout) != LayoutMap.end())
     {
-        if (MessageParam.TargetLayout == LAYOUT_TYPE::TITLE)
+         FConsoleLayout& ConsoleLayout = LayoutMap.find(MessageParam.TargetLayout)->second;
+         if (MessageParam.bDeleteLine)
+         {
+             ConsoleLayout.Message.erase(ConsoleLayout.Message.begin());
+             FStylizedString Temp;
+             Temp.Message = MessageParam.Message;
+             Temp.BackGroundColor = MessageParam.BackGroundColor;
+             Temp.TextColor = MessageParam.TextColor;
+
+             ConsoleLayout.Message.push_back(Temp);
+         }
+         else
+         {
+             if (MessageParam.TargetLayout == LAYOUT_TYPE::TITLE)
+             {
+                 ConsoleLayout.Message[MessageParam.LineIndex].Message = OverwriteTitle(MessageParam.Message);
+             }
+             else
+             {
+                 ConsoleLayout.Message[MessageParam.LineIndex].Message = MessageParam.Message;
+             }
+             ConsoleLayout.Message[MessageParam.LineIndex].TextColor = MessageParam.TextColor;
+             ConsoleLayout.Message[MessageParam.LineIndex].BackGroundColor = MessageParam.BackGroundColor;
+         }
+    }
+}
+
+void FConsoleLayoutContainer::MoveMessageCursor(LAYOUT_TYPE TargetLayout, CURSOR_MOVE_TYPE CursorMoveType)
+{
+    // 해당 레이아웃이 없으면 리턴
+    if (LayoutMap.find(TargetLayout) == LayoutMap.end())
+        return;
+
+    FConsoleLayout& ConsoleLayout = LayoutMap.find(TargetLayout)->second;
+    
+    switch (CursorMoveType)
+    {
+    case CURSOR_MOVE_TYPE::UP:
+        if (ConsoleLayout.CurrentCursor + 1 > 0
+            && ConsoleLayout.CurrentCursor + 1 < ConsoleLayout.Height)
         {
-            LayoutMap.find(MessageParam.TargetLayout)->second.Message[MessageParam.LineIndex].Message = OverwriteTitle(MessageParam.Message);
+            ConsoleLayout.CurrentCursor++;
+
         }
-        else
+        break;
+
+    case CURSOR_MOVE_TYPE::DOWN:
+        if (ConsoleLayout.CurrentCursor - 1 > 0
+            && ConsoleLayout.CurrentCursor - 1 < ConsoleLayout.Height)
         {
-            LayoutMap.find(MessageParam.TargetLayout)->second.Message[MessageParam.LineIndex].Message = MessageParam.Message;
+            ConsoleLayout.CurrentCursor--;
+
         }
-        LayoutMap.find(MessageParam.TargetLayout)->second.Message[MessageParam.LineIndex].TextColor = MessageParam.TextColor;
-        LayoutMap.find(MessageParam.TargetLayout)->second.Message[MessageParam.LineIndex].BackGroundColor = MessageParam.BackGroundColor;
+
+        break;
+
+    default:
+        break;
     }
 }
 
@@ -346,6 +398,16 @@ void FConsoleLayoutContainer::render()
 
 void FConsoleLayoutContainer::tick()
 {
+    if (IS_TAP(UP))
+    {
+        WriteManager::GetInstance()->MoveMessageCursor(LAYOUT_TYPE::SELECT, CURSOR_MOVE_TYPE::UP);
+    }
+    else if (IS_TAP(DOWN))
+    {
+        WriteManager::GetInstance()->MoveMessageCursor(LAYOUT_TYPE::SELECT, CURSOR_MOVE_TYPE::DOWN);
+    }
+
+
     // 입력 받기 임시
     //
     //
@@ -414,4 +476,19 @@ void FConsoleLayoutContainer::SwapBuffer()
 {
     SetConsoleActiveScreenBuffer(Console.HBuffer[Console.CurBufferIndex]);
     Console.CurBufferIndex = Console.CurBufferIndex ? 0 : 1;
+}
+
+
+// ConsoleLayout
+
+bool FConsoleLayout::Is_CursorOutOfRange(int NewCurentCursorPos)
+{
+    bool ReturnValue = false;
+
+    if (NewCurentCursorPos >= FrontCursor && NewCurentCursorPos <= BackCursor)
+    {
+        ReturnValue = true;
+    }
+
+    return ReturnValue;
 }
