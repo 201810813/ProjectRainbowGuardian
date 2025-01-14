@@ -124,7 +124,6 @@ struct Key_Info
 	bool			PrevPress;
 };
 
-
 // ==================
 // ==   SceneMgr   ==
 // ==================
@@ -149,4 +148,18 @@ enum class SCENE_TYPE
 	RANDOM,
 
 	END
+};
+
+enum class BATTLE_TYPE
+{
+	TURN_COUNT
+	, PLAYER_TURN
+	, SELECT
+	, PLAYER_ATTACK
+	, ITEM
+	, ITEM_SELECT
+	, MONSTER_TURN
+	, MONSTER_DEAD_CHECK
+
+	, END
 };

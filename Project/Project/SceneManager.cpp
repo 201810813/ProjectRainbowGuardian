@@ -8,7 +8,10 @@ shared_ptr<SceneManager> SceneManager::Instance = nullptr;
 
 void SceneManager::Initialize()
 {
-	CurrentScene = new IntroScene;
+	CurrentScene = new MainScene;
+	CurrentScene->makeLayout();
+	/*CurrentScene = new IntroScene;
+	CurrentScene->makeLayout();*/
 }
 
 void SceneManager::tick()
@@ -22,7 +25,7 @@ void SceneManager::tick()
 	//	else {
 	//		currentFloor = 8;
 	//	}
-	//	changeScene(currentFloor); //�� ����
+	//	CacheChangeScene(SCENE_TYPE::SCENE_1F); //�� ����
 	//}
 
 	// ���� ���� tick�� ȣ���Ͽ� ���� ������Ʈ

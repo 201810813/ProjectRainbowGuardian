@@ -1,10 +1,15 @@
-//MainScene.h
 #pragma once
 #include "Scene.h"
 
 class MainScene :
     public Scene
 {
+private:
+    BATTLE_TYPE Cur_BattleType;
+    int Turn_Count;
+    bool bOnce;
+    int CursorPos;
+
 public:
     virtual void makeLayout() override;
 

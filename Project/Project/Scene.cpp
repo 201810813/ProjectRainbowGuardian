@@ -4,6 +4,8 @@
 
 void Scene::begin()
 {
+	// 레이아웃 만드는 거랑
+	// 몬스터 생성 등
 }
 
 void Scene::tick()
