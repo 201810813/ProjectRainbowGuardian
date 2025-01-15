@@ -1,17 +1,16 @@
 #pragma once
-#include "pch.h"
 #include "Monster.h"
 
-class MRedWolf :public Monster {
+class IceHedgehog :public Monster {
 private:
-	MonsterStat			WolfStat;
+	MonsterStat			HedgehogeStat;
 	map<Type, double>	dropItems;
 	int					playerLevel;
 	bool				bDead;
-	
+
 public:
-	MRedWolf();
-	~MRedWolf() override;
+	IceHedgehog();
+	~IceHedgehog() override;
 
 public:
 	void	Attack()				override;

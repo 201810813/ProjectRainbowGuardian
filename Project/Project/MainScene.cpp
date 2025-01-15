@@ -3,7 +3,7 @@
 #include "MainScene.h"
 #include "ConsoleLayout.h"
 #include "KeyManager.h"
-#include "MRedWolf.h"
+#include "FairyFire.h"
 #include "HealthPotion.h"
 #include "PowerPotion.h"
 
@@ -301,7 +301,7 @@ MainScene::MainScene()
     , bOnce(false)
     , CursorPos(0)
 {
-    monster = new MRedWolf();
+    monster = new FairyFire();
 }
 
 MainScene::~MainScene()

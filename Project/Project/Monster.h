@@ -5,6 +5,10 @@
 #include <utility>
 #include "define.h"
 #include "ConsoleLayout.h"
+#include "HealthPotion.h"
+#include "PowerPotion.h"
+#include "RandomManager.h"
+#
 class Player;
 
 
