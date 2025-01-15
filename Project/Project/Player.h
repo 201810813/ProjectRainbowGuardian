@@ -3,6 +3,8 @@
 #include "Monster.h"
 #include <map>
 #include "Item.h"
+#include "define.h"
+#include "ConsoleLayout.h"
 //½Ì±ÛÅæ ÇÃ·¹ÀÌ¾î
 class Monster;
 

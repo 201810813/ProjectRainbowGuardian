@@ -13,9 +13,10 @@ MRedWolf::MRedWolf()
 	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()); 
 	int		def = playerLevel * 2;
  	     		  //이름    hp  maxhp  damage   def  skd   eva drop exp  coin
-	WolfStat = { "RedWolf", Hp,  Hp,   damage,  def,  1.4,  20,  30, 13,   20};
+	WolfStat = { "붉은 늑대", Hp,  Hp,   damage,  def,  1.4,  20,  30, 13,   20};
 	dropItems[HEALTH_POTION] = WolfStat.dropRate;
 	dropItems[POWER_POTION] = WolfStat.dropRate;
+	bDead = false;
 }
 
 MRedWolf::~MRedWolf() {}
@@ -23,7 +24,7 @@ MRedWolf::~MRedWolf() {}
 
 double MRedWolf::UseSkill()
 {
-	cout << GetName() + "가 스킬을 사용합니다!!!!";
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, GetName() + "가 스킬을 사용합니다!!!!", true, 0));
 	return GetDamage() * GetSkillDamage();
 }
 
@@ -34,37 +35,39 @@ void MRedWolf::Attack()
 	RandomManager::GetInstance()->setRange(0, 100);
 	double Trigger = double(playerLevel * RandomManager::GetInstance()->getRandom<int>());
 	//스킬을 쓰면
+	
 	if (Trigger < skillProbability) {
-		double	damage		= UseSkill() - Player::getInstance()->GetDefense();
+		double	damage = UseSkill() - Player::getInstance()->GetDefense();
 		int		probability = Player::getInstance()->GetEvasion();
-		int		trigger		= rand() % 100;
+		int		trigger = rand() % 100;
 		if (probability < trigger) {
 			Player::getInstance()->GetAttack(damage);
-			cout << u8"스킬 공격 히트!\n" << u8"당신의 쳬력: " << Player::getInstance()->GetCurrentHP() << endl;
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트! 당신의 쳬력: " + to_string(int(floor(Player::getInstance()->GetCurrentHP()))), true, 0));
 		}
-		else { cout << u8"적의 스킬 공격을 회피했습니다."; }
+		else {
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 스킬 공격을 회피했습니다.", true, 0));
+		}
 	}
-	//스킬을 아니 쓰면
+		//스킬을 아니 쓰면
 	else {
 		double	damage = GetDamage() - Player::getInstance()->GetDefense();
 		int		probability = Player::getInstance()->GetEvasion();
-		int		trigger		= rand() % 100;
+		int		trigger = rand() % 100;
 		if (probability < trigger) {
-			Player::getInstance()->GetAttack(damage);
-			cout << u8"공격 적중!\n" << u8"당신의 쳬력: " << Player::getInstance()->GetCurrentHP() << endl;
+		Player::getInstance()->GetAttack(damage);
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중!. 당신의 쳬력 : " + to_string(int(floor(Player::getInstance()->GetCurrentHP()))), true, 0));
 		}
-		else { cout << u8"적의 공격을 회피했습니다."; }
+		else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 스킬 공격을 회피했습니다.", true, 0)); }
 	}
+
 }
 
 void MRedWolf::GetAttack()
 {
-	double damage = Player::getInstance()->GetDamage();
+	double damage = Player::getInstance()->GetDamage() - GetDefense();
+	SetCurrentHP(GetCurrentHP() - damage);
 	if (GetCurrentHP() <= 0) {
 		SetCurrentHP(0);
-	}
-	else {
-		SetCurrentHP(damage);
 	}
 }
 
@@ -88,18 +91,21 @@ void MRedWolf::DropItem() {
 
 			if (droppedItem) {
 				Player::getInstance()->AddItemToInventory(droppedItem);  // 플레이어 인벤토리에 아이템 추가
-				std::cout << droppedItem->GetName() << "이(가) 드롭되었습니다.\n";
+				WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, droppedItem->GetName() + "이(가) 드롭되었습니다."));
 			}
 			delete droppedItem;
 		}
 	}
 }
 
-void MRedWolf::Die()
+void MRedWolf::is_Die()
 {
-	cout << "당신이 붉은 늑대를 쓰러트렸습니다!" << endl;
-	DropItem();
-	delete this;
+	if (GetCurrentHP() <= 0) {
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신이 붉은 늑대를 쓰러트렸습니다!", true, 0));
+		DropItem();
+		bDead = true;
+	}
+	bDead = false;
 }
 
 void MRedWolf::Tick()
@@ -125,6 +131,11 @@ const double MRedWolf::GetMaxHP()
 const double MRedWolf::GetDropRate()
 {
 	return WolfStat.dropRate;
+}
+
+const bool MRedWolf::GetbDead()
+{
+	return bDead;
 }
 
 const int MRedWolf::GetCoin()
