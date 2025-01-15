@@ -19,6 +19,7 @@ public:
 		double	damage;
 		int		defense;
 		int		evasion;
+		int		coin;
 		string	name;
 	};
 private:
@@ -42,11 +43,12 @@ public:
 	void GetAttack(double& damage);
 	void Attack(Monster& monster);
 	void gainExp(int exp); //추가
+	void gainCoin(int coin);
 	void levelUp(); //추가
 	bool IsDie(double hp);
 	void AddItemToInventory(Item* item);
 	void ShowInventory();
-	void UseItem(Type type);
+	bool UseItem(Type type);
 	void IncreaseChance();
 
 public:
@@ -56,6 +58,7 @@ public:
 	const int	  GetEvasion();
 	const int	  GetLevel();
 	const double  GetDamage();
+	const int	  GetCoin();
 
 public:
 	void SetCurrentHP(double heal);

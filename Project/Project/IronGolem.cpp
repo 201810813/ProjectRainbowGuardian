@@ -15,10 +15,113 @@ IronGolem::IronGolem()
 	dropItems[HEALTH_POTION] = GolemStat.dropRate;
 	dropItems[POWER_POTION] = GolemStat.dropRate;
 	bDead = false;
+	CreateAnimations();
+	Monster::animator->Play("Idle", true);
 }
 
 IronGolem::~IronGolem() {}
 
+void IronGolem::Begin()
+{
+}
+
+void IronGolem::Tick()
+{
+	Monster::Tick();
+	if (bDead == false && Monster::animator->isCurAnimEnd()) {
+		Monster::animator->Play("Idle", true);
+	}
+}
+
+void IronGolem::CreateAnimations()
+{
+	vector<string> VecAnim01;
+	VecAnim01.push_back("");
+	VecAnim01.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⡔⢓⣺⣆⢀⣤⣴⣷⣾⠃⠈⠹⠷⣳⢾⣤⣤⡀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠔⠎⠉⣤⢶⡹⣺⣏⢏⣶⣻⢾⣽⠃⠀⠀⠀⡁⢏⠖⣧⢻⣛⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡟⠀⡀⣰⡞⢧⣋⠶⣹⣿⠾⣾⣽⣷⣿⡁⠀⠀⡰⠉⠄⡘⠈⠳⣽⢾⣻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡼⣏⣠⣽⣳⣝⡲⣭⣞⡽⠃⢠⡘⢭⡟⣿⣷⣀⡎⣠⠱⣤⣰⢳⢾⣟⣯⢟⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣿⡽⣯⢷⣻⢾⡽⡗⠋⠀⡀⢦⠘⣆⡙⠶⣭⢻⣽⣧⣛⠶⣡⢏⡞⣽⣞⡿⣾⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠴⠿⢿⣯⣿⣽⡾⠉⠀⠠⠐⢈⠦⡙⣤⣎⡷⣞⡿⣞⣿⣬⣳⣭⣞⣼⣳⣿⣿⣿⣷⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("⠀⠀⠀⠀⠀⠀⠀⢀⡔⠉⠀⢀⡤⣼⢯⣿⣷⣖⢧⡤⡴⣬⣷⢿⡾⡽⣽⣏⣷⣯⣿⣿⣿⣿⣿⠟⠣⢸⢧⡝⣮⢹⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("⠀⠀⠀⠀⠀⠀⢰⣍⣤⡰⣌⣶⡿⢯⣟⣾⣻⠟⠳⣞⡵⣫⢾⣛⣾⣽⣷⣿⣾⣿⣿⣻⣾⠛⠋⠠⠁⠎⢎⡷⣊⢷⣻⡦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("⠀⠀⠀⠀⠀⠀⠈⢿⡲⣽⡘⣯⢿⣻⠾⣵⣻⣦⠀⠈⠷⣿⣾⣿⡿⣟⣿⣻⣯⣷⡿⠟⠀⠀⠠⠡⣌⣲⣟⣶⣭⣟⣳⣏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("⠀⠀⠀⠀⠀⠀⠀⠈⣷⡣⡝⣬⢿⣽⣻⣳⢯⡿⣴⣿⡾⣟⣯⣟⣿⡿⣟⣿⣿⣿⠁⠂⠀⣠⢣⡿⣼⢷⣻⡽⢾⣹⠿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡷⡜⣧⢻⡾⣽⣯⣿⣿⣷⣿⣿⣻⡿⣽⣿⣿⡿⣿⣽⠂⣄⣴⣻⢯⢿⣽⣫⢷⣿⠛⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠿⣹⣖⣿⣿⣟⣷⣿⣳⣿⣿⣯⣿⡿⠋⠙⢿⣿⣽⣿⣿⣟⣾⡽⣯⣿⣶⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⢿⣿⣻⣿⣾⣿⣿⣻⣷⣿⡇⠀⠀⠀⠙⠿⣿⣾⣿⠿⣿⣿⣟⣿⣽⢿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠙⠛⠛⠛⠛⠛⠞⠓⠀⠀⠀⠀⠀⠈⠉⠉⠀⠛⠛⠛⠛⠛⠛⠛⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+
+
+	vector<string> VecAnim02;
+	VecAnim02.push_back("");
+	VecAnim02.push_back("");
+	VecAnim02.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠠⣤⢤⡄⠀⢀⣠⣤⣴⡓⠚⢶⣦⣤⣤⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim02.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡤⠲⢉⣡⢴⣺⡷⢶⢫⢿⣽⣻⠄⠀⠀⠀⠛⡼⣫⢟⡷⢶⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim02.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠉⠁⢀⣴⢫⠞⣥⢻⣷⣭⣻⣟⣮⣿⠂⠀⠀⢠⠓⠄⠡⠛⣼⢣⣿⣗⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim02.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⡗⢠⢬⣟⡎⢧⣛⣬⡻⠟⠀⠻⣟⣿⣿⣥⠀⡐⢂⠡⡈⢐⣤⣤⣿⣻⣞⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim02.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣿⣼⢾⣟⡾⣽⣳⣽⠖⠉⠀⡸⡑⡌⠶⣹⢏⡿⣶⣧⢳⡝⣏⠶⣩⣷⣟⡾⣽⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim02.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣨⣿⣾⣻⢾⣽⣳⠯⠁⢀⠠⠑⡴⠱⢌⠳⣌⡿⣼⢯⣿⠳⡼⣌⣳⢓⡾⣽⣿⣽⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim02.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⢠⠒⠁⠀⠙⢛⣿⣾⣧⢤⡄⢀⣀⠸⣴⡽⣞⡿⣽⣻⣭⣟⣿⣿⣷⣿⣿⡿⠟⢻⣝⣻⣛⢷⣾⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim02.push_back("⠀⠀⠀⠀⠀⠀⢀⡖⢁⠠⣀⣜⣿⣻⠷⣯⣿⣷⣯⣛⡼⣛⣯⢿⣝⣯⢷⣻⣼⣿⣿⢿⣻⣿⠟⠉⠄⡩⢞⢶⡩⢞⡿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim02.push_back("⠀⠀⠀⠀⠀⠀⠸⢯⣏⢷⡹⢾⡷⣯⣟⢷⣻⣄⠀⠻⣼⣧⣛⣯⣾⣿⣿⣿⡿⣟⣿⡿⠋⠀⠠⡈⠐⣄⣯⢶⡹⣾⡽⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim02.push_back("⠀⠀⠀⠀⠀⠀⠀⠙⣾⢎⡵⢫⣟⡷⣞⣯⢷⣿⢀⣤⣬⣿⢿⡿⣿⣷⡿⣷⣿⣿⢋⠐⠀⠀⢆⣱⣻⣼⢯⣟⡷⣯⣟⠧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim02.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠙⢾⣘⡳⣞⡿⣽⣞⡿⣾⣿⣿⣯⣟⣿⣟⣿⣾⣿⣿⣿⣻⠄⠀⢠⣽⡾⢯⡷⢯⣟⡾⣽⠓⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim02.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣷⡹⢦⣽⣷⣿⣻⣿⣽⣿⣿⣻⣿⣾⠿⠾⣿⣷⣟⣿⣴⣟⡿⣞⡽⣯⣟⣿⣞⡙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim02.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⠿⣿⣯⣿⣷⣿⣾⣿⣟⣿⣾⡏⠀⠀⠉⢳⣿⣿⣿⢿⣿⣽⣿⡿⣿⣻⡿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim02.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠛⠛⠛⠛⠛⠛⠛⠇⠀⠀⠀⠀⠉⠙⠛⠻⠉⠛⠛⠛⠛⠛⠛⠻⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+
+	vector<vector<string>> AnimInfo;
+	AnimInfo.push_back(VecAnim01);
+	AnimInfo.push_back(VecAnim02);
+	animator->CreateAnimation("idle", AnimInfo, 2, 0.25f);
+
+	vector<string> VecAnim03;
+	VecAnim03.push_back("");
+	VecAnim03.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠦⢴⣤⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim03.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⢀⠀⠀⠀⠀⢀⣸⠄⠀⠘⠉⠿⣹⠶⡷⣤⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim03.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣄⠲⢊⣩⢽⡃⣠⡰⢶⡿⣿⠀⠀⠀⣀⠲⢉⠚⡵⣫⢶⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim03.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠶⠘⠃⣀⣶⢫⣜⠻⡟⣡⢏⣷⣻⢿⣀⠀⢠⠂⣁⠂⢄⣀⣡⣿⣞⡿⣅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim03.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⢀⡰⣼⣙⠦⣏⡼⠟⠻⣿⣿⣾⣟⣿⣿⣰⢥⡲⣴⢺⡜⣭⢛⣷⢯⣻⢿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim03.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⢰⣏⢯⣴⣻⢧⣝⡾⡜⠉⠀⢲⡑⢾⡹⢿⢿⣿⣿⣎⢷⢣⣓⠞⡴⣫⢟⣯⣯⣿⢿⣷⣄⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim03.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⣸⣯⡿⣝⣯⣟⡾⠁⠀⢠⢉⠖⡸⠤⡙⢏⡾⣽⣻⣿⣿⣶⣿⣾⣷⣿⣾⠟⠏⠈⠓⢮⡹⢿⣅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim03.push_back("⠀⠀⠀⠀⣀⣤⣴⡿⣿⢿⣿⣿⣞⠃⢀⠀⠈⠀⣎⡜⣱⣮⣽⣻⣽⡳⣿⣿⣟⣿⡿⣿⣿⠟⠀⠀⠄⢊⣜⣶⢿⣭⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim03.push_back("⠀⠀⠀⡎⠉⡽⣱⣞⣴⣏⢾⣿⣿⣿⡭⣖⢮⡳⣾⣻⡽⣞⣳⡽⣶⣿⣽⣿⣿⣯⣿⡿⠉⠀⠀⢰⣬⢾⡽⣞⣿⢺⡷⣏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim03.push_back("⠀⢀⠛⠀⣼⣳⣟⣾⣿⡾⣯⣿⣷⠏⠙⠯⣞⡵⣫⢷⣻⣽⣷⣿⣿⡿⣟⣿⣾⣿⣟⣿⣁⠀⣸⢯⣟⣯⣽⢻⣼⡿⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim03.push_back("⠠⡜⢡⡘⣾⡷⣿⣟⣾⣿⢿⡟⠀⢠⣤⣴⣿⢿⡿⣿⣿⣻⣽⡿⣷⣿⣿⣿⣿⣳⣿⢯⣿⣾⢯⣟⡾⣵⠟⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim03.push_back("⠨⣇⣦⡿⣽⢿⣯⣿⣿⣾⠋⠀⠀⣿⣿⣻⣾⡿⣿⣻⣷⣿⣯⣿⣿⣽⣾⣿⣿⣿⣿⣿⣿⣿⣿⣾⣯⡉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim03.push_back("⠀⠘⠻⠿⠻⠿⠎⠉⠁⠀⠀⠀⠀⠘⢷⣿⣻⣽⣟⣿⠞⠉⠉⠀⠀⠀⠀⠀⠙⢯⣿⡿⣿⣟⣿⣟⣿⣿⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim03.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣿⣻⣟⣿⣻⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠻⣿⣽⣾⢿⣽⡿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim03.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠟⠛⠛⠛⠛⠛⠛⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠛⠛⠛⠛⠛⠻⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+
+	AnimInfo.clear();
+	AnimInfo.push_back(VecAnim03);
+	Monster::animator->CreateAnimation("Attack", AnimInfo, 1, 0.25f);
+
+	vector<string> VecAnim04;
+	VecAnim04.push_back("");
+	VecAnim04.push_back("");
+	VecAnim04.push_back("");
+	VecAnim04.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡴⣶⣶⣤⣀⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim04.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⠦⠙⣿⡟⡱⣎⣷⣻⣞⡏⠈⠹⣳⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim04.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⡔⠚⠁⡁⣴⠻⣝⣷⣯⣽⣾⣳⣯⠏⠀⠀⠀⢫⣝⡳⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim04.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣲⡉⠀⠀⡀⢦⡟⣭⢛⡴⣿⠋⠙⡿⢿⣿⠀⡀⢤⠘⠢⠘⣹⠳⣞⡻⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim04.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣽⡹⣖⢤⣟⣿⣸⢶⡻⠞⠀⢀⡹⢈⠻⣜⡻⢿⣶⣬⣀⣁⣀⣹⡾⣵⢿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim04.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢾⣷⣹⢾⣻⢾⡽⠛⠁⢀⠐⣌⠲⣉⠖⣬⢹⡷⢾⣽⡧⢫⡍⣿⡽⣯⢿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim04.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⣷⣯⣿⣽⣯⣁⣠⠀⢀⡀⢦⣳⣜⡾⣽⢯⣟⣟⣾⣯⣳⣜⢧⣿⡽⣾⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim04.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⠟⣿⣟⣯⣿⣿⣿⣧⣛⢧⣛⢿⡽⣾⡽⣛⣾⣽⣾⣿⣿⣿⣿⠻⠟⠿⣻⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim04.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡤⠋⠰⣿⢾⡽⣳⣟⢿⣻⣿⣮⣝⣾⣹⣷⣿⡿⡿⠟⠛⠛⠁⠀⠠⠐⡈⢴⣣⢟⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim04.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠰⡍⠀⢀⠑⡸⢟⣽⣳⢯⣟⣯⣷⣿⢿⣿⣿⣿⡿⣷⡖⠈⠀⠀⢀⡤⣥⣦⣹⢎⠧⣯⡼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim04.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢦⣀⠮⣝⡎⢶⡹⣏⣿⡿⣽⣾⡿⢿⣿⡾⣟⣿⣿⡿⣿⣻⢯⡿⣽⣳⢿⣋⣾⠿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim04.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢻⠮⣽⣲⡹⢎⡿⣿⢿⣷⠛⠀⠘⢿⣿⡿⣽⣻⡵⣯⣟⣾⣳⣯⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim04.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠟⠛⠳⠛⠛⠋⠀⠀⠀⠀⠉⠙⠳⠛⠛⠋⠉⠉⠟⠛⠛⠛⠳⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+
+
+	AnimInfo.clear();
+	AnimInfo.push_back(VecAnim03);
+	Monster::animator->CreateAnimation("GetAttack", AnimInfo, 1, 0.25f);
+}	
 
 double IronGolem::UseSkill()
 {
@@ -28,6 +131,7 @@ double IronGolem::UseSkill()
 
 void IronGolem::Attack()
 {
+	Monster::animator->Play("Attack", false);
 	//스킬 쓸확률
 	int skillProbability = 10;
 	RandomManager::GetInstance()->setRange(0, 100);
@@ -58,10 +162,14 @@ void IronGolem::Attack()
 		else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0)); }
 	}
 
+
+
+
 }
 
 void IronGolem::GetAttack()
 {
+	Monster::animator->Play("GetAttack", false);
 	double damage = Player::getInstance()->GetDamage() - GetDefense();
 	SetCurrentHP(GetCurrentHP() - damage);
 	if (GetCurrentHP() <= 0) {
@@ -96,19 +204,20 @@ void IronGolem::DropItem() {
 	}
 }
 
-void IronGolem::is_Die()
+
+
+bool IronGolem::is_Die()
 {
+	Monster::animator->Play("Die", false);
 	if (GetCurrentHP() <= 0) {
 		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신이 붉은 늑대를 쓰러트렸습니다!", true, 0));
 		DropItem();
 		bDead = true;
+		return bDead;
 	}
-	bDead = false;
+	return bDead;
 }
 
-void IronGolem::Tick()
-{
-}
 
 
 //---------------------------------

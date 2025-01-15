@@ -5,7 +5,7 @@
 
 shared_ptr<Player> Player::player = nullptr;
 
-Player::Player() : stat{ 100, 100, 1, 200, 0, 17, 3, 20, "" }, PowerUpChance(0)
+Player::Player() : stat{ 100, 100, 1, 200, 0, 17, 3, 20, 0, "" }, PowerUpChance(0)
 {
 }
 
@@ -81,6 +81,12 @@ void Player::gainExp(int exp) { // 경험치 획득
 	}
 }
 
+void Player::gainCoin(int coin)
+{
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, to_string(coin) + "만큼의 골드를 얻었습니다.", true, 0, TEXT_COLOR_TYPE::ORANGE_INENSITY));
+	stat.coin += coin;
+}
+
 void Player::levelUp() { // 레벨업
 	stat.level++;
 	stat.maxHP += 20;
@@ -131,6 +137,11 @@ const double Player::GetDamage()
 	return stat.damage;
 }
 
+const int Player::GetCoin()
+{
+	return stat.coin;
+}
+
 //----------------------------//
 //          Set함수           //
 //----------------------------//
@@ -171,22 +182,22 @@ void Player::ShowInventory()
 	}
 }
 
-void Player::UseItem(Type type)
+bool Player::UseItem(Type type)
 {
 	if (itemCounts[type] > 0) {
 		Item* item = inventory[type].back();
 		inventory[type].pop_back();  // 아이템 사용 후 제거
 		itemCounts[type]--;  // 아이템 개수 감소
 
-		cout << "아이템 사용: " << item->GetName() << endl;
 		item->Use();  // 아이템 사용
-
 		// 아이템 객체 삭제
 		delete item;
 		item = nullptr;
+		return true;
 	}
 	else {
 		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "해당 아이템이 인벤토리에 없습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
+		return false;
 	}
 }
 
