@@ -57,6 +57,11 @@ void WriteManager::ClearLayout(LAYOUT_TYPE TargetLayout)
     ConsoleLayoutContainer.clear(TargetLayout);
 }
 
+void WriteManager::ClearLayoutAllMessage(LAYOUT_TYPE TargetLayout)
+{
+    ConsoleLayoutContainer.ClearLayoutAllMessage(TargetLayout);
+}
+
 void WriteManager::AddLine(FMessageParam MessageParam)
 {
     ConsoleLayoutContainer.AddLine(MessageParam);
@@ -363,6 +368,20 @@ void FConsoleLayoutContainer::MoveMessageCursor(LAYOUT_TYPE TargetLayout, CURSOR
     default:
         break;
     }
+}
+
+void FConsoleLayoutContainer::ClearLayoutAllMessage(LAYOUT_TYPE TargetLayout)
+{
+    if (LayoutMap.find(TargetLayout) == LayoutMap.end())
+        return;
+
+    FConsoleLayout& ConsoleLayout = LayoutMap.find(TargetLayout)->second;
+
+    for (int i = 0; i < ConsoleLayout.Message.size(); ++i)
+    {
+        ConsoleLayout.Message[i].Message = "";
+    }
+   
 }
 
 void FConsoleLayoutContainer::render()

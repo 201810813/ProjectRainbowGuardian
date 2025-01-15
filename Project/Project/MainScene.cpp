@@ -155,6 +155,7 @@ void MainScene::tick()
             }
 
             /* 셀렉 레이아웃 문자만 삭제할 수 있는 기능 추가해야함.*/
+            WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
             bOnce = false;
         }
 
@@ -234,6 +235,7 @@ void MainScene::tick()
             Cur_BattleType = BATTLE_TYPE::MONSTER_TURN;
 
             /* 셀렉 레이아웃 문자만 삭제할 수 있는 기능 추가해야함.*/
+            WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
             bOnce = false;
         }
 
