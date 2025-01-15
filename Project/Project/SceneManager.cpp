@@ -53,6 +53,26 @@ void SceneManager::tick()
 	changeScene();
 }
 
+void SceneManager::CheckRoomColor(SCENE_TYPE SceneType)
+{
+	if (SCENE_TYPE::SCENE_1F <= SceneType
+		&& SCENE_TYPE::SCENE_7F >= SceneType)
+	{
+		int idx = (int)SceneType - (int)SCENE_TYPE::SCENE_1F;
+		RoomColorCheck[idx] = 1;
+	}
+}
+
+bool SceneManager::Is_AllColorClear()
+{
+	return RoomColorCheck.all();
+}
+
+void SceneManager::CheckRoomColorReset()
+{
+	RoomColorCheck.reset();
+}
+
 void SceneManager::CacheChangeScene(SCENE_TYPE SceneType)
 {
     bChangeScene = true;
