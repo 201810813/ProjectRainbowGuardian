@@ -33,8 +33,8 @@ void Scene1F::makeLayout() {
 
     // Story Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 13, 9, 60);
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🔥 이곳은 붉은 분노의 층입니다.", false, 1, TEXT_COLOR_TYPE::RED));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🐺 화가 잔뜩 난 늑대가 당신에게 욕을 날립니다.", false, 2, TEXT_COLOR_TYPE::WHITE));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🔴 이곳은 붉은 분노의 층입니다.", false, 7, TEXT_COLOR_TYPE::RED));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🔥 불도깨비가 당신에게 불똥을 날립니다.", false, 8, TEXT_COLOR_TYPE::WHITE));
 
     // Select Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 24, 5, 60);

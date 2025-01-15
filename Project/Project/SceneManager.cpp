@@ -11,7 +11,7 @@ void SceneManager::Initialize()
 	//CurrentScene = new MainScene;
     CurrentScene = new IntroScene;
     CurrentScene->makeLayout();
-	currentFloor = 1; // 초기 층 설정
+	currentFloor = 1; // 현재 층 초기화
 	BattleCount = 0; // 배틀 횟수 초기화
 	finalBossDefeated = false; // 최종 보스 전투 초기화
 	randomEventTriggered = false; // 랜덤 이벤트 초기화
@@ -19,11 +19,17 @@ void SceneManager::Initialize()
 
 void SceneManager::tick()
 {
-	if (finalBossDefeated)  return; // 최종 보스 클리어 시 종료
+	if (finalBossDefeated) return; // 최종 보스 클리어 시 종료
 
 	if (IS_TAP(RIGHT)) // 오른쪽 방향키 입력 처리
 	{
-		if (randomEventTriggered) // 랜덤 씬에서 나가기 처리
+		//if (currentFloor == 0) // 마을에서 오른쪽 키 입력 시
+		//{
+		//	cout << "마을에서는 오른쪽 방향키로 이동할 수 없습니다.\n";
+		//	return;
+		//}
+
+		if (randomEventTriggered) // 랜덤 이벤트 종료 처리
 		{
 			randomEventTriggered = false; // 랜덤 이벤트 해제
 			if (currentFloor < 8)
@@ -32,16 +38,21 @@ void SceneManager::tick()
 			}
 			CacheChangeScene(static_cast<SCENE_TYPE>(currentFloor));
 		}
-		else if (BattleCount >= 4 && currentFloor < 8) // 전투 4회 후 랜덤 씬 (8층 제외)
+		else if (BattleCount >= 4 && currentFloor < 8) // 전투 4회 후 랜덤 이벤트 (8층 제외)
 		{
 			CacheChangeScene(SCENE_TYPE::RANDOM);
-			randomEventTriggered = true; // 랜덤 이벤트 트리거
+			randomEventTriggered = true;
 		}
-		else // 배틀 진행
+		else // 일반 배틀 진행
 		{
-			CacheChangeScene(static_cast<SCENE_TYPE>(currentFloor)); // 현재 층의 배틀 씬
+			CacheChangeScene(static_cast<SCENE_TYPE>(currentFloor));
 			BattleCount++;
 		}
+	}
+
+	if (IS_TAP(LEFT))
+	{
+		MoveToScene0F();
 	}
 
 	// 현재 씬의 tick을 호출하여 씬 업데이트
@@ -113,6 +124,10 @@ void SceneManager::changeScene()
 	{
 	case SCENE_TYPE::INTRO:
 		CurrentScene = new IntroScene;
+		break;
+		
+	case SCENE_TYPE::SCENE_0F:
+		CurrentScene = new Scene0F;
 		break;
 
 	case SCENE_TYPE::SCENE_1F:
@@ -194,12 +209,11 @@ void SceneManager::updateMap()
 		}
 		else if (i == currentFloor)
 		{
-			icon = randomEventTriggered ? randomEventIcon : "[⚔️]"; // 현재 층
+			icon = randomEventTriggered ? randomEventIcon : "[🕵️]"; // 현재 층
 			color = TEXT_COLOR_TYPE::WHITE;
 		}
 		else if (i == 8)
 		{
-			
 			if (finalBossDefeated) { // 최종 보스 클리어 시
 				icon = "[🌈]"; // 무지개 아이콘
 				color = TEXT_COLOR_TYPE::SKY_INENSITY;
@@ -249,4 +263,18 @@ void SceneManager::MoveToNextFloor()
 	{
 		cout << "더 이상 이동할 층이 없습니다.\n";
 	}
+}
+
+void SceneManager::MarkFinalBossDefeated()
+{
+	finalBossDefeated = true; // 최종 보스 클리어 상태
+}
+
+void SceneManager::MoveToScene0F()
+{
+	currentFloor = 0; // 0층으로 이동
+	randomEventTriggered = false; // 랜덤 이벤트 해제
+	randomEventIcon = ""; // 랜덤 이벤트 아이콘 초기화
+	CacheChangeScene(SCENE_TYPE::SCENE_0F); // 0층으로 이동
+	updateMap();
 }

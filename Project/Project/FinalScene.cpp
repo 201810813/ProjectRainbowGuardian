@@ -1,6 +1,9 @@
 ﻿#include "pch.h"
 #include "FinalScene.h"
 #include "ConsoleLayout.h"
+#include "KeyManager.h"
+
+
 
 void FinalScene::makeLayout() {
     // Title Layout (8층 제목 설정)
@@ -16,20 +19,25 @@ void FinalScene::makeLayout() {
 
     // Story Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 13, 9, 60);
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🌈 레인보우 드래곤이 나타났습니다!", false, 1, TEXT_COLOR_TYPE::SKY_INENSITY));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "⚔️ 드래곤을 쓰러트리고, 흑백 저주를 풀어야 합니다.", false, 2, TEXT_COLOR_TYPE::SKY_INENSITY));
+
+    if (!finalBossDefeated) {
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🌈레인보우 드래곤이 나타났습니다🐉", false, 5, TEXT_COLOR_TYPE::SKY_INENSITY));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "주인공은 드래곤에게 색을 돌려달라는 소원을 빌었습니다. ", false, 6, TEXT_COLOR_TYPE::WHITE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "아니 근데...모든 색을 먹어 치운 게 드래곤이라고 하네요?! ", false, 7, TEXT_COLOR_TYPE::WHITE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "⚔️ 드래곤을 쓰러트리고, 흑백 저주를 풀어야 합니다.", false, 8, TEXT_COLOR_TYPE::SKY_INENSITY));
+	}
+	else {
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🌈레인보우 드래곤이 쓰러졌습니다🐉", false, 5, TEXT_COLOR_TYPE::SKY_INENSITY));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "드래곤은 주인공에게 색을 돌려주었습니다. ", false, 6, TEXT_COLOR_TYPE::WHITE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "주인공은 마을로 돌아가 색을 되찾았습니다! ", false, 7, TEXT_COLOR_TYPE::WHITE));
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "게임을 클리어했습니다. 감사합니다!", false, 8, TEXT_COLOR_TYPE::SKY_INENSITY));
+    }
 
     // Select Layout (선택지)
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 24, 5, 60);
-    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "1. 공격", false, 0, TEXT_COLOR_TYPE::WHITE));
-    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "2. 방어", false, 1, TEXT_COLOR_TYPE::WHITE));
-    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "3. 스킬", false, 2, TEXT_COLOR_TYPE::WHITE));
-    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "4. 아이템 사용", false, 3, TEXT_COLOR_TYPE::WHITE));
-    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::DRAW, 61, 13, 16, 51);
 
-    // Input Layout (사용자 입력)
-    //WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::INPUT, 0, 28, 1, 60);
-    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::INPUT, "선택: ", true, 0, TEXT_COLOR_TYPE::WHITE));
+	// Draw Layout (그림)
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::DRAW, 61, 13, 16, 51);
 }
 
 void FinalScene::begin() {
@@ -39,10 +47,27 @@ void FinalScene::begin() {
 void FinalScene::tick() {
     // 사용자 입력 처리
     MainScene::tick();
+
+    // 왼쪽 방향키 입력 처리 (임시: 보스 클리어)
+	if (IS_TAP(LEFT))
+	{
+        if (!finalBossDefeated)
+        {
+            finalBossDefeated = true; // 상태 업데이트
+            SceneManager::GetInstance()->MarkFinalBossDefeated();
+            WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::STORY);
+            WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
+            makeLayout(); // 화면 갱신
+        }
+        else
+        {
+            exit(0); // 프로그램 종료
+        }
+	}
+
 }
 
-FinalScene::FinalScene() {
-}
+FinalScene::FinalScene() : finalBossDefeated(false) {}
 
 FinalScene::~FinalScene() {
 }
