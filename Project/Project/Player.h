@@ -28,6 +28,8 @@ private:
 	map<Type, vector<Item*>> inventory; //Drop()에서 받은 객체 포인터 저장.
 	PlayerStat stat;
 	int PowerUpChance;
+	bool bPowerUp;
+	int AddDamage;
 	bool bDead;
 private:
 	Player(const Player&) = delete; //복사생성자,
@@ -60,6 +62,12 @@ public:
 	const int	  GetLevel();
 	const double  GetDamage();
 	const int     GetItemCount();
+	const int	  GetGold();
+	const int	  GetCurrentExp();
+	const int     GetMaxExp();
+	const int	  GetAddDamage();
+
+	bool Is_PowerUp();
 
 public:
 	void SetCurrentHP(double heal);

@@ -7,6 +7,8 @@
 #include "HealthPotion.h"
 #include "PowerPotion.h"
 
+#include <sstream>
+
 void MainScene::makeLayout()
 {
 	// WriteManager::GetInstance()->MakeLayout();
@@ -17,15 +19,7 @@ void MainScene::makeLayout()
 
     // Stat Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STAT, 0, 2, 9, 25);
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "컬러", false, 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::BLACK));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "========================", false, 1, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::BLACK));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "❇️ 레벨     : 1", false, 2, TEXT_COLOR_TYPE::SKY, BACKGROUND_COLOR_TYPE::BLACK));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "⚡ EXP      : 0 / 100", false, 3, TEXT_COLOR_TYPE::SKY));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "🩸 HP       : 100 / 100", false, 4, TEXT_COLOR_TYPE::GREEN));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "🗡️ ATK      : 10", false, 5, TEXT_COLOR_TYPE::RED));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "🛡️ DEF      : 5%", false, 6, TEXT_COLOR_TYPE::BLUE_INENSITY));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "🍀 LUK      : 10%", false, 7, TEXT_COLOR_TYPE::ORANGE));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "💰 GOLD     : 0", false, 8, TEXT_COLOR_TYPE::ORANGE_INENSITY));
+    UpdateStatLayout();
 
     // Map Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::MAP, 104, 2, 9, 8);
@@ -47,6 +41,57 @@ void MainScene::makeLayout()
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::DRAW, 61, 13, 16, 51);
 }
 
+void MainScene::UpdateStatLayout()
+{
+    std::ostringstream oss;
+    Player::getInstance()->GetDamage();
+    Player::getInstance()->GetCurrentHP();
+    
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "컬러", false, 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::BLACK));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "========================", false, 1, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::BLACK));
+    
+    oss.str("");
+    oss.clear();
+    oss << "❇️ 레벨     : " << Player::getInstance()->GetLevel();
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 2, TEXT_COLOR_TYPE::SKY, BACKGROUND_COLOR_TYPE::BLACK));
+
+    oss.str("");
+    oss.clear();
+    oss << "⚡ EXP      : " << Player::getInstance()->GetCurrentExp() << " / " << Player::getInstance()->GetMaxExp();
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 3, TEXT_COLOR_TYPE::SKY));
+
+    oss.str("");
+    oss.clear();
+    oss << "🩸 HP       : " << (int)floor(Player::getInstance()->GetCurrentHP()) << " / " << (int)floor(Player::getInstance()->GetMaxHP());
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 4, TEXT_COLOR_TYPE::GREEN));
+
+    oss.str("");
+    oss.clear();
+    oss << "🗡️ ATK      : " << (int)floor(Player::getInstance()->GetDamage());
+
+    if (Player::getInstance()->Is_PowerUp())
+    {
+        oss << " + " << Player::getInstance()->GetAddDamage();
+    }
+
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 5, TEXT_COLOR_TYPE::RED));
+
+    oss.str("");
+    oss.clear();
+    oss << "🛡️ DEF      : " << (int)floor(Player::getInstance()->GetDefense()) << "%";
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 6, TEXT_COLOR_TYPE::BLUE_INENSITY));
+
+    oss.str("");
+    oss.clear();
+    oss << "🍀 LUK      : " << (int)floor(Player::getInstance()->GetEvasion()) << "%";
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 7, TEXT_COLOR_TYPE::ORANGE));
+
+    oss.str("");
+    oss.clear();
+    oss << "💰 GOLD     : " << (int)floor(Player::getInstance()->GetGold());
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 8, TEXT_COLOR_TYPE::ORANGE_INENSITY));
+}
+
 void MainScene::begin()
 {
     Cur_BattleType = BATTLE_TYPE::TURN_COUNT;
@@ -59,6 +104,7 @@ void MainScene::begin()
 
 void MainScene::tick()
 {
+    UpdateStatLayout();
     string output;
 
     // !!!! 각각 턴이 진행될 때마다 한번씩만 함수가 호출되고, 메세지를 출력해주도록 해야함.

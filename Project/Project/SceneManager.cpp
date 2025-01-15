@@ -8,6 +8,7 @@ shared_ptr<SceneManager> SceneManager::Instance = nullptr;
 
 void SceneManager::Initialize()
 {
+	//CurrentScene = new MainScene;
     CurrentScene = new IntroScene;
     CurrentScene->makeLayout();
 	currentFloor = 1; // 초기 층 설정
