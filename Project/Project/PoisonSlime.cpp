@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "PoisonSlime.h"
 
 
@@ -20,7 +20,8 @@ PoisonSlime::PoisonSlime()
 
 PoisonSlime::~PoisonSlime() {}
 
-void PoisonSlime::Begin() {
+void PoisonSlime::Begin()
+{
 	CreateAnimations();
 	Monster::animator->Play("Idle", true);
 }
@@ -144,6 +145,7 @@ void PoisonSlime::CreateAnimations()
 	Monster::animator->CreateAnimation("Die", AnimInfo, 1, 0.25f);
 }
 
+
 double PoisonSlime::UseSkill()
 {
 	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, GetName() + "가 스킬을 사용합니다!!!!", true, 0, TEXT_COLOR_TYPE::RED));
@@ -165,7 +167,7 @@ void PoisonSlime::Attack()
 		int		trigger = rand() % 100;
 		if (probability < trigger) {
 			Player::getInstance()->GetAttack(damage);
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트! ", true, 0, TEXT_COLOR_TYPE::RED));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트!", true, 0, TEXT_COLOR_TYPE::RED));
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!!!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
 		else {
@@ -230,7 +232,7 @@ bool PoisonSlime::is_Die()
 {
 	if (GetCurrentHP() <= 0) {
 		Monster::animator->Play("Die", false);
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신이 붉은 늑대를 쓰러트렸습니다!", true, 0, TEXT_COLOR_TYPE::BLUE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신이" + GetName() + "를 쓰러트렸습니다!", true, 0, TEXT_COLOR_TYPE::BLUE));
 		DropItem();
 		bDead = true;
 		return bDead;

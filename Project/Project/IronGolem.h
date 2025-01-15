@@ -21,6 +21,7 @@ public:
 	void	DropItem()				override;
 	void	Begin()					override;
 	void    CreateAnimations();
+
 public:
 	//get
 	const string GetName()			override;

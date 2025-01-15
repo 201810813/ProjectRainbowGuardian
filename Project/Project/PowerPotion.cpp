@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "PowerPotion.h"
 #include "Player.h"
 PowerPotion::PowerPotion() : type(POWER_POTION), name("파워 포션"),  effect(5)

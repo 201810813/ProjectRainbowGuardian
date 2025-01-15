@@ -1,6 +1,7 @@
 #pragma once
 #include "MainScene.h"
 #include "EletricMantis.h"
+
 class Scene3F : public MainScene{
 private:
     Monster* mantis;

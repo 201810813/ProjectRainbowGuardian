@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "EletricMantis.h"
 
 
@@ -15,14 +15,15 @@ EletricMantis::EletricMantis()
 	dropItems[HEALTH_POTION] = MantisStat.dropRate;
 	dropItems[POWER_POTION] = MantisStat.dropRate;
 	bDead = false;
-	CreateAnimations();
-	Monster::animator->Play("Idle", true);
+	
 }
 
 EletricMantis::~EletricMantis() {}
 
 void EletricMantis::Begin()
 {
+	CreateAnimations();
+	Monster::animator->Play("Idle", true);
 }
 
 void EletricMantis::Tick()
@@ -144,7 +145,6 @@ void EletricMantis::CreateAnimations()
 }
 
 
-
 double EletricMantis::UseSkill()
 {
 	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, GetName() + "가 스킬을 사용합니다!!!!", true, 0, TEXT_COLOR_TYPE::RED));
@@ -166,7 +166,7 @@ void EletricMantis::Attack()
 		int		trigger = rand() % 100;
 		if (probability < trigger) {
 			Player::getInstance()->GetAttack(damage);
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트! ", true, 0, TEXT_COLOR_TYPE::RED));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트!", true, 0, TEXT_COLOR_TYPE::RED));
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!!!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
 		else {
@@ -183,10 +183,7 @@ void EletricMantis::Attack()
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! ", true, 0, TEXT_COLOR_TYPE::RED));
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
-		else 
-		{ 
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY)); 
-		}
+		else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY)); }
 	}
 
 }
@@ -221,7 +218,7 @@ void EletricMantis::DropItem() {
 
 			if (droppedItem) {
 				Player::getInstance()->AddItemToInventory(droppedItem);  // 플레이어 인벤토리에 아이템 추가
-				WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, droppedItem->GetName() + "이(가) 드롭되었습니다.", true, 0 , TEXT_COLOR_TYPE::GREEN));
+				WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, droppedItem->GetName() + "이(가) 드롭되었습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
 			}
 			delete droppedItem;
 		}
@@ -234,7 +231,7 @@ bool EletricMantis::is_Die()
 {
 	if (GetCurrentHP() <= 0) {
 		Monster::animator->Play("Die", false);
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신이 전기 사마귀를 쓰러트렸습니다!", true, 0, TEXT_COLOR_TYPE::BLUE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신이" + GetName() + "를 쓰러트렸습니다!", true, 0, TEXT_COLOR_TYPE::BLUE));
 		DropItem();
 		bDead = true;
 		return bDead;

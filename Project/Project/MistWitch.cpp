@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "MistWitch.h"
 
 MistWitch::MistWitch()
@@ -18,7 +18,6 @@ MistWitch::MistWitch()
 }
 
 MistWitch::~MistWitch() {}
-
 void MistWitch::Begin()
 {
 	CreateAnimations();
@@ -167,7 +166,7 @@ void MistWitch::Attack()
 		int		trigger = rand() % 100;
 		if (probability < trigger) {
 			Player::getInstance()->GetAttack(damage);
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트! ", true, 0, TEXT_COLOR_TYPE::RED));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트!", true, 0, TEXT_COLOR_TYPE::RED));
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!!!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
 		else {
@@ -218,7 +217,7 @@ void MistWitch::DropItem() {
 
 			if (droppedItem) {
 				Player::getInstance()->AddItemToInventory(droppedItem);  // 플레이어 인벤토리에 아이템 추가
-				WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, droppedItem->GetName() + "이(가) 드롭되었습니다.",true, 0, TEXT_COLOR_TYPE::GREEN));
+				WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, droppedItem->GetName() + "이(가) 드롭되었습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
 			}
 			delete droppedItem;
 		}
@@ -230,7 +229,7 @@ bool MistWitch::is_Die()
 {
 	if (GetCurrentHP() <= 0) {
 		Monster::animator->Play("Die", false);
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신이 " + GetName() + "를 쓰러트렸습니다!", true, 0, TEXT_COLOR_TYPE::BLUE));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신이" + GetName() + "를 쓰러트렸습니다!", true, 0, TEXT_COLOR_TYPE::BLUE));
 		DropItem();
 		bDead = true;
 		return bDead;

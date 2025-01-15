@@ -1,15 +1,13 @@
 #pragma once
 #include "MainScene.h"
-#include "SceneManager.h"
-
 #include "Boss.h"
+#include "SceneManager.h"
 class FinalScene :
     public MainScene
 {
 private:
-	bool finalBossDefeated;
-
 	Monster* dragon;
+	bool finalBossDefeated;
 public:
 	virtual void makeLayout() override;
 	virtual void begin() override;

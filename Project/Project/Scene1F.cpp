@@ -1,4 +1,4 @@
-﻿//Scene1F.cpp
+//Scene1F.cpp
 #include "pch.h"
 #include "Scene1F.h"
 #include "ConsoleLayout.h"
@@ -51,7 +51,7 @@ void Scene1F::makeLayout() {
 void Scene1F::begin() {
 	MainScene::begin();
     makeLayout();
-    fairyfire = new FairyFire();
+    fairy = new FairyFire();
 }
 
 void Scene1F::tick() {
@@ -64,5 +64,5 @@ Scene1F::Scene1F() {
 }
 
 Scene1F::~Scene1F() {
-    delete fairyfire;
+    delete fairy;
 }
