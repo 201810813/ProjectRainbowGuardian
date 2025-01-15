@@ -1,5 +1,6 @@
 #pragma once
 #include "pch.h"
+#include "define.h"
 class Player;
 
 enum Type {

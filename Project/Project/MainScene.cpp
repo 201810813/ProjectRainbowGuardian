@@ -3,6 +3,7 @@
 #include "MainScene.h"
 #include "ConsoleLayout.h"
 #include "KeyManager.h"
+#include "MRedWolf.h"
 
 void MainScene::makeLayout()
 {
@@ -51,8 +52,8 @@ void MainScene::begin()
     Turn_Count = 0;
     bOnce = false;
     CursorPos = 0;
-
     makeLayout();
+    
 }
 
 void MainScene::tick()
@@ -168,8 +169,7 @@ void MainScene::tick()
         {
             output = "당신은 몬스터를 공격했습니다!";
             WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output));
-            output = "몬스터에게 X의 데미지를 입혔습니다!";
-            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output));
+            Player::getInstance()->Attack(*monster);
             bOnce = true;
         }
         if (IS_TAP(ENTER))
@@ -258,11 +258,12 @@ void MainScene::tick()
             // 결과 출력
             // 몬스터가 공격을 했다.
             // 몬스터가 "화염구!!"을 사용했다.
+            
 
             output = "몬스터가 플레이어를 공격합니다..!";
             WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output));
-            output = "플레이어는 120의 피해를 입었습니다!";
-            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output));
+            monster->Attack();
+            
             CursorPos = 0;
             bOnce = true;
         }
@@ -277,9 +278,8 @@ void MainScene::tick()
         // 몬스터 죽었는지 체크 메세지는 불필요
     case BATTLE_TYPE::MONSTER_DEAD_CHECK:
 
-        // 몬스터 is_dead();
+        monster->is_Die();
         Cur_BattleType = BATTLE_TYPE::TURN_COUNT;
-
         break;
 
 
@@ -295,8 +295,12 @@ MainScene::MainScene()
     , bOnce(false)
     , CursorPos(0)
 {
+    monster = new MRedWolf();
 }
 
 MainScene::~MainScene()
 {
+    if (monster != nullptr) {
+        delete monster;
+    }
 }

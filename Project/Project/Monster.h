@@ -3,6 +3,8 @@
 #include "Player.h"
 #include "Item.h"
 #include <utility>
+#include "define.h"
+#include "ConsoleLayout.h"
 class Player;
 
 
@@ -31,12 +33,12 @@ public:
 	Monster();
 	virtual ~Monster();
 public:
-	virtual void Attack() = 0;
-	virtual void GetAttack() = 0;
-	virtual double UseSkill() = 0;
-	virtual void Die() = 0;
-	virtual void Tick() = 0;
-	virtual void DropItem() = 0;
+	virtual void	Attack()		= 0;
+	virtual void	GetAttack()		= 0;
+	virtual double	UseSkill()		= 0;
+	virtual void	is_Die()		= 0;
+	virtual void	Tick()			= 0;
+	virtual void	DropItem()		= 0;
 public:
 	//get fuc
 	virtual const double GetSkillDamage() = 0;
@@ -48,6 +50,7 @@ public:
 	virtual const int	 GetExp()		  = 0;
 	virtual const int	 GetCoin()		  = 0;
 	virtual const int    GetEvasion()	  = 0;
+	virtual const bool   GetbDead()		  = 0;
 	virtual const string GetName()		  = 0;
 	//set fuc
 	virtual void SetCurrentHP(double hp)  = 0;

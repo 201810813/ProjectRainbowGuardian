@@ -4,21 +4,22 @@
 
 class MRedWolf :public Monster {
 private:
-	MonsterStat WolfStat;
-	map<Type, double> dropItems;
-	int playerLevel;
+	MonsterStat			WolfStat;
+	map<Type, double>	dropItems;
+	int					playerLevel;
+	bool				bDead;
 	
 public:
 	MRedWolf();
 	~MRedWolf() override;
 
 public:
-	void	Attack()					override;
-	void	GetAttack()					override;
-	double	UseSkill()					override;
-	void	Die()						override;
-	void	Tick()						override;
-	void	DropItem()					override;
+	void	Attack()				override;
+	void	GetAttack()				override;
+	double	UseSkill()				override;
+	void	is_Die()				override;
+	void	Tick()					override;
+	void	DropItem()				override;
 
 public:
 	//get
@@ -32,6 +33,7 @@ public:
 	const double GetCurrentHP()		override;
 	const double GetMaxHP()			override;
 	const double GetDropRate()		override;
+	const bool   GetbDead()			override;
 	//set
 	void SetCurrentHP(double hp)	override;
 };

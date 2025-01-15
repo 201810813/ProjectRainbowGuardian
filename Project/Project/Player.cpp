@@ -47,15 +47,15 @@ void Player::GetAttack(double& damage)
 
 void Player::Attack(Monster& monster)
 {
-	cout << u8"당신이 공격합니다" << endl;
+
 	int probability = monster.GetEvasion();
 	int trigger = rand() % 100;
 	if (probability < trigger) {
 		
 		monster.GetAttack();
-		cout << u8"공격 적중!\n" << u8"적의 쳬력: " << monster.GetCurrentHP() << endl;
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중!. 적의 체력:" + to_string(round(monster.GetCurrentHP())), true, 0));
 	}
-	else { cout << u8"적이 공격을 회피했습니다."; }
+	else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적이 공격을 회피했습니다.....", true, 0)); }
 	
 }
 
