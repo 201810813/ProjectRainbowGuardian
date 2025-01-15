@@ -14,68 +14,68 @@ void IntroScene::makeLayout()
 
 void IntroScene::MakeIntro()
 {
-	WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STAT, 0, 1, 28, 119);
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::DRAW, 0, 1, 28, 119);
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"    ⠀⠀   ⠀⠀⠀⠀⠀⠀⠀⢸⣿⠙⢻⣶⠀⢴⣟⠊⢳⡧⠀⣿⡂⢵⣟⠊⢳⡧⠀⣿⡎⠓⣷⣶⣿⠎⢳⣷⢼⣾⡄⢸⣾⡂⢰⣿⡀⠀⠀⠀⣾⡞⠑⠛⠎⣾⡧⠀⣷⡇⢰⣷⠋⢺⣷⠀⢷⡟⠘⣷⡇⠀⣿⡎⢓⣿⡆⣳⡇⢠⣷⠋⢚⣷⠀⣳⡟⠘⣳⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, 2));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"    ⠀⠀   ⠀⠀⠀⠀⠀⠀⠀⢸⣿⠴⣾⡛⠀⢸⡷⠤⢼⡯⠀⣿⡂⢽⣗⠀⢸⡯⠀⣿⡖⠦⣿⣹⣿⠅⢸⣿⣪⣿⠆⢸⣿⡂⢸⣿⡀⠀⠀⠀⣿⡏⠀⣤⡄⣿⣗⠀⣿⡏⢸⣿⠥⢴⣿⠀⣿⡷⢢⣿⠃⢀⣿⡇⠠⣿⡇⢾⡇⢨⣿⠤⠴⣿⠀⣽⡇⠀⢾⡧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, 3));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"    ⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⢸⣿⠀⢻⣿⣄⢸⣟⠀⢸⡯⢀⣿⡂⢽⣗⠀⢸⡯⢀⣿⣂⣠⢿⢽⣿⣅⣸⡿⢜⣿⣃⣸⢿⣂⡸⣿⡀⠀⠀⠀⣿⣏⣀⣿⡇⣿⣗⣀⣿⡇⢸⣿⠂⢨⣿⠀⣿⡇⠈⢿⣧⠀⣿⣇⣐⣿⡇⣻⡇⢰⣿⠀⠨⣿⡀⢾⡇⠀⣻⣗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, 4));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⢤⢔⠖⢰⢰⢢⢤⢄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 6));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡔⡎⠇⡃⡅⣆⣕⢼⢠⣕⢬⣘⠸⢹⢢⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 7));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢦⠃⣊⢔⡵⣫⠯⠓⣝⡸⣘⠎⠟⣮⡻⣦⣑⠜⢵⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 8));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠹⢐⡸⣎⠯⠊⠀⠀⢨⣯⡷⣷⣳⠀⠀⠉⢞⡵⣗⢅⢫⢦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 9));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠳⢁⢮⢞⠎⠀⠀⠀⠀⢸⡩⣻⡛⣭⠀⠀⠀⠀⠘⣽⣳⢅⢏⡦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 10));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡎⠇⡜⣵⡋⠀⣀⣴⣟⣿⣼⡫⣮⣗⡽⡽⣿⣤⡀⠀⠸⣺⣳⠨⣺⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 11));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡝⠄⢽⢮⠂⣠⣾⣿⣿⣷⣿⣝⣜⣕⣯⣾⣿⣿⣿⡀⠀⣟⡾⡌⣞⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 12));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢯⢈⠮⢏⣾⣻⣾⢿⣿⢿⣿⣷⣷⣿⣿⣿⣿⣟⣾⣯⣧⢳⣻⠠⣳⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 13));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⢑⣨⣾⣷⡿⣟⣧⣛⣿⣷⣟⢿⣻⢷⣷⡯⣾⣽⢿⢽⣾⡬⡸⠺⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 14));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⣶⣶⣷⢶⣦⣤⣠⣀⡀⡀⣤⣰⣮⣗⢿⣿⣗⣿⣿⣻⡯⣶⢟⣿⣹⣿⣟⣾⣯⣿⢿⣿⣻⣿⣟⣧⢷⣦⣠⢀⣀⣀⣠⣤⣦⡶⣾⣶⡶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 15));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣷⣿⣿⣿⡿⣷⣿⣽⣷⣿⣿⡿⣯⣯⣿⡯⣾⣿⣻⣿⣿⢻⣿⣟⣟⢾⣻⡽⣿⣫⢿⣿⣽⣿⣾⢾⣿⣟⣟⣿⣿⣷⣿⣽⣿⣾⣿⣿⣿⣿⡿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 16));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⢽⣿⣿⣿⣟⣯⣷⣿⣿⣯⣿⣫⣾⣿⣿⣿⣯⢿⣽⣾⢿⣽⣽⣽⢽⣽⣽⣯⢿⣿⣿⢷⣳⢻⢿⡻⣿⣾⣿⣽⣻⣿⣿⣷⣟⣿⣿⣟⣾⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 17));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡾⣿⣿⠟⠛⠻⠑⠉⠟⠹⠛⣻⡎⣗⠑⠻⠟⠀⠘⠙⣻⣟⣿⣫⣟⣿⢿⣟⣯⣟⣾⠏⠁⠈⠺⠏⠛⣝⡻⢞⠛⠉⠫⠁⠙⠟⠙⢿⣽⣿⢯⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 18));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⢿⣯⣟⡁⠀⠀⠀⠀⠀⣀⡔⠊⠈⠀⠀⠀⠀⠀⠀⠀⠉⢹⠛⠛⠺⠿⠝⠚⢻⢿⡟⠓⠀⠀⠀⠀⠀⠈⠈⠸⢢⡄⡀⠀⠀⠀⠀⡘⣝⣾⡿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 19));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⣀⣤⡶⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠓⡶⣄⡀⠀⠈⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 20));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡳⠟⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠹⣷⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 21));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, MoveIndex + 22));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT,
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::DRAW,
 		"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠂⠀⠂⠐⠀⠈⠠⠈⠀⡁⠈⠀⠂⠐⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 		, false, 26));
 }
@@ -159,7 +159,7 @@ void IntroScene::tick()
 		ActionSelect();
 	}
 
-	WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::STAT);
+	WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::DRAW);
 	MoveSymbol();
 	makeLayout();
 

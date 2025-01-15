@@ -51,9 +51,10 @@ enum class LAYOUT_TYPE
 	STAT,
 	MAP,
 	STORY,
+	DRAW,
 	SELECT,
 	INPUT,
-	DRAW,
+
 
 	END
 };

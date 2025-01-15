@@ -1,5 +1,6 @@
 {
   "Version": 1,
+<<<<<<< Updated upstream
   "WorkspaceRootPath": "C:\\Users\\tjfwn\\Desktop\\ProjectRainbowGuardian\\Project\\",
   "Documents": [
     {
@@ -57,6 +58,41 @@
     {
       "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|C:\\Users\\tjfwn\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\Scene7F.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\Scene7F.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+=======
+  "WorkspaceRootPath": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\ShopScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\ShopScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\AltarScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\AltarScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\MainScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\MainScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\SceneManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\SceneManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\SceneManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\SceneManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\define.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\define.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\ConsoleLayout.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F56A6D4F-B903-4010-803F-4A3F6D62935A}|Project\\Project.vcxproj|solutionrelative:Project\\ConsoleLayout.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+>>>>>>> Stashed changes
     }
   ],
   "DocumentGroupContainers": [
@@ -65,6 +101,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
+<<<<<<< Updated upstream
           "DockedWidth": 319,
           "SelectedChildIndex": 1,
           "Children": [
@@ -116,10 +153,66 @@
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-15T11:08:21.136Z",
+=======
+          "DockedWidth": 365,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ShopScene.cpp",
+              "DocumentMoniker": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\ShopScene.cpp",
+              "RelativeDocumentMoniker": "Project\\ShopScene.cpp",
+              "ToolTip": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\ShopScene.cpp",
+              "RelativeToolTip": "Project\\ShopScene.cpp",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAD4AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-15T12:31:39.858Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AltarScene.cpp",
+              "DocumentMoniker": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\AltarScene.cpp",
+              "RelativeDocumentMoniker": "Project\\AltarScene.cpp",
+              "ToolTip": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\AltarScene.cpp",
+              "RelativeToolTip": "Project\\AltarScene.cpp",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-15T12:31:30.138Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainScene.cpp",
+              "DocumentMoniker": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\MainScene.cpp",
+              "RelativeDocumentMoniker": "Project\\MainScene.cpp",
+              "ToolTip": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\MainScene.cpp",
+              "RelativeToolTip": "Project\\MainScene.cpp",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-15T12:12:57.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SceneManager.h",
+              "DocumentMoniker": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\SceneManager.h",
+              "RelativeDocumentMoniker": "Project\\SceneManager.h",
+              "ToolTip": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\SceneManager.h",
+              "RelativeToolTip": "Project\\SceneManager.h",
+              "ViewState": "AgIAADsAAAAAAAAAAAAhwEkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-15T11:55:22.873Z",
+>>>>>>> Stashed changes
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 6,
               "Title": "ConsoleLayout.cpp",
               "DocumentMoniker": "C:\\Users\\tjfwn\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\ConsoleLayout.cpp",
@@ -129,10 +222,42 @@
               "ViewState": "AgIAAMABAAAAAAAAAAAswNwBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-15T11:08:21.227Z"
+=======
+              "DocumentIndex": 4,
+              "Title": "SceneManager.cpp",
+              "DocumentMoniker": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\SceneManager.cpp",
+              "RelativeDocumentMoniker": "Project\\SceneManager.cpp",
+              "ToolTip": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\SceneManager.cpp",
+              "RelativeToolTip": "Project\\SceneManager.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHQAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-15T09:51:59.149Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 173,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "main.cpp",
+              "DocumentMoniker": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\main.cpp",
+              "RelativeDocumentMoniker": "Project\\main.cpp",
+              "ToolTip": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\main.cpp",
+              "RelativeToolTip": "Project\\main.cpp",
+              "ViewState": "AgIAACEAAAAAAAAAAAAmwCcAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-15T02:17:59.041Z",
+              "EditorCaption": ""
+>>>>>>> Stashed changes
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
+<<<<<<< Updated upstream
               "Title": "GameManager.cpp",
               "DocumentMoniker": "C:\\Users\\tjfwn\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\GameManager.cpp",
               "RelativeDocumentMoniker": "Project\\GameManager.cpp",
@@ -231,10 +356,21 @@
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-15T11:08:21.238Z",
+=======
+              "Title": "ConsoleLayout.h",
+              "DocumentMoniker": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\ConsoleLayout.h",
+              "RelativeDocumentMoniker": "Project\\ConsoleLayout.h",
+              "ToolTip": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\ConsoleLayout.h",
+              "RelativeToolTip": "Project\\ConsoleLayout.h",
+              "ViewState": "AgIAAGsAAAAAAAAAAAASwGAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-15T02:17:59.037Z",
+>>>>>>> Stashed changes
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 4,
               "Title": "define.h",
               "DocumentMoniker": "C:\\Users\\tjfwn\\Desktop\\ProjectRainbowGuardian\\Project\\Project\\define.h",
@@ -244,6 +380,18 @@
               "ViewState": "AgIAAF0AAAAAAAAAAAD4v2QAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-01-15T11:08:21.246Z"
+=======
+              "DocumentIndex": 6,
+              "Title": "define.h",
+              "DocumentMoniker": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\define.h",
+              "RelativeDocumentMoniker": "Project\\define.h",
+              "ToolTip": "F:\\GItKraken\\ProjectRainbowGuardian\\Project\\Project\\define.h",
+              "RelativeToolTip": "Project\\define.h",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAAAJQAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-15T02:17:59.048Z",
+              "EditorCaption": ""
+>>>>>>> Stashed changes
             }
           ]
         }

@@ -8,23 +8,24 @@ void FinalScene::makeLayout() {
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::TITLE, "옥탑: 레인보우 드래곤의 층", false, 0, TEXT_COLOR_TYPE::GREEN, BACKGROUND_COLOR_TYPE::SKY_INENSITY));
 
     // Stat Layout
-    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STAT, 0, 2, 8, 25);
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STAT, 0, 2, 9, 25);
 
     // Map Layout
-    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::MAP, 104, 2, 9, 9);
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "08 [🐉]", false, 1, TEXT_COLOR_TYPE::GREEN));
+    //WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::MAP, 104, 2, 9, 8);
+    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "08 [🐉]", false, 1, TEXT_COLOR_TYPE::GREEN));
 
     // Story Layout
-    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 12, 9, 60);
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🌈 레인보우 드래곤이 나타났습니다!", false, 0, TEXT_COLOR_TYPE::SKY_INENSITY));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "⚔️ 드래곤을 쓰러트리고, 흑백 저주를 풀어야 합니다.", false, 1, TEXT_COLOR_TYPE::SKY_INENSITY));
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 13, 9, 60);
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🌈 레인보우 드래곤이 나타났습니다!", false, 1, TEXT_COLOR_TYPE::SKY_INENSITY));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "⚔️ 드래곤을 쓰러트리고, 흑백 저주를 풀어야 합니다.", false, 2, TEXT_COLOR_TYPE::SKY_INENSITY));
 
     // Select Layout (선택지)
-    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 23, 5, 60);
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "1. 공격", false, 0, TEXT_COLOR_TYPE::WHITE));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "2. 방어", false, 1, TEXT_COLOR_TYPE::WHITE));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "3. 스킬", false, 2, TEXT_COLOR_TYPE::WHITE));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "4. 아이템 사용", false, 3, TEXT_COLOR_TYPE::WHITE));
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 24, 5, 60);
+    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "1. 공격", false, 0, TEXT_COLOR_TYPE::WHITE));
+    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "2. 방어", false, 1, TEXT_COLOR_TYPE::WHITE));
+    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "3. 스킬", false, 2, TEXT_COLOR_TYPE::WHITE));
+    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "4. 아이템 사용", false, 3, TEXT_COLOR_TYPE::WHITE));
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::DRAW, 61, 13, 16, 51);
 
     // Input Layout (사용자 입력)
     //WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::INPUT, 0, 28, 1, 60);
@@ -37,26 +38,7 @@ void FinalScene::begin() {
 
 void FinalScene::tick() {
     // 사용자 입력 처리
-    int choice;
-    cin >> choice;
-
-    switch (choice) {
-    case 1:
-        cout << "레인보우 드래곤을 공격했습니다!\n";
-        break;
-    case 2:
-        cout << "드래곤의 공격을 방어했습니다!\n";
-        break;
-    case 3:
-        cout << "강력한 스킬을 사용했습니다!\n";
-        break;
-    case 4:
-        cout << "아이템을 사용했습니다.\n";
-        break;
-    default:
-        cout << "잘못된 선택입니다. 다시 시도해주세요.\n";
-        break;
-    }
+    MainScene::tick();
 }
 
 FinalScene::FinalScene() {

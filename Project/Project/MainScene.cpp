@@ -16,19 +16,19 @@ void MainScene::makeLayout()
 	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::TITLE, "붉은 분노의 층", false, 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::RED));
 
     // Stat Layout
-    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STAT, 0, 2, 8, 25);
-    
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "컬러", false, 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::BLACK));  
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "❇️ 레벨     : 1", false, 1, TEXT_COLOR_TYPE::SKY, BACKGROUND_COLOR_TYPE::BLACK));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "⚡ EXP      : 0 / 100", false, 2, TEXT_COLOR_TYPE::SKY));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "🩸 HP       : 100 / 100", false, 3, TEXT_COLOR_TYPE::GREEN));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "🗡️ ATK      : 10", false, 4, TEXT_COLOR_TYPE::RED));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "🛡️ DEF      : 5%", false, 5, TEXT_COLOR_TYPE::BLUE_INENSITY));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "🍀 LUK      : 10%", false, 6, TEXT_COLOR_TYPE::ORANGE));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "💰 GOLD     : 0", false, 7, TEXT_COLOR_TYPE::ORANGE_INENSITY));
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STAT, 0, 2, 9, 25);
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "컬러", false, 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::BLACK));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "========================", false, 1, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::BLACK));
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "❇️ 레벨     : 1", false, 2, TEXT_COLOR_TYPE::SKY, BACKGROUND_COLOR_TYPE::BLACK));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "⚡ EXP      : 0 / 100", false, 3, TEXT_COLOR_TYPE::SKY));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "🩸 HP       : 100 / 100", false, 4, TEXT_COLOR_TYPE::GREEN));
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "🗡️ ATK      : 10", false, 5, TEXT_COLOR_TYPE::RED));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "🛡️ DEF      : 5%", false, 6, TEXT_COLOR_TYPE::BLUE_INENSITY));
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "🍀 LUK      : 10%", false, 7, TEXT_COLOR_TYPE::ORANGE));
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "💰 GOLD     : 0", false, 8, TEXT_COLOR_TYPE::ORANGE_INENSITY));
 
     // Map Layout
-    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::MAP, 104, 2, 9, 9);
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::MAP, 104, 2, 9, 8);
 
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "08 [🐉]", false, 1, TEXT_COLOR_TYPE::GRAY));
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "07 [❔]", false, 2, TEXT_COLOR_TYPE::GRAY));
@@ -40,12 +40,11 @@ void MainScene::makeLayout()
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "01 [⚔️]", false, 8, TEXT_COLOR_TYPE::RED));
 
     // Story Layout
-    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 12, 9, 60);
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 13, 9, 60);
 
     // Select Layout
-    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 23, 5, 60);
-
-    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::DRAW, 61, 12, 17, 58);
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 24, 5, 60);
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::DRAW, 61, 13, 16, 51);
 }
 
 void MainScene::begin()
@@ -75,7 +74,7 @@ void MainScene::tick()
         {
             Turn_Count++;
             output = "현재 턴 : " + to_string(Turn_Count);
-            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output));
+            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output, true, 0, TEXT_COLOR_TYPE::GREEN));
             bOnce = true;
         }
 
@@ -94,7 +93,7 @@ void MainScene::tick()
         if (!bOnce)
         {
             output = "플레이어의 턴!!";
-            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output));
+            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output, true, 0, TEXT_COLOR_TYPE::SKY_INENSITY));
             bOnce = true;
         }
 

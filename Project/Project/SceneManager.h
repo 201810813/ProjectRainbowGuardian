@@ -51,8 +51,11 @@ private:
 	int			currentFloor;
 
 	bool		bChangeScene;
+	bool     finalBossDefeated;
+	bool		randomEventTriggered; // 랜덤 이벤트 트리거
 	SCENE_TYPE	NextSceneType;
 	int			BattleCount;
+	string  randomEventIcon; // 랜덤 이벤트 아이콘
 
 public:
 	void Initialize();
@@ -64,4 +67,10 @@ public:
 	void RandomCreateScene();
 
 	void changeScene(); //씬 변경 메서드
+	void updateMap(); //맵 업데이트 메서드
+
+	TEXT_COLOR_TYPE getColorForFloor(int floor);
+
+	void MoveToNextFloor(); // 다음 층으로 이동
+
 };
