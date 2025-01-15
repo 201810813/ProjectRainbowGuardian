@@ -28,6 +28,8 @@ private:
 	map<Type, vector<Item*>> inventory; //Drop()���� ���� ��ü ������ ����.
 	PlayerStat stat;
 	int PowerUpChance;
+	bool bPowerUp;
+	int AddDamage;
 	bool bDead;
 private:
 	Player(const Player&) = delete; //���������,
@@ -62,6 +64,12 @@ public:
 	const double  GetDamage();
 	const int	  GetCoin();
 	const int     GetItemCount();
+	const int	  GetGold();
+	const int	  GetCurrentExp();
+	const int     GetMaxExp();
+	const int	  GetAddDamage();
+
+	bool Is_PowerUp();
 
 public:
 	void SetCurrentHP(double heal);
