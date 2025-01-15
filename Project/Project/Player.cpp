@@ -5,9 +5,8 @@
 
 shared_ptr<Player> Player::player = nullptr;
 
-Player::Player() : stat{ 100, 100, 1, 200, 0, 17, 3, 20, "" }
+Player::Player() : stat{ 100, 100, 1, 200, 0, 17, 3, 20, "" }, PowerUpChance(0)
 {
-	
 }
 
 Player::~Player()
@@ -47,16 +46,26 @@ void Player::GetAttack(double& damage)
 
 void Player::Attack(Monster& monster)
 {
+	RandomManager::GetInstance()->setRange(0, 100);
+	int probability = RandomManager::GetInstance()->getRandom<double>();
+	int trigger = monster.GetEvasion();
+	// 공격 성공
+	if (trigger <= probability) {
+		if (PowerUpChance > 0) {
 
-	int probability = monster.GetEvasion();
-	int trigger = rand() % 100;
-	if (trigger >= probability) {
-		// 공격 성공
-		int damage = GetDamage();        // 플레이어 데미지 가져오기
-		monster.GetAttack();         // 몬스터 체력 감소
+			int damage = GetDamage() + 5;        // 플레이어 데미지 가져오기
+			PowerUpChance--;
+			monster.GetAttack();         // 몬스터 체력 감소
+			// 성공 메시지 출력
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중! 데미지: " + to_string(damage), true, 0));
+		}
+		else {
+			int damage = GetDamage();        // 플레이어 데미지 가져오기
+			monster.GetAttack();         // 몬스터 체력 감소
 
-		// 성공 메시지 출력
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중! 데미지: " + to_string(damage), true, 0));
+			// 성공 메시지 출력
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중! 데미지: " + to_string(damage), true, 0));
+		}
 	}
 	else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적이 공격을 회피했습니다.....", true, 0)); }
 	
@@ -147,17 +156,17 @@ void Player::AddItemToInventory(Item* item)
 {
 	inventory[item->GetType()].push_back(item);
 	itemCounts[item->GetType()]++;
-	cout << item->GetName() << "이 추가되었습니다." << endl;
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, item->GetName() + "이 추가되었습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
 }
 
 void Player::ShowInventory()
 {
 	if (inventory.empty()) {
-		cout << "인벤토리가 비어있습니다." << endl;
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "인벤토리가 비어있습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
 	}
 	else {
 		for (const auto& item : inventory) {
-			cout << item.first << "아이템이" << item.second.size() << "개 있습니다." << endl;
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, item.first + "아이템이" + to_string(item.second.size()) + "개 있습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
 		}
 	}
 }
@@ -177,7 +186,12 @@ void Player::UseItem(Type type)
 		item = nullptr;
 	}
 	else {
-		cout << "해당 아이템이 인벤토리에 없습니다.\n";
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "해당 아이템이 인벤토리에 없습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
 	}
+}
+
+void Player::IncreaseChance()
+{
+	PowerUpChance++;
 }
 

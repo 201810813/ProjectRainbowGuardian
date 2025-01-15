@@ -88,10 +88,10 @@ void FairyFire::DropItem() {
 			}
 
 			if (droppedItem) {
+				
 				Player::getInstance()->AddItemToInventory(droppedItem);  // 플레이어 인벤토리에 아이템 추가
 				WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, droppedItem->GetName() + "이(가) 드롭되었습니다."));
 			}
-			delete droppedItem;
 		}
 	}
 }
