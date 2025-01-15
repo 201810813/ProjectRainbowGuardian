@@ -133,29 +133,29 @@ void ShopScene::handlePurchase()
 
 void ShopScene::handleSell()
 {
-//    Player* player = Player::GetInstance();
-//
-//    if (player->IsInventoryEmpty())
-//    {
-//        cout << "판매할 아이템이 없습니다.\n";
-//        return;
-//    }
-//
-//    player->DisplayInventory();
-//    cout << "판매할 아이템 번호를 선택하세요: ";
-//    int itemIndex;
-//    cin >> itemIndex;
-//
-//    if (player->SellItem(itemIndex))
-//    {
-//        cout << "아이템을 성공적으로 판매했습니다!\n";
-//    }
-//    else
-//    {
-//        cout << "잘못된 선택입니다.\n";
-//    }
-//
-    makeLayout();
+    //Player* player = Player::GetInstance();
+    //
+    //if (player->IsInventoryEmpty())
+    //{
+    //    cout << "판매할 아이템이 없습니다.\n";
+    //    return;
+    //}
+    //
+    //player->DisplayInventory();
+    //cout << "판매할 아이템 번호를 선택하세요: ";
+    //int itemIndex;
+    //cin >> itemIndex;
+    //
+    //if (player->SellItem(itemIndex))
+    //{
+    //    cout << "아이템을 성공적으로 판매했습니다!\n";
+    //}
+    //else
+    //{
+    //    cout << "잘못된 선택입니다.\n";
+    //}
+    //
+    //makeLayout();
 }
 
 void ShopScene::handleExit() // 상점 나가기

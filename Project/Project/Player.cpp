@@ -5,8 +5,9 @@
 
 shared_ptr<Player> Player::player = nullptr;
 
-Player::Player() : stat{ 100, 100, 1, 200, 0, 17, 3, 20, "" }, PowerUpChance(0)
+Player::Player() : stat{ 100, 100, 1, 200, 0, 17, 3, 20, 0, 0, ""}, PowerUpChance(0), bDead(false)
 {
+
 }
 
 Player::~Player()
@@ -57,14 +58,16 @@ void Player::Attack(Monster& monster)
 			PowerUpChance--;
 			monster.GetAttack();         // 몬스터 체력 감소
 			// 성공 메시지 출력
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중! 데미지: " + to_string(damage), true, 0));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중!", true, 0));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(damage) + "가 들어갔습니다.", true, 0));
 		}
 		else {
 			int damage = GetDamage();        // 플레이어 데미지 가져오기
 			monster.GetAttack();         // 몬스터 체력 감소
 
 			// 성공 메시지 출력
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중! 데미지: " + to_string(damage), true, 0));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중!", true, 0));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(damage) + "가 들어갔습니다.", true, 0));
 		}
 	}
 	else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적이 공격을 회피했습니다.....", true, 0)); }
@@ -73,9 +76,9 @@ void Player::Attack(Monster& monster)
 
 void Player::gainExp(int exp) { // 경험치 획득
 	stat.currentexp += exp;
-	cout << stat.name << u8"이(가) " << exp << u8"의 경험치를 획득했습니다!" << endl;
 
-	while (stat.currentexp >= 100) {
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, ("플레이어가 " + to_string(exp) + "의 경험치를 획득했습니다!"), true, 0));
+	if (stat.currentexp >= 100) {
 		stat.currentexp = 0;
 		levelUp();
 	}
@@ -85,16 +88,17 @@ void Player::levelUp() { // 레벨업
 	stat.level++;
 	stat.maxHP += 20;
 	stat.damage += 5;
-	cout << stat.name << u8"이(가) 레벨 업! 현재 레벨: " << stat.level << endl;
-	cout << u8"최대 체력과 공격력이 증가했습니다!" << endl;
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, ("레벨 업! 현재 레벨: " + stat.level), true, 0));
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "최대 체력과 공격력이 증가했습니다!" ,true, 0));
 }
 
-bool Player::IsDie(double hp)
+bool Player::IsDie()
 {
 	if (stat.currentHP < 0) {
-		return true;
+		bDead = true;
+		return bDead;
 	}
-	else return false;
+	else return bDead;
 }
 
 
@@ -130,6 +134,12 @@ const double Player::GetDamage()
 {
 	return stat.damage;
 }
+
+const int Player::GetItemCount()
+{
+	return stat.itemCount;
+}
+
 
 //----------------------------//
 //          Set함수           //

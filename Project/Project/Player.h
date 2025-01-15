@@ -19,6 +19,8 @@ public:
 		double	damage;
 		int		defense;
 		int		evasion;
+		int		gold;
+		int		itemCount;
 		string	name;
 	};
 private:
@@ -26,6 +28,7 @@ private:
 	map<Type, vector<Item*>> inventory; //Drop()에서 받은 객체 포인터 저장.
 	PlayerStat stat;
 	int PowerUpChance;
+	bool bDead;
 private:
 	Player(const Player&) = delete; //복사생성자,
 	Player& operator=(const Player&) = delete;  //대입연산자 제거.
@@ -43,7 +46,7 @@ public:
 	void Attack(Monster& monster);
 	void gainExp(int exp); //추가
 	void levelUp(); //추가
-	bool IsDie(double hp);
+	bool IsDie();
 	void AddItemToInventory(Item* item);
 	void ShowInventory();
 	void UseItem(Type type);
@@ -56,6 +59,7 @@ public:
 	const int	  GetEvasion();
 	const int	  GetLevel();
 	const double  GetDamage();
+	const int     GetItemCount();
 
 public:
 	void SetCurrentHP(double heal);

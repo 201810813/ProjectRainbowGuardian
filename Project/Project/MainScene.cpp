@@ -169,7 +169,7 @@ void MainScene::tick()
         if (!bOnce)
         {
             output = "당신은 몬스터를 공격했습니다!";
-            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output));
+            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output, true, 0, TEXT_COLOR_TYPE::RED));
             Player::getInstance()->Attack(*monster);
             bOnce = true;
         }
@@ -188,7 +188,7 @@ void MainScene::tick()
         if (!bOnce)
         {
             output = "당신은 가방을 열었습니다!";
-            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output));
+            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output, true, 0, TEXT_COLOR_TYPE::ORANGE));
             output = "어느 아이템을 사용하실 건가요?";
             WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output));
             CursorPos = 0;
@@ -262,7 +262,7 @@ void MainScene::tick()
             
 
             output = "몬스터가 플레이어를 공격합니다..!";
-            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output));
+            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output, true, 0, TEXT_COLOR_TYPE::RED));
             monster->Attack();
             
             CursorPos = 0;
