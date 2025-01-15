@@ -4,6 +4,11 @@ class Scene{
 private:
 	string SceneName; //씬 이름
 
+	//BATTLE_TYPE Cur_BattleType;
+	int Turn_Count;
+	bool bOnce;
+	int CursorPos;
+
 public:
 	virtual void makeLayout() = 0; //순수 가상함수
 	virtual void begin(); 

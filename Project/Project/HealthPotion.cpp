@@ -21,7 +21,7 @@ string HealthPotion::GetName()
 void HealthPotion::Use()
 {
     Player::getInstance()->SetCurrentHP(effect);
-    cout << "현재 체력: " << Player::getInstance()->GetCurrentHP();
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력을 30 회복합니다", true, 0, TEXT_COLOR_TYPE::GREEN));
 }
 
 Type HealthPotion::GetType()

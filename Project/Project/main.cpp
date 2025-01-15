@@ -4,7 +4,7 @@
 #include "KeyManager.h"
 #include "SceneManager.h"
 #include "Player.h"
-#include "MRedWolf.h"
+#include "FairyFire.h"
 
 BOOL WINAPI ConsoleHandler(DWORD signal) {
 	if (signal == CTRL_CLOSE_EVENT) {
@@ -31,7 +31,11 @@ int main()
 	bool bonce = false;
 	bool is_enter = false;
 
+	//while (!GameManager::GetInstance()->IsGameEnd()){
+	//	GameManager::GetInstance()->tick();
+
 	while (!GameManager::GetInstance()->IsGameEnd()){
+
 		GameManager::GetInstance()->tick();
 
 		//if (IS_TAP(ENTER)) { GameManager::GetInstance()->EndGame(); } //게임 종료

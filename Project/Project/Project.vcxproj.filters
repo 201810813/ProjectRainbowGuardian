@@ -1,19 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-<<<<<<< HEAD
+    <ClCompile Include="AltarScene.cpp" />
     <ClCompile Include="ConsoleLayout.cpp" />
     <ClCompile Include="FinalScene.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="IntroScene.cpp" />
     <ClCompile Include="KeyManager.cpp" />
-    <ClCompile Include="HealthPosion.cpp" />
+    <ClCompile Include="HealthPotion.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="Monster.cpp" />
-    <ClCompile Include="MRedWolf.cpp" />
+    <ClCompile Include="FairyFire.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PowerPotion.cpp" />
     <ClCompile Include="RandomManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene1F.cpp" />
@@ -24,25 +25,35 @@
     <ClCompile Include="Scene6F.cpp" />
     <ClCompile Include="Scene7F.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="ShopScene.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="AltarScene.cpp" />
-    <ClCompile Include="ShopScene.cpp" />
+    <ClCompile Include="IronGolem.cpp" />
+    <ClCompile Include="EletricMantis.cpp" />
+    <ClCompile Include="PoisonSlime.cpp" />
+    <ClCompile Include="IceHedgehog.cpp" />
+    <ClCompile Include="MistWitch.cpp" />
+    <ClCompile Include="Rtan.cpp" />
+    <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Animator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AltarScene.h" />
     <ClInclude Include="ConsoleLayout.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="FinalScene.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="IntroScene.h" />
     <ClInclude Include="KeyManager.h" />
-    <ClInclude Include="HealthPosion.h" />
+    <ClInclude Include="HealthPotion.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="Monster.h" />
-    <ClInclude Include="MRedWolf.h" />
+    <ClInclude Include="FairyFire.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PowerPotion.h" />
     <ClInclude Include="RandomManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene1F.h" />
@@ -53,337 +64,17 @@
     <ClInclude Include="Scene6F.h" />
     <ClInclude Include="Scene7F.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="ShopScene.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Timer.h" />
-    <ClInclude Include="AltarScene.h" />
-    <ClInclude Include="ShopScene.h" />
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <ClCompile Include="main.cpp" />
-=======
-=======
->>>>>>> origin/Monster
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="소스 파일\Manager">
-      <UniqueIdentifier>{84670161-f8d9-41db-9817-2e57a3ff35e8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Manager\GameManager">
-      <UniqueIdentifier>{1284ce1e-e691-4063-8df3-8e4b318440f5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Manager\ConsoleLayout">
-      <UniqueIdentifier>{29a688e1-9174-46d3-8799-092a941a795e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Monster">
-      <UniqueIdentifier>{b3e0de2d-184a-4b2b-9561-df8348a4f74b}</UniqueIdentifier>
-    </Filter>
-<<<<<<< Updated upstream
-    <Filter Include="소스 파일\Manager\KeyManager">
-      <UniqueIdentifier>{3bc2ec7d-d1cf-4ab4-af2e-2875a7305b54}</UniqueIdentifier>
-=======
-    <Filter Include="소스 파일\Player">
-      <UniqueIdentifier>{d8cc1917-304b-41b9-a6ec-d9ee9c5fe4d9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Manager\TimeManager">
-      <UniqueIdentifier>{2ce4ab4b-e021-48ea-9258-1ef5559b8523}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Manager\RandomManager">
-      <UniqueIdentifier>{fb1b5885-bd33-464b-ad37-76226ddf24d1}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-<<<<<<< HEAD
->>>>>>> origin/Monster
-=======
->>>>>>> origin/Monster
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Manager\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="ConsoleLayout.cpp">
-      <Filter>Manager\ConsoleLayout</Filter>
-    </ClCompile>
-    <ClCompile Include="KeyManager.cpp">
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <Filter>Manager\KeyManager</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomManager.cpp">
-      <Filter>Manager\RandomManager</Filter>
-    </ClCompile>
-    <ClCompile Include="TimeManager.cpp">
-      <Filter>Manager\TimeManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>Manager\TimeManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster.cpp">
-      <Filter>Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="MRedWolf.cpp">
-      <Filter>Monster\RedWolf</Filter>
-    </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>Item</Filter>
-    </ClCompile>
-    <ClCompile Include="HealthPotion.cpp">
-      <Filter>Item\HealthPosion</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Player</Filter>
-=======
-      <Filter>소스 파일\Manager\KeyManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>소스 파일\Manager\TimeManager</Filter>
-=======
-      <Filter>소스 파일\Manager\KeyManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Player</Filter>
->>>>>>> origin/Monster
-    </ClCompile>
-    <ClCompile Include="TimeManager.cpp">
-      <Filter>소스 파일\Manager\TimeManager</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomManager.cpp">
-      <Filter>소스 파일\Manager\RandomManager</Filter>
-<<<<<<< HEAD
->>>>>>> origin/Monster
-    </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>Manager\SceneManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="IntroScene.cpp">
-      <Filter>Scene\IntroScene</Filter>
-    </ClCompile>
-    <ClCompile Include="MainScene.cpp">
-      <Filter>Scene\MainScene</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene1F.cpp">
-      <Filter>Scene\Scene1F</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene2F.cpp">
-      <Filter>Scene\Scene2F</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene3F.cpp">
-      <Filter>Scene\Scene3F</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene4F.cpp">
-      <Filter>Scene\Scene4F</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene5F.cpp">
-      <Filter>Scene\Scene5F</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene6F.cpp">
-      <Filter>Scene\Scene6F</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene7F.cpp">
-      <Filter>Scene\Scene7F</Filter>
-    </ClCompile>
-    <ClCompile Include="FinalScene.cpp">
-      <Filter>Scene\FinalScene</Filter>
-    </ClCompile>
-    <ClCompile Include="PowerPotion.cpp">
-      <Filter>Item\PowerPosion</Filter>
-=======
->>>>>>> origin/Monster
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="GameManager.h">
-      <Filter>Manager\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="ConsoleLayout.h">
-      <Filter>Manager\ConsoleLayout</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyManager.h">
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <Filter>Manager\KeyManager</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomManager.h">
-      <Filter>Manager\RandomManager</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeManager.h">
-      <Filter>Manager\TimeManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>Manager\TimeManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster.h">
-      <Filter>Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="MRedWolf.h">
-      <Filter>Monster\RedWolf</Filter>
-    </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Item</Filter>
-    </ClInclude>
-    <ClInclude Include="HealthPotion.h">
-      <Filter>Item\HealthPosion</Filter>
-=======
-      <Filter>소스 파일\Manager\KeyManager</Filter>
->>>>>>> origin/Monster
-    </ClInclude>
-    <ClInclude Include="define.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Player.h">
-      <Filter>Player</Filter>
-=======
-      <Filter>소스 파일\Manager\KeyManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>소스 파일\Manager\TimeManager</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeManager.h">
-      <Filter>소스 파일\Manager\TimeManager</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomManager.h">
-      <Filter>소스 파일\Manager\RandomManager</Filter>
->>>>>>> origin/Monster
-    </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>Manager\SceneManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="IntroScene.h">
-      <Filter>Scene\IntroScene</Filter>
-    </ClInclude>
-    <ClInclude Include="MainScene.h">
-      <Filter>Scene\MainScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene1F.h">
-      <Filter>Scene\Scene1F</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene2F.h">
-      <Filter>Scene\Scene2F</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene3F.h">
-      <Filter>Scene\Scene3F</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene4F.h">
-      <Filter>Scene\Scene4F</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene5F.h">
-      <Filter>Scene\Scene5F</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene6F.h">
-      <Filter>Scene\Scene6F</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene7F.h">
-      <Filter>Scene\Scene7F</Filter>
-    </ClInclude>
-    <ClInclude Include="FinalScene.h">
-      <Filter>Scene\FinalScene</Filter>
-    </ClInclude>
-    <ClInclude Include="PowerPotion.h">
-      <Filter>Item\PowerPosion</Filter>
-=======
-    <ClInclude Include="RandomManager.h">
-      <Filter>소스 파일\Manager\RandomManager</Filter>
->>>>>>> origin/Monster
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Manager">
-      <UniqueIdentifier>{5caa610e-76a5-415d-b3e3-bf72985eac17}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Manager\GameManager">
-      <UniqueIdentifier>{04777da8-a2fb-4ffd-bf45-cad0e4f94a06}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Manager\ConsoleLayout">
-      <UniqueIdentifier>{c804832d-7173-45ff-8c59-6ad87f5bd2e8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Manager\KeyManager">
-      <UniqueIdentifier>{124f6ce7-fda2-4a01-ab3b-b980530ea2f2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Manager\RandomManager">
-      <UniqueIdentifier>{1525caa6-c12d-4599-8585-8198aae358fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Manager\TimeManager">
-      <UniqueIdentifier>{e7b7fea6-1373-4406-9300-bf49c922cb6c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Monster">
-      <UniqueIdentifier>{4698aa7f-a73f-4f1a-83de-f1b79a95d07d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Monster\RedWolf">
-      <UniqueIdentifier>{933628b4-cadd-4575-a27c-be3cff976f28}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Item">
-      <UniqueIdentifier>{29bae90a-59f2-4a16-8ec6-1114f72f1a7a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Item\HealthPosion">
-      <UniqueIdentifier>{e34a59ef-8ce5-400b-ac75-af76f7a9add7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header">
-      <UniqueIdentifier>{b0d06178-c3ed-46bc-bb5a-ee2c715196cd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Player">
-      <UniqueIdentifier>{0e12e3ad-ee48-455f-b661-dca414914474}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Manager\SceneManager">
-      <UniqueIdentifier>{4b5b50a5-b8d4-42d9-ae1f-4870785bc251}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene">
-      <UniqueIdentifier>{ed8e85de-b30b-4510-8e8f-83d77b056dc1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\IntroScene">
-      <UniqueIdentifier>{0ce856d7-b09c-4629-90db-48f55bedb8f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\MainScene">
-      <UniqueIdentifier>{b72ee448-27d6-48a7-8af7-78b388bd447e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Scene1F">
-      <UniqueIdentifier>{251f19a0-87e1-4061-9e9a-726b2a756b8c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Scene2F">
-      <UniqueIdentifier>{1acbbfd0-e44e-4832-b4e2-6839298d7ecc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Scene3F">
-      <UniqueIdentifier>{b156f74f-800d-40ad-a51b-ea699ba50747}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Scene4F">
-      <UniqueIdentifier>{c4627b2d-ebff-4d3d-89b3-bb04a73aa08e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Scene5F">
-      <UniqueIdentifier>{645c3656-545c-41c2-9356-f92b9e1c0b3c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Scene6F">
-      <UniqueIdentifier>{9d440eff-74a4-4d3e-94cb-d6c80210a3ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Scene7F">
-      <UniqueIdentifier>{a3877a75-bd47-4e00-be75-c094e2d912f6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\FinalScene">
-      <UniqueIdentifier>{fc7d3e60-762d-4b77-84a1-da615652fe1f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Item\PowerPosion">
-      <UniqueIdentifier>{a05a0fbf-169b-46c9-80c2-f6d70cddcadf}</UniqueIdentifier>
-    </Filter>
->>>>>>> origin/main
+    <ClInclude Include="IronGolem.h" />
+    <ClInclude Include="EletricMantis.h" />
+    <ClInclude Include="PoisonSlime.h" />
+    <ClInclude Include="IceHedgehog.h" />
+    <ClInclude Include="MistWitch.h" />
+    <ClInclude Include="Rtan.h" />
+    <ClInclude Include="Boss.h" />
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="Animator.h" />
   </ItemGroup>
 </Project>

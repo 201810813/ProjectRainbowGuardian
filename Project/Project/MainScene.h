@@ -1,7 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include "Monster.h"
-class MRedWolf;
+class FairyFire;
 
 class MainScene :
     public Scene
