@@ -50,10 +50,13 @@ void Player::Attack(Monster& monster)
 
 	int probability = monster.GetEvasion();
 	int trigger = rand() % 100;
-	if (probability < trigger) {
-		
-		monster.GetAttack();
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중!. 적의 체력:" + to_string(round(monster.GetCurrentHP())), true, 0));
+	if (trigger >= probability) {
+		// 공격 성공
+		int damage = GetDamage();        // 플레이어 데미지 가져오기
+		monster.GetAttack();         // 몬스터 체력 감소
+
+		// 성공 메시지 출력
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중! 데미지: " + to_string(damage), true, 0));
 	}
 	else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적이 공격을 회피했습니다.....", true, 0)); }
 	
@@ -61,7 +64,7 @@ void Player::Attack(Monster& monster)
 
 void Player::gainExp(int exp) { // 경험치 획득
 	stat.currentexp += exp;
-	cout << stat.name << "이(가) " << " 50 " << "의 경험치를 획득했습니다!" << endl;
+	cout << stat.name << u8"이(가) " << exp << u8"의 경험치를 획득했습니다!" << endl;
 
 	while (stat.currentexp >= 100) {
 		stat.currentexp = 0;
@@ -73,8 +76,8 @@ void Player::levelUp() { // 레벨업
 	stat.level++;
 	stat.maxHP += 20;
 	stat.damage += 5;
-	cout << stat.name << "이(가) 레벨 업! 현재 레벨: " << stat.level << endl;
-	cout << "최대 체력과 공격력이 증가했습니다!" << endl;
+	cout << stat.name << u8"이(가) 레벨 업! 현재 레벨: " << stat.level << endl;
+	cout << u8"최대 체력과 공격력이 증가했습니다!" << endl;
 }
 
 bool Player::IsDie(double hp)

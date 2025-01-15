@@ -4,6 +4,8 @@
 #include "ConsoleLayout.h"
 #include "KeyManager.h"
 #include "MRedWolf.h"
+#include "HealthPotion.h"
+#include "PowerPotion.h"
 
 void MainScene::makeLayout()
 {
@@ -225,11 +227,15 @@ void MainScene::tick()
         {
             if (0 == CursorPos)
             {
-                // 회복 포션 사용..!
+                HealthPotion healthPotion; // 회복 포션 객체 생성
+                healthPotion.Use(); // 회복 포션 사용
+                WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "회복포션을 사용하여 30을 회복함.", true, 0));
             }
             else if (1 == CursorPos)
             {
-                // 강화 포션 사용..!
+                PowerPotion powerPotion; // 강화 포션 객체 생성
+                powerPotion.Use(); // 강화 포션 사용
+                WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "강화포션을 사용하여 데미지를 5를 강화함.", true, 0));
             }
 
             Cur_BattleType = BATTLE_TYPE::MONSTER_TURN;
