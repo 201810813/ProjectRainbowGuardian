@@ -133,6 +133,7 @@ enum class SCENE_TYPE
 {
 	INTRO,
 
+	
 	SCENE_1F,
 	SCENE_2F,
 	SCENE_3F,
@@ -147,6 +148,7 @@ enum class SCENE_TYPE
 	ALTAR,
 
 	RANDOM,
+	SCENE_0F,
 
 	END
 };

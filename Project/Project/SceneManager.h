@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "MainScene.h"
 #include "IntroScene.h"
+#include "Scene0F.h"
 #include "Scene1F.h"
 #include "Scene2F.h"
 #include "Scene3F.h"
@@ -17,6 +18,7 @@ class SceneManager
 {
 private:
 	static shared_ptr<SceneManager>	Instance;
+	bool hasShownIntro; // 인트로를 보여줬는지 여부
 
 	SceneManager() = default;
 	SceneManager(const SceneManager& other) = delete;
@@ -72,5 +74,9 @@ public:
 	TEXT_COLOR_TYPE getColorForFloor(int floor);
 
 	void MoveToNextFloor(); // 다음 층으로 이동
+
+	void MarkFinalBossDefeated(); // 최종 보스 클리어 처리
+
+	void MoveToScene0F(); // 0층으로 이동
 
 };

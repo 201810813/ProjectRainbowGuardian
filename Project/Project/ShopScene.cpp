@@ -25,9 +25,9 @@ void ShopScene::makeLayout()
 
     // Shop Items Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 13, 9, 60);
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "구매 가능한 아이템 목록:", false, 0, TEXT_COLOR_TYPE::ORANGE));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "1. 체력 포션 (10 골드)", false, 1, TEXT_COLOR_TYPE::WHITE));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "2. 공격력 강화 (15 골드)", false, 2, TEXT_COLOR_TYPE::WHITE));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "구매 가능한 아이템 목록:", false, 6, TEXT_COLOR_TYPE::ORANGE));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "1. 체력 포션 (10 골드)", false, 7, TEXT_COLOR_TYPE::WHITE));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "2. 공격력 강화 (15 골드)", false, 8, TEXT_COLOR_TYPE::WHITE));
 
     // 선택지 추가
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 24, 5, 60);

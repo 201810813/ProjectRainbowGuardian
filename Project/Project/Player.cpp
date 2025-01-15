@@ -97,7 +97,6 @@ bool Player::IsDie(double hp)
 	else return false;
 }
 
-
 //----------------------------//
 //          Get함수           //
 //----------------------------//
