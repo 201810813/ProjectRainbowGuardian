@@ -25,6 +25,7 @@ public:
 
     void ReSetCurAnim() { CurrentAnimation = nullptr; }
 
+    bool isCurAnimEnd();
 public:
     Animator();
     ~Animator();

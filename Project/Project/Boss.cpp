@@ -95,14 +95,15 @@ void Boss::DropItem() {
 	}
 }
 
-void Boss::is_Die()
+bool Boss::is_Die()
 {
 	if (GetCurrentHP() <= 0) {
 		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신이 " + GetName() + "를 쓰러트렸습니다!", true, 0));
 		DropItem();
 		bDead = true;
+		return bDead;
 	}
-	bDead = false;
+	return bDead;
 }
 
 void Boss::Tick()

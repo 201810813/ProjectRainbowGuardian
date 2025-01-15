@@ -15,7 +15,7 @@ public:
 	void	Attack()				override;
 	void	GetAttack()				override;
 	double	UseSkill()				override;
-	void	is_Die()				override;
+	bool	is_Die()				override;
 	void	Tick()					override;
 	void	DropItem()				override;
 
