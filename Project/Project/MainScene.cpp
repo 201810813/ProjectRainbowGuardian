@@ -89,7 +89,7 @@ void MainScene::UpdateStatLayout()
 
     oss.str("");
     oss.clear();
-    oss << "💰 GOLD     : " << (int)floor(Player::getInstance()->GetGold());
+    oss << "💰 GOLD     : " << (int)floor(Player::getInstance()->GetCoin());
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 8, TEXT_COLOR_TYPE::ORANGE_INENSITY));
 }
 

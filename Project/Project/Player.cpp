@@ -7,8 +7,6 @@ shared_ptr<Player> Player::player = nullptr;
 
 Player::Player() : stat{ 100, 100, 1, 200, 0, 17, 3, 20, 0, 0, ""}, AddDamage(1), bPowerUp(false), PowerUpChance(0), bDead(false)
 {
-	Item* Helthpotion = new PowerPotion;
-	AddItemToInventory(Helthpotion);
 }
 
 Player::~Player()
@@ -145,11 +143,6 @@ const double Player::GetDamage()
 const int Player::GetItemCount()
 {
 	return stat.itemCount;
-}
-
-const int Player::GetGold()
-{
-	return stat.gold;
 }
 
 const int Player::GetCoin()
