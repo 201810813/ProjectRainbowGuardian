@@ -21,7 +21,7 @@ string PowerPotion::GetName()
 
 void PowerPotion::Use()
 {
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격력이 두 턴 동안5 오릅니다!", true, 0, TEXT_COLOR_TYPE::GREEN));
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격력이 두 턴 동안"+ to_string(effect * Player::getInstance()->GetLevel()) + "오릅니다!", true, 0, TEXT_COLOR_TYPE::GREEN));
 	Player::getInstance()->IncreaseChance();
 	Player::getInstance()->IncreaseChance();
 }

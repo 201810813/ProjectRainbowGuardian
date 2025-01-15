@@ -30,6 +30,7 @@ void Scene6F::makeLayout() {
 
 void Scene6F::begin() {
     makeLayout();
+    witch = new MistWitch();
 }
 
 void Scene6F::tick() {
@@ -40,4 +41,5 @@ Scene6F::Scene6F() {
 }
 
 Scene6F::~Scene6F() {
+    delete witch;
 }

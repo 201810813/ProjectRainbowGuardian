@@ -18,7 +18,8 @@ public:
 	bool	is_Die()				override;
 	void	Tick()					override;
 	void	DropItem()				override;
-
+	void	CreateAnimations();
+	void	Begin()					override;
 public:
 	//get
 	const string GetName()			override;

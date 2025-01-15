@@ -34,6 +34,7 @@ void FinalScene::makeLayout() {
 
 void FinalScene::begin() {
     makeLayout();
+    dragon = new Boss();
 }
 
 void FinalScene::tick() {
@@ -45,4 +46,5 @@ FinalScene::FinalScene() {
 }
 
 FinalScene::~FinalScene() {
+    delete dragon;
 }

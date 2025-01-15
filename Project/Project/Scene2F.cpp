@@ -30,6 +30,7 @@ void Scene2F::makeLayout() {
 void Scene2F::begin() {
 	MainScene::begin();
     makeLayout();
+    golem = new IronGolem();
 }
 
 void Scene2F::tick() {
@@ -38,4 +39,6 @@ void Scene2F::tick() {
 
 Scene2F::Scene2F() {}
 
-Scene2F::~Scene2F() {}
+Scene2F::~Scene2F() {
+    delete golem;
+}
