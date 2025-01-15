@@ -19,6 +19,7 @@ public:
 	void	Tick()					override;
 	void	DropItem()				override;
 	void	CreateAnimations();
+	void    Begin()					override;
 
 public:
 	//get

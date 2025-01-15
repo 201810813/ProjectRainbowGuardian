@@ -29,6 +29,7 @@ void Scene5F::makeLayout() {
 void Scene5F::begin() {
 	MainScene::begin();
     makeLayout();
+    hedgehog = new IceHedgehog();
 }
 
 void Scene5F::tick() {
@@ -39,4 +40,5 @@ Scene5F::Scene5F() {
 }
 
 Scene5F::~Scene5F() {
+    delete hedgehog;
 }

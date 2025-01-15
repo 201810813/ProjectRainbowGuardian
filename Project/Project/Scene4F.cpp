@@ -29,6 +29,7 @@ void Scene4F::makeLayout() {
 void Scene4F::begin() {
 	MainScene::begin();
     makeLayout();
+    slime = new PoisonSlime();
 }
 
 void Scene4F::tick() {
@@ -39,4 +40,5 @@ Scene4F::Scene4F() {
 }
 
 Scene4F::~Scene4F() {
+    delete slime;
 }

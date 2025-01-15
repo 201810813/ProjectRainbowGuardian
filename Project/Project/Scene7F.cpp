@@ -28,6 +28,7 @@ void Scene7F::makeLayout() {
 
 void Scene7F::begin() {
     makeLayout();
+    rtan = new Rtan();
 }
 
 void Scene7F::tick() {
@@ -38,4 +39,5 @@ Scene7F::Scene7F() {
 }
 
 Scene7F::~Scene7F() {
+    delete rtan;
 }
