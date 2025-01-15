@@ -74,6 +74,7 @@ public:
 	void clear(LAYOUT_TYPE TargetType);
 	void AddLine(FMessageParam MessageParam);
 	void MoveMessageCursor(LAYOUT_TYPE TargetLayout, CURSOR_MOVE_TYPE CursorMoveType);
+	void ClearLayoutAllMessage(LAYOUT_TYPE TargetLayout);
 
 	void render();
 	void tick();
@@ -124,6 +125,7 @@ private:
 public:
 	void MakeLayout(LAYOUT_TYPE LayoutType, int Left, int Top, int Height, int Width);
 	void ClearLayout(LAYOUT_TYPE TargetLayout);
+	void ClearLayoutAllMessage(LAYOUT_TYPE TargetLayout);
 	void MoveLineUp(LAYOUT_TYPE TargetLayout, int LineCount) {};
 	void AddLine(FMessageParam MessageParam);
 	void MoveMessageCursor(LAYOUT_TYPE TargetLayout, CURSOR_MOVE_TYPE CursorMoveType);
