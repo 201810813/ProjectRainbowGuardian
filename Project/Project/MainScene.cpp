@@ -227,15 +227,11 @@ void MainScene::tick()
         {
             if (0 == CursorPos)
             {
-                HealthPotion healthPotion; // 회복 포션 객체 생성
-                healthPotion.Use(); // 회복 포션 사용
-                WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "회복포션을 사용하여 30을 회복함.", true, 0));
+                Player::getInstance()->UseItem(HEALTH_POTION); // 회복 포션 사용
             }
             else if (1 == CursorPos)
             {
-                PowerPotion powerPotion; // 강화 포션 객체 생성
-                powerPotion.Use(); // 강화 포션 사용
-                WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "강화포션을 사용하여 데미지를 5를 강화함.", true, 0));
+                Player::getInstance()->UseItem(POWER_POTION); // 강화 포션 사용
             }
 
             Cur_BattleType = BATTLE_TYPE::MONSTER_TURN;

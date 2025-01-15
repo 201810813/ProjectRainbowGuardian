@@ -25,8 +25,7 @@ private:
 	map<Type, int> itemCounts; //enum에 따라 갯수증가
 	map<Type, vector<Item*>> inventory; //Drop()에서 받은 객체 포인터 저장.
 	PlayerStat stat;
-	
-
+	int PowerUpChance;
 private:
 	Player(const Player&) = delete; //복사생성자,
 	Player& operator=(const Player&) = delete;  //대입연산자 제거.
@@ -48,6 +47,7 @@ public:
 	void AddItemToInventory(Item* item);
 	void ShowInventory();
 	void UseItem(Type type);
+	void IncreaseChance();
 
 public:
 	const double  GetCurrentHP();

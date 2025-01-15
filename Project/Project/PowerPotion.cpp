@@ -21,8 +21,9 @@ string PowerPotion::GetName()
 
 void PowerPotion::Use()
 {
-	std::cout << "PowerPotion 사용: 공격력 " << effect << " 증가!" << std::endl;
-	Player::getInstance()->SetDamage(effect);
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격력이 두 턴 동안5 오릅니다!", true, 0, TEXT_COLOR_TYPE::GREEN));
+	Player::getInstance()->IncreaseChance();
+	Player::getInstance()->IncreaseChance();
 }
 
 Type PowerPotion::GetType()
