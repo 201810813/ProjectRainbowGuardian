@@ -4,7 +4,7 @@
 #include "KeyManager.h"
 #include "SceneManager.h"
 #include "Player.h"
-#include "MRedWolf.h"
+#include "FairyFire.h"
 
 BOOL WINAPI ConsoleHandler(DWORD signal) {
 	if (signal == CTRL_CLOSE_EVENT) {

@@ -1,10 +1,8 @@
 ﻿#include "pch.h"
-#include "MRedWolf.h"
-#include "HealthPotion.h"
-#include "PowerPotion.h"
-#include "RandomManager.h"
+#include "FairyFire.h"
 
-MRedWolf::MRedWolf()
+
+FairyFire::FairyFire()
 {
 	playerLevel = Player::getInstance()->GetLevel();
 	RandomManager::GetInstance()->setRange(20, 30);
@@ -13,22 +11,22 @@ MRedWolf::MRedWolf()
 	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()); 
 	int		def = playerLevel * 2;
  	     		  //이름    hp  maxhp  damage   def  skd   eva drop exp  coin
-	WolfStat = { "붉은 늑대", Hp,  Hp,   damage,  def,  1.4,  20,  30, 13,   20};
-	dropItems[HEALTH_POTION] = WolfStat.dropRate;
-	dropItems[POWER_POTION] = WolfStat.dropRate;
+	FairyStat = { "불도깨비", Hp, Hp, damage, def, 1.4, 20, 30, 13, 20 };
+	dropItems[HEALTH_POTION] = FairyStat.dropRate;
+	dropItems[POWER_POTION] = FairyStat.dropRate;
 	bDead = false;
 }
 
-MRedWolf::~MRedWolf() {}
+FairyFire::~FairyFire() {}
 
 
-double MRedWolf::UseSkill()
+double FairyFire::UseSkill()
 {
 	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, GetName() + "가 스킬을 사용합니다!!!!", true, 0));
 	return GetDamage() * GetSkillDamage();
 }
 
-void MRedWolf::Attack()
+void FairyFire::Attack()
 {	
 	//스킬 쓸확률
 	int skillProbability = 10;
@@ -42,7 +40,7 @@ void MRedWolf::Attack()
 		int		trigger = rand() % 100;
 		if (probability < trigger) {
 			Player::getInstance()->GetAttack(damage);
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트! 당신의 쳬력: " + to_string(int(floor(Player::getInstance()->GetCurrentHP()))), true, 0));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트! 데미지: " + to_string(int(damage)), true, 0));
 		}
 		else {
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 스킬 공격을 회피했습니다.", true, 0));
@@ -55,14 +53,14 @@ void MRedWolf::Attack()
 		int		trigger = rand() % 100;
 		if (probability < trigger) {
 		Player::getInstance()->GetAttack(damage);
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중!. 당신의 쳬력 : " + to_string(int(floor(Player::getInstance()->GetCurrentHP()))), true, 0));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! 데미지: " + to_string(int(damage)), true, 0));
 		}
-		else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 스킬 공격을 회피했습니다.", true, 0)); }
+		else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0)); }
 	}
 
 }
 
-void MRedWolf::GetAttack()
+void FairyFire::GetAttack()
 {
 	double damage = Player::getInstance()->GetDamage() - GetDefense();
 	SetCurrentHP(GetCurrentHP() - damage);
@@ -71,7 +69,7 @@ void MRedWolf::GetAttack()
 	}
 }
 
-void MRedWolf::DropItem() {
+void FairyFire::DropItem() {
 	RandomManager::GetInstance()->setRange(0.f, 1.f);  // 0.0 ~ 1.0 사이의 랜덤 값
 	double randomChance = RandomManager::GetInstance()->getRandom<double>();
 	for (const auto& item : dropItems) {
@@ -98,17 +96,17 @@ void MRedWolf::DropItem() {
 	}
 }
 
-void MRedWolf::is_Die()
+void FairyFire::is_Die()
 {
 	if (GetCurrentHP() <= 0) {
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신이 붉은 늑대를 쓰러트렸습니다!", true, 0));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신이 도깨비 불을 쓰러트렸습니다!", true, 0));
 		DropItem();
 		bDead = true;
 	}
 	bDead = false;
 }
 
-void MRedWolf::Tick()
+void FairyFire::Tick()
 {
 }
 
@@ -116,60 +114,60 @@ void MRedWolf::Tick()
 //---------------------------------
 //           Get함수
 //---------------------------------
-const string MRedWolf::GetName()
+const string FairyFire::GetName()
 {
-	return WolfStat.name;
+	return FairyStat.name;
 }
-const double MRedWolf::GetCurrentHP() 
+const double FairyFire::GetCurrentHP()
 {
-	return WolfStat.currentHp;
+	return FairyStat.currentHp;
 }
-const double MRedWolf::GetMaxHP()
+const double FairyFire::GetMaxHP()
 {
-	return WolfStat.maxHp;
+	return FairyStat.maxHp;
 }
-const double MRedWolf::GetDropRate()
+const double FairyFire::GetDropRate()
 {
-	return WolfStat.dropRate;
+	return FairyStat.dropRate;
 }
 
-const bool MRedWolf::GetbDead()
+const bool FairyFire::GetbDead()
 {
 	return bDead;
 }
 
-const int MRedWolf::GetCoin()
+const int FairyFire::GetCoin()
 {
-	return WolfStat.coin;
+	return FairyStat.coin;
 }
-const int MRedWolf::GetDefense()
+const int FairyFire::GetDefense()
 {
-	return WolfStat.defense;
+	return FairyStat.defense;
 }
-const int MRedWolf::GetExp()
+const int FairyFire::GetExp()
 {
-	return WolfStat.exp;
+	return FairyStat.exp;
 }
-const int MRedWolf::GetEvasion()
+const int FairyFire::GetEvasion()
 {
-	return WolfStat.evasion;
-}
-
-const double MRedWolf::GetSkillDamage()
-{
-	return WolfStat.skillDamage;
+	return FairyStat.evasion;
 }
 
-const double MRedWolf::GetDamage()
+const double FairyFire::GetSkillDamage()
 {
-	return WolfStat.damage;
+	return FairyStat.skillDamage;
+}
+
+const double FairyFire::GetDamage()
+{
+	return FairyStat.damage;
 }
 //-----------------------------//
 //          Set함수            //
 //-----------------------------//
 
-void MRedWolf::SetCurrentHP(double hp)
+void FairyFire::SetCurrentHP(double hp)
 {
-	WolfStat.currentHp = hp;
+	FairyStat.currentHp = hp;
 }
 

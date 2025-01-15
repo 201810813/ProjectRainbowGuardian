@@ -134,20 +134,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AltarScene.cpp" />
+    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="ConsoleLayout.cpp" />
+    <ClCompile Include="EletricMantis.cpp" />
     <ClCompile Include="FinalScene.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="IceHedgehog.cpp" />
     <ClCompile Include="IntroScene.cpp" />
+    <ClCompile Include="IronGolem.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="HealthPotion.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainScene.cpp" />
+    <ClCompile Include="MistWitch.cpp" />
     <ClCompile Include="Monster.cpp" />
-    <ClCompile Include="MRedWolf.cpp" />
+    <ClCompile Include="FairyFire.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PoisonSlime.cpp" />
     <ClCompile Include="PowerPotion.cpp" />
     <ClCompile Include="RandomManager.cpp" />
+    <ClCompile Include="Rtan.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene1F.cpp" />
     <ClCompile Include="Scene2F.cpp" />
@@ -163,21 +170,28 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AltarScene.h" />
+    <ClInclude Include="Boss.h" />
     <ClInclude Include="ConsoleLayout.h" />
     <ClInclude Include="define.h" />
+    <ClInclude Include="EletricMantis.h" />
     <ClInclude Include="FinalScene.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="IceHedgehog.h" />
     <ClInclude Include="IntroScene.h" />
+    <ClInclude Include="IronGolem.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="HealthPotion.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="MainScene.h" />
+    <ClInclude Include="MistWitch.h" />
     <ClInclude Include="Monster.h" />
-    <ClInclude Include="MRedWolf.h" />
+    <ClInclude Include="FairyFire.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PoisonSlime.h" />
     <ClInclude Include="PowerPotion.h" />
     <ClInclude Include="RandomManager.h" />
+    <ClInclude Include="Rtan.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene1F.h" />
     <ClInclude Include="Scene2F.h" />
