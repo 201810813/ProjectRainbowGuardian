@@ -3,6 +3,7 @@
 #include "ConsoleLayout.h"
 #include "KeyManager.h"
 #include "Boss.h"
+#include "SoundManager.h"
 
 
 
@@ -36,6 +37,7 @@ void FinalScene::makeLayout() {
 }
 
 void FinalScene::begin() {
+    SoundManager::GetInstance()->PlayMusic("EnterBossRoom", 1, 0.2f, true);
     MainScene::begin();
     makeLayout();
 }

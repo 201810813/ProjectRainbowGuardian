@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "MistWitch.h"
+#include "SoundManager.h"
+#include "RandomManager.h"
 
 MistWitch::MistWitch()
 {
@@ -161,6 +163,8 @@ void MistWitch::Attack()
 
 	//스킬을 쓰면
 	if (Trigger < skillProbability) {
+		PlaySkillSound();
+
 		double	damage = UseSkill() - Player::getInstance()->GetDefense();
 		int		probability = Player::getInstance()->GetEvasion();
 		int		trigger = rand() % 100;
@@ -170,11 +174,14 @@ void MistWitch::Attack()
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!!!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
 		else {
+			SoundManager::GetInstance()->PlayMusic("Herb3", 1, 0.5, true);
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 스킬 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 		}
 	}
 	//스킬을 아니 쓰면
 	else {
+		PlayAttackSound();
+
 		double	damage = GetDamage() - Player::getInstance()->GetDefense();
 		int		probability = Player::getInstance()->GetEvasion();
 		int		trigger = rand() % 100;
@@ -183,7 +190,10 @@ void MistWitch::Attack()
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! ", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
-		else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY)); }
+		else {
+			SoundManager::GetInstance()->PlayMusic("Herb3", 1, 0.5, true);
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
+		}
 	}
 }
 
@@ -286,4 +296,45 @@ const double MistWitch::GetDamage()
 void MistWitch::SetCurrentHP(double hp)
 {
 	WitchStat.currentHp = hp;
+}
+
+void MistWitch::PlayAttackSound()
+{
+	RandomManager::GetInstance()->setRange(1, 2);
+	int rand = RandomManager::GetInstance()->getRandom<int>();
+
+	switch (rand)
+	{
+	case 1:
+		SoundManager::GetInstance()->PlayMusic("water_spell_impact_hit_03", 1, 0.3f, true);
+		break;
+
+	case 2:
+		SoundManager::GetInstance()->PlayMusic("water_spell_impact_hit_04", 1, 0.3f, true);
+		break;
+
+	default:
+		break;
+	}
+}
+
+
+void MistWitch::PlaySkillSound()
+{
+	RandomManager::GetInstance()->setRange(1, 2);
+	int rand = RandomManager::GetInstance()->getRandom<int>();
+
+	switch (rand)
+	{
+	case 1:
+		SoundManager::GetInstance()->PlayMusic("water_blast_projectile_spell_04", 1, 0.3f, true);
+		break;
+
+	case 2:
+		SoundManager::GetInstance()->PlayMusic("water_blast_projectile_spell_03", 1, 0.3f, true);
+		break;
+
+	default:
+		break;
+	}
 }

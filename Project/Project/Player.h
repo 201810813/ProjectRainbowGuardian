@@ -80,4 +80,7 @@ public:
 	void SetCurrentHP(double heal);
 	void SetDamage(int buff);
 	void SetCoin(int coin);
+
+public:
+	void PlayAttackSound();
 };

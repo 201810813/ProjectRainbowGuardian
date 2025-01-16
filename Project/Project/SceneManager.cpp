@@ -9,7 +9,7 @@ shared_ptr<SceneManager> SceneManager::Instance = nullptr;
 
 void SceneManager::Initialize()
 {
-	//CurrentScene = new EndingScene;
+	//CurrentScene = new FinalScene;
 	CurrentScene = new IntroScene;
     CurrentScene->begin();
 	currentFloor = 1; // 현재 층 초기화

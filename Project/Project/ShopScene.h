@@ -23,6 +23,9 @@ public:
 	void UpdateStatLayout();
 
 public:
+	void PlayGetCoinSound();
+
+public:
 	ShopScene();
 	virtual ~ShopScene() override;
 };
