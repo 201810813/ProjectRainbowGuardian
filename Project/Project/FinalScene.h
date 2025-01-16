@@ -6,7 +6,6 @@ class FinalScene :
     public MainScene
 {
 private:
-	Monster* dragon;
 	bool finalBossDefeated;
 public:
 	virtual void makeLayout() override;

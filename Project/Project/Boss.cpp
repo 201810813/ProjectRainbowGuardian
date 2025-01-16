@@ -28,9 +28,9 @@ void Boss::Begin()
 void Boss::Tick()
 {
 	Monster::Tick();
-	if (bDead == false && Monster::animator->isCurAnimEnd()) {
-		//Monster::animator->Play("Idle", true);
-	}
+	//if (bDead == false && Monster::animator->isCurAnimEnd()) {
+	//	//Monster::animator->Play("Idle", true);
+	//}
 }
 void Boss::CreateAnimations()
 {

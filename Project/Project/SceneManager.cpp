@@ -3,12 +3,14 @@
 #include "KeyManager.h" // 키 입력 처리 관련 추가
 #include "ConsoleLayout.h"
 #include "RandomManager.h"
+#include "EndingScene.h"
 
 shared_ptr<SceneManager> SceneManager::Instance = nullptr;
 
 void SceneManager::Initialize()
 {
-	//CurrentScene = new MainScene;
+	//CurrentScene = new AltarScene;
+	RoomColorCheck.flip();
     CurrentScene = new IntroScene;
     CurrentScene->makeLayout();
 	currentFloor = 1; // 현재 층 초기화
@@ -198,6 +200,11 @@ void SceneManager::changeScene()
 	case SCENE_TYPE::ALTAR:
 		FloorNumber++;
 		CurrentScene = new AltarScene;
+		break;
+
+	case SCENE_TYPE::ENDINGCREDIT:
+		CurrentScene = new EndingScene;
+
 		break;
 
 	default:

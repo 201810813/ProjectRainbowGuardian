@@ -64,6 +64,7 @@ private:
 	int FloorNumber = 0;
 	bitset<7>	RoomColorCheck;	// bit단위로 어떤 컬러의 방들을 클리어했는지 체크해 줌.
 
+	bool bBossClear = false; // 최종 보스 클리어 여부
 
 
 public:
@@ -95,4 +96,7 @@ public:
 
 	void MoveToScene0F(); // 0층으로 이동
 
+
+	bool IsBossClear() { return bBossClear; }
+	void SetBossClear(bool bClear) { bBossClear = bClear; }
 };
