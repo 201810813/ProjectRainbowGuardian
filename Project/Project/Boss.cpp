@@ -22,7 +22,7 @@ Boss::~Boss() {}
 void Boss::Begin()
 {
 	CreateAnimations();
-	//Monster::animator->Play("Idle", true);
+	Monster::animator->Play("Idle", true);
 }
 
 void Boss::Tick()
@@ -34,6 +34,27 @@ void Boss::Tick()
 }
 void Boss::CreateAnimations()
 {
+	vector<string>VecAnim01;
+	VecAnim01.push_back("");
+	VecAnim01.push_back("            ⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⠀⡀⠀⠀⠀⠀⠀⠀⠀⣄⡀⣠⣷⣄⠄⠀⠀⠀⢠⣧⡂⠀⠀⠀ ");
+	VecAnim01.push_back("            ⠀⠀⠀⠀⠀⠀⢬⣦⢶⢷⢦⣿⡀⡀⡀⠀⠀⡀⣄⡾⡟⣿⣆⢝⢿⣤⣷⣟⢿⣽⡏⠀⠀⠀⠀");
+	VecAnim01.push_back("            ⠀⠀⠀⠀⠀⣰⣼⠣⣷⢷⡕⡍⢿⡞⠄⠀⢠⣙⢙⣷⣵⡢⡛⣷⡑⣿⣪⡿⠫⠉⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("            ⠀⠀⠀⠀⠀⠈⠺⡯⣧⠿⢻⡎⡎⣿⠀⢀⠈⣽⢟⢕⢍⠻⡷⡝⡟⠼⢿⣇⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("            ⠀⠀⠀⠀⠀⠀⠀⠈⠀⡡⣾⢇⢇⣿⠀⠐⢻⡾⡱⡱⣽⢣⢣⢣⣿⣻⡎⣿⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("            ⠀⠀⠀⠀⠀⠀⡀⣄⣷⢻⢱⢱⣽⠃⠀⠰⡼⣗⢕⢕⢽⣇⢇⢇⡻⡹⡨⣿⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("            ⠀⠀⠀⠀⠀⣴⢞⢏⢎⢎⢎⣾⠑⠀⠀⢀⣈⣿⡸⡸⡨⣿⢳⣕⢿⡜⡌⢿⣆⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("            ⠀⠀⠀⠠⣽⢫⢪⣪⣮⣮⢿⢷⢾⢮⣮⣬⣍⢽⡎⡎⡎⡞⣯⣷⣝⣷⢱⢱⡟⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("            ⠀⠀⠀⢱⡟⡞⣿⣽⣼⢾⠾⢷⢻⠷⠷⡷⡿⣿⣷⣧⡣⡣⣻⣿⣅⠻⢛⠫⠈⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("            ⠀⠀⠀⢸⣇⢇⢲⣿⣜⣜⢜⠵⡟⡟⡟⡜⡜⡜⣼⡽⡫⡪⣪⣷⢿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("            ⠀⠀⠀⠀⢿⣜⢜⢜⣼⣿⣱⡱⡹⡻⣪⣪⣾⢞⢏⢎⣎⣎⢮⡷⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("            ⠀⠀⠀⠀⠀⠛⢷⣽⠣⡍⡝⣿⣛⢛⢏⢏⢎⢎⢮⡟⡍⡻⣿⡱⣽⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("            ⠀⠀⠀⠀⠀⠀⠀⢿⣕⢕⢕⡽⡾⣮⣮⣪⣪⣪⣺⣷⣕⢕⢽⣾⣯⣠⣀⣀⡀⠀⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("            ⠀⠀⠀⠀⠀⠀⠀⠈⠙⠷⠷⣧⣣⣳⢟⣝⢻⣯⣫⣎⣿⣧⢩⢣⡭⣽⡟⣏⢟⣧⠀⠀⠀⠀⠀");
+	VecAnim01.push_back("            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠈⠻⠳⠻⢛⠃⠁⠁⠂⠛⠗⠏⠉⢚⠛⠟⠟⠏⠀⠀⠀");
+	
+	vector<vector<string >> AnimInfo;
+	AnimInfo.push_back(VecAnim01);
+	Monster::animator->CreateAnimation("Idle", AnimInfo, 1, 0.15f);
 }
 
 double Boss::UseSkill()
@@ -87,9 +108,9 @@ void Boss::GetAttack()
 }
 
 void Boss::DropItem() {
-	RandomManager::GetInstance()->setRange(0, 100);  // 0.0 ~ 1.0 사이의 랜덤 값
-	double randomChance = RandomManager::GetInstance()->getRandom<double>();
 	for (const auto& item : dropItems) {
+		RandomManager::GetInstance()->setRange(0, 100);  // 0.0 ~ 1.0 사이의 랜덤 값
+		double randomChance = RandomManager::GetInstance()->getRandom<double>();
 		if (randomChance <= item.second) {  // 확률에 맞는 아이템 드롭
 			if (item.first == HEALTH_POTION) {
 				WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션이 드랍되었습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
