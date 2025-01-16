@@ -189,7 +189,7 @@ void MistWitch::Attack()
 
 void MistWitch::GetAttack()
 {
-	Monster::animator->Play("GetAttacj", false);
+	Monster::animator->Play("GetAttack", false);
 	double damage = Player::getInstance()->GetDamage() - GetDefense();
 	SetCurrentHP(GetCurrentHP() - damage);
 	if (GetCurrentHP() <= 0) {

@@ -108,8 +108,9 @@ void Player::levelUp() { // 레벨업
 	stat.level++;
 	stat.maxHP += 20;
 	stat.damage += 5;
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, ("레벨 업! 현재 레벨: " + stat.level), true, 0));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "최대 체력과 공격력이 증가했습니다!" ,true, 0));
+	stat.defense += 2;
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, (" 레벨 업! 현재 레벨: " + stat.level), true, 0));
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "최대 체력과 공격력, 방여력이 증가했습니다!" ,true, 0));
 }
 
 bool Player::IsDie()

@@ -29,6 +29,17 @@ void ShopScene::makeLayout()
     output += " [🛒]";
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, output, true, 0, TEXT_COLOR_TYPE::GRAY));
 
+    // BACKGROUND
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "  ⠠⣱⣿⣿⣮⡀⠀⠀⠀         ⠀⢦⠀⠀                  ", false, 0));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "  ⡐⣿⣿⣿⣿⡆⠀⠀⠀        ⢠⣎⣑⣑⢄                                      ⠐⠡⠀⠀⢠⡄⠀⠀⢠⡄⠀⠀⠄⠃", false, 1));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "  ⢘⣿⣿⣿⣋⡃⠀⠀⠀         ⠔⢨⠈⠂                                    ⠀⠀⠀⠀⢙⠔⡃⣀⣀⣀⣀⠩⢢⡉⠀", false, 2));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "  ⣸⣿⣿⣿⣿⣿⣆⠀ 	                ⣠⣌⣢⣔⣄                           ⠀⠀⠀⠴⢋⡨⢜⡴⣶⣶⢮⡪⣄⡙⠦⠀", false, 3));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "  ⢺⣿⣿⣿⣿⣿⣷                   ⢏⣉⣉⣉⡹                           ⠀⠀⠀⠀⢸⢸⣽⣿⣿⣿⣿⣟⡆⡇⠀⠀ ", false, 4));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "⢈⢏⢏⢏⢏⡏⣏⢏⡏⣏⢏⡏⣏⢏⡏⣏⢏⣏⢏⡏⣏⢏⡏⣏⢏⡏⣏⢏⡏⣏⢏⢏⢏⢟⠄      ⡠⠛⢄           ⡠⠛⢄   ⠀⠀⠀⠈⡎⣯⣿⣿⣿⣿⣽⢱⠁", false, 5));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "⢐⢕⢕⡍⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⠌⢳⡱⣹⠀	     ⢿⣿⡿           ⢿⣿⡿   ⠀⠀⢀⡔⡱⣙⢯⣿⣿⡽⢣⢃⠦⡀⠀", false, 6));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "⢐⢕⢝⢬⠨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⡨⣸⢪⢪⠂     ⠸⡶⠶⡾⠀        ⠸⡶⠶⡾    ⠀⢰⣣⠚⠀⠈⠲⣑⢍⠎⠁⠀⠓⣝⡆", false, 7));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "⢐⢕⡕⣕⢝⢜⢕⢝⢜⢕⢝⢜⢕⢝⢜⢕⢝⢕⢝⢜⢕⢝⢜⢕⢝⢜⢕⢝⢜⢕⢝⡌⣆⢽⠀     ⠀⢈⢾            ⢈⢾                 ", false, 8));
+
     // Shop Items Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 13, 9, 60);
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "구매 가능한 아이템 목록:", false, 6, TEXT_COLOR_TYPE::ORANGE));

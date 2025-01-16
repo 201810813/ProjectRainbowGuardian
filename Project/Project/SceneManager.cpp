@@ -10,7 +10,6 @@ shared_ptr<SceneManager> SceneManager::Instance = nullptr;
 void SceneManager::Initialize()
 {
 	//CurrentScene = new AltarScene;
-	RoomColorCheck.flip();
     CurrentScene = new IntroScene;
     CurrentScene->makeLayout();
 	currentFloor = 1; // 현재 층 초기화
