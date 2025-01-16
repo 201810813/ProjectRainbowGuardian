@@ -14,7 +14,7 @@ AltarScene::~AltarScene() {
 }
 
 void AltarScene::makeLayout(){
-
+    
     // Title Layout (제단 제목 설정)
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::TITLE, 0, 0, 1, 100);
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::TITLE, "제단", false, 0, TEXT_COLOR_TYPE::BLACK, BACKGROUND_COLOR_TYPE::WHITE));
@@ -58,6 +58,8 @@ void AltarScene::makeLayout(){
 }
 
 void AltarScene::begin() {
+    WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::MONSTER_STAT_UI);
+    WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::MONSTER_STAT_UI);
     makeLayout();
 }
 
