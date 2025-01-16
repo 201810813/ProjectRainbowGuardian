@@ -11,7 +11,7 @@ IronGolem::IronGolem()
 	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>())+ (1* playerLevel);
 	int		def = playerLevel * 2;
 	//이름    hp  maxhp  damage   def  skd   eva drop exp  coin
-	GolemStat = { "아이언 골렘", Hp, Hp, damage, def, 1.4, 20, 30, 13, 20 };
+	GolemStat = { "🦿아이언 골렘🦿", Hp, Hp, damage, def, 1.4, 20, 30, 13, 20 };
 	dropItems[HEALTH_POTION] = GolemStat.dropRate;
 	dropItems[POWER_POTION] = GolemStat.dropRate;
 	bDead = false;
@@ -120,13 +120,35 @@ void IronGolem::CreateAnimations()
 
 
 	AnimInfo.clear();
-	AnimInfo.push_back(VecAnim03);
+	AnimInfo.push_back(VecAnim04);
 	Monster::animator->CreateAnimation("GetAttack", AnimInfo, 1, 0.25f);
+
+	vector<string> VecAnim05;
+	VecAnim05.push_back("");
+	VecAnim05.push_back("");
+	VecAnim05.push_back("");
+	VecAnim05.push_back("");
+	VecAnim05.push_back("");
+	VecAnim05.push_back("");
+	VecAnim05.push_back("");
+	VecAnim05.push_back("");
+	VecAnim05.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠤⠚⢦⡀⠀⠀⢀⠀⣤⣤⣶⣷⣾⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim05.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠎⠁⣤⢋⡰⣹⢷⣶⣿⣿⢿⣿⣞⣷⡿⣽⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim05.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⢋⣶⡾⣍⣞⣱⣏⢾⣻⣽⣚⠦⠛⠻⢿⣿⣟⣾⣥⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim05.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡟⠙⠚⣳⣞⡎⠑⠀⠀⣠⢾⡽⣧⠀⠀⠀⢋⡿⠻⢽⣧⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim05.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⠋⢁⠀⣦⣽⣿⣿⣶⣴⡞⣻⢧⣿⡹⣿⣶⣞⡛⠤⡁⢌⡾⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim05.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠔⢃⣈⣯⣟⣾⣽⣟⣾⣿⣷⡿⣽⡿⣽⣻⣟⣿⡿⣅⡴⣻⣿⣽⣳⢿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim05.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠿⣞⣿⣿⡽⣻⣾⣿⣟⣾⣿⣿⣧⣟⣷⣻⡾⣿⣹⡽⣳⣽⣻⣷⣯⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+	VecAnim05.push_back("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠳⠛⠛⠛⠛⠛⠛⠛⠛⠞⠛⠳⠛⠳⠛⠛⠛⠛⠛⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
+
+	AnimInfo.clear();
+	AnimInfo.push_back(VecAnim05);
+	Monster::animator->CreateAnimation("Die", AnimInfo, 1, 0.25f);
 }	
 
 double IronGolem::UseSkill()
 {
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, GetName() + "가 스킬을 사용합니다!!!!", true, 0, TEXT_COLOR_TYPE::RED));
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, GetName() + "가 스킬을 사용합니다!!!!", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 	return GetDamage() * GetSkillDamage();
 }
 
@@ -145,7 +167,7 @@ void IronGolem::Attack()
 		int		trigger = rand() % 100;
 		if (probability < trigger) {
 			Player::getInstance()->GetAttack(damage);
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트!", true, 0, TEXT_COLOR_TYPE::RED));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트!", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!!!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
 		else {
@@ -159,7 +181,7 @@ void IronGolem::Attack()
 		int		trigger = rand() % 100;
 		if (probability < trigger) {
 			Player::getInstance()->GetAttack(damage);
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! ", true, 0, TEXT_COLOR_TYPE::RED));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! ", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
 		else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY)); }
