@@ -130,7 +130,7 @@ void ShopScene::tick()
                 
             case 0: // 체력포션 구매
                 
-                if (Player::getInstance()->GetCoin() >= 30) {
+                if (Player::getInstance()->GetCoin() >= 10) {
                     Player::getInstance()->SpendGold(10);
                     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션을 구매했습니다.", false, 1, TEXT_COLOR_TYPE::ORANGE));
                     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션이 인벤토리에 추가되었습니다.", false, 4, TEXT_COLOR_TYPE::GREEN));
@@ -142,7 +142,7 @@ void ShopScene::tick()
                 break;
             case 1: // 파워포션 구매
                 
-                if (Player::getInstance()->GetCoin() >= 20) {
+                if (Player::getInstance()->GetCoin() >= 15) {
                     Player::getInstance()->SpendGold(15);
                     Player::getInstance()->AddItemToInventory(POWER_POTION);
                     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "파워 포션을 구매했습니다.", false, 1, TEXT_COLOR_TYPE::ORANGE));
