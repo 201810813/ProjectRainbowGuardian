@@ -23,7 +23,6 @@ void Scene7F::makeLayout() {
 void Scene7F::begin() {
     MainScene::begin();
     makeLayout();
-    rtan = new Rtan();
 }
 
 void Scene7F::tick() {
@@ -33,8 +32,8 @@ void Scene7F::tick() {
 Scene7F::Scene7F() 
 {
     MainScene::ThisSceneType = SCENE_TYPE::SCENE_7F;
+    MainScene::monster = new Rtan();
 }
 
 Scene7F::~Scene7F() {
-    delete rtan;
 }

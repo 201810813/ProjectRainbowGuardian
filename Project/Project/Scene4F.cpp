@@ -23,7 +23,6 @@ void Scene4F::makeLayout() {
 void Scene4F::begin() {
 	MainScene::begin();
     makeLayout();
-    slime = new PoisonSlime();
 }
 
 void Scene4F::tick() {
@@ -33,8 +32,8 @@ void Scene4F::tick() {
 Scene4F::Scene4F()
 {
     MainScene::ThisSceneType = SCENE_TYPE::SCENE_4F;
+    MainScene::monster = new PoisonSlime();
 }
 
 Scene4F::~Scene4F() {
-    delete slime;
 }

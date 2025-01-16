@@ -26,7 +26,6 @@ void Scene1F::makeLayout() {
 void Scene1F::begin() {
 	MainScene::begin();
     makeLayout();
-    fairy = new FairyFire();
 }
 
 void Scene1F::tick() {
@@ -37,8 +36,8 @@ void Scene1F::tick() {
 
 Scene1F::Scene1F() {
     MainScene::ThisSceneType = SCENE_TYPE::SCENE_1F;
+    MainScene::monster = new FairyFire();
 }
 
 Scene1F::~Scene1F() {
-    delete fairy;
 }

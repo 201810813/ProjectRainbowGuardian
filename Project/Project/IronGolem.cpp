@@ -76,7 +76,7 @@ void IronGolem::CreateAnimations()
 	vector<vector<string>> AnimInfo;
 	AnimInfo.push_back(VecAnim01);
 	AnimInfo.push_back(VecAnim02);
-	animator->CreateAnimation("idle", AnimInfo, 2, 0.25f);
+	Monster::animator->CreateAnimation("Idle", AnimInfo, 2, 0.25f);
 
 	vector<string> VecAnim03;
 	VecAnim03.push_back("");

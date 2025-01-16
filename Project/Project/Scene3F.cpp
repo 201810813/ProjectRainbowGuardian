@@ -22,7 +22,6 @@ void Scene3F::makeLayout() {
 void Scene3F::begin() {
 	MainScene::begin();
     makeLayout();
-    mantis = new EletricMantis();
 }
 
 void Scene3F::tick() {
@@ -32,8 +31,8 @@ void Scene3F::tick() {
 Scene3F::Scene3F()
 {
     MainScene::ThisSceneType = SCENE_TYPE::SCENE_3F;
+    MainScene::monster = new EletricMantis();
 }
 
 Scene3F::~Scene3F() {
-    delete mantis;
 }

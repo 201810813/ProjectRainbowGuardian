@@ -4,8 +4,6 @@
 class Scene7F :
     public MainScene
 {
-private:
-	Monster* rtan;
 public:
 	virtual void makeLayout() override;
 	virtual void begin() override;

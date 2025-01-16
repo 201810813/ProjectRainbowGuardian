@@ -180,7 +180,8 @@ void MainScene::begin()
     Turn_Count = 0; //
 	bOnce = false; // 한번만 출력되도록 하는 플래그
 	CursorPos = 0; // 커서 위치 초기화
-    makeLayout();
+    monster->Begin();
+    MainScene::makeLayout();
     
 }
 
@@ -520,7 +521,6 @@ MainScene::MainScene()
     , bOnce(false)
     , CursorPos(0)
 {
-    monster = new FairyFire();
 }
 
 MainScene::~MainScene()
