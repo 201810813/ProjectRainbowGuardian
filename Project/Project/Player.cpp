@@ -5,19 +5,16 @@
 
 shared_ptr<Player> Player::player = nullptr;
 
-Player::Player() : stat{ 100, 100, 1, 200, 0, 17, 3, 20, 0, 0, ""}, AddDamage(1), bPowerUp(false), PowerUpChance(0), bDead(false)
+Player::Player() : stat{ 3000, 3000, 1, 200, 0, 200, 3, 20, 0, 0, ""}, AddDamage(1), bPowerUp(false), PowerUpChance(0), bDead(false)
 {
+	this->HealthPotion = new class HealthPotion();
+	this->PowerPotion = new class PowerPotion();
 }
 
 Player::~Player()
 {
-	for (auto& pair : inventory) {
-		for (Item* item : pair.second) {
-			delete item;  // 아이템 객체 삭제
-		}
-		pair.second.clear();  // 벡터 초기화
-	}
-	inventory.clear();  // 맵 초기화
+	delete HealthPotion;
+	delete PowerPotion;
 }
 
 shared_ptr<Player> Player::getInstance() {
@@ -56,8 +53,8 @@ void Player::Attack(Monster& monster)
 			PowerUpChance--;
 			monster.GetAttack();         // 몬스터 체력 감소
 			// 성공 메시지 출력
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중!", true, 0));
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(damage) + "가 들어갔습니다.", true, 0));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중!", true, 0, TEXT_COLOR_TYPE::ORANGE));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(damage - monster.GetDefense()) + "가 들어갔습니다.", true, 0,TEXT_COLOR_TYPE::ORANGE));
 		}
 		else {
 			bPowerUp = false;
@@ -65,11 +62,11 @@ void Player::Attack(Monster& monster)
 			monster.GetAttack();         // 몬스터 체력 감소
 
 			// 성공 메시지 출력
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중!", true, 0));
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(damage) + "가 들어갔습니다.", true, 0));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중!", true, 0, TEXT_COLOR_TYPE::ORANGE));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(damage - monster.GetDefense()) + "가 들어갔습니다.", true, 0, TEXT_COLOR_TYPE::ORANGE));
 		}
 	}
-	else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적이 공격을 회피했습니다.....", true, 0)); }
+	else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적이 공격을 회피했습니다.....", true, 0, TEXT_COLOR_TYPE::WHITE)); }
 	
 }
 
@@ -160,6 +157,7 @@ const int Player::GetItemCount()
 	return stat.itemCount;
 }
 
+
 const int Player::GetCoin()
 {
 	return stat.coin;
@@ -180,9 +178,15 @@ const int Player::GetAddDamage()
 	return AddDamage;
 }
 
+
 bool Player::Is_PowerUp()
 {
 	return bPowerUp;
+}
+
+const int Player::GetItemCount(Type type)
+{
+	return inventory[type];
 }
 
 
@@ -216,53 +220,63 @@ void Player::SetDamage(int buff)
 //          아이템관련함수           //
 //-----------------------------------//
 
-void Player::AddItemToInventory(Item* item)
+void Player::AddItemToInventory(Type type)
 {
-	inventory[item->GetType()].push_back(item);
-	itemCounts[item->GetType()]++;
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, item->GetName() + "이 추가되었습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
+	inventory[type]++;
+	if (type == HEALTH_POTION) {
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션이 추가되었습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
+	}
+	else if (type == POWER_POTION) {
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "파워 포션이 추가되었습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
+	}
+	
 }
 
 void Player::ShowInventory()
 {
-	if (inventory.empty()) {
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "인벤토리가 비어있습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
-	}
-	else {
-		for (const auto& item : inventory) {
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, item.first + "아이템이" + to_string(item.second.size()) + "개 있습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
-		}
-	}
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션: " + to_string(inventory[HEALTH_POTION]), true, 0, TEXT_COLOR_TYPE::GREEN));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "파워 포션: " + to_string(inventory[POWER_POTION]), true, 0, TEXT_COLOR_TYPE::GREEN));
 }
+
+
 
 bool Player::UseItem(Type type)
 {
-	if (itemCounts[type] > 0) {
-		Item* item = inventory[type].back();
-		inventory[type].pop_back();  // 아이템 사용 후 제거
-		itemCounts[type]--;  // 아이템 개수 감소
-
-		item->Use();  // 아이템 사용
-
-		if (type == POWER_POTION)
+	if(type == HEALTH_POTION){
+		if (inventory[type] > 0) {
+			HealthPotion->Use();
+			inventory[HEALTH_POTION]--;
+			return true;
+		}
+		else {
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "해당 아이템이 인벤토리에 없습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
+			return false;
+		}
+	}
+	else if (type == POWER_POTION) {
+		if (inventory[type] > 0)
 		{
+			PowerPotion->Use();
 			AddDamage = 5 * stat.level;
+			inventory[POWER_POTION]--;
 			bPowerUp = true;
 		}
-
-		// 아이템 객체 삭제
-		delete item;
-		item = nullptr;
-		return true;
+		else {
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "해당 아이템이 인벤토리에 없습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
+			return false;
+		}
+		
 	}
-	else {
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "해당 아이템이 인벤토리에 없습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
-		return false;
-	}
+	return false;
 }
 
 void Player::IncreaseChance()
 {
 	PowerUpChance++;
+}
+
+void Player::SellItem(Type type)
+{
+	inventory[type]--;
 }
 

@@ -5,6 +5,7 @@
 #include "SceneManager.h"
 #include "Player.h"
 #include "FairyFire.h"
+#include "Sound.h"
 
 BOOL WINAPI ConsoleHandler(DWORD signal) {
 	if (signal == CTRL_CLOSE_EVENT) {
@@ -18,7 +19,6 @@ BOOL WINAPI ConsoleHandler(DWORD signal) {
 
 int main()
 {
-
 	if (!SetConsoleCtrlHandler(ConsoleHandler, TRUE))
 
 	SetConsoleOutputCP(CP_UTF8);
@@ -31,14 +31,8 @@ int main()
 	bool bonce = false;
 	bool is_enter = false;
 
-	//while (!GameManager::GetInstance()->IsGameEnd()){
-	//	GameManager::GetInstance()->tick();
-
 	while (!GameManager::GetInstance()->IsGameEnd()){
-
 		GameManager::GetInstance()->tick();
-
-		//if (IS_TAP(ENTER)) { GameManager::GetInstance()->EndGame(); } //게임 종료
 		GameManager::GetInstance()->render();
 	}
 	return 0;

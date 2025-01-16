@@ -6,7 +6,7 @@ IceHedgehog::IceHedgehog()
 {
 	playerLevel = Player::getInstance()->GetLevel();
 	RandomManager::GetInstance()->setRange(20, 30);
-	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()) + (9 * playerLevel);
+	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()) + (3 * playerLevel);
 	RandomManager::GetInstance()->setRange(5, 7);
 	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()) + (3 * playerLevel);
 	int		def = playerLevel * 2;
@@ -199,28 +199,18 @@ void IceHedgehog::GetAttack()
 }
 
 void IceHedgehog::DropItem() {
-	RandomManager::GetInstance()->setRange(0.f, 1.f);  // 0.0 ~ 1.0 사이의 랜덤 값
-	double randomChance = RandomManager::GetInstance()->getRandom<double>();
+	RandomManager::GetInstance()->setRange(0, 100);  // 0.0 ~ 1.0 사이의 랜덤 값
+	int randomChance = RandomManager::GetInstance()->getRandom<double>();
 	for (const auto& item : dropItems) {
 		if (randomChance <= item.second) {  // 확률에 맞는 아이템 드롭
-			Item* droppedItem = nullptr;
-
-			switch (item.first) {
-			case HEALTH_POTION:
-				droppedItem = new HealthPotion();
-				break;
-			case POWER_POTION:
-				droppedItem = new PowerPotion();
-				break;
-			default:
-				break;
+			if (item.first == HEALTH_POTION) {
+				WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션이 드랍되었습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
+				Player::getInstance()->AddItemToInventory(HEALTH_POTION);
 			}
-
-			if (droppedItem) {
-				Player::getInstance()->AddItemToInventory(droppedItem);  // 플레이어 인벤토리에 아이템 추가
-				WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, droppedItem->GetName() + "이(가) 드롭되었습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
+			else if (item.first == POWER_POTION) {
+				WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "파워 포션이 드랍되었습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
+				Player::getInstance()->AddItemToInventory(POWER_POTION);
 			}
-			delete droppedItem;
 		}
 	}
 }

@@ -6,6 +6,7 @@ class EndingScene :
 {
 private:
 	float AccTime;
+	int currentLineIndex;
 
 public:
 	virtual void makeLayout() override;

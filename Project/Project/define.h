@@ -174,3 +174,10 @@ enum class BATTLE_TYPE
 	, TOWN_CHANGER
 	, END
 };
+
+enum class SHOP_TYPE {
+	MAIN
+	, PURCHASE
+	, SELL
+	, END
+};
