@@ -1,4 +1,4 @@
-//altarscene.h
+ï»¿//altarscene.h
 #pragma once
 #include "Scene.h"
 
@@ -6,7 +6,7 @@ class AltarScene :
     public Scene
 {
 private:
-	int CursorPos; // Ä¿¼­ À§Ä¡
+	int CursorPos; // ì»¤ì„œ ìœ„ì¹˜
 	bool RecurveryOnce;
 
 public:
@@ -14,8 +14,8 @@ public:
 	virtual void begin() override;
 	virtual void tick() override;
 
-	void handleOffer(); // °ñµå Á¦¹°
-	void handleExit();     // ³ª°¡±â
+	void handleOffer(); // ê³¨ë“œ ì œë¬¼
+	void handleExit();     // ë‚˜ê°€ê¸°
 
 	void UpdateSelectLayout();
 

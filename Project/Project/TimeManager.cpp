@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "TimeManager.h"
 
 shared_ptr<TimeManager> TimeManager::Instance = nullptr;

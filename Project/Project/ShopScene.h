@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Scene.h"
 #include "define.h"
 
@@ -6,15 +6,15 @@ class ShopScene :
     public Scene
 {
 private:
-	int CursorPos; // Ä¿¼­ À§Ä¡
+	int CursorPos; // ì»¤ì„œ ìœ„ì¹˜
 	SHOP_TYPE Cur_ShopType;
 
 public:
 	virtual void makeLayout() override;
-	virtual void begin() override; // »óÁ¡ ÁøÀÔ ½Ã µ¿ÀÛ
+	virtual void begin() override; // ìƒì  ì§„ì… ì‹œ ë™ì‘
 	virtual void tick() override;
 
-	void handleExit();     // »óÁ¡ ³ª°¡±â
+	void handleExit();     // ìƒì  ë‚˜ê°€ê¸°
 
 	void UpdateSelectLayout();
 	void UpdatePurchaseLayout();

@@ -1,14 +1,14 @@
-#pragma once
+ï»¿#pragma once
 
 class Animation;
 
 class Animator
 {
 private:
-    map<string, Animation*> AnimationMap;  // ÇØ´ç ¾Ö´Ï¸ŞÀÌÅÍ¿¡¼­ ½ÇÇà °¡´ÉÇÑ ¾Ö´Ï¸ŞÀÌ¼Çµé
-    Animation*              CurrentAnimation;     // ÇöÀç ¾Ö´Ï¸ŞÀÌ¼Ç
+    map<string, Animation*> AnimationMap;  // í•´ë‹¹ ì• ë‹ˆë©”ì´í„°ì—ì„œ ì‹¤í–‰ ê°€ëŠ¥í•œ ì• ë‹ˆë©”ì´ì…˜ë“¤
+    Animation*              CurrentAnimation;     // í˜„ì¬ ì• ë‹ˆë©”ì´ì…˜
 
-    bool                    bRepeat;        // ¹İº¹Àç»ı ¿©ºÎ
+    bool                    bRepeat;        // ë°˜ë³µì¬ìƒ ì—¬ë¶€
 
 public:
     virtual void tick();
@@ -20,7 +20,7 @@ public:
 
     void Play(const string& _strName, bool _bRepeat);
 
-    // ¿¡´Ï¸ŞÀÌ¼ÇÀ» ÀÌ¾î¼­ ½ÇÇàÇØÁÖ´Â ÇÔ¼ö
+    // ì—ë‹ˆë©”ì´ì…˜ì„ ì´ì–´ì„œ ì‹¤í–‰í•´ì£¼ëŠ” í•¨ìˆ˜
     void CuntinuePlay(const string& _strName, bool _bRepeat);
 
     void ReSetCurAnim() { CurrentAnimation = nullptr; }

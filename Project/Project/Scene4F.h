@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "MainScene.h"
 #include "PoisonSlime.h"
 class Scene4F : public MainScene {

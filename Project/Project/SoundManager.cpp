@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "SoundManager.h"
 #include "PathManager.h"
 
@@ -18,12 +18,12 @@ void SoundManager::Initialize()
 {
 	FMOD::System_Create(&Sound::g_pFMOD);
 
-	// 32°³ Ã¤³Î »ý¼º
+	// 32ê°œ ì±„ë„ ìƒì„±
 	Sound::g_pFMOD->init(32, FMOD_DEFAULT, nullptr);
 
 
 
-	// »ç¿ë °¡´ÉÇÑ À½¾Çµé ·Îµå
+	// ì‚¬ìš© ê°€ëŠ¥í•œ ìŒì•…ë“¤ ë¡œë“œ
 	Sound* sound = new Sound();
 	wstring path = PathManager::GetInstance()->GetContentPath();
 	path += L"BGM.mp3";

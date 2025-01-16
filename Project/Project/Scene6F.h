@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "MainScene.h"
 #include "MistWitch.h"
 class Scene6F : public MainScene{
