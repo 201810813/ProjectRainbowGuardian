@@ -27,6 +27,13 @@ void EndingScene::begin()
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::INPUT);
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::BACKGROUND);
 
+    for (int i = 0; i < 7; ++i)
+    {
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::PROGRESS_BAR, "   ", false, i, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::BLACK));
+    }
+    WriteManager::GetInstance()->render();
+    WriteManager::GetInstance()->render();
+
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::PROGRESS_BAR);
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::MONSTER_STAT_UI);
 	makeLayout();
