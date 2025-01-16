@@ -140,16 +140,34 @@ void FConsoleLayoutContainer::SetConsoleColor(WORD color)
 string FConsoleLayoutContainer::OverwriteTitle(const string& Title)
 {
     CONSOLE_SCREEN_BUFFER_INFO ConsoleInfo;
+    
     int LineCount = 0;
     // 콘솔 정보 가져오기
-    if (GetConsoleScreenBufferInfo(ConsoleHandle, &ConsoleInfo)) {
+    if (GetConsoleScreenBufferInfo(Console.HConsole, &ConsoleInfo)) {
         // 콘솔 창의 가로 크기 계산
         LineCount = ConsoleInfo.srWindow.Right - ConsoleInfo.srWindow.Left + 1;
+    }
+
+    int spaceCount = 0;
+    for (char ch : Title) {
+        if (ch == ' ') {
+            ++spaceCount;
+        }
     }
 
     LineCount -= Title.length();
     string Line;
     for (int i = 0; i < LineCount / 2; ++i)
+    {
+        Line += "=";
+    }
+
+    if (spaceCount == 0)
+    {
+        spaceCount = 1;
+    }
+
+    for (int i = 0; i < spaceCount * 2; ++i)
     {
         Line += "=";
     }

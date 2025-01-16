@@ -56,7 +56,7 @@ void ShopScene::makeLayout()
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 24, 5, 60);
     //UpdateSelectLayout();
 
-    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::DRAW, 61, 13, 16, 51);
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::DRAW, 61, 13, 16, 58);
 }
 
 void ShopScene::begin()
