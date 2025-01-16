@@ -301,6 +301,13 @@ void FConsoleLayoutContainer::clear(LAYOUT_TYPE TargetType)
         return;
     }
 
+    // 색상 원복
+    for (int i = 0; i < LayoutMap.find(TargetType)->second.Message.size(); ++i)
+    {
+        LayoutMap.find(TargetType)->second.Message[i].BackGroundColor = BACKGROUND_COLOR_TYPE::BLACK;
+        LayoutMap.find(TargetType)->second.Message[i].TextColor = TEXT_COLOR_TYPE::WHITE;
+    }
+
     // 메세지 날리기
     LayoutMap.erase(LayoutMap.find(TargetType));
 }

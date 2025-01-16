@@ -20,6 +20,11 @@ void Scene1F::makeLayout() {
     // Story Layout
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🔴 이곳은 붉은 분노의 층입니다.", false, 7, TEXT_COLOR_TYPE::RED));
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🔥 불도깨비가 당신에게 불똥을 날립니다.", false, 8, TEXT_COLOR_TYPE::WHITE));
+
+    // BACKGROUND
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "Test", false, 0));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "Test", false, 1));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "Test", false, 2));
 }
 
 
