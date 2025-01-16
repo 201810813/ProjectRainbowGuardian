@@ -4,8 +4,6 @@
 #include "FairyFire.h"
 
 class Scene1F : public MainScene{
-private:
-    Monster* fairy;
 public:
     virtual void makeLayout() override;
     virtual void begin() override;

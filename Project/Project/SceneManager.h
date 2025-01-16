@@ -60,7 +60,8 @@ private:
 	SCENE_TYPE	NextSceneType;
 	int			BattleCount;
 	string  randomEventIcon; // 랜덤 이벤트 아이콘
-
+	
+	int FloorNumber = 0;
 	bitset<7>	RoomColorCheck;	// bit단위로 어떤 컬러의 방들을 클리어했는지 체크해 줌.
 
 
@@ -83,6 +84,10 @@ public:
 	void updateMap(); //맵 업데이트 메서드
 
 	TEXT_COLOR_TYPE getColorForFloor(int floor);
+
+	void RessetFloorNumber() { FloorNumber = 0; }
+
+	const bitset<7>& GetRoomColorCheck() { return RoomColorCheck; }
 
 	void MoveToNextFloor(); // 다음 층으로 이동
 

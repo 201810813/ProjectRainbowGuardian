@@ -10,7 +10,7 @@ Rtan::Rtan()
 	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()) + (4 * playerLevel);
 	int		def = playerLevel * 2;
 	           //이름    hp  maxhp  damage   def  skd   eva drop exp  coin
-	RtanStat = { "르탄이(환영)",Hp, Hp, damage, def, 1.4, 20, 30, 13, 20};
+	RtanStat = { "🪞르탄이(환영)🪞",Hp, Hp, damage, def, 1.4, 20, 30, 13, 20};
 	dropItems[HEALTH_POTION] = RtanStat.dropRate;
 	dropItems[POWER_POTION] = RtanStat.dropRate;
 	bDead = false;
@@ -147,13 +147,13 @@ void Rtan::CreateAnimations()
 
 double Rtan::UseSkill()
 {
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, GetName() + "가 스킬을 사용합니다!!!!", true, 0, TEXT_COLOR_TYPE::RED));
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, GetName() + "가 스킬을 사용합니다!!!!", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 	return GetDamage() * GetSkillDamage();
 }
 
 void Rtan::Attack()
 {
-	Monster::animator->Play("Attack", true);
+	Monster::animator->Play("Attack", false);
 	//스킬 쓸확률
 	int skillProbability = 10;
 	RandomManager::GetInstance()->setRange(0, 100);
@@ -166,7 +166,7 @@ void Rtan::Attack()
 		int		trigger = rand() % 100;
 		if (probability < trigger) {
 			Player::getInstance()->GetAttack(damage);
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트!", true, 0, TEXT_COLOR_TYPE::RED));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트!", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!!!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
 		else {
@@ -180,7 +180,7 @@ void Rtan::Attack()
 		int		trigger = rand() % 100;
 		if (probability < trigger) {
 			Player::getInstance()->GetAttack(damage);
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! ", true, 0, TEXT_COLOR_TYPE::RED));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! ", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
 		else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY)); }
@@ -189,7 +189,7 @@ void Rtan::Attack()
 
 void Rtan::GetAttack()
 {
-	Monster::animator->Play("GetAttack", true);
+	Monster::animator->Play("GetAttack", false);
 	double damage = Player::getInstance()->GetDamage() - GetDefense();
 	SetCurrentHP(GetCurrentHP() - damage);
 	if (GetCurrentHP() <= 0) {
@@ -229,7 +229,7 @@ void Rtan::DropItem() {
 bool Rtan::is_Die()
 {
 	if (GetCurrentHP() <= 0) {
-		Monster::animator->Play("Die", true);
+		Monster::animator->Play("Die", false);
 		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신이" + GetName() + "를 쓰러트렸습니다!", true, 0, TEXT_COLOR_TYPE::BLUE));
 		DropItem();
 		bDead = true;
