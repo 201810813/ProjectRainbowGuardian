@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "Boss.h"
 
 
@@ -6,9 +6,9 @@ Boss::Boss()
 {
 	playerLevel = Player::getInstance()->GetLevel();
 	RandomManager::GetInstance()->setRange(30, 45);
-	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>());
+	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()) + (6 * playerLevel);
 	RandomManager::GetInstance()->setRange(7, 9);
-	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>());
+	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()) + (3 * playerLevel);
 	int		def = playerLevel * 2;
 	//이름    hp  maxhp  damage   def  skd   eva drop exp  coin
 	BossStat = { "무지개 드래고니당", Hp, Hp, damage, def, 1.4, 20, 30, 13, 20};
@@ -19,10 +19,26 @@ Boss::Boss()
 
 Boss::~Boss() {}
 
+void Boss::Begin()
+{
+	CreateAnimations();
+	//Monster::animator->Play("Idle", true);
+}
+
+void Boss::Tick()
+{
+	Monster::Tick();
+	if (bDead == false && Monster::animator->isCurAnimEnd()) {
+		//Monster::animator->Play("Idle", true);
+	}
+}
+void Boss::CreateAnimations()
+{
+}
 
 double Boss::UseSkill()
 {
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, GetName() + "가 스킬을 사용합니다!!!!", true, 0));
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, GetName() + "가 스킬을 사용합니다!!!!", true, 0, TEXT_COLOR_TYPE::RED));
 	return GetDamage() * GetSkillDamage();
 }
 
@@ -40,10 +56,11 @@ void Boss::Attack()
 		int		trigger = rand() % 100;
 		if (probability < trigger) {
 			Player::getInstance()->GetAttack(damage);
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트! 데미지: " + to_string(int(damage)), true, 0));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트!", true, 0, TEXT_COLOR_TYPE::RED));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!!!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
 		else {
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 스킬 공격을 회피했습니다.", true, 0));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 스킬 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 		}
 	}
 	//스킬을 아니 쓰면
@@ -53,9 +70,10 @@ void Boss::Attack()
 		int		trigger = rand() % 100;
 		if (probability < trigger) {
 			Player::getInstance()->GetAttack(damage);
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! 데미지: " + to_string(int(damage)), true, 0));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! ", true, 0, TEXT_COLOR_TYPE::RED));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
-		else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0)); }
+		else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY)); }
 	}
 }
 
@@ -88,26 +106,26 @@ void Boss::DropItem() {
 
 			if (droppedItem) {
 				Player::getInstance()->AddItemToInventory(droppedItem);  // 플레이어 인벤토리에 아이템 추가
-				WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, droppedItem->GetName() + "이(가) 드롭되었습니다."));
+				WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, droppedItem->GetName() + "이(가) 드롭되었습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
 			}
 			delete droppedItem;
 		}
 	}
 }
 
-void Boss::is_Die()
+
+bool Boss::is_Die()
 {
 	if (GetCurrentHP() <= 0) {
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신이 " + GetName() + "를 쓰러트렸습니다!", true, 0));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신이" + GetName() + "를 쓰러트렸습니다!", true, 0, TEXT_COLOR_TYPE::BLUE));
 		DropItem();
 		bDead = true;
+		return bDead;
 	}
-	bDead = false;
+	return bDead;
 }
 
-void Boss::Tick()
-{
-}
+
 
 
 //---------------------------------

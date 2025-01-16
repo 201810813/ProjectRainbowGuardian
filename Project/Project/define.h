@@ -133,6 +133,7 @@ enum class SCENE_TYPE
 {
 	INTRO,
 
+	
 	SCENE_1F,
 	SCENE_2F,
 	SCENE_3F,
@@ -147,6 +148,7 @@ enum class SCENE_TYPE
 	ALTAR,
 
 	RANDOM,
+	SCENE_0F,
 
 	END
 };
@@ -161,6 +163,8 @@ enum class BATTLE_TYPE
 	, ITEM_SELECT
 	, MONSTER_TURN
 	, MONSTER_DEAD_CHECK
-
+	, PLAYER_DEAD_CHECK
+	, REWARD
+	, SCENE_CHANGER
 	, END
 };

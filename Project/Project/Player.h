@@ -5,7 +5,7 @@
 #include "Item.h"
 #include "define.h"
 #include "ConsoleLayout.h"
-//½Ì±ÛÅæ ÇÃ·¹ÀÌ¾î
+//ï¿½Ì±ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½
 class Monster;
 
 class Player {
@@ -19,19 +19,21 @@ public:
 		double	damage;
 		int		defense;
 		int		evasion;
-		int		gold;
+		int		coin;
 		int		itemCount;
 		string	name;
 	};
 private:
-	map<Type, int> itemCounts; //enum¿¡ µû¶ó °¹¼öÁõ°¡
-	map<Type, vector<Item*>> inventory; //Drop()¿¡¼­ ¹ÞÀº °´Ã¼ Æ÷ÀÎÅÍ ÀúÀå.
+	map<Type, int> itemCounts; //enumï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	map<Type, vector<Item*>> inventory; //Drop()ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	PlayerStat stat;
 	int PowerUpChance;
+	bool bPowerUp;
+	int AddDamage;
 	bool bDead;
 private:
-	Player(const Player&) = delete; //º¹»ç»ý¼ºÀÚ,
-	Player& operator=(const Player&) = delete;  //´ëÀÔ¿¬»êÀÚ Á¦°Å.
+	Player(const Player&) = delete; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,
+	Player& operator=(const Player&) = delete;  //ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	static shared_ptr<Player> player;
 
 public:
@@ -44,12 +46,13 @@ public:
 	string& getName();
 	void GetAttack(double& damage);
 	void Attack(Monster& monster);
-	void gainExp(int exp); //Ãß°¡
-	void levelUp(); //Ãß°¡
+	void gainExp(int exp); //ï¿½ß°ï¿½
+	void gainCoin(int coin);
+	void levelUp(); //ï¿½ß°ï¿½
 	bool IsDie();
 	void AddItemToInventory(Item* item);
 	void ShowInventory();
-	void UseItem(Type type);
+	bool UseItem(Type type);
 	void IncreaseChance();
 
 public:
@@ -59,7 +62,13 @@ public:
 	const int	  GetEvasion();
 	const int	  GetLevel();
 	const double  GetDamage();
+	const int	  GetCoin();
 	const int     GetItemCount();
+	const int	  GetCurrentExp();
+	const int     GetMaxExp();
+	const int	  GetAddDamage();
+
+	bool Is_PowerUp();
 
 public:
 	void SetCurrentHP(double heal);

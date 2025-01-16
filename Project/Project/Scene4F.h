@@ -1,7 +1,9 @@
 #pragma once
 #include "MainScene.h"
-
+#include "PoisonSlime.h"
 class Scene4F : public MainScene {
+private:
+    Monster* slime;
 public:
     virtual void makeLayout() override;
     virtual void begin() override;
