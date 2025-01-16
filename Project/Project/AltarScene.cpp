@@ -38,6 +38,17 @@ void AltarScene::makeLayout(){
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "어디선가 성스러운 기운이 느껴집니다...", true, 1, TEXT_COLOR_TYPE::SKY));
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "골드 100을 봉양하면 최대 체력으로 회복됩니다.", true, 2, TEXT_COLOR_TYPE::SKY_INENSITY));
 
+    // BACKGROUND
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "⢿⣿⣿⣿⡿      ⢿⣿⣿⣿⡿                                             ⢿⣿⣿⣿⡿      ⢿⣿⣿⣿⡿", false, 0));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, " ⣿⣿⣿        ⣿⣿⣿ ⠀⠀     ⠀  ⠀  ⠀⠀⠀⠀⠀⡴⠋⠳⡄⠀⠀⠀	                  ⣿⣿⣿        ⣿⣿⣿", false, 1));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, " ⣿⣿⣿        ⣿⣿⣿⠀⠀      ⠀ ⠀   ⠀⠀⢀⣤⣤⣹⣤⣴⣣⣤⣄⡀⠀                    ⣿⣿⣿        ⣿⣿⣿", false, 2));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, " ⣿⣿⣿        ⣿⣿⣿⠀⠀           ⠀⣠⠞⢉⡄⠀⣟⠀⠈⡧⠀⣀⠙⢦⡀                   ⣿⣿⣿        ⣿⣿⣿", false, 3));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, " ⣿⣿⣿        ⣿⣿⣿⠀          ⠀⠀⠀⠙⠶⢯⣤⠄⣗⠀⠀⡯⢠⣬⠷⠞⠃⠀⠀                 ⣿⣿⣿        ⣿⣿⣿", false, 4));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, " ⣿⣿⣿        ⣿⣿⣿⠀⠀        ⠀  ⠀⠀⠀⠀⠈⠳⡗⠀⠀⢿⠚⠁⠀⠀                    ⣿⣿⣿        ⣿⣿⣿", false, 5));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, " ⣿⣿⣿        ⣿⣿⣿⠀⠀     ⠀  ⠀⠀    ⠀⠀⣸⠁⠀⠀⠸⡆⠀⠀ 	                  ⣿⣿⣿        ⣿⣿⣿", false, 6));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, " ⣿⣿⣿        ⣿⣿⣿⠀     ⠀⠀ ⠀    ⠀⠀⠀⢀⣏⢘⢛⢛⢛⢷⠀⠀                    ⠀⣿⣿⣿        ⣿⣿⣿", false, 7));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "⣾⣿⣿⣿⣷      ⣾⣿⣿⣿⣷⠀     ⠀⠀⠀⠀    ⠀⠀⣏⣉⣉⣉⣉⣉⣉⡇                     ⣾⣿⣿⣿⣷      ⣾⣿⣿⣿⣷", false, 8));
+
     // 선택지 추가
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 24, 5, 60);
     UpdateSelectLayout();

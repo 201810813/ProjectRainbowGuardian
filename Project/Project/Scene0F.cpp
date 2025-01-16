@@ -31,6 +31,17 @@ void Scene0F::makeLayout()
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 13, 9, 60);
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신은 마을에 왔습니다.", false, 8));
 
+    // BACKGROUND
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "                 ⠀⣠⢃⠢⠨⠱⡁⡀⠀      ⣇⠤⣸", false, 0));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀    ⠀⡘⡘⡐⡨⠨⠨⡐⠱⢄⠀      ⣇⠤⣸", false, 1));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "⠀⠀⠀⠀⠀⠀⠀⠀⢐⠁⠢⠀   ⠈⠆⢆⢢⢡⣑⢨⢨⠜⠀    ⠀⠀ ⣇⠤⣸", false, 2));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "⠀⠀⠀⠀⣄⡀⠀⠀⡐⢠⠁           	    ⣇⠤⣸", false, 3));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "⠀⠀⠀⡜⠀⠀⠑⠄⡴⡂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀	 ⠀  ⣇⠤⣸                ⡠⡤⠤⠤⠤⢄", false, 4));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "⠀⠀⠀⠉⢩⠭⠍⠭⣛⠎⠍⡉⠉⠅⠀⠀⠀⠀⠀⠀⠀	    ⡇⣀⢸              ⣠⣊⣀⣈⣢⣀⡤⠤⠵⠤⢄", false, 5));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "⣀⣀⣀⣀⣸⢨⠁⠌⡹⡀⣀⣈⣂⣇⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣏⣀⣹⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⡇⢠⠤⣠⣊⣀⣈⣢⣀⣀⣀⣑⣄⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀", false, 6));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "⠀⠀⠀⠀⢸⡀⣐⢁⣐⡈⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀          ⡔⠁⠈⢢             ⣇⣸⣀⡇⢠⠤⡄⢸ ⡤⠤⢤⢸", false, 7));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::BACKGROUND, "⡀⠄⠂⠢⠐⠑⠘⠂⠪⠊⠂⠂⠢⢄⢀⢀⢀⡀⣀⢀⢀⢀        ⡜      ⢣              ⣇⣸⣀⣇⣸⣀⣓⣒⣚⣸", false, 8));
+
     // Select Layout (선택지)
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 24, 5, 60);
     UpdateSelectLayout();
