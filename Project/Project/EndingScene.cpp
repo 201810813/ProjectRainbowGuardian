@@ -23,7 +23,7 @@ void EndingScene::makeLayout()
 
 void EndingScene::begin()
 {
-    SoundManager::GetInstance()->PlayMusic("Ending_BGM", 0, 0.05, true);
+    SoundManager::GetInstance()->PlayMusic("Ending_BGM", 0, 0.05f, true);
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::TITLE);
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::STAT);
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::MAP);
