@@ -17,41 +17,50 @@ void SceneManager::Initialize()
 	randomEventTriggered = false; // 랜덤 이벤트 초기화
 }
 
+//void SceneManager::tick()
+//{
+//	if (finalBossDefeated)  return; // 최종 보스 클리어 시 종료
+//
+//	if (IS_TAP(RIGHT)) // 오른쪽 방향키 입력 처리
+//	{
+//		if (randomEventTriggered) // 랜덤 씬에서 나가기 처리
+//		{
+//			randomEventTriggered = false; // 랜덤 이벤트 해제
+//			if (currentFloor < 8)
+//			{
+//				currentFloor++; // 다음 층 이동
+//			}
+//			CacheChangeScene(static_cast<SCENE_TYPE>(currentFloor));
+//		}
+//		else if (BattleCount >= 4 && currentFloor < 8) // 전투 4회 후 랜덤 씬 (8층 제외)
+//		{
+//			CacheChangeScene(SCENE_TYPE::RANDOM);
+//			randomEventTriggered = true; // 랜덤 이벤트 트리거
+//		}
+//		else // 배틀 진행
+//		{
+//			CacheChangeScene(static_cast<SCENE_TYPE>(currentFloor)); // 현재 층의 배틀 씬
+//			BattleCount++;
+//		}
+//	}
+//
+//	// 현재 씬의 tick을 호출하여 씬 업데이트
+//	if (CurrentScene != nullptr)
+//	{
+//		CurrentScene->tick();
+//	}
+//
+//	// 씬 변경 처리
+//	changeScene();
+//}
+
 void SceneManager::tick()
 {
-	if (finalBossDefeated)  return; // 최종 보스 클리어 시 종료
-
-	if (IS_TAP(RIGHT)) // 오른쪽 방향키 입력 처리
-	{
-		if (randomEventTriggered) // 랜덤 씬에서 나가기 처리
-		{
-			randomEventTriggered = false; // 랜덤 이벤트 해제
-			if (currentFloor < 8)
-			{
-				currentFloor++; // 다음 층 이동
-			}
-			CacheChangeScene(static_cast<SCENE_TYPE>(currentFloor));
-		}
-		else if (BattleCount >= 4 && currentFloor < 8) // 전투 4회 후 랜덤 씬 (8층 제외)
-		{
-			CacheChangeScene(SCENE_TYPE::RANDOM);
-			randomEventTriggered = true; // 랜덤 이벤트 트리거
-		}
-		else // 배틀 진행
-		{
-			CacheChangeScene(static_cast<SCENE_TYPE>(currentFloor)); // 현재 층의 배틀 씬
-			BattleCount++;
-		}
-	}
-
 	// 현재 씬의 tick을 호출하여 씬 업데이트
 	if (CurrentScene != nullptr)
 	{
 		CurrentScene->tick();
 	}
-
-	// 씬 변경 처리
-	changeScene();
 }
 
 void SceneManager::CheckRoomColor(SCENE_TYPE SceneType)
@@ -87,21 +96,36 @@ void SceneManager::CacheChangeScene(SCENE_TYPE SceneType)
 
 void SceneManager::RandomCreateScene()
 { // 배틀 카운트 초기화하고 랜덤 씬 결정!
-    int randomtype;
-    BattleCount = 0;
-	RandomManager::GetInstance()->setRange((int)SCENE_TYPE::SHOP, (int)SCENE_TYPE::ALTAR); // 상점과 제단 사이에서 랜덤
-	randomtype = RandomManager::GetInstance()->getRandom<int>();
-	NextSceneType = static_cast<SCENE_TYPE>(randomtype);
+ //   int randomtype;
+ //   BattleCount = 0;
+	//RandomManager::GetInstance()->setRange((int)SCENE_TYPE::SHOP, (int)SCENE_TYPE::ALTAR); // 상점과 제단 사이에서 랜덤
+	//randomtype = RandomManager::GetInstance()->getRandom<int>();
+	//NextSceneType = static_cast<SCENE_TYPE>(randomtype);
 
-	// 랜덤 씬을 맵에 표시
-	if (NextSceneType == SCENE_TYPE::SHOP)
+	//// 랜덤 씬을 맵에 표시
+	//if (NextSceneType == SCENE_TYPE::SHOP)
+	//{
+	//	randomEventIcon = "[🛒]"; // 상점 아이콘
+	//}
+	//else if (NextSceneType == SCENE_TYPE::ALTAR)
+	//{
+	//	randomEventIcon = "[⛲]"; // 제단 아이콘
+	//}
+
+
+	int randomtype;
+	if (BattleCount < 4)
 	{
-		randomEventIcon = "[🛒]"; // 상점 아이콘
+		RandomManager::GetInstance()->setRange((int)SCENE_TYPE::SCENE_1F, (int)SCENE_TYPE::SCENE_7F);
+		randomtype = RandomManager::GetInstance()->getRandom<int>();
 	}
-	else if (NextSceneType == SCENE_TYPE::ALTAR)
+	else
 	{
-		randomEventIcon = "[⛲]"; // 제단 아이콘
+		BattleCount = 0;
+		RandomManager::GetInstance()->setRange((int)SCENE_TYPE::SHOP, (int)SCENE_TYPE::ALTAR); // 상점과 제단 사이에서 랜덤
+		randomtype = RandomManager::GetInstance()->getRandom<int>();
 	}
+	NextSceneType = static_cast<SCENE_TYPE>(randomtype);
 }
 
 void SceneManager::changeScene()
@@ -116,42 +140,59 @@ void SceneManager::changeScene()
 		break;
 
 	case SCENE_TYPE::SCENE_1F:
+		FloorNumber++;
+		BattleCount++;
 		CurrentScene = new Scene1F;
 		break;
 
 	case SCENE_TYPE::SCENE_2F:
+		FloorNumber++;
+		BattleCount++;
 		CurrentScene = new Scene2F;
 		break;
 
 	case SCENE_TYPE::SCENE_3F:
+		FloorNumber++;
+		BattleCount++;
 		CurrentScene = new Scene3F;
 		break;
 
 	case SCENE_TYPE::SCENE_4F:
+		FloorNumber++;
+		BattleCount++;
 		CurrentScene = new Scene4F;
 		break;
 
 	case SCENE_TYPE::SCENE_5F:
+		FloorNumber++;
+		BattleCount++;
 		CurrentScene = new Scene5F;
 		break;
 
 	case SCENE_TYPE::SCENE_6F:
+		FloorNumber++;
+		BattleCount++;
 		CurrentScene = new Scene6F;
 		break;
 
 	case SCENE_TYPE::SCENE_7F:
+		FloorNumber++;
+		BattleCount++;
 		CurrentScene = new Scene7F;
 		break;
 
 	case SCENE_TYPE::FINAL:
+		FloorNumber++;
 		CurrentScene = new FinalScene;
 		break;
 
 	case SCENE_TYPE::SHOP:
+		FloorNumber++;
 		CurrentScene = new ShopScene;
 		break;
 
 	case SCENE_TYPE::ALTAR:
+		FloorNumber++;
 		CurrentScene = new AltarScene;
 		break;
 
@@ -165,8 +206,9 @@ void SceneManager::changeScene()
 		WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::STORY);
 		WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::TITLE);
 		WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::DRAW);
+		CurrentScene->SetFloorNumber(FloorNumber);
 		CurrentScene->begin();
-		updateMap();
+		//updateMap();
 	}
 
 	bChangeScene = false;

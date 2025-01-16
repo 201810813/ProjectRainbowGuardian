@@ -17,38 +17,27 @@ void ShopScene::makeLayout()
 
     // Stat Layout (플레이어 정보)
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STAT, 0, 2, 9, 25);
-    /*Player* player = Player::GetInstance();
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "골드: " + std::to_string(player->GetGold()), false, 0, TEXT_COLOR_TYPE::WHITE));*/
 
     //Map Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::MAP, 104, 2, 9, 8);
+    string output = "";
+    if (GetFloorNumber() < 10)
+    {
+        output += "0";
+    }
+    output += to_string(GetFloorNumber());
+    output += " [🛒]";
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, output, true, 0, TEXT_COLOR_TYPE::GRAY));
 
     // Shop Items Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 13, 9, 60);
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "구매 가능한 아이템 목록:", false, 0, TEXT_COLOR_TYPE::ORANGE));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "1. 체력 포션 (10 골드)", false, 1, TEXT_COLOR_TYPE::WHITE));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "2. 공격력 강화 (15 골드)", false, 2, TEXT_COLOR_TYPE::WHITE));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "구매 가능한 아이템 목록:", true, 0, TEXT_COLOR_TYPE::ORANGE));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "1. 체력 포션 (10 골드)", true, 1, TEXT_COLOR_TYPE::WHITE));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "2. 공격력 강화 (15 골드)", true, 2, TEXT_COLOR_TYPE::WHITE));
 
     // 선택지 추가
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 24, 5, 60);
-    if (CursorPos == 0)
-    {
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  > [1. 아이템 구매]", false, 0, TEXT_COLOR_TYPE::WHITE));
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [2. 아이템 판매]", false, 1, TEXT_COLOR_TYPE::WHITE));
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [3. 상점 나가기]", false, 2, TEXT_COLOR_TYPE::WHITE));
-    }
-    else if (CursorPos == 1)
-    {
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [1. 아이템 구매]", false, 0, TEXT_COLOR_TYPE::WHITE));
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  > [2. 아이템 판매]", false, 1, TEXT_COLOR_TYPE::WHITE));
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [3. 상점 나가기]", false, 2, TEXT_COLOR_TYPE::WHITE));
-    }
-    else if (CursorPos == 2)
-    {
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [1. 아이템 구매]", false, 0, TEXT_COLOR_TYPE::WHITE));
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [2. 아이템 판매]", false, 1, TEXT_COLOR_TYPE::WHITE));
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  > [3. 상점 나가기]", false, 2, TEXT_COLOR_TYPE::WHITE));
-    }
+    UpdateSelectLayout();
 
 	WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::DRAW, 61, 13, 16, 51);
 }
@@ -64,13 +53,11 @@ void ShopScene::tick()
     {
         CursorPos = (CursorPos > 0) ? CursorPos - 1 : 2; // 0에서 2로 이동
         WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
-        makeLayout();
     }
     else if (IS_TAP(DOWN)) // 커서를 아래로 이동
     {
         CursorPos = (CursorPos < 2) ? CursorPos + 1 : 0; // 2에서 0으로 이동
         WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
-        makeLayout();
     }
 
     if (IS_TAP(ENTER)) // 선택지 확정
@@ -88,6 +75,8 @@ void ShopScene::tick()
             break;
         }
     }
+
+    UpdateSelectLayout();
 }
 
 void ShopScene::handlePurchase()
@@ -128,7 +117,6 @@ void ShopScene::handlePurchase()
 //        break;
 //    }
 //
-    makeLayout();
 }
 
 void ShopScene::handleSell()
@@ -160,5 +148,28 @@ void ShopScene::handleSell()
 
 void ShopScene::handleExit() // 상점 나가기
 {
-    SceneManager::GetInstance()->MoveToNextFloor();
+    //SceneManager::GetInstance()->MoveToNextFloor();
+    SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::RANDOM);
+}
+
+void ShopScene::UpdateSelectLayout()
+{
+    if (CursorPos == 0)
+    {
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  > [1. 아이템 구매]", false, 0, TEXT_COLOR_TYPE::WHITE));
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [2. 아이템 판매]", false, 1, TEXT_COLOR_TYPE::WHITE));
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [3. 상점 나가기]", false, 2, TEXT_COLOR_TYPE::WHITE));
+    }
+    else if (CursorPos == 1)
+    {
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [1. 아이템 구매]", false, 0, TEXT_COLOR_TYPE::WHITE));
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  > [2. 아이템 판매]", false, 1, TEXT_COLOR_TYPE::WHITE));
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [3. 상점 나가기]", false, 2, TEXT_COLOR_TYPE::WHITE));
+    }
+    else if (CursorPos == 2)
+    {
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [1. 아이템 구매]", false, 0, TEXT_COLOR_TYPE::WHITE));
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [2. 아이템 판매]", false, 1, TEXT_COLOR_TYPE::WHITE));
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  > [3. 상점 나가기]", false, 2, TEXT_COLOR_TYPE::WHITE));
+    }
 }

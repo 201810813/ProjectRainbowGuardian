@@ -21,29 +21,26 @@ void AltarScene::makeLayout(){
 
     // Stat Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STAT, 0, 2, 9, 25);
-   /* Player* player = Player::GetInstance();
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "HP: " + to_string(player->GetHP()) + "/" + to_string(player->GetMaxHP()), false, 0, TEXT_COLOR_TYPE::GREEN));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "골드: " + to_string(player->GetGold()), false, 1, TEXT_COLOR_TYPE::ORANGE));*/
 
     // Map Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::MAP, 104, 2, 9, 8);
+    string output = "";
+    if (GetFloorNumber() < 10)
+    {
+        output += "0";
+    }
+    output += to_string(GetFloorNumber());
+    output += " [⛲]";
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, output, true, 0, TEXT_COLOR_TYPE::GRAY));
+
 
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 13, 9, 60);
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "어디선가 성스러운 기운이 느껴집니다...", false, 1, TEXT_COLOR_TYPE::WHITE));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "골드 100을 봉양하면 최대 체력으로 회복됩니다.", false, 2, TEXT_COLOR_TYPE::WHITE));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "어디선가 성스러운 기운이 느껴집니다...", true, 1, TEXT_COLOR_TYPE::WHITE));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "골드 100을 봉양하면 최대 체력으로 회복됩니다.", true, 2, TEXT_COLOR_TYPE::WHITE));
 
     // 선택지 추가
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 24, 5, 60);
-    if (CursorPos == 0)
-    {
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  > [1. 봉양하기]", false, 0, TEXT_COLOR_TYPE::WHITE));
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [2. 나가기]", false, 1, TEXT_COLOR_TYPE::WHITE));
-    }
-    else if (CursorPos == 1)
-    {
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [1. 봉양하기]", false, 0, TEXT_COLOR_TYPE::WHITE));
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  > [2. 나가기]", false, 1, TEXT_COLOR_TYPE::WHITE));
-    }
+    UpdateSelectLayout();
 
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::DRAW, 61, 13, 16, 51);
 
@@ -59,13 +56,11 @@ void AltarScene::tick()
     {
         CursorPos = (CursorPos > 0) ? CursorPos - 1 : 1; // 0에서 1로 순환
         WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
-        makeLayout();
     }
     else if (IS_TAP(DOWN)) // 커서를 아래로 이동
     {
         CursorPos = (CursorPos < 1) ? CursorPos + 1 : 0; // 1에서 0으로 순환
         WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
-        makeLayout();
     }
 
     if (IS_TAP(ENTER)) // 선택 확정
@@ -79,6 +74,8 @@ void AltarScene::tick()
             handleExit();
         }
     }
+
+    UpdateSelectLayout();
 }
 
 void AltarScene::handleOffer()
@@ -93,10 +90,24 @@ void AltarScene::handleOffer()
 	//{
 	//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "골드가 부족합니다.", false, 3, TEXT_COLOR_TYPE::WHITE));
 	//}
-	makeLayout();
 }
 
 void AltarScene::handleExit() // 나가기
 {
-    SceneManager::GetInstance()->MoveToNextFloor();
+    //SceneManager::GetInstance()->MoveToNextFloor();
+    SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::RANDOM);
+}
+
+void AltarScene::UpdateSelectLayout()
+{
+    if (CursorPos == 0)
+    {
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  > [1. 봉양하기]", false, 0, TEXT_COLOR_TYPE::WHITE));
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [2. 나가기]", false, 1, TEXT_COLOR_TYPE::WHITE));
+    }
+    else if (CursorPos == 1)
+    {
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [1. 봉양하기]", false, 0, TEXT_COLOR_TYPE::WHITE));
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  > [2. 나가기]", false, 1, TEXT_COLOR_TYPE::WHITE));
+    }
 }

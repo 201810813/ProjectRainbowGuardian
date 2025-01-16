@@ -17,6 +17,8 @@ public:
 	void handleSell();     // 아이템 판매
 	void handleExit();     // 상점 나가기
 
+	void UpdateSelectLayout();
+
 public:
 	ShopScene();
 	virtual ~ShopScene() override;
