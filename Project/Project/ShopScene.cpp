@@ -118,7 +118,7 @@ void ShopScene::tick()
             {
                 
             case 0: // 체력포션 구매
-                makeLayout();
+                
                 if (Player::getInstance()->GetCoin() >= 30) {
                     Player::getInstance()->SpendGold(10);
                     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션을 구매했습니다.", false, 0, TEXT_COLOR_TYPE::ORANGE));
@@ -129,7 +129,7 @@ void ShopScene::tick()
                 }
                 break;
             case 1: // 파워포션 구매
-                makeLayout();
+                
                 if (Player::getInstance()->GetCoin() >= 20) {
                     Player::getInstance()->SpendGold(15);
                     Player::getInstance()->AddItemToInventory(POWER_POTION);
@@ -164,7 +164,7 @@ void ShopScene::tick()
         {
             switch (CursorPos)
             {
-                makeLayout();
+                
             case 0: // 체력포션 판매
                 
                 if (Player::getInstance()->GetItemCount(HEALTH_POTION) > 0) { // 체력포션 판매
