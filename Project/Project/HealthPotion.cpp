@@ -22,7 +22,7 @@ void HealthPotion::Use()
 {
     int heal = effect + (Player::getInstance()->GetLevel() * 20);
     Player::getInstance()->SetCurrentHP(heal);
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력을 30 회복합니다", true, 0, TEXT_COLOR_TYPE::GREEN_INENSITY));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력을" + to_string(heal)+ "회복합니다", true, 0, TEXT_COLOR_TYPE::GREEN_INENSITY));
 }
 
 Type HealthPotion::GetType()

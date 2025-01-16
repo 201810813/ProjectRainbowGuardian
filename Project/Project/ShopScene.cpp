@@ -146,7 +146,7 @@ void ShopScene::tick()
                     Player::getInstance()->SpendGold(15);
                     Player::getInstance()->AddItemToInventory(POWER_POTION);
                     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "파워 포션을 구매했습니다.", false, 1, TEXT_COLOR_TYPE::ORANGE));
-                    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션이 인벤토리에 추가되었습니다.", false, 4, TEXT_COLOR_TYPE::GREEN));
+                    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "파워 포션이 인벤토리에 추가되었습니다.", false, 4, TEXT_COLOR_TYPE::GREEN));
                 }
                 else {
                     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "돈이 부족합니다", false, 0, TEXT_COLOR_TYPE::ORANGE));
