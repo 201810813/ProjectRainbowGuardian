@@ -182,7 +182,6 @@ void MainScene::begin()
 	CursorPos = 0; // 커서 위치 초기화
     monster->Begin();
     MainScene::makeLayout();
-    
 }
 
 void MainScene::tick()
