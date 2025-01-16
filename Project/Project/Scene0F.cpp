@@ -4,6 +4,7 @@
 #include "KeyManager.h"
 #include "SceneManager.h"
 #include "Player.h"
+#include "Rtan.h"
 
 void Scene0F::makeLayout()
 {
@@ -16,6 +17,15 @@ void Scene0F::makeLayout()
 
     // Map Layout
      WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::MAP, 104, 2, 9, 8);
+	 string output = "";
+     /*if (GetFloorNumber() < 10)
+     {
+         output += "0";
+     }
+     output += to_string(GetFloorNumber());
+     output += " [🏠]";*/
+     output = "00 [🏠]";
+     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, output, true, 0, TEXT_COLOR_TYPE::GRAY));
 
     // Story Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 13, 9, 60);
@@ -23,21 +33,18 @@ void Scene0F::makeLayout()
 
     // Select Layout (선택지)
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 24, 5, 60);
-    if (CursorPos == 0) {
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  > [1. 탑으로!!!]", false, 0, TEXT_COLOR_TYPE::WHITE));
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [2. 게임 종료]", false, 1, TEXT_COLOR_TYPE::WHITE));
-    }
-    else {
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [1. 탑으로!!!]", false, 0, TEXT_COLOR_TYPE::WHITE));
-        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  > [2. 게임 종료]", false, 1, TEXT_COLOR_TYPE::WHITE));
-    }
+    UpdateSelectLayout();
 
 
-    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::DRAW, 61, 13, 16, 51);
+    //WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::DRAW);
+    WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::MONSTER_STAT_UI);
+
+
 }
 
 void Scene0F::begin()
 {
+    MainScene::begin();
 	Player::getInstance()->GetMaxHP(); // 최대 체력
 	CursorPos = 0;
     makeLayout();
@@ -49,13 +56,13 @@ void Scene0F::tick()
     {
         CursorPos = (CursorPos > 0) ? CursorPos - 1 : 1; // 위로 이동
         WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
-        makeLayout();
+        UpdateSelectLayout();
     }
     else if (IS_TAP(DOWN))
     {
         CursorPos = (CursorPos < 1) ? CursorPos + 1 : 0; // 아래로 이동
         WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
-        makeLayout();
+        UpdateSelectLayout();
     }
 
     if (IS_TAP(ENTER))
@@ -71,18 +78,31 @@ void Scene0F::tick()
     }
 }
 
-Scene0F::Scene0F() : CursorPos(0) {}
+Scene0F::Scene0F() : CursorPos(0)
+{
+    MainScene::monster = new Rtan;
+}
 
 Scene0F::~Scene0F() {}
 
 void Scene0F::GoTo1F()
 {
     SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::SCENE_1F); // 1층으로 이동
-	
-   
 }
 
 void Scene0F::Exit()
 {
     exit(0); // 프로그램 종료
+}
+
+void Scene0F::UpdateSelectLayout()
+{
+    if (CursorPos == 0) {
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  > [1. 탑으로!!!]", false, 0, TEXT_COLOR_TYPE::WHITE));
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [2. 게임 종료]", false, 1, TEXT_COLOR_TYPE::WHITE));
+    }
+    else {
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [1. 탑으로!!!]", false, 0, TEXT_COLOR_TYPE::WHITE));
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  > [2. 게임 종료]", false, 1, TEXT_COLOR_TYPE::WHITE));
+    }
 }

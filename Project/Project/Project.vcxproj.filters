@@ -38,6 +38,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Animator.cpp" />
     <ClCompile Include="Scene0F.cpp" />
+    <ClCompile Include="EndingScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AltarScene.h" />
@@ -78,5 +79,6 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Animator.h" />
     <ClInclude Include="Scene0F.h" />
+    <ClInclude Include="EndingScene.h" />
   </ItemGroup>
 </Project>

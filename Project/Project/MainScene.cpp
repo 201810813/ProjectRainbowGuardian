@@ -428,7 +428,7 @@ void MainScene::tick()
         
 
     case BATTLE_TYPE::PLAYER_DEAD_CHECK:
-        //플레이어 뒤졌는지?
+        //플레이어 죽었는지?
         if (!bOnce)
         {
             bOnce = true;
@@ -454,8 +454,19 @@ void MainScene::tick()
     case BATTLE_TYPE::REWARD:
  
         if (!bOnce) {//플레이어 보상(경험치, 돈)
-            Player::getInstance()->gainExp(monster->GetExp());
-            Player::getInstance()->gainCoin(monster->GetCoin());
+            // 현제방이 보스방인지 아닌지 확인
+            if (ThisSceneType == SCENE_TYPE::FINAL)
+            {
+                WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🌈레인보우 드래곤이 쓰러졌습니다🐉", true, 5, TEXT_COLOR_TYPE::SKY_INENSITY));
+                WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "드래곤은 주인공에게 색을 돌려주었습니다. ", true, 6, TEXT_COLOR_TYPE::WHITE));
+                WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "주인공은 마을로 돌아가 색을 되찾았습니다! ", true, 7, TEXT_COLOR_TYPE::WHITE));
+                WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "게임을 클리어했습니다. 감사합니다!", true, 8, TEXT_COLOR_TYPE::SKY_INENSITY));
+            }
+            else
+            {
+                Player::getInstance()->gainExp(monster->GetExp());
+                Player::getInstance()->gainCoin(monster->GetCoin());
+            }
             bOnce = true;
         }
         
@@ -472,21 +483,31 @@ void MainScene::tick()
             //ture: 보스방 이동
             //false: 랜덤방
         if (!bOnce) {
-            output = "다음 층으로 이동합니다.";
-            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output));
+            if (ThisSceneType != SCENE_TYPE::FINAL)
+            {
+                output = "다음 층으로 이동합니다.";
+                WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output));
+            }
             bOnce = true;
         }
+
         if (IS_TAP(ENTER)) {
             bOnce = false;
-            SceneManager::GetInstance()->CheckRoomColor(ThisSceneType);
-
-            if (SceneManager::GetInstance()->Is_AllColorClear())
+            if (ThisSceneType == SCENE_TYPE::FINAL)
             {
-                SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::FINAL);
+                SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::ENDINGCREDIT);
             }
             else
             {
-                SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::RANDOM);
+                SceneManager::GetInstance()->CheckRoomColor(ThisSceneType);
+                if (SceneManager::GetInstance()->Is_AllColorClear())
+                {
+                    SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::FINAL);
+                }
+                else
+                {
+                    SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::RANDOM);
+                }
             }
         }
         break;
@@ -502,9 +523,8 @@ void MainScene::tick()
             SceneManager::GetInstance()->CheckRoomColorReset();
             SceneManager::GetInstance()->RessetFloorNumber();
             WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::MAP);
-            // 이후에 타운으로 변경해주어야 함..!!
             Player::getInstance()->PlayerRecovery();
-            SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::SCENE_1F);
+            SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::SCENE_0F);
         }
         break;
 
