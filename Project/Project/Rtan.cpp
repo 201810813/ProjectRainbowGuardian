@@ -8,7 +8,7 @@ Rtan::Rtan()
 	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()) + (4 * playerLevel);
 	RandomManager::GetInstance()->setRange(5, 7);
 	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()) + (4 * playerLevel);
-	int		def = playerLevel * 2;
+	int		def = playerLevel * 1;
 	           //이름    hp  maxhp  damage   def  skd   eva drop exp  coin
 	RtanStat = { "🪞르탄이(환영)🪞",Hp, Hp, damage, def, 1.4, 20, 30, 35, 35};
 	dropItems[HEALTH_POTION] = RtanStat.dropRate;

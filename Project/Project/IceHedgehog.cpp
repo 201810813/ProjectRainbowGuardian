@@ -6,10 +6,10 @@ IceHedgehog::IceHedgehog()
 {
 	playerLevel = Player::getInstance()->GetLevel();
 	RandomManager::GetInstance()->setRange(20, 30);
-	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()) + (3 * playerLevel);
+	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()) + (1 * playerLevel);
 	RandomManager::GetInstance()->setRange(5, 7);
-	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()) + (3 * playerLevel);
-	int		def = playerLevel * 2;
+	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()) + (1 * playerLevel);
+	int		def = playerLevel * 1;
 	//이름    hp  maxhp  damage   def  skd   eva drop exp  coin
 	HedgehogeStat = { "🦔고드름치🦔", Hp, Hp, damage, def, 1.4, 20, 30, 13, 20 };
 	dropItems[HEALTH_POTION] = HedgehogeStat.dropRate;
