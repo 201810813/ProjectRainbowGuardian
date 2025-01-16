@@ -95,7 +95,7 @@ bool Player::SpendGold(int Coin)
 	}
 	else
 	{
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, to_string(Coin) + "만큼의 골드를 사용했습니다.", true, 0, TEXT_COLOR_TYPE::ORANGE_INENSITY));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, to_string(Coin) + "만큼의 골드를 사용했습니다.", false, 2, TEXT_COLOR_TYPE::ORANGE_INENSITY));
 		stat.coin -= Coin;
 		return true;
 	}
@@ -104,10 +104,11 @@ bool Player::SpendGold(int Coin)
 void Player::levelUp() { // 레벨업
 	stat.level++;
 	stat.maxHP += 20;
+	stat.currentHP = stat.maxHP;
 	stat.damage += 5;
 	stat.defense += 2;
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, (" 레벨 업! 현재 레벨: " + stat.level), true, 0));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "최대 체력과 공격력, 방여력이 증가했습니다!" ,true, 0));
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "레벨 업! 현재 레벨: " + to_string(stat.level), true, 0,TEXT_COLOR_TYPE::SKY));
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "최대 체력과 공격력, 방여력이 증가했습니다!" ,true, 0, TEXT_COLOR_TYPE::SKY));
 }
 
 bool Player::IsDie()
@@ -215,6 +216,11 @@ void Player::SetDamage(int buff)
 	stat.damage += buff;
 }
 
+void Player::SetCoin(int coin)
+{
+	stat.coin += coin;
+}
+
 
 //-----------------------------------//
 //          아이템관련함수           //
@@ -224,10 +230,10 @@ void Player::AddItemToInventory(Type type)
 {
 	inventory[type]++;
 	if (type == HEALTH_POTION) {
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션이 추가되었습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
+		//WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션이 추가되었습니다.", false, 4, TEXT_COLOR_TYPE::GREEN));
 	}
 	else if (type == POWER_POTION) {
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "파워 포션이 추가되었습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
+		//WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "파워 포션이 추가되었습니다.", false, 4, TEXT_COLOR_TYPE::GREEN));
 	}
 	
 }
@@ -244,9 +250,10 @@ bool Player::UseItem(Type type)
 {
 	if(type == HEALTH_POTION){
 		if (inventory[type] > 0) {
-			HealthPotion->Use();
-			inventory[HEALTH_POTION]--;
-			return true;
+				HealthPotion->Use();
+				inventory[HEALTH_POTION]--;
+				return true;
+			
 		}
 		else {
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "해당 아이템이 인벤토리에 없습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
@@ -257,7 +264,7 @@ bool Player::UseItem(Type type)
 		if (inventory[type] > 0)
 		{
 			PowerPotion->Use();
-			AddDamage = 5 * stat.level;
+			AddDamage = 5 + (2 * stat.level);
 			inventory[POWER_POTION]--;
 			bPowerUp = true;
 		}

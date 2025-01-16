@@ -199,9 +199,9 @@ void IceHedgehog::GetAttack()
 }
 
 void IceHedgehog::DropItem() {
-	RandomManager::GetInstance()->setRange(0, 100);  // 0.0 ~ 1.0 사이의 랜덤 값
-	int randomChance = RandomManager::GetInstance()->getRandom<double>();
 	for (const auto& item : dropItems) {
+		RandomManager::GetInstance()->setRange(0, 100);  // 0.0 ~ 1.0 사이의 랜덤 값
+		int randomChance = RandomManager::GetInstance()->getRandom<double>();
 		if (randomChance <= item.second) {  // 확률에 맞는 아이템 드롭
 			if (item.first == HEALTH_POTION) {
 				WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션이 드랍되었습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
