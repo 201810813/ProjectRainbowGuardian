@@ -79,4 +79,5 @@ public:
 	void PlayerRecovery();
 	void SetCurrentHP(double heal);
 	void SetDamage(int buff);
+	void SetCoin(int coin);
 };
