@@ -277,7 +277,7 @@ void FairyFire::Attack()
 
 void FairyFire::GetAttack()
 {
-	Monster::animator->Play("GetAttack", true);
+	Monster::animator->Play("GetAttack", false);
 	double damage = Player::getInstance()->GetDamage() - GetDefense();
 	SetCurrentHP(GetCurrentHP() - damage);
 	if (GetCurrentHP() <= 0) {
