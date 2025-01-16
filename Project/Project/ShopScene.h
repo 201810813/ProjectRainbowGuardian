@@ -20,6 +20,8 @@ public:
 	void UpdatePurchaseLayout();
 	void UpdateSellLayout();
 
+	void UpdateStatLayout();
+
 public:
 	ShopScene();
 	virtual ~ShopScene() override;

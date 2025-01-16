@@ -7,6 +7,7 @@ class AltarScene :
 {
 private:
 	int CursorPos; // 커서 위치
+	bool RecurveryOnce;
 
 public:
 	virtual void makeLayout() override;
@@ -17,6 +18,9 @@ public:
 	void handleExit();     // 나가기
 
 	void UpdateSelectLayout();
+
+public:
+	void UpdateStatLayout();
 
 public:
 	AltarScene();
