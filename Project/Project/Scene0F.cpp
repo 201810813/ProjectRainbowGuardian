@@ -5,6 +5,7 @@
 #include "SceneManager.h"
 #include "Player.h"
 #include "Rtan.h"
+#include "SoundManager.h"
 
 void Scene0F::makeLayout()
 {
@@ -54,12 +55,14 @@ void Scene0F::tick()
 {
     if (IS_TAP(UP))
     {
+        SoundManager::GetInstance()->PlayMusic("SelectCursor", 1, 1.f, true);
         CursorPos = (CursorPos > 0) ? CursorPos - 1 : 1; // 위로 이동
         WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
         UpdateSelectLayout();
     }
     else if (IS_TAP(DOWN))
     {
+        SoundManager::GetInstance()->PlayMusic("SelectCursor", 1, 1.f, true);
         CursorPos = (CursorPos < 1) ? CursorPos + 1 : 0; // 아래로 이동
         WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
         UpdateSelectLayout();
@@ -67,6 +70,7 @@ void Scene0F::tick()
 
     if (IS_TAP(ENTER))
     {
+        SoundManager::GetInstance()->PlayMusic("MoveCursor", 1, 0.06f, true);
         if (CursorPos == 0) // 다시 도전
         {
             GoTo1F();

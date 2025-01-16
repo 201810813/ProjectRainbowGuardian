@@ -2,6 +2,7 @@
 #include "EndingScene.h"
 #include "ConsoleLayout.h"
 #include "TimeManager.h"
+#include "SoundManager.h"
 
 
 // 누가  어떤 거 맡아서 했고,
@@ -18,6 +19,7 @@ void EndingScene::makeLayout()
 
 void EndingScene::begin()
 {
+    SoundManager::GetInstance()->PlayMusic("Ending_BGM", 0, 0.05, true);
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::TITLE);
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::STAT);
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::MAP);
