@@ -48,6 +48,7 @@ struct FConsoleLayout
 	}
 
 	bool Is_CursorOutOfRange(int NewCurentCursorPos);
+	void clearColor();
 };
 
 class FConsoleLayoutContainer

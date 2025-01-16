@@ -48,6 +48,7 @@ public:
 	void Attack(Monster& monster);
 	void gainExp(int exp); //�߰�
 	void gainCoin(int coin);
+	bool SpendGold(int Coin);
 	void levelUp(); //�߰�
 	bool IsDie();
 	void AddItemToInventory(Item* item);

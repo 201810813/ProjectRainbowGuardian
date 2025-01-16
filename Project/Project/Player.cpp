@@ -89,6 +89,21 @@ void Player::gainCoin(int coin)
 	stat.coin += coin;
 }
 
+bool Player::SpendGold(int Coin)
+{
+	if (stat.coin < Coin)
+	{
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "지갑에 돈이 충분하지 않습니다.", true, 0, TEXT_COLOR_TYPE::ORANGE_INENSITY));
+		return false;
+	}
+	else
+	{
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, to_string(Coin) + "만큼의 골드를 사용했습니다.", true, 0, TEXT_COLOR_TYPE::ORANGE_INENSITY));
+		stat.coin -= Coin;
+		return true;
+	}
+}
+
 void Player::levelUp() { // 레벨업
 	stat.level++;
 	stat.maxHP += 20;

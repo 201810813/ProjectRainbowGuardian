@@ -35,8 +35,8 @@ void AltarScene::makeLayout(){
 
 
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 13, 9, 60);
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "어디선가 성스러운 기운이 느껴집니다...", true, 1, TEXT_COLOR_TYPE::WHITE));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "골드 100을 봉양하면 최대 체력으로 회복됩니다.", true, 2, TEXT_COLOR_TYPE::WHITE));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "어디선가 성스러운 기운이 느껴집니다...", true, 1, TEXT_COLOR_TYPE::SKY));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "골드 100을 봉양하면 최대 체력으로 회복됩니다.", true, 2, TEXT_COLOR_TYPE::SKY_INENSITY));
 
     // 선택지 추가
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 24, 5, 60);
@@ -80,21 +80,19 @@ void AltarScene::tick()
 
 void AltarScene::handleOffer()
 {
-	//Player* player = Player::GetInstance();
-	//if (player->SpendGold(100)) // 100골드 소모
-	//{
-	//	player->SetCurrentHP(player->GetMaxHP());
-	//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "성스러운 기운이 당신을 감싸 체력이 모두 회복되었습니다.", false, 3, TEXT_COLOR_TYPE::WHITE));
-	//}
-	//else
-	//{
-	//	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "골드가 부족합니다.", false, 3, TEXT_COLOR_TYPE::WHITE));
-	//}
+	if (Player::getInstance()->SpendGold(100)) // 100골드 소모
+	{
+		Player::getInstance()->SetCurrentHP(Player::getInstance()->GetMaxHP()); // 최대 체력으로 회복
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "성스러운 기운이 당신을 감싸 체력이 모두 회복되었습니다.", true, 3, TEXT_COLOR_TYPE::WHITE));
+	}
+	else
+	{
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "어디선가 안타까워하는 시선이 느껴지는 것만 같군요..", true, 3, TEXT_COLOR_TYPE::WHITE));
+	}
 }
 
 void AltarScene::handleExit() // 나가기
 {
-    //SceneManager::GetInstance()->MoveToNextFloor();
     SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::RANDOM);
 }
 

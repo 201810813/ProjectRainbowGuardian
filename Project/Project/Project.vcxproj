@@ -139,6 +139,7 @@
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="ConsoleLayout.cpp" />
     <ClCompile Include="EletricMantis.cpp" />
+    <ClCompile Include="EndingScene.cpp" />
     <ClCompile Include="FinalScene.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="IceHedgehog.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="ConsoleLayout.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="EletricMantis.h" />
+    <ClInclude Include="EndingScene.h" />
     <ClInclude Include="FinalScene.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="IceHedgehog.h" />

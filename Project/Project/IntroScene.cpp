@@ -111,7 +111,7 @@ void IntroScene::ActionSelect()
 {
 	if (0 == CursorPos)
 	{
-		SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::SCENE_1F);
+		SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::SCENE_0F);
 	}
 	else if (1 == CursorPos)
 	{

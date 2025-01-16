@@ -153,6 +153,8 @@ enum class SCENE_TYPE
 	RANDOM,
 	SCENE_0F,
 
+	ENDINGCREDIT,
+
 	END
 };
 
