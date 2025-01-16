@@ -5,10 +5,10 @@ MistWitch::MistWitch()
 {
 	playerLevel = Player::getInstance()->GetLevel();
 	RandomManager::GetInstance()->setRange(20, 30);
-	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()) + (5 * playerLevel);
+	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()) + (2 * playerLevel);
 	RandomManager::GetInstance()->setRange(5, 7);
-	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()) + (3 * playerLevel);
-	int		def = playerLevel * 2;
+	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()) + (2 * playerLevel);
+	int		def = playerLevel * 1;
 	//이름    hp  maxhp  damage   def  skd   eva drop exp  coin
 	WitchStat = { "🧞안개마녀🧞",Hp , Hp, damage, def, 1.4, 20, 30, 30, 30 };
 	dropItems[HEALTH_POTION] = WitchStat.dropRate;

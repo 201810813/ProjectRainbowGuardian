@@ -2,7 +2,7 @@
 #include "HealthPotion.h"
 #include "Player.h"
 
-HealthPotion::HealthPotion() : type(HEALTH_POTION), name("체력포션"), effect(30) {}
+HealthPotion::HealthPotion() : type(HEALTH_POTION), name("체력포션"), effect(10) {}
 
 HealthPotion::~HealthPotion()
 {

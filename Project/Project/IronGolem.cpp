@@ -6,10 +6,10 @@ IronGolem::IronGolem()
 {
 	playerLevel = Player::getInstance()->GetLevel();
 	RandomManager::GetInstance()->setRange(20, 30);
-	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>())+(2*playerLevel);
+	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>())+(1*playerLevel);
 	RandomManager::GetInstance()->setRange(5, 7);
 	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>())+ (1* playerLevel);
-	int		def = playerLevel * 2;
+	int		def = playerLevel * 1;
 	//이름    hp  maxhp  damage   def  skd   eva drop exp  coin
 	GolemStat = { "🦿아이언 골렘🦿", Hp, Hp, damage, def, 1.4, 20, 30, 15, 20 };
 	dropItems[HEALTH_POTION] = GolemStat.dropRate;

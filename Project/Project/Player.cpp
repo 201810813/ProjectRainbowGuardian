@@ -5,7 +5,7 @@
 
 shared_ptr<Player> Player::player = nullptr;
 
-Player::Player() : stat{ 300, 10, 1, 100, 0, 5, 3, 20, 0, 0, ""}, AddDamage(1), bPowerUp(false), PowerUpChance(0), bDead(false)
+Player::Player() : stat{ 100, 100, 1, 100, 0, 10, 3, 20, 0, 0, ""}, AddDamage(1), bPowerUp(false), PowerUpChance(0), bDead(false)
 {
 	this->HealthPotion = new class HealthPotion();
 	this->PowerPotion = new class PowerPotion();
@@ -103,9 +103,9 @@ bool Player::SpendGold(int Coin)
 
 void Player::levelUp() { // 레벨업
 	stat.level++;
-	stat.maxHP += 20;
+	stat.maxHP += 30;
 	stat.currentHP = stat.maxHP;
-	stat.damage += 5;
+	stat.damage += 7;
 	stat.defense += 2;
 	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "레벨 업! 현재 레벨: " + to_string(stat.level), true, 0,TEXT_COLOR_TYPE::SKY));
 	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "최대 체력과 공격력, 방여력이 증가했습니다!" ,true, 0, TEXT_COLOR_TYPE::SKY));

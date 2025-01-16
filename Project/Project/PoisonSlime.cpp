@@ -6,10 +6,10 @@ PoisonSlime::PoisonSlime()
 {
 	playerLevel = Player::getInstance()->GetLevel();
 	RandomManager::GetInstance()->setRange(20, 30);
-	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>() + (4 * playerLevel));
-	RandomManager::GetInstance()->setRange(5, 7);
-	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>() + (2 * playerLevel));
-	int		def = playerLevel * 2;
+	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>() + (1 * playerLevel));
+	RandomManager::GetInstance()->setRange(5, 6);
+	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>() + (1 * playerLevel));
+	int		def = playerLevel * 1;
 	//이름    hp  maxhp  damage   def  skd   eva drop exp  coin
 	SlimeStat = { "☠️독덩쿨이☠️", Hp, Hp, damage, def, 1.4, 20, 30, 22, 23 };
 	dropItems[HEALTH_POTION] = SlimeStat.dropRate;
