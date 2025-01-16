@@ -9,8 +9,8 @@ shared_ptr<SceneManager> SceneManager::Instance = nullptr;
 
 void SceneManager::Initialize()
 {
-	//CurrentScene = new AltarScene;
-    CurrentScene = new IntroScene;
+	//CurrentScene = new EndingScene;
+	CurrentScene = new IntroScene;
     CurrentScene->begin();
 	currentFloor = 1; // 현재 층 초기화
 	BattleCount = 0; // 배틀 횟수 초기화
