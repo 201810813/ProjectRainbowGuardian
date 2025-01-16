@@ -5,7 +5,7 @@
 
 shared_ptr<Player> Player::player = nullptr;
 
-Player::Player() : stat{ 100, 100, 1, 200, 0, 17, 3, 20, 0, 0, ""}, AddDamage(1), bPowerUp(false), PowerUpChance(0), bDead(false)
+Player::Player() : stat{ 100, 100, 1, 200, 0, 8, 3, 20, 0, 0, ""}, AddDamage(1), bPowerUp(false), PowerUpChance(0), bDead(false)
 {
 	this->HealthPotion = new class HealthPotion();
 	this->PowerPotion = new class PowerPotion();
@@ -53,8 +53,8 @@ void Player::Attack(Monster& monster)
 			PowerUpChance--;
 			monster.GetAttack();         // 몬스터 체력 감소
 			// 성공 메시지 출력
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중!", true, 0));
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(damage) + "가 들어갔습니다.", true, 0));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중!", true, 0, TEXT_COLOR_TYPE::ORANGE));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(damage) + "가 들어갔습니다.", true, 0,TEXT_COLOR_TYPE::ORANGE));
 		}
 		else {
 			bPowerUp = false;
@@ -62,11 +62,11 @@ void Player::Attack(Monster& monster)
 			monster.GetAttack();         // 몬스터 체력 감소
 
 			// 성공 메시지 출력
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중!", true, 0));
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(damage) + "가 들어갔습니다.", true, 0));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "공격 적중!", true, 0, TEXT_COLOR_TYPE::ORANGE));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(damage) + "가 들어갔습니다.", true, 0, TEXT_COLOR_TYPE::ORANGE));
 		}
 	}
-	else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적이 공격을 회피했습니다.....", true, 0)); }
+	else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적이 공격을 회피했습니다.....", true, 0, TEXT_COLOR_TYPE::WHITE)); }
 	
 }
 
