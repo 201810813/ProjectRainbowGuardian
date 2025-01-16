@@ -11,7 +11,7 @@ FairyFire::FairyFire()
 	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>()); 
 	int		def = playerLevel * 2;
  	     		  //이름    hp  maxhp  damage   def  skd   eva drop exp  coin
-	FairyStat = { "불도깨비", Hp, Hp, damage, def, 1.4, 20, 30, 13, 20 };
+	FairyStat = { "🔥불도깨비🔥", Hp, Hp, damage, def, 1.4, 20, 30, 13, 20 };
 	dropItems[HEALTH_POTION] = FairyStat.dropRate;
 	dropItems[POWER_POTION] = FairyStat.dropRate;
 	bDead = false;
@@ -229,7 +229,7 @@ void FairyFire::CreateAnimations()
 
 double FairyFire::UseSkill()
 {
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, GetName() + "가 스킬을 사용합니다!!!!", true, 0,TEXT_COLOR_TYPE::RED));
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, GetName() + "가 스킬을 사용합니다!!!!", true, 0,TEXT_COLOR_TYPE::RED_INENSITY));
 	return GetDamage() * GetSkillDamage();
 }
 
@@ -248,7 +248,7 @@ void FairyFire::Attack()
 		int		trigger = rand() % 100;
 		if (probability < trigger) {
 			Player::getInstance()->GetAttack(damage);
-			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트!", true, 0,TEXT_COLOR_TYPE::RED));
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "스킬 공격 히트!", true, 0,TEXT_COLOR_TYPE::RED_INENSITY));
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage))+"받았습니다!!!.", true, 0, TEXT_COLOR_TYPE::RED));
 			
 		}
@@ -264,7 +264,7 @@ void FairyFire::Attack()
 		int		trigger = rand() % 100;
 		if (probability < trigger) {
 		Player::getInstance()->GetAttack(damage);
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! ", true, 0,TEXT_COLOR_TYPE::RED));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! ", true, 0,TEXT_COLOR_TYPE::RED_INENSITY));
 		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage))+"받았습니다!.", true, 0, TEXT_COLOR_TYPE::RED));
 		
 		}

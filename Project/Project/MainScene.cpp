@@ -402,7 +402,7 @@ void MainScene::tick()
             
 
             output = "몬스터가 플레이어를 공격합니다..!";
-            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output, true, 0, TEXT_COLOR_TYPE::RED));
+            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output, true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
             monster->Attack();
             
             CursorPos = 0;
