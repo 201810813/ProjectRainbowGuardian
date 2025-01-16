@@ -5,7 +5,7 @@
 
 shared_ptr<Player> Player::player = nullptr;
 
-Player::Player() : stat{ 3000, 3000, 1, 200, 0, 200, 3, 20, 0, 0, ""}, AddDamage(1), bPowerUp(false), PowerUpChance(0), bDead(false)
+Player::Player() : stat{ 300, 10, 1, 100, 0, 5, 3, 20, 0, 0, ""}, AddDamage(1), bPowerUp(false), PowerUpChance(0), bDead(false)
 {
 	this->HealthPotion = new class HealthPotion();
 	this->PowerPotion = new class PowerPotion();
@@ -267,6 +267,7 @@ bool Player::UseItem(Type type)
 			AddDamage = 5 + (2 * stat.level);
 			inventory[POWER_POTION]--;
 			bPowerUp = true;
+			return true;
 		}
 		else {
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "해당 아이템이 인벤토리에 없습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
