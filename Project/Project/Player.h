@@ -7,6 +7,8 @@
 #include "ConsoleLayout.h"
 //�̱��� �÷��̾�
 class Monster;
+class HealthPotion;
+class PowerPotion;
 
 class Player {
 public:
@@ -24,13 +26,14 @@ public:
 		string	name;
 	};
 private:
-	map<Type, int> itemCounts; //enum�� ���� ��������
-	map<Type, vector<Item*>> inventory; //Drop()���� ���� ��ü ������ ����.
+	map<Type, int> inventory; //enum�� ���� ��������
 	PlayerStat stat;
 	int PowerUpChance;
 	bool bPowerUp;
 	int AddDamage;
 	bool bDead;
+	HealthPotion* HealthPotion;
+	PowerPotion* PowerPotion;
 private:
 	Player(const Player&) = delete; //���������,
 	Player& operator=(const Player&) = delete;  //���Կ����� ����.
@@ -51,10 +54,11 @@ public:
 	bool SpendGold(int Coin);
 	void levelUp(); //�߰�
 	bool IsDie();
-	void AddItemToInventory(Item* item);
+	void AddItemToInventory(Type type);
 	void ShowInventory();
 	bool UseItem(Type type);
 	void IncreaseChance();
+	void SellItem(Type type);
 
 public:
 	const double  GetCurrentHP();
@@ -68,7 +72,7 @@ public:
 	const int	  GetCurrentExp();
 	const int     GetMaxExp();
 	const int	  GetAddDamage();
-
+	const int	  GetItemCount(Type type);
 	bool Is_PowerUp();
 
 public:
