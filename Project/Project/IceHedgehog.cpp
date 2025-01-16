@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "IceHedgehog.h"
-
+#include "SoundManager.h"
+#include "RandomManager.h"
 
 IceHedgehog::IceHedgehog()
 {
@@ -162,6 +163,8 @@ void IceHedgehog::Attack()
 
 	//스킬을 쓰면
 	if (Trigger < skillProbability) {
+		SoundManager::GetInstance()->PlayMusic("ice_blast_projectile_spell_01", 0, 0.5, true);
+
 		double	damage = UseSkill() - Player::getInstance()->GetDefense();
 		int		probability = Player::getInstance()->GetEvasion();
 		int		trigger = rand() % 100;
@@ -171,11 +174,14 @@ void IceHedgehog::Attack()
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!!!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
 		else {
+			SoundManager::GetInstance()->PlayMusic("Herb3", 1, 0.5, true);
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 스킬 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 		}
 	}
 	//스킬을 아니 쓰면
 	else {
+		PlayAttackSound();
+
 		double	damage = GetDamage() - Player::getInstance()->GetDefense();
 		int		probability = Player::getInstance()->GetEvasion();
 		int		trigger = rand() % 100;
@@ -184,7 +190,10 @@ void IceHedgehog::Attack()
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! ", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
-		else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY)); }
+		else {
+			SoundManager::GetInstance()->PlayMusic("Herb3", 1, 0.5, true);
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
+		}
 	}
 }
 
@@ -288,4 +297,28 @@ const double IceHedgehog::GetDamage()
 void IceHedgehog::SetCurrentHP(double hp)
 {
 	HedgehogeStat.currentHp = hp;
+}
+
+void IceHedgehog::PlayAttackSound()
+{
+	RandomManager::GetInstance()->setRange(1, 3);
+	int rand = RandomManager::GetInstance()->getRandom<int>();
+
+	switch (rand)
+	{
+	case 1:
+		SoundManager::GetInstance()->PlayMusic("ice_spell_impact_shatter_01", 1, 0.3f, true);
+		break;
+
+	case 2:
+		SoundManager::GetInstance()->PlayMusic("ice_spell_impact_shatter_02", 1, 0.3f, true);
+		break;
+
+	case 3:
+		SoundManager::GetInstance()->PlayMusic("ice_spell_impact_shatter_03", 1, 0.3f, true);
+		break;
+
+	default:
+		break;
+	}
 }

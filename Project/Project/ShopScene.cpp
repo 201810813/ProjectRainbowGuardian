@@ -6,6 +6,7 @@
 #include "SceneManager.h"
 #include "HealthPotion.h"
 #include "SoundManager.h"
+#include "RandomManager.h"
 
 #include <sstream>
 
@@ -61,6 +62,7 @@ void ShopScene::makeLayout()
 
 void ShopScene::begin()
 {
+    SoundManager::GetInstance()->PlayMusic("OpenDoor",1, 0.1f, true);
     Cur_ShopType = SHOP_TYPE::MAIN;
     WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::MONSTER_STAT_UI);
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::MONSTER_STAT_UI);
@@ -131,6 +133,7 @@ void ShopScene::tick()
             case 0: // 체력포션 구매
                 
                 if (Player::getInstance()->GetCoin() >= 10) {
+                    SoundManager::GetInstance()->PlayMusic("UseCoin_0", 1, 0.6f, true);
                     Player::getInstance()->SpendGold(10);
                     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션을 구매했습니다.", false, 1, TEXT_COLOR_TYPE::ORANGE));
                     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션이 인벤토리에 추가되었습니다.", false, 4, TEXT_COLOR_TYPE::GREEN));
@@ -143,6 +146,7 @@ void ShopScene::tick()
             case 1: // 파워포션 구매
                 
                 if (Player::getInstance()->GetCoin() >= 15) {
+                    SoundManager::GetInstance()->PlayMusic("UseCoin_0", 1, 0.6f, true);
                     Player::getInstance()->SpendGold(15);
                     Player::getInstance()->AddItemToInventory(POWER_POTION);
                     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "파워 포션을 구매했습니다.", false, 1, TEXT_COLOR_TYPE::ORANGE));
@@ -184,6 +188,7 @@ void ShopScene::tick()
             case 0: // 체력포션 판매
                 
                 if (Player::getInstance()->GetItemCount(HEALTH_POTION) > 0) { // 체력포션 판매
+                    PlayGetCoinSound();
                     Player::getInstance()->SellItem(HEALTH_POTION);
                     Player::getInstance()->SetCoin(18);
                     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션을 판매했습니다", false, 1, TEXT_COLOR_TYPE::ORANGE));
@@ -196,6 +201,7 @@ void ShopScene::tick()
             case 1: // 파워포션 판매
                 
                 if (Player::getInstance()->GetItemCount(POWER_POTION) > 0) { // 파워포션 판매
+                    PlayGetCoinSound();
                     Player::getInstance()->SellItem(POWER_POTION);
                     Player::getInstance()->SetCoin(12);
                     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "파워 포션을 판매했습니다", false, 1, TEXT_COLOR_TYPE::ORANGE));
@@ -225,6 +231,7 @@ void ShopScene::tick()
 void ShopScene::handleExit() // 상점 나가기
 {
     //SceneManager::GetInstance()->MoveToNextFloor();
+    SoundManager::GetInstance()->PlayMusic("CloseDoor", 1, 0.1f, true);
     SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::RANDOM);
 }
 
@@ -349,4 +356,28 @@ void ShopScene::UpdateStatLayout()
     oss << "💰 GOLD     : " << (int)floor(Player::getInstance()->GetCoin());
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 8, TEXT_COLOR_TYPE::ORANGE_INENSITY));
 
+}
+
+void ShopScene::PlayGetCoinSound()
+{
+    RandomManager::GetInstance()->setRange(1, 3);
+	int rand = RandomManager::GetInstance()->getRandom<int>();
+
+    switch (rand)
+    {
+    case 1:
+        SoundManager::GetInstance()->PlayMusic("GetCoin_0", 1, 0.8f, true);
+        break;
+
+    case 2:
+        SoundManager::GetInstance()->PlayMusic("GetCoin_1", 1, 0.8f, true);
+        break;
+
+    case 3:
+        SoundManager::GetInstance()->PlayMusic("GetCoin_2", 1, 0.8f, true);
+        break;
+
+    default:
+        break;
+    }
 }

@@ -2,10 +2,12 @@
 #include "Player.h"
 #include "HealthPotion.h"
 #include "PowerPotion.h"
+#include "SoundManager.h"
+#include "RandomManager.h"
 
 shared_ptr<Player> Player::player = nullptr;
 
-Player::Player() : stat{ 100, 100, 1, 100, 0, 10, 3, 20, 0, 0, ""}, AddDamage(1), bPowerUp(false), PowerUpChance(0), bDead(false)
+Player::Player() : stat{ 100, 100, 1, 100, 0, 10, 3, 20, 1000, 0, ""}, AddDamage(1), bPowerUp(false), PowerUpChance(0), bDead(false)
 {
 	this->HealthPotion = new class HealthPotion();
 	this->PowerPotion = new class PowerPotion();
@@ -48,6 +50,7 @@ void Player::Attack(Monster& monster)
 	int trigger = monster.GetEvasion();
 	// 공격 성공
 	if (trigger <= probability) {
+		PlayAttackSound();
 		if (PowerUpChance > 0) {
 			int damage = GetDamage() + AddDamage;        // 플레이어 데미지 가져오기
 			PowerUpChance--;
@@ -66,7 +69,11 @@ void Player::Attack(Monster& monster)
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(damage - monster.GetDefense()) + "가 들어갔습니다.", true, 0, TEXT_COLOR_TYPE::ORANGE));
 		}
 	}
-	else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적이 공격을 회피했습니다.....", true, 0, TEXT_COLOR_TYPE::WHITE)); }
+	else
+	{
+		SoundManager::GetInstance()->PlayMusic("Herb3", 1, 0.5, true);
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적이 공격을 회피했습니다.....", true, 0, TEXT_COLOR_TYPE::WHITE));
+	}
 	
 }
 
@@ -219,6 +226,34 @@ void Player::SetDamage(int buff)
 void Player::SetCoin(int coin)
 {
 	stat.coin += coin;
+}
+
+void Player::PlayAttackSound()
+{
+	RandomManager::GetInstance()->setRange(1, 4);
+	int rand = RandomManager::GetInstance()->getRandom<int>();
+
+	switch (rand)
+	{
+	case 1:
+		SoundManager::GetInstance()->PlayMusic("Sword_Hit_Flesh_1", 1, 0.3f, true);
+		break;
+
+	case 2:
+		SoundManager::GetInstance()->PlayMusic("Sword_Hit_Flesh_2", 1, 0.3f, true);
+		break;
+
+	case 3:
+		SoundManager::GetInstance()->PlayMusic("Sword_Hit_Flesh_3", 1, 0.3f, true);
+		break;
+
+	case 4:
+		SoundManager::GetInstance()->PlayMusic("Sword_Hit_Flesh_4", 1, 0.3f, true);
+		break;
+
+	default:
+		break;
+	}
 }
 
 
