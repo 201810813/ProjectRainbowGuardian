@@ -16,6 +16,8 @@ public:
 	void handleOffer(); // 골드 제물
 	void handleExit();     // 나가기
 
+	void UpdateSelectLayout();
+
 public:
 	AltarScene();
 	virtual ~AltarScene() override;

@@ -379,7 +379,7 @@ void FConsoleLayoutContainer::ClearLayoutAllMessage(LAYOUT_TYPE TargetLayout)
 
     for (int i = 0; i < ConsoleLayout.Message.size(); ++i)
     {
-        ConsoleLayout.Message[i].Message = "";
+        ConsoleLayout.Message[i].Message.clear();
     }
    
 }

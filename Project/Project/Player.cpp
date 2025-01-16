@@ -99,7 +99,7 @@ void Player::levelUp() { // 레벨업
 
 bool Player::IsDie()
 {
-	if (stat.currentHP < 0) {
+	if (stat.currentHP <= 0) {
 		bDead = true;
 		return bDead;
 	}
@@ -170,6 +170,12 @@ bool Player::Is_PowerUp()
 }
 
 
+void Player::PlayerRecovery()
+{
+	stat.currentHP = stat.maxHP;
+	bDead = false;
+}
+
 //----------------------------//
 //          Set함수           //
 //----------------------------//
@@ -178,7 +184,10 @@ void Player::SetCurrentHP(double heal)
 	if (stat.currentHP + heal > stat.maxHP) {
 		stat.currentHP = stat.maxHP;
 	}
-	stat.currentHP += heal;
+	else
+	{
+		stat.currentHP += heal;
+	}
 }
 
 void Player::SetDamage(int buff)

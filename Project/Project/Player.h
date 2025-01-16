@@ -71,6 +71,7 @@ public:
 	bool Is_PowerUp();
 
 public:
+	void PlayerRecovery();
 	void SetCurrentHP(double heal);
 	void SetDamage(int buff);
 };

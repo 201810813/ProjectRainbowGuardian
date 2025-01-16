@@ -12,34 +12,43 @@
 
 void MainScene::makeLayout()
 {
-	// WriteManager::GetInstance()->MakeLayout();
-
     // Title Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::TITLE, 0, 0, 1, 100);
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::TITLE, "붉은 분노의 층", false, 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::RED));
-
+	
     // Stat Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STAT, 0, 2, 9, 25);
     UpdateStatLayout();
 
     // Map Layout
-    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::MAP, 104, 2, 9, 8);
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::MAP, 111, 2, 9, 8);
 
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "08 [🐉]", false, 1, TEXT_COLOR_TYPE::GRAY));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "07 [❔]", false, 2, TEXT_COLOR_TYPE::GRAY));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "06 [❔]", false, 3, TEXT_COLOR_TYPE::GRAY));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "05 [❔]", false, 4, TEXT_COLOR_TYPE::GRAY));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "04 [❔]", false, 5, TEXT_COLOR_TYPE::GRAY));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "03 [❔]", false, 6, TEXT_COLOR_TYPE::GRAY));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "02 [❔]", false, 7, TEXT_COLOR_TYPE::GRAY));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "01 [⚔️]", false, 8, TEXT_COLOR_TYPE::RED));
+    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "08 [❔]", false, 1, TEXT_COLOR_TYPE::GRAY));
+    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "07 [❔]", false, 2, TEXT_COLOR_TYPE::GRAY));
+    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "06 [❔]", false, 3, TEXT_COLOR_TYPE::GRAY));
+    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "05 [❔]", false, 4, TEXT_COLOR_TYPE::GRAY));
+    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "04 [❔]", false, 5, TEXT_COLOR_TYPE::GRAY));
+    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "03 [❔]", false, 6, TEXT_COLOR_TYPE::GRAY));
+    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "02 [❔]", false, 7, TEXT_COLOR_TYPE::GRAY));
+    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "01 [⚔️]", false, 8, TEXT_COLOR_TYPE::RED));
 
     // Story Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 13, 9, 60);
 
     // Select Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 24, 5, 60);
-    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::DRAW, 61, 13, 16, 51);
+
+	//Draw Layout
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::DRAW, 61, 13, 16, 58);
+
+    //Backgound Layout
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::BACKGROUND, 27, 2, 9, 82);
+
+	//PROGRESS_BAR Layout
+    UpdateProgressBarLayout();
+
+    //MONSTER_STAT_UI Layout
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::MONSTER_STAT_UI, 63, 14, 2, 20);
+    UpdateMonsterStatLayout();
 }
 
 void MainScene::UpdateStatLayout()
@@ -79,7 +88,7 @@ void MainScene::UpdateStatLayout()
 
     oss.str("");
     oss.clear();
-    oss << "🛡️ DEF      : " << (int)floor(Player::getInstance()->GetDefense()) << "%";
+    oss << "🛡️ DEF      : " << (int)floor(Player::getInstance()->GetDefense());
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 6, TEXT_COLOR_TYPE::BLUE_INENSITY));
 
     oss.str("");
@@ -93,19 +102,94 @@ void MainScene::UpdateStatLayout()
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 8, TEXT_COLOR_TYPE::ORANGE_INENSITY));
 }
 
+void MainScene::UpdateMonsterStatLayout()
+{
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MONSTER_STAT_UI, monster->GetName(), false, 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::BLACK));
+
+    std::ostringstream oss;
+    oss.str("");
+    oss.clear();
+    oss << "🩸 HP   : " << (int)floor(monster->GetCurrentHP()) << " / " << (int)floor(monster->GetMaxHP());
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MONSTER_STAT_UI, oss.str(), false, 1, TEXT_COLOR_TYPE::GREEN));
+
+    /*oss.str("");
+    oss.clear();
+    oss << "❇️ 레벨     : " << monster->GetName();
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MONSTER_STAT_UI, oss.str(), false, 2, TEXT_COLOR_TYPE::SKY, BACKGROUND_COLOR_TYPE::BLACK));*/
+}
+
+void MainScene::UpdateProgressBarLayout()
+{
+    //PROGRESS_BAR Layout
+    WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::PROGRESS_BAR, 105, 3, 7, 3);
+	string bitcheck = SceneManager::GetInstance()->GetRoomColorCheck().to_string();
+    WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::PROGRESS_BAR);
+	
+    for (int i = 0; i < 7; ++i)
+    {
+		BACKGROUND_COLOR_TYPE ColorType = BACKGROUND_COLOR_TYPE::BLACK;
+        
+        if (bitcheck[6 - i] == '1')
+        {
+            switch (i)
+            {
+            case 0:
+                ColorType = BACKGROUND_COLOR_TYPE::RED;
+                break;
+
+            case 1:
+                ColorType = BACKGROUND_COLOR_TYPE::ORANGE;
+                break;
+
+            case 2:
+                ColorType = BACKGROUND_COLOR_TYPE::ORANGE_INENSITY;
+                break;
+
+            case 3:
+                ColorType = BACKGROUND_COLOR_TYPE::GREEN;
+                break;
+
+            case 4:
+                ColorType = BACKGROUND_COLOR_TYPE::BLUE;
+                break;
+
+            case 5:
+                ColorType = BACKGROUND_COLOR_TYPE::BLUE_INENSITY;
+                break;
+
+            case 6:
+                ColorType = BACKGROUND_COLOR_TYPE::PURPLE;
+                break;
+
+            default:
+                break;
+            }
+        }
+        else
+        {
+            ColorType = BACKGROUND_COLOR_TYPE::BLACK;
+        }
+
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::PROGRESS_BAR, "  ", false, i, TEXT_COLOR_TYPE::WHITE, ColorType));
+    }
+}
+
 void MainScene::begin()
 {
     Cur_BattleType = BATTLE_TYPE::TURN_COUNT;
     Turn_Count = 0; //
 	bOnce = false; // 한번만 출력되도록 하는 플래그
 	CursorPos = 0; // 커서 위치 초기화
-    makeLayout();
+    monster->Begin();
+    MainScene::makeLayout();
     
 }
 
 void MainScene::tick()
 {
     UpdateStatLayout();
+    UpdateProgressBarLayout();
+    UpdateMonsterStatLayout();
     string output;
     monster->Tick();
     // !!!! 각각 턴이 진행될 때마다 한번씩만 함수가 호출되고, 메세지를 출력해주도록 해야함.
@@ -318,7 +402,7 @@ void MainScene::tick()
             
 
             output = "몬스터가 플레이어를 공격합니다..!";
-            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output, true, 0, TEXT_COLOR_TYPE::RED));
+            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output, true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
             monster->Attack();
             
             CursorPos = 0;
@@ -326,7 +410,7 @@ void MainScene::tick()
         }
         if (IS_TAP(ENTER))
         {
-            Cur_BattleType = BATTLE_TYPE::TURN_COUNT;
+            Cur_BattleType = BATTLE_TYPE::PLAYER_DEAD_CHECK;
             bOnce = false;
         }
 
@@ -345,6 +429,25 @@ void MainScene::tick()
 
     case BATTLE_TYPE::PLAYER_DEAD_CHECK:
         //플레이어 뒤졌는지?
+        if (!bOnce)
+        {
+            bOnce = true;
+            if (Player::getInstance()->IsDie())
+            {
+                WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신은 세상의 색을 되찾지 못하고, 사망하셨습니다.", true, 0));
+            }
+            else
+            {
+                Cur_BattleType = BATTLE_TYPE::TURN_COUNT;
+                bOnce = false;
+            }
+        }
+        
+        if (IS_TAP(ENTER))
+        {
+            bOnce = false;
+            Cur_BattleType = BATTLE_TYPE::TOWN_CHANGER;
+        }
 
         break;
 
@@ -375,7 +478,33 @@ void MainScene::tick()
         }
         if (IS_TAP(ENTER)) {
             bOnce = false;
-            //SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::RANDOM);
+            SceneManager::GetInstance()->CheckRoomColor(ThisSceneType);
+
+            if (SceneManager::GetInstance()->Is_AllColorClear())
+            {
+                SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::FINAL);
+            }
+            else
+            {
+                SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::RANDOM);
+            }
+        }
+        break;
+
+    case BATTLE_TYPE::TOWN_CHANGER:
+
+        if (!bOnce) {
+            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "다시 마을에서 환생합니다.", true, 1));
+            bOnce = true;
+        }
+        if (IS_TAP(ENTER)) {
+            bOnce = false;
+            SceneManager::GetInstance()->CheckRoomColorReset();
+            SceneManager::GetInstance()->RessetFloorNumber();
+            WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::MAP);
+            // 이후에 타운으로 변경해주어야 함..!!
+            Player::getInstance()->PlayerRecovery();
+            SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::SCENE_1F);
         }
         break;
 
@@ -392,7 +521,6 @@ MainScene::MainScene()
     , bOnce(false)
     , CursorPos(0)
 {
-    monster = new FairyFire();
 }
 
 MainScene::~MainScene()

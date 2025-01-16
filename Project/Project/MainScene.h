@@ -11,6 +11,9 @@ private:
     int Turn_Count;
     bool bOnce;
     int CursorPos;
+
+protected:
+    SCENE_TYPE ThisSceneType;
     
 protected:
     Monster* monster;
@@ -18,6 +21,8 @@ protected:
 public:
     virtual void makeLayout() override;
     void UpdateStatLayout();
+	void UpdateMonsterStatLayout();
+	void UpdateProgressBarLayout();
 
 public:
     virtual void begin();
