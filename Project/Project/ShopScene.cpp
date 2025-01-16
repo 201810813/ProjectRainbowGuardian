@@ -59,6 +59,8 @@ void ShopScene::makeLayout()
 void ShopScene::begin()
 {
     Cur_ShopType = SHOP_TYPE::MAIN;
+    WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::MONSTER_STAT_UI);
+    WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::MONSTER_STAT_UI);
     makeLayout();
     // Title Layout
     
@@ -121,7 +123,8 @@ void ShopScene::tick()
                 
                 if (Player::getInstance()->GetCoin() >= 30) {
                     Player::getInstance()->SpendGold(10);
-                    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션을 구매했습니다.", false, 0, TEXT_COLOR_TYPE::ORANGE));
+                    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션을 구매했습니다.", false, 1, TEXT_COLOR_TYPE::ORANGE));
+                    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션이 인벤토리에 추가되었습니다.", false, 4, TEXT_COLOR_TYPE::GREEN));
                     Player::getInstance()->AddItemToInventory(HEALTH_POTION);
                 }
                 else {
@@ -133,7 +136,8 @@ void ShopScene::tick()
                 if (Player::getInstance()->GetCoin() >= 20) {
                     Player::getInstance()->SpendGold(15);
                     Player::getInstance()->AddItemToInventory(POWER_POTION);
-                    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "파워 포션을 구매했습니다.", false, 0, TEXT_COLOR_TYPE::ORANGE));
+                    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "파워 포션을 구매했습니다.", false, 1, TEXT_COLOR_TYPE::ORANGE));
+                    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션이 인벤토리에 추가되었습니다.", false, 4, TEXT_COLOR_TYPE::GREEN));
                 }
                 else {
                     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "돈이 부족합니다", false, 0, TEXT_COLOR_TYPE::ORANGE));
@@ -169,8 +173,9 @@ void ShopScene::tick()
                 
                 if (Player::getInstance()->GetItemCount(HEALTH_POTION) > 0) { // 체력포션 판매
                     Player::getInstance()->SellItem(HEALTH_POTION);
-                    Player::getInstance()->gainCoin(18);
-                    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션을 판매했습니다", false, 0, TEXT_COLOR_TYPE::ORANGE));
+                    Player::getInstance()->SetCoin(18);
+                    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션을 판매했습니다", false, 1, TEXT_COLOR_TYPE::ORANGE));
+                    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "18골드를 획득했습니다.", false, 2, TEXT_COLOR_TYPE::ORANGE));
                 }
                 else {
                     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "체력 포션이 없습니다.", false, 0, TEXT_COLOR_TYPE::ORANGE));
@@ -180,8 +185,9 @@ void ShopScene::tick()
                 
                 if (Player::getInstance()->GetItemCount(POWER_POTION) > 0) { // 파워포션 판매
                     Player::getInstance()->SellItem(POWER_POTION);
-                    Player::getInstance()->gainCoin(12);
-                    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "파워 포션을 판매했습니다", false, 0, TEXT_COLOR_TYPE::ORANGE));
+                    Player::getInstance()->SetCoin(12);
+                    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "파워 포션을 판매했습니다", false, 1, TEXT_COLOR_TYPE::ORANGE));
+                    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "12골드를 획득했습니다.", false, 2, TEXT_COLOR_TYPE::ORANGE));
                 }
                 else {
                     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "파워 포션이 없습니다.", false, 0, TEXT_COLOR_TYPE::ORANGE));
