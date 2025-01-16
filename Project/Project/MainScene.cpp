@@ -3,9 +3,12 @@
 #include "MainScene.h"
 #include "ConsoleLayout.h"
 #include "KeyManager.h"
+#include "SceneManager.h"
 #include "FairyFire.h"
 #include "HealthPotion.h"
 #include "PowerPotion.h"
+
+#include <sstream>
 
 void MainScene::makeLayout()
 {
@@ -17,15 +20,7 @@ void MainScene::makeLayout()
 
     // Stat Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STAT, 0, 2, 9, 25);
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "컬러", false, 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::BLACK));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "========================", false, 1, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::BLACK));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "❇️ 레벨     : 1", false, 2, TEXT_COLOR_TYPE::SKY, BACKGROUND_COLOR_TYPE::BLACK));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "⚡ EXP      : 0 / 100", false, 3, TEXT_COLOR_TYPE::SKY));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "🩸 HP       : 100 / 100", false, 4, TEXT_COLOR_TYPE::GREEN));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "🗡️ ATK      : 10", false, 5, TEXT_COLOR_TYPE::RED));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "🛡️ DEF      : 5%", false, 6, TEXT_COLOR_TYPE::BLUE_INENSITY));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "🍀 LUK      : 10%", false, 7, TEXT_COLOR_TYPE::ORANGE));
-	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "💰 GOLD     : 0", false, 8, TEXT_COLOR_TYPE::ORANGE_INENSITY));
+    UpdateStatLayout();
 
     // Map Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::MAP, 104, 2, 9, 8);
@@ -47,20 +42,72 @@ void MainScene::makeLayout()
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::DRAW, 61, 13, 16, 51);
 }
 
+void MainScene::UpdateStatLayout()
+{
+    std::ostringstream oss;
+    Player::getInstance()->GetDamage();
+    Player::getInstance()->GetCurrentHP();
+    
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "컬러", false, 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::BLACK));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "========================", false, 1, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::BLACK));
+    
+    oss.str("");
+    oss.clear();
+    oss << "❇️ 레벨     : " << Player::getInstance()->GetLevel();
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 2, TEXT_COLOR_TYPE::SKY, BACKGROUND_COLOR_TYPE::BLACK));
+
+    oss.str("");
+    oss.clear();
+    oss << "⚡ EXP      : " << Player::getInstance()->GetCurrentExp() << " / " << Player::getInstance()->GetMaxExp();
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 3, TEXT_COLOR_TYPE::SKY));
+
+    oss.str("");
+    oss.clear();
+    oss << "🩸 HP       : " << (int)floor(Player::getInstance()->GetCurrentHP()) << " / " << (int)floor(Player::getInstance()->GetMaxHP());
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 4, TEXT_COLOR_TYPE::GREEN));
+
+    oss.str("");
+    oss.clear();
+    oss << "🗡️ ATK      : " << (int)floor(Player::getInstance()->GetDamage());
+
+    if (Player::getInstance()->Is_PowerUp())
+    {
+        oss << " + " << Player::getInstance()->GetAddDamage();
+    }
+
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 5, TEXT_COLOR_TYPE::RED));
+
+    oss.str("");
+    oss.clear();
+    oss << "🛡️ DEF      : " << (int)floor(Player::getInstance()->GetDefense()) << "%";
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 6, TEXT_COLOR_TYPE::BLUE_INENSITY));
+
+    oss.str("");
+    oss.clear();
+    oss << "🍀 LUK      : " << (int)floor(Player::getInstance()->GetEvasion()) << "%";
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 7, TEXT_COLOR_TYPE::ORANGE));
+
+    oss.str("");
+    oss.clear();
+    oss << "💰 GOLD     : " << (int)floor(Player::getInstance()->GetCoin());
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 8, TEXT_COLOR_TYPE::ORANGE_INENSITY));
+}
+
 void MainScene::begin()
 {
     Cur_BattleType = BATTLE_TYPE::TURN_COUNT;
-    Turn_Count = 0;
-    bOnce = false;
-    CursorPos = 0;
+    Turn_Count = 0; //
+	bOnce = false; // 한번만 출력되도록 하는 플래그
+	CursorPos = 0; // 커서 위치 초기화
     makeLayout();
     
 }
 
 void MainScene::tick()
 {
+    UpdateStatLayout();
     string output;
-
+    monster->Tick();
     // !!!! 각각 턴이 진행될 때마다 한번씩만 함수가 호출되고, 메세지를 출력해주도록 해야함.
 
     // 현재 턴이 무엇이냐에 따라 다른 행동들을 수행한다.
@@ -74,7 +121,7 @@ void MainScene::tick()
         {
             Turn_Count++;
             output = "현재 턴 : " + to_string(Turn_Count);
-            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output, true, 0, TEXT_COLOR_TYPE::GREEN));
+            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output, true, 0, TEXT_COLOR_TYPE::SKY));
             bOnce = true;
         }
 
@@ -175,7 +222,7 @@ void MainScene::tick()
         }
         if (IS_TAP(ENTER))
         {
-            Cur_BattleType = BATTLE_TYPE::MONSTER_TURN;
+            Cur_BattleType = BATTLE_TYPE::MONSTER_DEAD_CHECK;
             bOnce = false;
         }
 
@@ -184,7 +231,7 @@ void MainScene::tick()
         // 플레이어 가방 열기
         /* 이 부분 동적으로 구현할 수 있도록 해야함.*/
     case BATTLE_TYPE::ITEM:
-
+        
         if (!bOnce)
         {
             output = "당신은 가방을 열었습니다!";
@@ -223,18 +270,27 @@ void MainScene::tick()
         }
 
         if (IS_TAP(ENTER))
-        {
+        {   // 회복 포션 사용
             if (0 == CursorPos)
             {
-                Player::getInstance()->UseItem(HEALTH_POTION); // 회복 포션 사용
+                if (Player::getInstance()->UseItem(HEALTH_POTION)) {
+                    Cur_BattleType = BATTLE_TYPE::MONSTER_DEAD_CHECK;
+                }
+                else {
+                    Cur_BattleType = BATTLE_TYPE::SELECT;
+                }
+                
             }
+            // 강화 포션 사용
             else if (1 == CursorPos)
             {
-                Player::getInstance()->UseItem(POWER_POTION); // 강화 포션 사용
+                if (Player::getInstance()->UseItem(POWER_POTION)) {
+                    Cur_BattleType = BATTLE_TYPE::MONSTER_DEAD_CHECK;
+                }
+                else {
+                    Cur_BattleType = BATTLE_TYPE::SELECT;
+                }
             }
-
-            Cur_BattleType = BATTLE_TYPE::MONSTER_TURN;
-
             /* 셀렉 레이아웃 문자만 삭제할 수 있는 기능 추가해야함.*/
             WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
             bOnce = false;
@@ -270,7 +326,7 @@ void MainScene::tick()
         }
         if (IS_TAP(ENTER))
         {
-            Cur_BattleType = BATTLE_TYPE::MONSTER_DEAD_CHECK;
+            Cur_BattleType = BATTLE_TYPE::TURN_COUNT;
             bOnce = false;
         }
 
@@ -278,15 +334,55 @@ void MainScene::tick()
 
         // 몬스터 죽었는지 체크 메세지는 불필요
     case BATTLE_TYPE::MONSTER_DEAD_CHECK:
+        
+        if (monster->is_Die()) {
+            Cur_BattleType = BATTLE_TYPE::REWARD;
+        }
+        else { Cur_BattleType = BATTLE_TYPE::MONSTER_TURN; }
 
-        monster->is_Die();
-        Cur_BattleType = BATTLE_TYPE::TURN_COUNT;
+        break;
+        
+
+    case BATTLE_TYPE::PLAYER_DEAD_CHECK:
+        //플레이어 뒤졌는지?
+
         break;
 
+    case BATTLE_TYPE::REWARD:
+ 
+        if (!bOnce) {//플레이어 보상(경험치, 돈)
+            Player::getInstance()->gainExp(monster->GetExp());
+            Player::getInstance()->gainCoin(monster->GetCoin());
+            bOnce = true;
+        }
+        
+        if (IS_TAP(ENTER)) {
+            bOnce = false;
+            Cur_BattleType = BATTLE_TYPE::SCENE_CHANGER;
+        }
+        //다음씬 이동?;
+        break;
+
+    case BATTLE_TYPE::SCENE_CHANGER:
+       
+        //색 다 모았는지 확인
+            //ture: 보스방 이동
+            //false: 랜덤방
+        if (!bOnce) {
+            output = "다음 층으로 이동합니다.";
+            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, output));
+            bOnce = true;
+        }
+        if (IS_TAP(ENTER)) {
+            bOnce = false;
+            //SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::RANDOM);
+        }
+        break;
 
     default:
         break;
     }
+
     
 }
 

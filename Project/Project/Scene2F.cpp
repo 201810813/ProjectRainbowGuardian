@@ -15,8 +15,8 @@ void Scene2F::makeLayout() {
 
     // Story Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 13, 9, 60);
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🟠 이곳은 주황 욕망의 층입니다.", false, 1, TEXT_COLOR_TYPE::ORANGE));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🦎 황금 도마뱀이 당신의 장비를 탐내고 있습니다.", false, 2, TEXT_COLOR_TYPE::WHITE));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🟠 이곳은 주황 욕망의 층입니다.", false, 7, TEXT_COLOR_TYPE::ORANGE));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🦿 아이언 골렘이 쇳소리를 내며 시끄럽게 합니다.", false, 8, TEXT_COLOR_TYPE::WHITE));
 
     // Select Layout (전투 선택지)
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 24, 5, 60);
@@ -30,6 +30,7 @@ void Scene2F::makeLayout() {
 void Scene2F::begin() {
 	MainScene::begin();
     makeLayout();
+    golem = new IronGolem();
 }
 
 void Scene2F::tick() {
@@ -38,4 +39,6 @@ void Scene2F::tick() {
 
 Scene2F::Scene2F() {}
 
-Scene2F::~Scene2F() {}
+Scene2F::~Scene2F() {
+    delete golem;
+}

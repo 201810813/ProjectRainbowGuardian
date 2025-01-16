@@ -2,6 +2,8 @@
 #include "Animator.h"
 #include "Animation.h"
 
+
+
 Animator::Animator()
 	: AnimationMap{}
 	, CurrentAnimation(nullptr)
@@ -32,6 +34,11 @@ void Animator::tick()
 			CurrentAnimation->Reset();
 		}
 	}
+}
+
+bool Animator::isCurAnimEnd()
+{
+	return CurrentAnimation->IsFinish();
 }
 
 void Animator::CreateAnimation(const string& _strName, const vector<vector<string>>& PAnimationInfo, UINT PFrameCount, float PDuration)

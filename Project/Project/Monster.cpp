@@ -3,10 +3,15 @@
 
 Monster::Monster()
 {
+	animator = new Animator();
 }
 
 Monster::~Monster()
 {
+	delete animator;
 }
 
-
+void Monster::Tick()
+{
+	animator->tick();
+}

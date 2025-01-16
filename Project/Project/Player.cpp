@@ -1,13 +1,12 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "Player.h"
 #include "HealthPotion.h"
 #include "PowerPotion.h"
 
 shared_ptr<Player> Player::player = nullptr;
 
-Player::Player() : stat{ 100, 100, 1, 200, 0, 17, 3, 20, 0, 0, ""}, PowerUpChance(0), bDead(false)
+Player::Player() : stat{ 100, 100, 1, 200, 0, 17, 3, 20, 0, 0, ""}, AddDamage(1), bPowerUp(false), PowerUpChance(0), bDead(false)
 {
-
 }
 
 Player::~Player()
@@ -47,14 +46,13 @@ void Player::GetAttack(double& damage)
 
 void Player::Attack(Monster& monster)
 {
-	RandomManager::GetInstance()->setRange(0, 100);
+	RandomManager::GetInstance()->setRange(0.f, 100.f);
 	int probability = RandomManager::GetInstance()->getRandom<double>();
 	int trigger = monster.GetEvasion();
 	// 공격 성공
 	if (trigger <= probability) {
 		if (PowerUpChance > 0) {
-
-			int damage = GetDamage() + 5;        // 플레이어 데미지 가져오기
+			int damage = GetDamage() + AddDamage;        // 플레이어 데미지 가져오기
 			PowerUpChance--;
 			monster.GetAttack();         // 몬스터 체력 감소
 			// 성공 메시지 출력
@@ -62,6 +60,7 @@ void Player::Attack(Monster& monster)
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(damage) + "가 들어갔습니다.", true, 0));
 		}
 		else {
+			bPowerUp = false;
 			int damage = GetDamage();        // 플레이어 데미지 가져오기
 			monster.GetAttack();         // 몬스터 체력 감소
 
@@ -84,6 +83,12 @@ void Player::gainExp(int exp) { // 경험치 획득
 	}
 }
 
+void Player::gainCoin(int coin)
+{
+	WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, to_string(coin) + "만큼의 골드를 얻었습니다.", true, 0, TEXT_COLOR_TYPE::ORANGE_INENSITY));
+	stat.coin += coin;
+}
+
 void Player::levelUp() { // 레벨업
 	stat.level++;
 	stat.maxHP += 20;
@@ -100,7 +105,6 @@ bool Player::IsDie()
 	}
 	else return bDead;
 }
-
 
 //----------------------------//
 //          Get함수           //
@@ -138,6 +142,31 @@ const double Player::GetDamage()
 const int Player::GetItemCount()
 {
 	return stat.itemCount;
+}
+
+const int Player::GetCoin()
+{
+	return stat.coin;
+}
+
+const int Player::GetCurrentExp()
+{
+	return stat.currentexp;
+}
+
+const int Player::GetMaxExp()
+{
+	return stat.maxExp;
+}
+
+const int Player::GetAddDamage()
+{
+	return AddDamage;
+}
+
+bool Player::Is_PowerUp()
+{
+	return bPowerUp;
 }
 
 
@@ -181,22 +210,29 @@ void Player::ShowInventory()
 	}
 }
 
-void Player::UseItem(Type type)
+bool Player::UseItem(Type type)
 {
 	if (itemCounts[type] > 0) {
 		Item* item = inventory[type].back();
 		inventory[type].pop_back();  // 아이템 사용 후 제거
 		itemCounts[type]--;  // 아이템 개수 감소
 
-		cout << "아이템 사용: " << item->GetName() << endl;
 		item->Use();  // 아이템 사용
+
+		if (type == POWER_POTION)
+		{
+			AddDamage = 5 * stat.level;
+			bPowerUp = true;
+		}
 
 		// 아이템 객체 삭제
 		delete item;
 		item = nullptr;
+		return true;
 	}
 	else {
 		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "해당 아이템이 인벤토리에 없습니다.", true, 0, TEXT_COLOR_TYPE::GREEN));
+		return false;
 	}
 }
 

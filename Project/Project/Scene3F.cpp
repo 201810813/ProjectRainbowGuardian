@@ -16,8 +16,8 @@ void Scene3F::makeLayout() {
 
     // Story Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 13, 9, 60);
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "⚡ 이곳은 노란 환희의 층입니다.", false, 1, TEXT_COLOR_TYPE::ORANGE_INENSITY));
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "👹 찌릿깨비가 당신을 째려 보고 있습니다.", false, 2, TEXT_COLOR_TYPE::WHITE));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "⚡ 이곳은 노란 환희의 층입니다.", false, 7, TEXT_COLOR_TYPE::ORANGE_INENSITY));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🦗 전기사마귀가 '찌릿'거리고  있습니다.", false, 8, TEXT_COLOR_TYPE::WHITE));
 
     // Select Layout (전투 선택지)
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 0, 24, 5, 60);
@@ -31,6 +31,7 @@ void Scene3F::makeLayout() {
 void Scene3F::begin() {
 	MainScene::begin();
     makeLayout();
+    mantis = new EletricMantis();
 }
 
 void Scene3F::tick() {
@@ -41,4 +42,5 @@ Scene3F::Scene3F() {
 }
 
 Scene3F::~Scene3F() {
+    delete mantis;
 }

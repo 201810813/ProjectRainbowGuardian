@@ -17,6 +17,7 @@ protected:
 
 public:
     virtual void makeLayout() override;
+    void UpdateStatLayout();
 
 public:
     virtual void begin();

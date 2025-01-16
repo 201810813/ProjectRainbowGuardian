@@ -158,6 +158,7 @@
     <ClCompile Include="RandomManager.cpp" />
     <ClCompile Include="Rtan.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Scene0F.cpp" />
     <ClCompile Include="Scene1F.cpp" />
     <ClCompile Include="Scene2F.cpp" />
     <ClCompile Include="Scene3F.cpp" />
@@ -197,6 +198,7 @@
     <ClInclude Include="RandomManager.h" />
     <ClInclude Include="Rtan.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Scene0F.h" />
     <ClInclude Include="Scene1F.h" />
     <ClInclude Include="Scene2F.h" />
     <ClInclude Include="Scene3F.h" />

@@ -8,7 +8,7 @@
 #include "HealthPotion.h"
 #include "PowerPotion.h"
 #include "RandomManager.h"
-#
+#include "Animator.h"
 class Player;
 
 
@@ -33,16 +33,21 @@ private:
 	map<Type,double> dropItems;
 	int playerLevel;
 	bool bDead;
+
+protected:
+	Animator* animator;
+
 public:
 	Monster();
 	virtual ~Monster();
 public:
+	virtual void    Begin()			= 0;
 	virtual void	Attack()		= 0;
 	virtual void	GetAttack()		= 0;
 	virtual double	UseSkill()		= 0;
-	virtual void	is_Die()		= 0;
-	virtual void	Tick()			= 0;
+	virtual bool	is_Die()		= 0;
 	virtual void	DropItem()		= 0;
+	virtual void	Tick();
 public:
 	//get fuc
 	virtual const double GetSkillDamage() = 0;
