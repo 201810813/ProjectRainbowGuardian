@@ -5,6 +5,9 @@
 #include "KeyManager.h" // 키 입력 처리 관련 추가
 #include "SceneManager.h"
 #include "HealthPotion.h"
+#include "SoundManager.h"
+
+#include <sstream>
 
 ShopScene::ShopScene() : CursorPos(0) {}
 
@@ -66,7 +69,7 @@ void ShopScene::begin()
 
 void ShopScene::tick()
 {
-    
+    UpdateStatLayout();
     switch (Cur_ShopType)
     {
         //상점 메인.
@@ -74,17 +77,20 @@ void ShopScene::tick()
         UpdateSelectLayout();
         if (IS_TAP(UP)) // 커서를 위로 이동
         {
+            SoundManager::GetInstance()->PlayMusic("SelectCursor", 1, 1.f, true);
             CursorPos = (CursorPos > 0) ? CursorPos - 1 : 2; // 0에서 2로 이동
             WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
         }
         else if (IS_TAP(DOWN)) // 커서를 아래로 이동
         {
+            SoundManager::GetInstance()->PlayMusic("SelectCursor", 1, 1.f, true);
             CursorPos = (CursorPos < 2) ? CursorPos + 1 : 0; // 2에서 0으로 이동
             WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
         }
 
         if (IS_TAP(ENTER)) // 선택지 확정
         {
+            SoundManager::GetInstance()->PlayMusic("MoveCursor", 1, 0.06f, true);
             switch (CursorPos)
             {
             case 0: // 아이템 구매
@@ -104,16 +110,19 @@ void ShopScene::tick()
         UpdatePurchaseLayout();
         if (IS_TAP(UP)) // 커서를 위로 이동
         {
+            SoundManager::GetInstance()->PlayMusic("SelectCursor", 1, 1.f, true);
             CursorPos = (CursorPos > 0) ? CursorPos - 1 : 2; // 0에서 2로 이동
             WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
         }
         else if (IS_TAP(DOWN)) // 커서를 아래로 이동
         {
+            SoundManager::GetInstance()->PlayMusic("SelectCursor", 1, 1.f, true);
             CursorPos = (CursorPos < 2) ? CursorPos + 1 : 0; // 2에서 0으로 이동
             WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
         }
         if (IS_TAP(ENTER)) // 선택지 확정
         {
+            SoundManager::GetInstance()->PlayMusic("MoveCursor", 1, 0.06f, true);
             switch (CursorPos)
             {
                 
@@ -152,16 +161,19 @@ void ShopScene::tick()
         UpdateSellLayout();
         if (IS_TAP(UP)) // 커서를 위로 이동
         {
+            SoundManager::GetInstance()->PlayMusic("SelectCursor", 1, 1.f, true);
             CursorPos = (CursorPos > 0) ? CursorPos - 1 : 2; // 0에서 2로 이동
             WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
         }
         else if (IS_TAP(DOWN)) // 커서를 아래로 이동
         {
+            SoundManager::GetInstance()->PlayMusic("SelectCursor", 1, 1.f, true);
             CursorPos = (CursorPos < 2) ? CursorPos + 1 : 0; // 2에서 0으로 이동
             WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::SELECT);
         }
         if (IS_TAP(ENTER)) // 선택지 확정
         {
+            SoundManager::GetInstance()->PlayMusic("MoveCursor", 1, 0.06f, true);
             switch (CursorPos)
             {
                 
@@ -279,4 +291,56 @@ void ShopScene::UpdateSellLayout()
         WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "     [2. 파워 포션 ]", false, 1, TEXT_COLOR_TYPE::WHITE));
         WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  > [3. 이전 메뉴 ]", false, 2, TEXT_COLOR_TYPE::WHITE));
     }
+}
+
+void ShopScene::UpdateStatLayout()
+{
+    std::ostringstream oss;
+    Player::getInstance()->GetDamage();
+    Player::getInstance()->GetCurrentHP();
+
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "컬러", false, 0, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::BLACK));
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, "========================", false, 1, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::BLACK));
+
+    oss.str("");
+    oss.clear();
+    oss << "❇️ 레벨     : " << Player::getInstance()->GetLevel();
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 2, TEXT_COLOR_TYPE::SKY, BACKGROUND_COLOR_TYPE::BLACK));
+
+    oss.str("");
+    oss.clear();
+    oss << "⚡ EXP      : " << Player::getInstance()->GetCurrentExp() << " / " << Player::getInstance()->GetMaxExp();
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 3, TEXT_COLOR_TYPE::SKY));
+
+    oss.str("");
+    oss.clear();
+    oss << "🩸 HP       : " << (int)floor(Player::getInstance()->GetCurrentHP()) << " / " << (int)floor(Player::getInstance()->GetMaxHP());
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 4, TEXT_COLOR_TYPE::GREEN));
+
+    oss.str("");
+    oss.clear();
+    oss << "🗡️ ATK      : " << (int)floor(Player::getInstance()->GetDamage());
+
+    if (Player::getInstance()->Is_PowerUp())
+    {
+        oss << " + " << Player::getInstance()->GetAddDamage();
+    }
+
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 5, TEXT_COLOR_TYPE::RED));
+
+    oss.str("");
+    oss.clear();
+    oss << "🛡️ DEF      : " << (int)floor(Player::getInstance()->GetDefense());
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 6, TEXT_COLOR_TYPE::BLUE_INENSITY));
+
+    oss.str("");
+    oss.clear();
+    oss << "🍀 LUK      : " << (int)floor(Player::getInstance()->GetEvasion()) << "%";
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 7, TEXT_COLOR_TYPE::ORANGE));
+
+    oss.str("");
+    oss.clear();
+    oss << "💰 GOLD     : " << (int)floor(Player::getInstance()->GetCoin());
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STAT, oss.str(), false, 8, TEXT_COLOR_TYPE::ORANGE_INENSITY));
+
 }
