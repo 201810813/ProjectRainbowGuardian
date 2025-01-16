@@ -1,7 +1,8 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "EndingScene.h"
 #include "ConsoleLayout.h"
 #include "TimeManager.h"
+#include "SoundManager.h"
 
 EndingScene::EndingScene()
     : AccTime(0.f)
@@ -22,7 +23,7 @@ void EndingScene::makeLayout()
 
 void EndingScene::begin()
 {
-    // 씬 전환 시, 사용 중인 레이아웃 클리어
+    SoundManager::GetInstance()->PlayMusic("Ending_BGM", 0, 0.05, true);
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::TITLE);
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::STAT);
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::MAP);
@@ -31,6 +32,14 @@ void EndingScene::begin()
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::SELECT);
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::INPUT);
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::BACKGROUND);
+
+    for (int i = 0; i < 7; ++i)
+    {
+        WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::PROGRESS_BAR, "   ", false, i, TEXT_COLOR_TYPE::WHITE, BACKGROUND_COLOR_TYPE::BLACK));
+    }
+    WriteManager::GetInstance()->render();
+    WriteManager::GetInstance()->render();
+
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::PROGRESS_BAR);
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::MONSTER_STAT_UI);
 

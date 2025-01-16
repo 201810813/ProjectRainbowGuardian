@@ -7,6 +7,7 @@
 #include "FairyFire.h"
 #include "HealthPotion.h"
 #include "PowerPotion.h"
+#include "SoundManager.h"
 
 #include <sstream>
 
@@ -210,6 +211,7 @@ void MainScene::tick()
 
         if (IS_TAP(ENTER))
         {
+            SoundManager::GetInstance()->PlayMusic("MoveCursor", 1, 0.06f, true);
             Cur_BattleType = BATTLE_TYPE::PLAYER_TURN;
             bOnce = false;
         }
@@ -229,6 +231,7 @@ void MainScene::tick()
 
         if (IS_TAP(ENTER))
         {
+            SoundManager::GetInstance()->PlayMusic("MoveCursor", 1, 0.06f, true);
             Cur_BattleType = BATTLE_TYPE::SELECT;
             bOnce = false;
         }
@@ -257,10 +260,12 @@ void MainScene::tick()
 
         if (IS_TAP(UP))
         {
+            SoundManager::GetInstance()->PlayMusic("SelectCursor", 1, 1.f, true);
             CursorPos = 0;
         }
         else if (IS_TAP(DOWN))
         {
+            SoundManager::GetInstance()->PlayMusic("SelectCursor", 1, 1.f, true);
             CursorPos = 1;
         }
 
@@ -277,6 +282,7 @@ void MainScene::tick()
 
         if (IS_TAP(ENTER))
         {
+            SoundManager::GetInstance()->PlayMusic("MoveCursor", 1, 0.06f, true);
             if (0 == CursorPos)
             {
                 Cur_BattleType = BATTLE_TYPE::PLAYER_ATTACK;
@@ -305,6 +311,7 @@ void MainScene::tick()
         }
         if (IS_TAP(ENTER))
         {
+            SoundManager::GetInstance()->PlayMusic("MoveCursor", 1, 0.06f, true);
             Cur_BattleType = BATTLE_TYPE::MONSTER_DEAD_CHECK;
             bOnce = false;
         }
@@ -334,10 +341,12 @@ void MainScene::tick()
 
         if (IS_TAP(UP))
         {
+            SoundManager::GetInstance()->PlayMusic("SelectCursor", 1, 1.f, true);
             CursorPos = 0;
         }
         else if (IS_TAP(DOWN))
         {
+            SoundManager::GetInstance()->PlayMusic("SelectCursor", 1, 1.f, true);
             CursorPos = 1;
         }
 
@@ -354,6 +363,7 @@ void MainScene::tick()
 
         if (IS_TAP(ENTER))
         {   // 회복 포션 사용
+            SoundManager::GetInstance()->PlayMusic("MoveCursor", 1, 0.06f, true);
             if (0 == CursorPos)
             {
                 if (Player::getInstance()->UseItem(HEALTH_POTION)) {
@@ -409,6 +419,7 @@ void MainScene::tick()
         }
         if (IS_TAP(ENTER))
         {
+            SoundManager::GetInstance()->PlayMusic("MoveCursor", 1, 0.06f, true);
             Cur_BattleType = BATTLE_TYPE::PLAYER_DEAD_CHECK;
             bOnce = false;
         }
@@ -444,6 +455,7 @@ void MainScene::tick()
         
         if (IS_TAP(ENTER))
         {
+            SoundManager::GetInstance()->PlayMusic("MoveCursor", 1, 0.06f, true);
             bOnce = false;
             Cur_BattleType = BATTLE_TYPE::TOWN_CHANGER;
         }
@@ -470,6 +482,7 @@ void MainScene::tick()
         }
         
         if (IS_TAP(ENTER)) {
+            SoundManager::GetInstance()->PlayMusic("MoveCursor", 1, 0.06f, true);
             bOnce = false;
             Cur_BattleType = BATTLE_TYPE::SCENE_CHANGER;
         }
@@ -491,9 +504,11 @@ void MainScene::tick()
         }
 
         if (IS_TAP(ENTER)) {
+            SoundManager::GetInstance()->PlayMusic("MoveCursor", 1, 0.06f, true);
             bOnce = false;
             if (ThisSceneType == SCENE_TYPE::FINAL)
             {
+                SoundManager::GetInstance()->StopMusic("Main_BGM");
                 SceneManager::GetInstance()->CacheChangeScene(SCENE_TYPE::ENDINGCREDIT);
             }
             else
@@ -518,6 +533,7 @@ void MainScene::tick()
             bOnce = true;
         }
         if (IS_TAP(ENTER)) {
+            SoundManager::GetInstance()->PlayMusic("MoveCursor", 1, 0.06f, true);
             bOnce = false;
             SceneManager::GetInstance()->CheckRoomColorReset();
             SceneManager::GetInstance()->RessetFloorNumber();

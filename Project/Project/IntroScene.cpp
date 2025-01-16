@@ -5,6 +5,7 @@
 #include "KeyManager.h"
 #include "GameManager.h"
 #include "SceneManager.h"
+#include "SoundManager.h"
 
 void IntroScene::makeLayout()
 {
@@ -99,10 +100,12 @@ void IntroScene::MoveCursor()
 {
 	if (IS_TAP(UP))
 	{
+		SoundManager::GetInstance()->PlayMusic("SelectCursor", 1, 1.f, true);
 		CursorPos = 0;
 	}
 	else if (IS_TAP(DOWN))
 	{
+		SoundManager::GetInstance()->PlayMusic("SelectCursor", 1, 1.f, true);
 		CursorPos = 1;
 	}
 }
@@ -149,6 +152,9 @@ void IntroScene::MoveSymbol()
 void IntroScene::begin()
 {
 	makeLayout();
+
+	// 음악 재생
+	SoundManager::GetInstance()->PlayMusic("Main_BGM", 0, 0.05f, true);
 }
 
 void IntroScene::tick()
@@ -156,6 +162,7 @@ void IntroScene::tick()
 	MoveCursor();
 	if (IS_TAP(ENTER))
 	{
+		SoundManager::GetInstance()->PlayMusic("MoveCursor", 1, 0.06f, true);
 		ActionSelect();
 	}
 
