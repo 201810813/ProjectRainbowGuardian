@@ -204,6 +204,30 @@ void SoundManager::Initialize()
 	sound->LoadSound(path);
 	m_mapSound.insert({ "EnterBossRoom", sound });
 
+	sound = new Sound();
+	path = PathManager::GetInstance()->GetContentPath();
+	path += L"BossDie.wav";
+	sound->LoadSound(path);
+	m_mapSound.insert({ "BossDie", sound });
+
+	sound = new Sound();
+	path = PathManager::GetInstance()->GetContentPath();
+	path += L"BossSkill.wav";
+	sound->LoadSound(path);
+	m_mapSound.insert({ "BossSkill", sound });
+
+	sound = new Sound();
+	path = PathManager::GetInstance()->GetContentPath();
+	path += L"punch_heavy_huge_distorted_04.wav";
+	sound->LoadSound(path);
+	m_mapSound.insert({ "punch_heavy_huge_distorted_04", sound });
+
+	sound = new Sound();
+	path = PathManager::GetInstance()->GetContentPath();
+	path += L"punch_heavy_huge_distorted_03.wav";
+	sound->LoadSound(path);
+	m_mapSound.insert({ "punch_heavy_huge_distorted_03", sound });
+
 	// ==== 플레임 몹 =====
 	sound = new Sound();
 	path = PathManager::GetInstance()->GetContentPath();

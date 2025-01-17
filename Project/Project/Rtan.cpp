@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "Rtan.h"
+#include "SoundManager.h"
+#include "RandomManager.h"
 
 Rtan::Rtan()
 {
@@ -161,6 +163,7 @@ void Rtan::Attack()
 
 	//스킬을 쓰면
 	if (Trigger < skillProbability) {
+		PlayAttackSound();
 		double	damage = UseSkill() - Player::getInstance()->GetDefense();
 		int		probability = Player::getInstance()->GetEvasion();
 		int		trigger = rand() % 100;
@@ -170,11 +173,13 @@ void Rtan::Attack()
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!!!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
 		else {
+			SoundManager::GetInstance()->PlayMusic("Herb3", 1, 0.5, true);
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 스킬 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 		}
 	}
 	//스킬을 아니 쓰면
 	else {
+		PlayAttackSound();
 		double	damage = GetDamage() - Player::getInstance()->GetDefense();
 		int		probability = Player::getInstance()->GetEvasion();
 		int		trigger = rand() % 100;
@@ -183,7 +188,10 @@ void Rtan::Attack()
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! ", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
-		else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY)); }
+		else {
+			SoundManager::GetInstance()->PlayMusic("Herb3", 1, 0.5, true);
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
+		}
 	}
 }
 
@@ -290,4 +298,31 @@ void Rtan::SetCurrentHP(double hp)
 	RtanStat.currentHp = hp;
 }
 
+void Rtan::PlayAttackSound()
+{
+	RandomManager::GetInstance()->setRange(1, 4);
+	int rand = RandomManager::GetInstance()->getRandom<int>();
+
+	switch (rand)
+	{
+	case 1:
+		SoundManager::GetInstance()->PlayMusic("Sword_Hit_Flesh_1", 1, 0.3f, true);
+		break;
+
+	case 2:
+		SoundManager::GetInstance()->PlayMusic("Sword_Hit_Flesh_2", 1, 0.3f, true);
+		break;
+
+	case 3:
+		SoundManager::GetInstance()->PlayMusic("Sword_Hit_Flesh_3", 1, 0.3f, true);
+		break;
+
+	case 4:
+		SoundManager::GetInstance()->PlayMusic("Sword_Hit_Flesh_4", 1, 0.3f, true);
+		break;
+
+	default:
+		break;
+	}
+}
 

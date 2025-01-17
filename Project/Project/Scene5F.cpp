@@ -13,7 +13,8 @@ void Scene5F::makeLayout() {
     }
     output += to_string(GetFloorNumber());
     output += " [⚔️]";
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, output, true, 0, TEXT_COLOR_TYPE::BLUE));
+    int idx = 8 - (GetFloorNumber() % 9);
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, output, false, idx, TEXT_COLOR_TYPE::BLUE));
 
     // Story Layout
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "❄️ 이곳은 파란 고독의 층입니다.", false, 7, TEXT_COLOR_TYPE::BLUE));

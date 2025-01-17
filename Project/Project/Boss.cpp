@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "Boss.h"
+#include "SoundManager.h"
+#include "RandomManager.h"
 
 
 Boss::Boss()
@@ -72,6 +74,7 @@ void Boss::Attack()
 
 	//스킬을 쓰면
 	if (Trigger < skillProbability) {
+		SoundManager::GetInstance()->PlayMusic("BossSkill", 1, 0.3, true);
 		double	damage = UseSkill() - Player::getInstance()->GetDefense();
 		int		probability = Player::getInstance()->GetEvasion();
 		int		trigger = rand() % 100;
@@ -81,11 +84,13 @@ void Boss::Attack()
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!!!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
 		else {
+			SoundManager::GetInstance()->PlayMusic("Herb3", 1, 0.5, true);
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 스킬 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 		}
 	}
 	//스킬을 아니 쓰면
 	else {
+		PlayAttackSound();
 		double	damage = GetDamage() - Player::getInstance()->GetDefense();
 		int		probability = Player::getInstance()->GetEvasion();
 		int		trigger = rand() % 100;
@@ -94,7 +99,10 @@ void Boss::Attack()
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! ", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
-		else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY)); }
+		else {
+			SoundManager::GetInstance()->PlayMusic("Herb3", 1, 0.5, true);
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
+		}
 	}
 }
 
@@ -128,6 +136,7 @@ void Boss::DropItem() {
 bool Boss::is_Die()
 {
 	if (GetCurrentHP() <= 0) {
+		SoundManager::GetInstance()->PlayMusic("BossDie", 1, 0.3, true);
 		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "당신이" + GetName() + "를 쓰러트렸습니다!", true, 0, TEXT_COLOR_TYPE::BLUE));
 		DropItem();
 		bDead = true;
@@ -199,5 +208,23 @@ void Boss::SetCurrentHP(double hp)
 	BossStat.currentHp = hp;
 }
 
+void Boss::PlayAttackSound()
+{
+	RandomManager::GetInstance()->setRange(1, 2);
+	int rand = RandomManager::GetInstance()->getRandom<int>();
 
+	switch (rand)
+	{
+	case 1:
+		SoundManager::GetInstance()->PlayMusic("punch_heavy_huge_distorted_04", 1, 0.7f, true);
+		break;
+
+	case 2:
+		SoundManager::GetInstance()->PlayMusic("punch_heavy_huge_distorted_03", 1, 0.7f, true);
+		break;
+
+	default:
+		break;
+	}
+}
 
