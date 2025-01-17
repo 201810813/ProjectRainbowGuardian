@@ -86,7 +86,7 @@ public:
 
 	TEXT_COLOR_TYPE getColorForFloor(int floor);
 
-	void RessetFloorNumber() { FloorNumber = 0; }
+	void RessetFloorNumber() { FloorNumber = 0; BattleCount = 0; }
 
 	const bitset<7>& GetRoomColorCheck() { return RoomColorCheck; }
 

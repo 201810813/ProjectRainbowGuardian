@@ -216,11 +216,11 @@ void Boss::PlayAttackSound()
 	switch (rand)
 	{
 	case 1:
-		SoundManager::GetInstance()->PlayMusic("punch_heavy_huge_distorted_04", 1, 0.7f, true);
+		SoundManager::GetInstance()->PlayMusic("punch_heavy_huge_distorted_04", 1, 0.3f, true);
 		break;
 
 	case 2:
-		SoundManager::GetInstance()->PlayMusic("punch_heavy_huge_distorted_03", 1, 0.7f, true);
+		SoundManager::GetInstance()->PlayMusic("punch_heavy_huge_distorted_03", 1, 0.3f, true);
 		break;
 
 	default:
