@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Monster.h"
 class Boss :public Monster {
 private:
@@ -35,5 +35,8 @@ public:
 	const bool   GetbDead()			override;
 	//set
 	void SetCurrentHP(double hp)	override;
+
+public:
+	void PlayAttackSound();
 };
 

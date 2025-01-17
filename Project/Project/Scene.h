@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 
 class Scene{
 private:
-	string SceneName; //¾À ÀÌ¸§
+	string SceneName; //ì”¬ ì´ë¦„
 
 	//BATTLE_TYPE Cur_BattleType;
 	int Floor_Num;
@@ -11,7 +11,7 @@ private:
 	int CursorPos;
 
 public:
-	virtual void makeLayout() = 0; //¼ø¼ö °¡»óÇÔ¼ö
+	virtual void makeLayout() = 0; //ìˆœìˆ˜ ê°€ìƒí•¨ìˆ˜
 	virtual void begin(); 
 	virtual void tick(); 
 
@@ -20,7 +20,7 @@ public:
 	int GetFloorNumber() { return Floor_Num; }
 
 public:
-	Scene(); //»ı¼ºÀÚ
-	virtual ~Scene(); //°¡»ó ¼Ò¸êÀÚ
+	Scene(); //ìƒì„±ì
+	virtual ~Scene(); //ê°€ìƒ ì†Œë©¸ì
 };
 

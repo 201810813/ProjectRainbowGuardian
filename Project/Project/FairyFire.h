@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "pch.h"
 #include "Monster.h"
 
@@ -37,4 +37,7 @@ public:
 	const bool   GetbDead()			override;
 	//set
 	void SetCurrentHP(double hp)	override;
+
+public:
+	void PlayAttackSound();
 };

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "MainScene.h"
 #include "Rtan.h"
 class Scene7F :

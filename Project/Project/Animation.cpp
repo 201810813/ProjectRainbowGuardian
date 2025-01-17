@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "Animation.h"
 #include "Animator.h"
 #include "TimeManager.h"
@@ -28,7 +28,7 @@ void Animation::tick()
 	{
 		AccTime -= AnimFrameVector[CurrentFrameIndex].Duration;
 
-		// º¤ÅÍÀÇ ÀÎµ¦½º¸¦ ÃÊ°úÇÑ °æ¿ì ==> Animation Àç»ı ¿Ï·á
+		// ë²¡í„°ì˜ ì¸ë±ìŠ¤ë¥¼ ì´ˆê³¼í•œ ê²½ìš° ==> Animation ì¬ìƒ ì™„ë£Œ
 		if (AnimFrameVector.size() <= CurrentFrameIndex + 1)
 		{
 			bFinish = true;

@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 
 class Animator;
 
 struct FAnimFrame
 {
-    vector<string>  ImageVector;    // ÇÁ·¹ÀÓ´ç Ãâ·ÂÇÒ ¹®ÀÚ¿­
-    float           Duration;      // ÇØ´ç ÇÁ·¹ÀÓ À¯Áö½Ã°£
+    vector<string>  ImageVector;    // í”„ë ˆì„ë‹¹ ì¶œë ¥í•  ë¬¸ìì—´
+    float           Duration;      // í•´ë‹¹ í”„ë ˆì„ ìœ ì§€ì‹œê°„
 };
 
 class Animation
@@ -13,12 +13,12 @@ class Animation
 private:
     Animator*          pAnimator;
 
-    vector<FAnimFrame>  AnimFrameVector;   // ¸ğµç ÇÁ·¹ÀÓ Á¤º¸
+    vector<FAnimFrame>  AnimFrameVector;   // ëª¨ë“  í”„ë ˆì„ ì •ë³´
 
-    int                 CurrentFrameIndex;  // ÇöÀç ³ëÃâ ½ÃÅ³ ÇÁ·¹ÀÓ ÀÎµ¦½º
-    float               AccTime; // ´©Àû½Ã°£
+    int                 CurrentFrameIndex;  // í˜„ì¬ ë…¸ì¶œ ì‹œí‚¬ í”„ë ˆì„ ì¸ë±ìŠ¤
+    float               AccTime; // ëˆ„ì ì‹œê°„
 
-    bool                bFinish;  // Àç»ı ¿Ï·á
+    bool                bFinish;  // ì¬ìƒ ì™„ë£Œ
 
 
 public:

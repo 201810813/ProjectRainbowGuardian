@@ -13,7 +13,8 @@ void Scene3F::makeLayout() {
     }
     output += to_string(GetFloorNumber());
     output += " [⚔️]";
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, output, true, 0, TEXT_COLOR_TYPE::ORANGE_INENSITY));
+    int idx = 8 - (GetFloorNumber() % 9);
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, output, false, idx, TEXT_COLOR_TYPE::ORANGE_INENSITY));
 
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "⚡ 이곳은 노란 환희의 층입니다.", false, 7, TEXT_COLOR_TYPE::ORANGE_INENSITY));
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🦗 전기사마귀가 '찌릿'거리고  있습니다.", false, 8, TEXT_COLOR_TYPE::WHITE));

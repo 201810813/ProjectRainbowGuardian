@@ -1,14 +1,14 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "PathManager.h"
 
 shared_ptr<PathManager> PathManager::Instance = nullptr;
 
 void PathManager::Initialize()
 {
-	// ½ÇÇà°æ·Î °¡Á®¿À±â
+	// ì‹¤í–‰ê²½ë¡œ ê°€ì ¸ì˜¤ê¸°
 	GetCurrentDirectory(256, m_szContentPath);
 
-	// »óÀ§Æú´õ·Î º¯°æ
+	// ìƒìœ„í´ë”ë¡œ ë³€ê²½
 	size_t iLen = wcsnlen_s(m_szContentPath, 256);
 	for (size_t i = iLen; i > 0; --i)
 	{

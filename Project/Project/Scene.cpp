@@ -1,11 +1,11 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "Scene1F.h"
 #include "ConsoleLayout.h"
 
 void Scene::begin()
 {
-	// ·¹ÀÌ¾Æ¿ô ¸¸µå´Â °Å¶û
-	// ¸ó½ºÅÍ »ı¼º µî
+	// ë ˆì´ì•„ì›ƒ ë§Œë“œëŠ” ê±°ë‘
+	// ëª¬ìŠ¤í„° ìƒì„± ë“±
 }
 
 void Scene::tick()

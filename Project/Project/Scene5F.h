@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "MainScene.h"
 #include "IceHedgehog.h"
 class Scene5F : public MainScene{

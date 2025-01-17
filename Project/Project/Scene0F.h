@@ -1,19 +1,19 @@
-#pragma once
+ï»¿#pragma once
 #include "MainScene.h"
 
 class Scene0F : public MainScene{
 private:
-	int CursorPos; // Ä¿¼­
+	int CursorPos; // ì»¤ì„œ
 
 public:
     virtual void makeLayout() override;
     virtual void begin() override;
     virtual void tick() override;
 
-	void GoTo1F(); // 1ÃşÀ¸·Î ÀÌµ¿
-    void Exit();    // °ÔÀÓ Á¾·á
+	void GoTo1F(); // 1ì¸µìœ¼ë¡œ ì´ë™
+    void Exit();    // ê²Œì„ ì¢…ë£Œ
 
-	void UpdateSelectLayout(); // ¼±ÅÃÁö ¾÷µ¥ÀÌÆ®
+	void UpdateSelectLayout(); // ì„ íƒì§€ ì—…ë°ì´íŠ¸
 
 public:
     Scene0F();

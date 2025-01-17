@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Scene.h"
 #include "MainScene.h"
 #include "IntroScene.h"
@@ -20,7 +20,7 @@ class SceneManager
 {
 private:
 	static shared_ptr<SceneManager>	Instance;
-	bool hasShownIntro; // ÀÎÆ®·Î¸¦ º¸¿©Áá´ÂÁö ¿©ºÎ
+	bool hasShownIntro; // ì¸íŠ¸ë¡œë¥¼ ë³´ì—¬ì¤¬ëŠ”ì§€ ì—¬ë¶€
 
 	SceneManager() = default;
 	SceneManager(const SceneManager& other) = delete;
@@ -51,38 +51,38 @@ public:
 	}
 
 private:
-	Scene*		CurrentScene; //ÇöÀç ¾ÀÀ» °¡¸®Å°´Â Æ÷ÀÎÅÍ
+	Scene*		CurrentScene; //í˜„ì¬ ì”¬ì„ ê°€ë¦¬í‚¤ëŠ” í¬ì¸í„°
 	int			currentFloor;
 
 	bool		bChangeScene;
 	bool     finalBossDefeated;
-	bool		randomEventTriggered; // ·£´ı ÀÌº¥Æ® Æ®¸®°Å
+	bool		randomEventTriggered; // ëœë¤ ì´ë²¤íŠ¸ íŠ¸ë¦¬ê±°
 	SCENE_TYPE	NextSceneType;
 	int			BattleCount;
-	string  randomEventIcon; // ·£´ı ÀÌº¥Æ® ¾ÆÀÌÄÜ
+	string  randomEventIcon; // ëœë¤ ì´ë²¤íŠ¸ ì•„ì´ì½˜
 	
 	int FloorNumber = 0;
-	bitset<7>	RoomColorCheck;	// bit´ÜÀ§·Î ¾î¶² ÄÃ·¯ÀÇ ¹æµéÀ» Å¬¸®¾îÇß´ÂÁö Ã¼Å©ÇØ ÁÜ.
+	bitset<7>	RoomColorCheck;	// bitë‹¨ìœ„ë¡œ ì–´ë–¤ ì»¬ëŸ¬ì˜ ë°©ë“¤ì„ í´ë¦¬ì–´í–ˆëŠ”ì§€ ì²´í¬í•´ ì¤Œ.
 
-	bool bBossClear = false; // ÃÖÁ¾ º¸½º Å¬¸®¾î ¿©ºÎ
+	bool bBossClear = false; // ìµœì¢… ë³´ìŠ¤ í´ë¦¬ì–´ ì—¬ë¶€
 
 
 public:
 	void Initialize();
 	void tick();
-	void changeScene(); //¾À º¯°æ ¸Ş¼­µå
+	void changeScene(); //ì”¬ ë³€ê²½ ë©”ì„œë“œ
 
 public:
-	void CheckRoomColor(SCENE_TYPE SceneType); // ¾î¶² ÄÃ·¯ÀÇ ¹æÀ» Å¬¸®¾î Çß´ÂÁö Ã¼Å©ÇØÁÖ´Â ÇÔ¼ö.
-	bool Is_AllColorClear(); // ¸ğµç »ö»óÀ» ´Ù ¸ğ¾Ò´ÂÁö È®ÀÎ¹Ş´Â ÇÔ¼ö
-	void CheckRoomColorReset(); // »ö»ó Ã¼Å©¸¦ ¸ğµÎ false·Î ÀüÈ¯
+	void CheckRoomColor(SCENE_TYPE SceneType); // ì–´ë–¤ ì»¬ëŸ¬ì˜ ë°©ì„ í´ë¦¬ì–´ í–ˆëŠ”ì§€ ì²´í¬í•´ì£¼ëŠ” í•¨ìˆ˜.
+	bool Is_AllColorClear(); // ëª¨ë“  ìƒ‰ìƒì„ ë‹¤ ëª¨ì•˜ëŠ”ì§€ í™•ì¸ë°›ëŠ” í•¨ìˆ˜
+	void CheckRoomColorReset(); // ìƒ‰ìƒ ì²´í¬ë¥¼ ëª¨ë‘ falseë¡œ ì „í™˜
 
 	void CacheChangeScene(SCENE_TYPE SceneType);
 	
-	// ·£´ı ÇÔ¼ö Ãß°¡
+	// ëœë¤ í•¨ìˆ˜ ì¶”ê°€
 	void RandomCreateScene();
 
-	void updateMap(); //¸Ê ¾÷µ¥ÀÌÆ® ¸Ş¼­µå
+	void updateMap(); //ë§µ ì—…ë°ì´íŠ¸ ë©”ì„œë“œ
 
 	TEXT_COLOR_TYPE getColorForFloor(int floor);
 
@@ -90,11 +90,11 @@ public:
 
 	const bitset<7>& GetRoomColorCheck() { return RoomColorCheck; }
 
-	void MoveToNextFloor(); // ´ÙÀ½ ÃşÀ¸·Î ÀÌµ¿
+	void MoveToNextFloor(); // ë‹¤ìŒ ì¸µìœ¼ë¡œ ì´ë™
 
-	void MarkFinalBossDefeated(); // ÃÖÁ¾ º¸½º Å¬¸®¾î Ã³¸®
+	void MarkFinalBossDefeated(); // ìµœì¢… ë³´ìŠ¤ í´ë¦¬ì–´ ì²˜ë¦¬
 
-	void MoveToScene0F(); // 0ÃşÀ¸·Î ÀÌµ¿
+	void MoveToScene0F(); // 0ì¸µìœ¼ë¡œ ì´ë™
 
 
 	bool IsBossClear() { return bBossClear; }

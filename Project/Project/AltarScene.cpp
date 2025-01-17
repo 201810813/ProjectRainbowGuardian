@@ -36,7 +36,8 @@ void AltarScene::makeLayout(){
     }
     output += to_string(GetFloorNumber());
     output += " [⛲]";
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, output, true, 0, TEXT_COLOR_TYPE::GRAY));
+    int idx = 8 - (GetFloorNumber() % 9);
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, output, false, idx, TEXT_COLOR_TYPE::GRAY));
 
 
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 13, 9, 60);
@@ -63,6 +64,7 @@ void AltarScene::makeLayout(){
 }
 
 void AltarScene::begin() {
+    SoundManager::GetInstance()->PlayMusic("AltarEnter", 1, 0.5, true);
     WriteManager::GetInstance()->ClearLayoutAllMessage(LAYOUT_TYPE::MONSTER_STAT_UI);
     WriteManager::GetInstance()->ClearLayout(LAYOUT_TYPE::MONSTER_STAT_UI);
     makeLayout();
@@ -107,6 +109,8 @@ void AltarScene::handleOffer()
 	{
         if (Player::getInstance()->SpendGold(100))
         {
+			SoundManager::GetInstance()->PlayMusic("UseCoin_0", 1, 0.6f, true);
+            SoundManager::GetInstance()->PlayMusic("Holy_Spell", 1, 0.1f, true);
             Player::getInstance()->SetCurrentHP(Player::getInstance()->GetMaxHP()); // 최대 체력으로 회복
             WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "성스러운 기운이 당신을 감싸 체력이 모두 회복되었습니다.", true, 3, TEXT_COLOR_TYPE::WHITE));
         }

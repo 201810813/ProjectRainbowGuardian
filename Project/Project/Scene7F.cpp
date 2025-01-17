@@ -13,7 +13,8 @@ void Scene7F::makeLayout() {
     }
     output += to_string(GetFloorNumber());
     output += " [⚔️]";
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, output, true, 0, TEXT_COLOR_TYPE::PURPLE));
+    int idx = 8 - (GetFloorNumber() % 9);
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, output, false, idx, TEXT_COLOR_TYPE::PURPLE));
 
     // Story Layout
     WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "🔮 이곳은 보라색 환영의 층입니다.", false, 7, TEXT_COLOR_TYPE::PURPLE));

@@ -1,15 +1,16 @@
 #include "pch.h"
 #include "IronGolem.h"
+#include "SoundManager.h"
 
 
 IronGolem::IronGolem()
 {
 	playerLevel = Player::getInstance()->GetLevel();
 	RandomManager::GetInstance()->setRange(20, 30);
-	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>())+(2*playerLevel);
+	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>())+(1*playerLevel);
 	RandomManager::GetInstance()->setRange(5, 7);
 	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>())+ (1* playerLevel);
-	int		def = playerLevel * 2;
+	int		def = playerLevel * 1;
 	//이름    hp  maxhp  damage   def  skd   eva drop exp  coin
 	GolemStat = { "🦿아이언 골렘🦿", Hp, Hp, damage, def, 1.4, 20, 30, 15, 20 };
 	dropItems[HEALTH_POTION] = GolemStat.dropRate;
@@ -155,6 +156,7 @@ double IronGolem::UseSkill()
 void IronGolem::Attack()
 {
 	Monster::animator->Play("Attack", false);
+
 	//스킬 쓸확률
 	int skillProbability = 10;
 	RandomManager::GetInstance()->setRange(0, 100);
@@ -162,6 +164,8 @@ void IronGolem::Attack()
 	//스킬을 쓰면
 
 	if (Trigger < skillProbability) {
+		SoundManager::GetInstance()->PlayMusic("Injured_Bash_1", 1, 0.5, true);
+
 		double	damage = UseSkill() - Player::getInstance()->GetDefense();
 		int		probability = Player::getInstance()->GetEvasion();
 		int		trigger = rand() % 100;
@@ -171,11 +175,14 @@ void IronGolem::Attack()
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!!!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
 		else {
+			SoundManager::GetInstance()->PlayMusic("Herb3", 1, 0.5, true);
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 스킬 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 		}
 	}
 	//스킬을 아니 쓰면
 	else {
+		SoundManager::GetInstance()->PlayMusic("Injured_Bash_0", 1, 0.5, true);
+
 		double	damage = GetDamage() - Player::getInstance()->GetDefense();
 		int		probability = Player::getInstance()->GetEvasion();
 		int		trigger = rand() % 100;
@@ -184,7 +191,10 @@ void IronGolem::Attack()
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! ", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
-		else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY)); }
+		else {
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
+			SoundManager::GetInstance()->PlayMusic("Herb3", 1, 0.5, true);
+		}
 	}
 
 
