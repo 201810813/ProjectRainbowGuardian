@@ -163,7 +163,7 @@ void IceHedgehog::Attack()
 
 	//스킬을 쓰면
 	if (Trigger < skillProbability) {
-		SoundManager::GetInstance()->PlayMusic("ice_blast_projectile_spell_01", 0, 0.5, true);
+		SoundManager::GetInstance()->PlayMusic("ice_blast_projectile_spell_01", 1, 0.5, true);
 
 		double	damage = UseSkill() - Player::getInstance()->GetDefense();
 		int		probability = Player::getInstance()->GetEvasion();

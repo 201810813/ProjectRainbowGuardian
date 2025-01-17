@@ -14,7 +14,8 @@ void Scene1F::makeLayout() {
     }
     output += to_string(GetFloorNumber());
     output += " [⚔️]";
-    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, output, true, 0, TEXT_COLOR_TYPE::RED));
+    int idx = 8 - (GetFloorNumber() % 9);
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, output, false, idx, TEXT_COLOR_TYPE::RED));
 
 
     // Story Layout

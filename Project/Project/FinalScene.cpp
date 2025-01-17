@@ -16,8 +16,15 @@ void FinalScene::makeLayout() {
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STAT, 0, 2, 9, 25);
 
     // Map Layout
-    //WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::MAP, 104, 2, 9, 8);
-    //WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, "08 [🐉]", false, 1, TEXT_COLOR_TYPE::GREEN));
+    string output = "";
+    if (GetFloorNumber() < 10)
+    {
+        output += "0";
+    }
+    output += to_string(GetFloorNumber());
+    output += " [🐉]";
+    int idx = 8 - (GetFloorNumber() % 9);
+    WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::MAP, output, false, idx, TEXT_COLOR_TYPE::GREEN));
 
     // Story Layout
     WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::STORY, 0, 13, 9, 60);
