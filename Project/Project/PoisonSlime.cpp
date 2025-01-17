@@ -1,15 +1,17 @@
 #include "pch.h"
 #include "PoisonSlime.h"
+#include "SoundManager.h"
+#include "RandomManager.h"
 
 
 PoisonSlime::PoisonSlime()
 {
 	playerLevel = Player::getInstance()->GetLevel();
 	RandomManager::GetInstance()->setRange(20, 30);
-	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>() + (4 * playerLevel));
-	RandomManager::GetInstance()->setRange(5, 7);
-	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>() + (2 * playerLevel));
-	int		def = playerLevel * 2;
+	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>() + (1 * playerLevel));
+	RandomManager::GetInstance()->setRange(5, 6);
+	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>() + (1 * playerLevel));
+	int		def = playerLevel * 1;
 	//이름    hp  maxhp  damage   def  skd   eva drop exp  coin
 	SlimeStat = { "☠️독덩쿨이☠️", Hp, Hp, damage, def, 1.4, 20, 30, 22, 23 };
 	dropItems[HEALTH_POTION] = SlimeStat.dropRate;
@@ -154,6 +156,7 @@ double PoisonSlime::UseSkill()
 
 void PoisonSlime::Attack()
 {
+	PlayAttackSound();
 	Monster::animator->Play("Attack", false);
 	//스킬 쓸확률
 	int skillProbability = 10;
@@ -171,6 +174,7 @@ void PoisonSlime::Attack()
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!!!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
 		else {
+			SoundManager::GetInstance()->PlayMusic("Herb3", 1, 0.5, true);
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 스킬 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 		}
 	}
@@ -184,7 +188,10 @@ void PoisonSlime::Attack()
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! ", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
-		else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY)); }
+		else {
+			SoundManager::GetInstance()->PlayMusic("Herb3", 1, 0.5, true);
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
+		}
 	}
 
 }
@@ -289,4 +296,24 @@ const double PoisonSlime::GetDamage()
 void PoisonSlime::SetCurrentHP(double hp)
 {
 	SlimeStat.currentHp = hp;
+}
+
+void PoisonSlime::PlayAttackSound()
+{
+	RandomManager::GetInstance()->setRange(1, 2);
+	int rand = RandomManager::GetInstance()->getRandom<int>();
+
+	switch (rand)
+	{
+	case 1:
+		SoundManager::GetInstance()->PlayMusic("Punch_1", 1, 0.3f, true);
+		break;
+
+	case 2:
+		SoundManager::GetInstance()->PlayMusic("Punch_4", 1, 0.3f, true);
+		break;
+
+	default:
+		break;
+	}
 }

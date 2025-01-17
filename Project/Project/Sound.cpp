@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "Sound.h"
 
 FMOD_RESULT CHANNEL_CALLBACK(FMOD_CHANNELCONTROL* channelcontrol, FMOD_CHANNELCONTROL_TYPE controltype
@@ -29,7 +29,7 @@ Sound::~Sound()
 
 int Sound::Play(int _iRoopCount, float _fVolume, bool _bOverlap)
 {
-	// Àç»ıµÇ°í ÀÖ´Â Ã¤³ÎÀÌ ÀÖ´Âµ¥, Áßº¹Àç»ıÀ» Çã¿ëÇÏÁö ¾Ê¾Ò´Ù -> Àç»ı ¾ÈÇÔ
+	// ì¬ìƒë˜ê³  ìˆëŠ” ì±„ë„ì´ ìˆëŠ”ë°, ì¤‘ë³µì¬ìƒì„ í—ˆìš©í•˜ì§€ ì•Šì•˜ë‹¤ -> ì¬ìƒ ì•ˆí•¨
 	if (!_bOverlap && !m_listChannel.empty())
 	{
 		return -1;

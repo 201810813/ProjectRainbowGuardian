@@ -1,15 +1,16 @@
 #include "pch.h"
 #include "EletricMantis.h"
+#include "SoundManager.h"
 
 
 EletricMantis::EletricMantis()
 {
 	playerLevel = Player::getInstance()->GetLevel();
 	RandomManager::GetInstance()->setRange(20, 30);
-	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>() + (4 *playerLevel));
-	RandomManager::GetInstance()->setRange(5, 7);
-	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>() + (2* playerLevel));
-	int		def = playerLevel * 2;
+	double  Hp = double(playerLevel * RandomManager::GetInstance()->getRandom<int>() + (1 * playerLevel));
+	RandomManager::GetInstance()->setRange(5, 6);
+	double  damage = double(playerLevel * RandomManager::GetInstance()->getRandom<int>() + (1* playerLevel));
+	int		def = playerLevel * 1;
 					//이름    hp  maxhp  damage   def  skd   eva drop exp  coin
 	MantisStat = { "🦗전기사마귀🦗",Hp,Hp,damage,def,1.4,20,30,13,20};
 	dropItems[HEALTH_POTION] = MantisStat.dropRate;
@@ -161,6 +162,7 @@ void EletricMantis::Attack()
 	//스킬을 쓰면
 
 	if (Trigger < skillProbability) {
+		SoundManager::GetInstance()->PlayMusic("elec_lightning_magic_spell_04", 1, 0.3, true);
 		double	damage = UseSkill() - Player::getInstance()->GetDefense();
 		int		probability = Player::getInstance()->GetEvasion();
 		int		trigger = rand() % 100;
@@ -170,11 +172,14 @@ void EletricMantis::Attack()
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!!!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
 		else {
+			SoundManager::GetInstance()->PlayMusic("Herb3", 1, 0.5, true);
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 스킬 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 		}
 	}
 	//스킬을 아니 쓰면
 	else {
+		SoundManager::GetInstance()->PlayMusic("electric_lightning_blast_01", 1, 0.3, true);
+
 		double	damage = GetDamage() - Player::getInstance()->GetDefense();
 		int		probability = Player::getInstance()->GetEvasion();
 		int		trigger = rand() % 100;
@@ -183,7 +188,10 @@ void EletricMantis::Attack()
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "일반 공격 히트! ", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
 			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "데미지 " + to_string(int(damage)) + "받았습니다!.", true, 0, TEXT_COLOR_TYPE::RED));
 		}
-		else { WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY)); }
+		else {
+			SoundManager::GetInstance()->PlayMusic("Herb3", 1, 0.5, true);
+			WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::STORY, "적의 일반 공격을 회피했습니다.", true, 0, TEXT_COLOR_TYPE::RED_INENSITY));
+		}
 	}
 
 }
