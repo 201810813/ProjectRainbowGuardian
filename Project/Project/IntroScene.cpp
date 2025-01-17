@@ -86,13 +86,13 @@ void IntroScene::MakeSelect()
 	WriteManager::GetInstance()->MakeLayout(LAYOUT_TYPE::SELECT, 90, 13, 6, 20);
 	if (0 == CursorPos)
 	{
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  >    [시 작]", false, 1));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  >  [시 작]  ", false, 1));
 		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "       [종 료]", false, 4));
 	}
 	else if(1 == CursorPos)
 	{
 		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "       [시 작]", false, 1));
-		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  >    [종 료]", false, 4));
+		WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  >  [종 료]  ", false, 4));
 	}
 }
 
