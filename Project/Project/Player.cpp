@@ -7,7 +7,7 @@
 
 shared_ptr<Player> Player::player = nullptr;
 
-Player::Player() : stat{ 100, 100, 1, 100, 0, 10, 3, 20, 1000, 0, ""}, AddDamage(1), bPowerUp(false), PowerUpChance(0), bDead(false)
+Player::Player() : stat{ 100, 100, 1, 100, 0, 10, 3, 20, 0, 0, ""}, AddDamage(1), bPowerUp(false), PowerUpChance(0), bDead(false)
 {
 	this->HealthPotion = new class HealthPotion();
 	this->PowerPotion = new class PowerPotion();
