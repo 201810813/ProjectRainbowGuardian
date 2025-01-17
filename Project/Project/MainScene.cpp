@@ -271,13 +271,13 @@ void MainScene::tick()
 
         if (0 == CursorPos)
         {
-            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  >    [ 공격 ]", false, 0));
+            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  >  [ 공격 ]  ", false, 0));
             WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "       [아이템]", false, 1));
         }
         else if (1 == CursorPos)
         {
             WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "       [ 공격 ]", false, 0));
-            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  >    [아이템]", false, 1));
+            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  >  [아이템]  ", false, 1));
         }
 
         if (IS_TAP(ENTER))
@@ -352,13 +352,13 @@ void MainScene::tick()
 
         if (0 == CursorPos)
         {
-            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  >    [회복 포션]", false, 0));
+            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  >  [회복 포션]  ", false, 0));
             WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "       [강화 포션]", false, 1));
         }
         else if (1 == CursorPos)
         {
             WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "       [회복 포션]", false, 0));
-            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  >    [강화 포션]", false, 1));
+            WriteManager::GetInstance()->AddLine(FMessageParam(LAYOUT_TYPE::SELECT, "  >  [강화 포션]  ", false, 1));
         }
 
         if (IS_TAP(ENTER))
